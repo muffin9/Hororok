@@ -1,4 +1,19 @@
+import dotenv from "dotenv";
+
+const env = {
+  development: dotenv.config({ path: "./src/env/.env.local" }).parsed,
+  production: dotenv.config({ path: "./src/env/.env.prod" }).parsed,
+};
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+
+  env: {
+    ...env.development,
+    ...(process.env.NODE_ENV === "production" ? env.production : {}),
+  },
+};
 
 export default nextConfig;
