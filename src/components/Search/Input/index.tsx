@@ -1,6 +1,6 @@
 "use client";
 
-import Input from "@/app/components/common/Input";
+import Input from "@/components/common/Input";
 import { useState } from "react";
 import Icon from "../../common/Icon";
 

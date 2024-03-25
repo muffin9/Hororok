@@ -1,5 +1,5 @@
-import Icon from "../Icon";
-import Text from "../Text";
+import Icon from "@/components/common/Icon";
+import Text from "@/components/common/Text";
 
 const GNB = () => {
   return (
