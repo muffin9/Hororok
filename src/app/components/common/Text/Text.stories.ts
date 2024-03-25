@@ -2,7 +2,7 @@ import Text from ".";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Text> = {
-  title: "atoms/Text",
+  title: "Common/Text",
   component: Text,
   tags: ["autodocs"],
 };
@@ -16,6 +16,6 @@ export const Default: Story = {
     size: "large",
     weight: "bold",
     children: "텍스트",
-    className: "text-black",
+    className: "text-primary-300",
   },
 };
