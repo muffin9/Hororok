@@ -47,7 +47,7 @@ interface IconProps {
     | "account"
     | "call"
     | "clock";
-  size?: "small" | "medium" | "large";
+  size?: "xSmall" | "small" | "medium" | "large" | "xLarge";
   alt: string;
 }
 
