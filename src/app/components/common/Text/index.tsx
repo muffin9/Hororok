@@ -15,7 +15,7 @@ interface TextProps {
 }
 
 const textSizes = {
-  extraSmall: "text-lg",
+  extraSmall: "text-xs",
   small: "text-sm",
   medium: "text-md",
   large: "text-lg",

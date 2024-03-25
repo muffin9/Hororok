@@ -16,7 +16,7 @@ const SearchInput = () => {
   };
 
   return (
-    <div className="w-full h-[50px] relative shadow-default">
+    <div className="w-full h-[50px] relative rounded-lg shadow-default">
       <Input
         type="text"
         placeholder="텍스트 필드"
