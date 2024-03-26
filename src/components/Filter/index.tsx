@@ -29,7 +29,7 @@ const Filter = ({ onCloseButton }: FilterProps) => {
             재설정
           </Text>
         </Button>
-        <SubmitButton onCloseButton={onCloseButton} />
+        <SubmitButton onCloseButton={onCloseButton} className="mr-4" />
       </div>
     </section>
   );
