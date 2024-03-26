@@ -13,7 +13,6 @@ type Story = StoryObj<typeof Tag>;
 
 export const Default: Story = {
   args: {
-    tagId: 1,
     tagName: "루프탑",
   },
 };
