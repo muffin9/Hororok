@@ -1,23 +1,13 @@
 import { filterDatas } from "@/app/constants";
 import Text from "../common/Text";
 import Tag from "../common/Tag";
-import { useState } from "react";
 
-type SelectedItemsState = {
-  [filterId: string]: string | undefined;
-};
+interface ConditionProps {
+  handleItemClick: (filterId: string, itemId: string) => void;
+  checkSelected: (conditionId: string, clickedItemId: string) => boolean;
+}
 
-const Condition = () => {
-  const [selectedItems, setSelectedItems] = useState<SelectedItemsState>({});
-
-  const handleItemClick = (filterId: string, itemId: string) => {
-    setSelectedItems((prevState) => ({
-      ...prevState,
-      [filterId]: itemId,
-    }));
-  };
-
-  console.log(selectedItems);
+const Condition = ({ handleItemClick, checkSelected }: ConditionProps) => {
   return (
     <div className="px-4 py-6 border-t-[1px] border-b-[1px] border-silver">
       {filterDatas.map((condition) => {
@@ -32,7 +22,7 @@ const Condition = () => {
                   <Tag
                     key={d.id}
                     tagName={d.name}
-                    isSelected={selectedItems[condition.id] === d.id}
+                    isSelected={checkSelected(condition.id, d.id)}
                     handleItemClick={() => handleItemClick(condition.id, d.id)}
                   />
                 );
