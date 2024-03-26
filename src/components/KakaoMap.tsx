@@ -2,8 +2,9 @@
 
 import { SearchPlaceInfoType } from "@/interfaces/SearchPlace";
 import { useEffect, useRef, useState } from "react";
-import { defaultCoords, pinImage } from "@/app/constants";
+import { pinImage } from "@/app/constants";
 import { useSearchParams } from "next/navigation";
+import useGeolocation from "@/Hooks/useGeolocation";
 
 declare global {
   interface Window {
@@ -16,27 +17,33 @@ interface KakaoMapProps {
 }
 
 const KakaoMap = ({ children }: KakaoMapProps) => {
+  const location = useGeolocation();
   const params = useSearchParams();
+
+  const [coordinates, setCoordinates] = useState({
+    lat: location.latitude,
+    lng: location.longitude,
+  });
 
   const [markers, setMarkers] = useState([]);
   const mapRef = useRef<HTMLElement | null>(null);
 
-  const displayPlaces = (places: SearchPlaceInfoType[]) => {
+  const displayPlaces = (place: SearchPlaceInfoType) => {
     const imageSize = new window.kakao.maps.Size(24, 35);
     const markerImage = new window.kakao.maps.MarkerImage(pinImage, imageSize);
-    const newMarkers = [] as any;
 
-    places.forEach((place: SearchPlaceInfoType) => {
-      const marker = new window.kakao.maps.Marker({
-        map: mapRef.current,
-        position: new window.kakao.maps.LatLng(place.latitude, place.longitude),
-        image: markerImage,
-        zIndex: 10,
-      });
+    const myMarkerPosition = new window.kakao.maps.LatLng(
+      place.latitude,
+      place.longitude
+    );
 
-      newMarkers.push(marker);
+    const marker = new window.kakao.maps.Marker({
+      position: myMarkerPosition,
+      image: markerImage,
     });
-    setMarkers(newMarkers);
+
+    setCoordinates({ lat: place.latitude, lng: place.longitude });
+    marker.setMap(mapRef.current);
   };
 
   useEffect(() => {
@@ -46,37 +53,52 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
 
     script.onload = () => {
       window.kakao.maps.load(() => {
+        const imageSize = new window.kakao.maps.Size(24, 24);
+        const markerImage = new window.kakao.maps.MarkerImage(
+          "/assets/Images/ico_marker.png",
+          imageSize
+        );
+
         const mapContainer = document.getElementById("map");
         const options = {
           center: new window.kakao.maps.LatLng(
-            defaultCoords.lat,
-            defaultCoords.lng
+            coordinates.lat,
+            coordinates.lng
           ),
           level: 7,
         };
         mapRef.current = new window.kakao.maps.Map(mapContainer, options);
+
+        const myMarkerPosition = new window.kakao.maps.LatLng(
+          coordinates.lat,
+          coordinates.lng
+        );
+
+        const marker = new window.kakao.maps.Marker({
+          position: myMarkerPosition,
+          image: markerImage,
+        });
+
+        marker.setMap(mapRef.current);
       });
     };
 
     return () => {
       document.head.removeChild(script);
     };
-  }, []);
+  }, [coordinates.lat, coordinates.lng]);
 
   useEffect(() => {
-    const placeInfos = [] as SearchPlaceInfoType[];
+    const placeInfo = params.values().next().value;
 
-    for (const value of params.values()) {
-      placeInfos.push(JSON.parse(value));
-    }
-
-    if (window.kakao && placeInfos && placeInfos.length > 0) {
+    if (window.kakao && placeInfo) {
       if (markers) {
         markers.forEach((marker: any) => marker.setMap(null));
       }
-      displayPlaces(placeInfos);
+
+      displayPlaces(JSON.parse(placeInfo));
     }
-  }, []);
+  }, [params]);
 
   return (
     <div id="map" className="w-full h-screen">
