@@ -3,9 +3,9 @@
 import Input from "@/components/common/Input";
 import { Dispatch, SetStateAction, useState } from "react";
 import Icon from "@/components/common/Icon";
-import { defaultCoords } from "@/app/constants";
 import { SearchPlaceInfoType, SearchPlaceType } from "@/interfaces/SearchPlace";
 import BackButton from "@/components/common/BackButton";
+import useGeolocation from "@/Hooks/useGeolocation";
 
 declare global {
   interface Window {
@@ -23,6 +23,7 @@ const SearchInput = ({
   setResultSearchInfo,
 }: SearchInputProps) => {
   const [inputValue, setInputValue] = useState("");
+  const location = useGeolocation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -37,6 +38,7 @@ const SearchInput = ({
         latitude: +place.y,
         longitude: +place.x,
         detail_link: place.place_url,
+        distance: +place.distance / 1000,
       }));
 
       setResultSearchInfo(searchPlaceInfos);
@@ -54,8 +56,8 @@ const SearchInput = ({
       const kakaoSearchService = new window.kakao.maps.services.Places();
       kakaoSearchService.keywordSearch(address, placesSearchCallBack, {
         location: new window.kakao.maps.LatLng(
-          defaultCoords.lng,
-          defaultCoords.lat
+          location.latitude,
+          location.longitude
         ),
       });
     }
