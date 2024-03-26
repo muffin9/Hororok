@@ -9,7 +9,12 @@ const meta: Meta<typeof SearchResultSection> = {
 export default meta;
 
 const PrimitiveSearchResultSection = () => {
-  return <SearchResultSection />;
+  return (
+    <SearchResultSection
+      resultSearchInfo={[]}
+      onClickPlace={() => console.log("clicked Place!")}
+    />
+  );
 };
 
 export const Default = {
