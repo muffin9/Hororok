@@ -29,7 +29,6 @@ const SearchInput = ({
   };
 
   const placesSearchCallBack = (data: SearchPlaceType[], status: string) => {
-    console.log(data);
     if (status === window.kakao.maps.services.Status.OK) {
       const searchPlaceInfos = data.map((place: SearchPlaceType) => ({
         place_id: +place.id,
