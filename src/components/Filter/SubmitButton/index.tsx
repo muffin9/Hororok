@@ -2,7 +2,7 @@ import Button from "@/components/common/Button";
 
 interface SubmitButtonProps {
   onCloseButton: () => void;
-  className: string;
+  className?: string;
 }
 
 const SubmitButton = ({ onCloseButton, className }: SubmitButtonProps) => {
