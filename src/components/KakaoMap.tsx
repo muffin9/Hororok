@@ -30,7 +30,7 @@ const KakaoMap = () => {
     };
   }, []);
 
-  return <div id="map" style={{ width: "100%", height: "100vh" }}></div>;
+  return <div id="map" className="w-full h-screen z-[-1]"></div>;
 };
 
 export default KakaoMap;

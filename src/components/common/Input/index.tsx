@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent, KeyboardEvent } from "react";
+import { ChangeEvent, FocusEvent, KeyboardEvent, MouseEvent } from "react";
 
 type TextInputTypes =
   | "text"
@@ -18,15 +18,18 @@ interface InputProps {
   defaultValue?: string;
   placeholder?: string;
   disabled?: boolean;
+  className?: string;
+  onClick?: (e: MouseEvent<HTMLInputElement>) => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
   onKeyPress?: (e: KeyboardEvent<HTMLInputElement>) => void;
+  onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const Input = (props: InputProps) => {
   return (
     <input
-      className="w-full h-[50px] p-4 bg-white border-[1px] border-gray-400 rounded-lg focus:outline-none disabled:border-gray text-black"
+      className={`w-full h-[50px] pl-10 bg-white focus:outline-none disabled:border-gray text-black ${props.className}`}
       {...props}
     />
   );

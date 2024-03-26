@@ -52,7 +52,7 @@ interface IconProps {
 }
 
 const iconSize: { [key: string]: `${number}` } = {
-  xSmall: "20",
+  xSmall: "16",
   small: "24",
   medium: "32",
   large: "40",
