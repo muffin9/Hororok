@@ -23,6 +23,7 @@ const SearchSection = () => {
       (searchInfo) => searchInfo.place_id === place_id
     );
 
+    console.log(findPlace);
     if (findPlace) {
       const queryData = encodeURIComponent(JSON.stringify(findPlace));
       const path = `/search_map?data=${queryData}`;
@@ -32,7 +33,7 @@ const SearchSection = () => {
   };
 
   return (
-    <section className="py-8">
+    <section className="py-8 px-4">
       <SearchInput
         setOnRecentSearch={setOnRecentSearch}
         setResultSearchInfo={setResultSearchInfo}
