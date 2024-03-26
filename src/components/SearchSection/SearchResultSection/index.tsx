@@ -28,7 +28,7 @@ const SearchResultSection = ({
               </Text>
             </div>
             <Text size="small" className="text-gray-700">
-              9.3km
+              {data.distance}km
             </Text>
           </div>
         );

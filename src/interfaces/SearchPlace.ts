@@ -21,4 +21,5 @@ export interface SearchPlaceInfoType {
   latitude: number;
   longitude: number;
   detail_link: string;
+  distance: number;
 }
