@@ -16,6 +16,7 @@ const config: Config = {
       "gray-600": "#999999",
       "gray-700": "#878787",
       "gray-800": "#4A4A4A",
+      silver: "#E5E5E5",
       bluegray: "#EFF0F3",
       "bluegray-200": "#EFF0F31A",
       "bluegray-300": "#EFF0F333",

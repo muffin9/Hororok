@@ -11,13 +11,13 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 255, 255, 255;
   }
 }
 
 body {
-  width: 375px;
+  width: 390px;
   height: 100vh;
   margin: 0 auto;
   color: rgb(var(--foreground-rgb));
