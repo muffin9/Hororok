@@ -1,19 +1,15 @@
 "use client";
 
-import TopSection from "@/components/Home/TopSection";
+import HomeSection from "@/components/Home/HomeSection";
 import KakaoMap from "@/components/KakaoMap";
-
-import GNB from "@/components/common/GNB";
-import { defaultCoords } from "../constants";
 
 export default function Home() {
   return (
     <main className="relative">
       <KakaoMap>
-        <div className="w-full px-4 absolute top-8 z-[999]">
-          <TopSection />
+        <div className="w-full absolute top-8 z-[999]">
+          <HomeSection />
         </div>
-        <GNB />
       </KakaoMap>
     </main>
   );
