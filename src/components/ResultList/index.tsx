@@ -4,13 +4,15 @@ import { CafeInfoType } from "@/interfaces/Cafe";
 import Text from "@/components/common/Text";
 import Star from "@/components/common/Star";
 import Icon from "@/components/common/Icon";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import FilterSection from "../FilterSection";
 import { useRouter } from "next/navigation";
+import useOutsideClick from "@/Hooks/useOutsideClick";
 
 const ResultList = () => {
   const router = useRouter();
   const [isFilter, setIsFilter] = useState(false);
+  const filterRef = useRef<HTMLDivElement>(null);
 
   const resultListDummyData = [
     {
@@ -38,8 +40,14 @@ const ResultList = () => {
       address: "서울 강남구 테헤란로",
     },
   ];
+
+  useOutsideClick(filterRef, () => setIsFilter(false));
+
   return (
-    <section className="w-[390px] h-1/2 z-[1000] pl-4 pb-12 py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl boxShadow-xl overflow-x-hidden overflow-y-scroll">
+    <section
+      ref={filterRef}
+      className="w-[390px] h-1/2 z-[1000] pl-4 pb-12 py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl boxShadow-xl overflow-x-hidden overflow-y-scroll"
+    >
       <div className="flex flex-col gap-6">
         <header className="w-screen flex items-center gap-[2px]">
           <button className="flex gap-1 w-[51px] h-[32px] items-center text-gray-800 text-sm rounded-lg border-solid border-[1px] border-gray-400 px-2">
