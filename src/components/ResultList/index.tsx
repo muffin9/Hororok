@@ -6,8 +6,10 @@ import Star from "@/components/common/Star";
 import Icon from "@/components/common/Icon";
 import { useState } from "react";
 import FilterSection from "../FilterSection";
+import { useRouter } from "next/navigation";
 
 const ResultList = () => {
+  const router = useRouter();
   const [isFilter, setIsFilter] = useState(false);
 
   const resultListDummyData = [
@@ -55,7 +57,11 @@ const ResultList = () => {
         <div>
           {resultListDummyData.map((data: CafeInfoType) => {
             return (
-              <div key={data.id} className="flex gap-3 mb-3 cursor-pointer">
+              <div
+                key={data.id}
+                className="flex gap-3 mb-3 cursor-pointer"
+                onClick={() => router.push(`/cafelist/${data.id}`)}
+              >
                 <Image
                   src={data.imageUrl}
                   width={110}
