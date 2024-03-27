@@ -2,6 +2,7 @@
 
 import HomeSection from "@/components/Home/HomeSection";
 import KakaoMap from "@/components/KakaoMap";
+import ResultList from "@/components/ResultList";
 import { Suspense } from "react";
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
       <Suspense fallback={<div>Loading...</div>}>
         <KakaoMap>
           <div className="w-full absolute top-8 z-[999]">
-            <HomeSection />
+            <HomeSection isInput={true} />
           </div>
         </KakaoMap>
       </Suspense>
