@@ -3,8 +3,9 @@ import Icon from "@/components/common/Icon";
 import SubmitButton from "./SubmitButton";
 import Button from "@/components/common/Button";
 import Condition from "@/components/Condition";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import useOutsideClick from "@/Hooks/useOutsideClick";
 
 interface FilterSectionProps {
   onCloseButton: () => void;
@@ -17,11 +18,12 @@ type SelectedItemsState = {
 const FilterSection = ({ onCloseButton }: FilterSectionProps) => {
   const router = useRouter();
   const [selectedItems, setSelectedItems] = useState<SelectedItemsState>({});
+  const filterRef = useRef<HTMLDivElement>(null);
 
   const handleItemClick = (filterId: string, itemId: string) => {
     setSelectedItems((prevState) => ({
       ...prevState,
-      [filterId]: itemId,
+      [filterId]: prevState[filterId] === itemId ? undefined : itemId,
     }));
   };
 
@@ -38,9 +40,14 @@ const FilterSection = ({ onCloseButton }: FilterSectionProps) => {
     router.push("/search_map");
   };
 
+  useOutsideClick(filterRef, onCloseButton);
+
   return (
-    <section className="w-[390px] h-1/2 z-[1000] bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl boxShadow-xl overflow-scroll">
-      <header>
+    <section
+      ref={filterRef}
+      className="w-[390px] h-1/2 z-[1000] bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl boxShadow-xl overflow-scroll"
+    >
+      {/* <header>
         <div className="flex justify-between px-4 my-6">
           <Text size="large" weight="medium" className="text-black">
             카페 필터
@@ -49,7 +56,7 @@ const FilterSection = ({ onCloseButton }: FilterSectionProps) => {
             <Icon type="close" alt="close" />
           </button>
         </div>
-      </header>
+      </header> */}
       <Condition
         handleItemClick={handleItemClick}
         checkSelected={checkSelected}
