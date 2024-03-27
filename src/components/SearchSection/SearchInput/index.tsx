@@ -38,7 +38,7 @@ const SearchInput = ({
         latitude: +place.y,
         longitude: +place.x,
         detail_link: place.place_url,
-        distance: +place.distance / 1000,
+        distance: (+place.distance / 1000).toFixed(1),
       }));
 
       setResultSearchInfo(searchPlaceInfos);
