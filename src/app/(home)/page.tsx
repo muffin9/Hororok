@@ -2,7 +2,6 @@
 
 import HomeSection from "@/components/Home/HomeSection";
 import KakaoMap from "@/components/KakaoMap";
-import ResultList from "@/components/ResultList";
 import { Suspense } from "react";
 
 export default function Home() {

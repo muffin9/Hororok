@@ -21,7 +21,7 @@ body {
   height: 100vh;
   margin: 0 auto;
   overflow: hidden;
-  color: rgb(var(--foreground-rgb));
+  color: #000;
   background: linear-gradient(
       to bottom,
       transparent,

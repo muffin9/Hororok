@@ -9,8 +9,8 @@ interface ButtonProps {
 }
 
 const ButtonSize = {
-  small: "h-12",
-  medium: "h-34",
+  small: "h-8",
+  medium: "h-16",
   large: "h-50",
   full: "w-full h-12",
 };

@@ -24,6 +24,8 @@ const iconUrls = {
   clock: "/assets/Icon/icon_clock.svg",
   refresh: "/assets/Icon/refresh.svg",
   filter: "/assets/Icon/ic_filtering.svg",
+  camera: "/assets/Icon/ic_camera.svg",
+  review: "/assets/Icon/review.svg",
 };
 
 interface IconProps {
@@ -50,7 +52,9 @@ interface IconProps {
     | "call"
     | "clock"
     | "refresh"
-    | "filter";
+    | "filter"
+    | "camera"
+    | "review";
 
   size?: "xSmall" | "small" | "medium" | "large" | "xLarge";
   alt: string;
