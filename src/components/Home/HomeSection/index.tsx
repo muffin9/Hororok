@@ -4,7 +4,7 @@ import GNB from "@/components/common/GNB";
 import Input from "@/components/common/Input";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import CategoryList from "@/components/common/CategoryList/CategoryList";
+import CategoryList from "@/components/common/CategoryList";
 
 interface HomeSectionProps {
   isInput?: boolean;

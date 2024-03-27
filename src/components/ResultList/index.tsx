@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CategoryList from "@/components/common/CategoryList/CategoryList";
+import CategoryList from "@/components/common/CategoryList";
 import { CafeInfoType } from "@/interfaces/Cafe";
 import Text from "@/components/common/Text";
 import Star from "@/components/common/Star";
