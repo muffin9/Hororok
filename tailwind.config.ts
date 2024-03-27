@@ -9,11 +9,12 @@ const config: Config = {
   theme: {
     colors: {
       // "gray-100": "#E5E5E54D",
-      // "gray-200": "#E5E5E580",
+      "gray-200": "rgba(229, 229, 229, 0.5)",
       // "gray-300": "#E5E5E50D",
       "gray-400": "#CCCCCC",
       "gray-500": "#B3B3B3",
       "gray-600": "#999999",
+      "gray-650": "#7D7D7D",
       "gray-700": "#878787",
       "gray-800": "#4A4A4A",
       silver: "#E5E5E5",
@@ -33,7 +34,11 @@ const config: Config = {
       xl: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
       default: "0px 0px 8px rgba(0, 0, 0, 0.26)",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        sampleImage: "url('/assets/Images/sample.jpeg')",
+      },
+    },
   },
   plugins: [],
 };
