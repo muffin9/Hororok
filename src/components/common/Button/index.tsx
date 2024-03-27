@@ -9,8 +9,8 @@ interface ButtonProps {
 }
 
 const ButtonSize = {
-  small: "h-12",
-  medium: "h-34",
+  small: "h-8",
+  medium: "h-16",
   large: "h-50",
   full: "w-full h-12",
 };
@@ -18,7 +18,7 @@ const ButtonSize = {
 const Button = ({ size, className = "", ...props }: ButtonProps) => {
   return (
     <button
-      className={`${ButtonSize[size]} p-2 flex items-center justify-center text-white bg-primary-300 text-base sm:text-sm rounded-md enabled:hover:bg-primary-200 enabled:active:bg-primary-100 disabled:bg-gray-200 disabled:text-gray-500 ${className}`}
+      className={`${ButtonSize[size]} p-2 flex items-center justify-center text-white bg-primary-300 text-base sm:text-sm rounded-md enabled:active:bg-primary-200 disabled:bg-gray-200 disabled:text-gray-500 ${className}`}
       {...props}
     ></button>
   );
