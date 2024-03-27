@@ -9,7 +9,7 @@ const meta: Meta<typeof SubmitButton> = {
 export default meta;
 
 const PrimitiveSubmitButton = () => {
-  return <SubmitButton onCloseButton={() => console.log("submit.")} />;
+  return <SubmitButton onSubmit={() => console.log("submit.")} />;
 };
 
 export const Default = {

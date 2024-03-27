@@ -4,8 +4,9 @@ import SubmitButton from "./SubmitButton";
 import Button from "@/components/common/Button";
 import Condition from "@/components/Condition";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-interface FilterProps {
+interface FilterSectionProps {
   onCloseButton: () => void;
 }
 
@@ -13,7 +14,8 @@ type SelectedItemsState = {
   [filterId: string]: string | undefined;
 };
 
-const Filter = ({ onCloseButton }: FilterProps) => {
+const FilterSection = ({ onCloseButton }: FilterSectionProps) => {
+  const router = useRouter();
   const [selectedItems, setSelectedItems] = useState<SelectedItemsState>({});
 
   const handleItemClick = (filterId: string, itemId: string) => {
@@ -29,6 +31,11 @@ const Filter = ({ onCloseButton }: FilterProps) => {
 
   const onClickRefresh = () => {
     setSelectedItems({});
+  };
+
+  const onSubmit = () => {
+    // 서버 API 요청.
+    router.push("/search_map");
   };
 
   return (
@@ -58,10 +65,10 @@ const Filter = ({ onCloseButton }: FilterProps) => {
             재설정
           </Text>
         </Button>
-        <SubmitButton onCloseButton={onCloseButton} className="mr-4" />
+        <SubmitButton onSubmit={onSubmit} className="mr-4" />
       </div>
     </section>
   );
 };
 
-export default Filter;
+export default FilterSection;

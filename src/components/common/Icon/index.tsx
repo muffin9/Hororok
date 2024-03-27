@@ -23,6 +23,7 @@ const iconUrls = {
   call: "/assets/Icon/icon_call.svg",
   clock: "/assets/Icon/icon_clock.svg",
   refresh: "/assets/Icon/refresh.svg",
+  filter: "/assets/Icon/ic_filtering.svg",
 };
 
 interface IconProps {
@@ -48,7 +49,8 @@ interface IconProps {
     | "account"
     | "call"
     | "clock"
-    | "refresh";
+    | "refresh"
+    | "filter";
 
   size?: "xSmall" | "small" | "medium" | "large" | "xLarge";
   alt: string;
