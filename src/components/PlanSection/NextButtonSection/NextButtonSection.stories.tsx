@@ -9,7 +9,7 @@ const meta: Meta<typeof NextButtonSection> = {
 export default meta;
 
 const PrimitiveNextButtonSection = () => {
-  return <NextButtonSection />;
+  return <NextButtonSection nextStep="1" />;
 };
 
 export const Default = {
