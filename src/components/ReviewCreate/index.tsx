@@ -9,12 +9,14 @@ import Condition from "@/components/Condition";
 import { useState } from "react";
 import Button from "@/components/common/Button";
 import TextArea from "@/components/common/TextArea";
+import { useRouter } from "next/navigation";
 
 type SelectedItemsState = {
   [filterId: string]: string | undefined;
 };
 
 const ReviewCreate = () => {
+  const router = useRouter();
   const [selectedItems, setSelectedItems] = useState<SelectedItemsState>({});
   const handleItemClick = (filterId: string, itemId: string) => {
     setSelectedItems((prevState) => ({
@@ -32,10 +34,16 @@ const ReviewCreate = () => {
   };
 
   return (
-    <div className="h-screen overflow-y-scroll">
-      <header className="h-[50px] flex items-center">
-        <BackButton />
+    <div className="h-screen relative bg-white overflow-y-scroll">
+      <header className="w-full h-[50px] relative flex justify-between">
+        <div></div>
         <div className="m-auto">리뷰 쓰기</div>
+        <button
+          className="absolute top-1/2 right-[16px] transform -translate-y-1/2"
+          onClick={() => router.back()}
+        >
+          <Icon type="close" alt="close" />
+        </button>
       </header>
       <div className="flex flex-col items-center gap-4 py-6">
         <Text size="xLarge" weight="bold">

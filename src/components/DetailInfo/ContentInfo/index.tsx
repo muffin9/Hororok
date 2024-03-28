@@ -28,10 +28,14 @@ const ContentInfo = () => {
     switch (clickedMenu?.id) {
       case "default":
         return (
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col">
             <DefaultInfo />
-            <MenuInfo />
-            <ReviewInfo />
+            <div className="mt-[10px]" />
+            <MenuInfo moreButton={true} />
+            <div className="mt-[10px]" />
+            <PhotoInfo moreButton={true} />
+            <div className="mt-[10px]" />
+            <ReviewInfo moreButton={true} />
           </div>
         );
       case "menu":
@@ -47,8 +51,9 @@ const ContentInfo = () => {
 
   return (
     <section>
+      <div className="mt-[10px]" />
       <TabMenu menuInfo={menuInfo} handleOnMenuClick={handleOnMenuClick} />
-      <div className="px-4 py-6">{renderMenuContent()}</div>
+      <div>{renderMenuContent()}</div>
     </section>
   );
 };

@@ -5,7 +5,7 @@ interface TabMenuProps {
 
 const TabMenu = ({ menuInfo, handleOnMenuClick }: TabMenuProps) => {
   return (
-    <nav className="flex justify-between px-4 pt-6 text-black border-b-[1px] border-solid border-silver">
+    <nav className="flex justify-between px-4 pt-6 text-black border-b-[1px] border-solid border-silver bg-white">
       {menuInfo.map((menu) => {
         return (
           <button
