@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import BackButton from "../common/BackButton";
 import Button from "../common/Button";
 import Icon from "../common/Icon";
@@ -6,6 +9,7 @@ import Text from "../common/Text";
 import ContentInfo from "./ContentInfo";
 
 const DetailInfo = () => {
+  const router = useRouter();
   return (
     <section className="h-screen bg-white overflow-y-scroll">
       <div className={`bg-sampleImage bg-cover bg-center w-[390px] h-[228px]`}>
@@ -25,6 +29,7 @@ const DetailInfo = () => {
           <Button
             size="small"
             className="flex gap-2 bg-white border-[1px] border-solid border-silver"
+            onClick={() => router.push("/review/create")}
           >
             <Icon size="small" type="edit" alt="edit" />
             <Text size="small">리뷰 쓰기</Text>
