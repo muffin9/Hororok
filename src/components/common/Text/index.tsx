@@ -42,8 +42,6 @@ export default function Text({
   const textWeight = textWeights[weight];
 
   return (
-    <span className={`${textSize} ${textWeight} ${className} text-black`}>
-      {children}
-    </span>
+    <span className={`${textSize} ${textWeight} ${className}`}>{children}</span>
   );
 }
