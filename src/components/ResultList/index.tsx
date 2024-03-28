@@ -44,7 +44,7 @@ const ResultList = () => {
     },
   ];
 
-  useOutsideClick(filterRef, () => onCloseFilter());
+  useOutsideClick(filterRef, () => setIsFilter(false));
 
   return (
     <section
