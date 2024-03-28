@@ -9,7 +9,11 @@ const meta: Meta<typeof RecentSection> = {
 export default meta;
 
 const PrimitiveRecentSection = () => {
-  return <RecentSection />;
+  return (
+    <RecentSection
+      onClickRecentSearch={() => console.log("clicked recent Search")}
+    />
+  );
 };
 
 export const Default = {

@@ -5,15 +5,17 @@ import CategoryList from "@/components/common/CategoryList";
 import { CafeInfoType } from "@/interfaces/Cafe";
 import Text from "@/components/common/Text";
 import Icon from "@/components/common/Icon";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import FilterSection from "../FilterSection";
 import { useRouter } from "next/navigation";
 import useOutsideClick from "@/Hooks/useOutsideClick";
+import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
 
 const ResultList = () => {
   const router = useRouter();
-  const [isFilter, setIsFilter] = useState(false);
   const filterRef = useRef<HTMLDivElement>(null);
+  const { categoryId, isFilter, setIsFilter, onClickCategory } =
+    useHandleFilterSection();
 
   const resultListDummyData = [
     {
@@ -58,9 +60,12 @@ const ResultList = () => {
             </Text>
           </button>
           {isFilter ? (
-            <FilterSection onCloseButton={() => setIsFilter(false)} />
+            <FilterSection
+              categoryId={categoryId}
+              onCloseButton={() => setIsFilter(false)}
+            />
           ) : (
-            <CategoryList onFilter={() => setIsFilter(true)} />
+            <CategoryList onClickCategory={onClickCategory} />
           )}
         </header>
         <div>
