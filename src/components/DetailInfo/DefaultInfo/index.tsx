@@ -3,7 +3,7 @@ import Text from "@/components/common/Text";
 
 const DefaultInfo = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 px-4 py-6 bg-white">
       <div className="flex items-center gap-1">
         <Icon type="marker" size="small" alt="marker" />
         <Text size="small">서울 영등포구 의사당대로 1길</Text>
@@ -23,7 +23,7 @@ const DefaultInfo = () => {
         <Text size="small">화요일 휴무</Text>
       </div>
       <div className="flex items-center gap-1">
-        <Icon type="photo" size="small" alt="phone" />
+        <Icon type="call" size="small" alt="call" />
         <Text size="small">02-111-1111</Text>
       </div>
     </div>

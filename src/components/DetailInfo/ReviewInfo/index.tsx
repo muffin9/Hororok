@@ -2,9 +2,13 @@ import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import Image from "next/image";
 
-const ReviewInfo = () => {
+interface ReviewInfoProps {
+  moreButton?: boolean;
+}
+
+const ReviewInfo = ({ moreButton }: ReviewInfoProps) => {
   return (
-    <div className="border-b-[1px] border-solid border-gray-200 pb-5">
+    <div className="border-b-[1px] border-solid border-gray-200 px-4 py-6 bg-white">
       <header className="flex justify-between">
         <div className="flex gap-3">
           <Image
@@ -74,9 +78,17 @@ const ReviewInfo = () => {
             추천해요
           </Text>
           <div className="text-gray-800 mb-[3px]">|</div>
-          <button className="h-[31px] px-3 rounded-3xl border-[1px] border-solid border-silver">
-            <Text size="small">아메리카노</Text>
-          </button>
+          <div className="flex gap-1.5">
+            <button className="h-[31px] px-3 rounded-3xl border-[1px] border-solid border-silver">
+              <Text size="small">아메리카노</Text>
+            </button>
+            <button className="h-[31px] px-3 rounded-3xl border-[1px] border-solid border-silver">
+              <Text size="small">민트초코</Text>
+            </button>
+            <button className="h-[31px] px-3 rounded-3xl border-[1px] border-solid border-silver">
+              <Text size="small">민트초코</Text>
+            </button>
+          </div>
         </div>
       </div>
     </div>
