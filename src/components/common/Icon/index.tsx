@@ -9,10 +9,13 @@ const iconUrls = {
   star: "/assets/Icon/star.svg",
   starEmpty: "/assets/Icon/star_empty.svg",
   arrow_left: "/assets/Icon/arrow_left.svg",
+  arrow_left_white: "/assets/Icon/arrow_left_white.svg",
   arrow_right: "/assets/Icon/arrow_right.svg",
   arrow_under: "/assets/Icon/arrow_under.svg",
   bookmark: "/assets/Icon/bookmark.svg",
+  bookmark_white: "/assets/Icon/bookmark_white.svg",
   share: "/assets/Icon/share.svg",
+  share_white: "/assets/Icon/share_white.svg",
   person: "/assets/Icon/person.svg",
   check: "/assets/Icon/ic_check.svg",
   close: "/assets/Icon/ic_close.svg",
@@ -39,10 +42,13 @@ interface IconProps {
     | "star"
     | "starEmpty"
     | "arrow_left"
+    | "arrow_left_white"
     | "arrow_right"
     | "arrow_under"
     | "bookmark"
+    | "bookmark_white"
     | "share"
+    | "share_white"
     | "person"
     | "check"
     | "close"
