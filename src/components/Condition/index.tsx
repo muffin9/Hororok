@@ -9,7 +9,7 @@ interface ConditionProps {
 
 const Condition = ({ handleItemClick, checkSelected }: ConditionProps) => {
   return (
-    <div className="px-4 py-6 border-t-[1px] border-b-[1px] border-silver">
+    <div className="py-6 border-t-[1px] border-b-[1px] border-silver">
       {filterDatas.map((condition) => {
         return (
           <div key={condition.id} className="flex flex-col gap-4">

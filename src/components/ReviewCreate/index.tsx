@@ -81,7 +81,7 @@ const ReviewCreate = () => {
           최대 5장 첨부할 수 있어요
         </Text>
       </div>
-      <div>
+      <div className="px-4">
         <Condition
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}

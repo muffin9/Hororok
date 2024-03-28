@@ -4,6 +4,7 @@ type SizeType =
   | "medium"
   | "large"
   | "xLarge"
+  | "x2Large"
   | "extraLarge";
 type WeightType = "light" | "normal" | "medium" | "bold";
 
@@ -20,6 +21,7 @@ const textSizes = {
   medium: "text-md",
   large: "text-lg",
   xLarge: "text-xl",
+  x2Large: "text-2xl",
   extraLarge: "text-4xl",
 };
 
