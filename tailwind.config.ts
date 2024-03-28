@@ -10,7 +10,7 @@ const config: Config = {
     colors: {
       // "gray-100": "#E5E5E54D",
       "gray-200": "rgba(229, 229, 229, 0.5)",
-      // "gray-300": "#E5E5E50D",
+      "gray-300": "rgba(229, 229, 229, 0.4)",
       "gray-400": "#CCCCCC",
       "gray-500": "#B3B3B3",
       "gray-600": "#999999",

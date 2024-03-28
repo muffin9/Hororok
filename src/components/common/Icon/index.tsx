@@ -7,6 +7,7 @@ const iconUrls = {
   marker: "/assets/Icon/marker.svg",
   photo: "/assets/Icon/photo.svg",
   star: "/assets/Icon/star.svg",
+  starEmpty: "/assets/Icon/star_empty.svg",
   arrow_left: "/assets/Icon/arrow_left.svg",
   arrow_right: "/assets/Icon/arrow_right.svg",
   arrow_under: "/assets/Icon/arrow_under.svg",
@@ -36,6 +37,7 @@ interface IconProps {
     | "marker"
     | "photo"
     | "star"
+    | "starEmpty"
     | "arrow_left"
     | "arrow_right"
     | "arrow_under"

@@ -1,17 +1,28 @@
 import Icon from "../Icon";
-import Text from "../Text";
 
 interface StarProps {
-  starScore: string;
+  starSize: "xSmall" | "small" | "medium" | "large" | "xLarge";
+  starScore: number;
 }
 
-const Star = ({ starScore }: StarProps) => {
+const Star = ({ starSize, starScore }: StarProps) => {
+  const filledStars = Array.from({ length: starScore }).map((_, index) => (
+    <Icon key={`star-filled-${index}`} type="star" size={starSize} alt="star" />
+  ));
+
+  const emptyStars = Array.from({ length: 5 - starScore }).map((_, index) => (
+    <Icon
+      key={`star-empty-${index}`}
+      type="starEmpty"
+      size={starSize}
+      alt="empty Star"
+    />
+  ));
+
   return (
     <div className="flex gap-[2px]">
-      <Icon type="star" size="xSmall" alt="star" />
-      <Text size="small" className="text-black">
-        {starScore}
-      </Text>
+      {filledStars}
+      {emptyStars}
     </div>
   );
 };
