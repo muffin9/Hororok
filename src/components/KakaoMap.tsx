@@ -19,14 +19,11 @@ interface KakaoMapProps {
 const KakaoMap = ({ children }: KakaoMapProps) => {
   const location = useGeolocation();
   const params = useSearchParams();
-
-  const [coordinates, setCoordinates] = useState({
-    lat: location.latitude,
-    lng: location.longitude,
-  });
-
-  const [markers, setMarkers] = useState([]);
   const mapRef = useRef<HTMLElement | null>(null);
+  const [currentCoordinates, setCurrentCoordinates] = useState({
+    latitude: location.latitude,
+    longitude: location.longitude,
+  });
 
   const displayPlaces = (place: SearchPlaceInfoType) => {
     const imageSize = new window.kakao.maps.Size(24, 35);
@@ -42,7 +39,10 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
       image: markerImage,
     });
 
-    setCoordinates({ lat: place.latitude, lng: place.longitude });
+    setCurrentCoordinates({
+      latitude: place.latitude,
+      longitude: place.longitude,
+    });
     marker.setMap(mapRef.current);
   };
 
@@ -53,52 +53,29 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
 
     script.onload = () => {
       window.kakao.maps.load(() => {
-        const imageSize = new window.kakao.maps.Size(24, 24);
-        const markerImage = new window.kakao.maps.MarkerImage(
-          "/assets/Images/ico_marker.png",
-          imageSize
-        );
-
+        const placeInfo = params.values().next().value;
         const mapContainer = document.getElementById("map");
+
         const options = {
           center: new window.kakao.maps.LatLng(
-            coordinates.lat,
-            coordinates.lng
+            currentCoordinates.latitude,
+            currentCoordinates.longitude
           ),
-          level: 7,
+          level: 5,
         };
+
         mapRef.current = new window.kakao.maps.Map(mapContainer, options);
 
-        const myMarkerPosition = new window.kakao.maps.LatLng(
-          coordinates.lat,
-          coordinates.lng
-        );
-
-        const marker = new window.kakao.maps.Marker({
-          position: myMarkerPosition,
-          image: markerImage,
-        });
-
-        marker.setMap(mapRef.current);
+        if (window.kakao && placeInfo) {
+          displayPlaces(JSON.parse(placeInfo));
+        }
       });
     };
 
     return () => {
       document.head.removeChild(script);
     };
-  }, [coordinates.lat, coordinates.lng]);
-
-  useEffect(() => {
-    const placeInfo = params.values().next().value;
-
-    if (window.kakao && placeInfo) {
-      if (markers) {
-        markers.forEach((marker: any) => marker.setMap(null));
-      }
-
-      displayPlaces(JSON.parse(placeInfo));
-    }
-  }, [params]);
+  }, [currentCoordinates.latitude, currentCoordinates.longitude, params]);
 
   return (
     <div id="map" className="w-full h-screen">

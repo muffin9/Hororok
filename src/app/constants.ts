@@ -2,7 +2,7 @@ export const defaultCoords = {
   lat: 37.572594523923904,
   lng: 126.97577874563281,
 };
-export const pinImage = "/assets/Images/ico_marker.png";
+export const pinImage = "/assets/Images/current_place.png";
 export const filterDatas = [
   {
     id: "purpose",
