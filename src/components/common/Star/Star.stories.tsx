@@ -9,7 +9,7 @@ const meta: Meta<typeof Star> = {
 export default meta;
 
 const PrimitiveStar = () => {
-  return <Star starScore={"5.0"} />;
+  return <Star starSize="xLarge" starScore={5.0} />;
 };
 
 export const Default = {
