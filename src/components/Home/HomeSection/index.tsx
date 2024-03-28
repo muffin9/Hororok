@@ -3,16 +3,24 @@ import FilterSection from "@/components/FilterSection";
 import GNB from "@/components/common/GNB";
 import Input from "@/components/common/Input";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import CategoryList from "@/components/common/CategoryList";
+import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
 
 interface HomeSectionProps {
   isInput?: boolean;
 }
 
+export type CategoryIdType =
+  | "purpose"
+  | "facility"
+  | "atmosphere"
+  | "menu"
+  | "theme";
+
 const HomeSection = ({ isInput }: HomeSectionProps) => {
   const router = useRouter();
-  const [isFilter, setIsFilter] = useState(false);
+  const { categoryId, isFilter, setIsFilter, onClickCategory } =
+    useHandleFilterSection();
 
   return (
     <section className="relative">
@@ -27,11 +35,14 @@ const HomeSection = ({ isInput }: HomeSectionProps) => {
         </div>
       )}
       {isFilter ? (
-        <FilterSection onCloseButton={() => setIsFilter(false)} />
+        <FilterSection
+          categoryId={categoryId}
+          onCloseButton={() => setIsFilter(false)}
+        />
       ) : (
         <>
           <div className="px-4 mt-4">
-            <CategoryList onFilter={() => setIsFilter(true)} />
+            <CategoryList onClickCategory={onClickCategory} />
           </div>
           <GNB />
         </>

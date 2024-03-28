@@ -11,6 +11,7 @@ export default meta;
 const PrimitiveFilterSection = () => {
   return (
     <FilterSection
+      categoryId="purpose"
       onCloseButton={() => console.log("closed FilterSection section")}
     />
   );
