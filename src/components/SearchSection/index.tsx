@@ -22,7 +22,7 @@ const SearchSection = () => {
   };
 
   return (
-    <section className="py-8 px-4">
+    <section className="h-full py-8 px-4 bg-white">
       <SearchInput handleKeyUpSearchInput={handleKeyUpSearchInput} />
       <div className="mt-4">
         <RecentSection onClickRecentSearch={onClickRecentSearch} />
