@@ -1,9 +1,28 @@
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import useSearchHistory from "@/store/searchHistory";
+import useSearchInput from "@/store/searchInput";
+import { useEffect } from "react";
 
-const RecentSection = () => {
+interface RecentSectionProps {
+  onClickRecentSearch: (search: string) => void;
+}
+
+const RecentSection = ({ onClickRecentSearch }: RecentSectionProps) => {
   const { recentSearches, deleteSearch } = useSearchHistory();
+  const { resetSearchInputValue } = useSearchInput();
+
+  useEffect(() => {
+    resetSearchInputValue();
+  }, []);
+
+  const onClickRemoveButton = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    search: string
+  ) => {
+    e.stopPropagation();
+    deleteSearch(search);
+  };
 
   return (
     <section>
@@ -15,6 +34,7 @@ const RecentSection = () => {
           <div
             key={search}
             className="w-full h-16 flex justify-between items-center border-b-[1px] border-silver cursor-pointer"
+            onClick={() => onClickRecentSearch(search)}
           >
             <div className="flex items-center gap-1.5">
               <Icon type="marker" size="medium" alt="marker" />
@@ -22,7 +42,7 @@ const RecentSection = () => {
                 {search}
               </Text>
             </div>
-            <button onClick={() => deleteSearch(search)}>
+            <button onClick={(e) => onClickRemoveButton(e, search)}>
               <Icon type="close" size="xSmall" alt="close" />
             </button>
           </div>

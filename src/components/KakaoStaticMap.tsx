@@ -9,7 +9,12 @@ declare global {
   }
 }
 
-const KakaoStaticMap = () => {
+interface KakaoStaticMapProps {
+  children?: React.ReactNode;
+  height: string;
+}
+
+const KakaoStaticMap = ({ children, height }: KakaoStaticMapProps) => {
   const location = useGeolocation();
   const kakaoMapRef = useRef<HTMLElement | null>(null);
 
@@ -22,7 +27,7 @@ const KakaoStaticMap = () => {
       window.kakao.maps.load(() => {
         const imageSize = new window.kakao.maps.Size(24, 24);
         const markerImage = new window.kakao.maps.MarkerImage(
-          "/assets/Images/ico_marker.png",
+          "/assets/Images/my_position.png",
           imageSize
         );
 
@@ -56,7 +61,11 @@ const KakaoStaticMap = () => {
     };
   }, [location.latitude, location.longitude]);
 
-  return <div className="w-full h-[190px] rounded-lg" id="static_map"></div>;
+  return (
+    <div className={`w-full ${height} rounded-lg`} id="static_map">
+      {children}
+    </div>
+  );
 };
 
 export default KakaoStaticMap;
