@@ -1,8 +1,11 @@
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const GNB = () => {
+  const router = useRouter();
+
   return (
     <footer className="w-[390px] h-16 fixed bottom-0 flex justify-between items-center px-20 bg-white z-[999]">
       <div className="absolute top-[-43px] left-[70px]">
@@ -21,7 +24,7 @@ const GNB = () => {
       </div>
       <div
         className="flex flex-col items-center cursor-pointer"
-        onClick={() => alert("서비스 준비중입니다...")}
+        onClick={() => router.push("/plan/1")}
       >
         <Icon type="logo" size="medium" alt="계획하기" />
         <Text size="extraSmall" className="text-black">

@@ -92,7 +92,7 @@ const SearchInput = ({
       <Input
         type="text"
         value={inputValue}
-        placeholder="텍스트 필드"
+        placeholder="어디 근처 카페 찾으세요?"
         onChange={handleChange}
         onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) =>
           handleKeyUpSearchInput(e)
