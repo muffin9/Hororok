@@ -6,6 +6,7 @@ import Icon from "@/components/common/Icon";
 import { SearchPlaceInfoType, SearchPlaceType } from "@/interfaces/SearchPlace";
 import BackButton from "@/components/common/BackButton";
 import useGeolocation from "@/Hooks/useGeolocation";
+import useSearchHistory from "@/store/searchHistory";
 
 declare global {
   interface Window {
@@ -24,6 +25,7 @@ const SearchInput = ({
 }: SearchInputProps) => {
   const [inputValue, setInputValue] = useState("");
   const location = useGeolocation();
+  const { addSearch } = useSearchHistory();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -79,6 +81,7 @@ const SearchInput = ({
 
     if (key === "Enter" && target instanceof HTMLInputElement) {
       setInputValue(target.value);
+      addSearch(target.value);
       (document.activeElement as HTMLElement).blur();
       handleSubmit();
     }
