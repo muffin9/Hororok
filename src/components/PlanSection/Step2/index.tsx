@@ -6,7 +6,7 @@ import TimeSelector from "./TimeSelector";
 const Step2 = () => {
   return (
     <div>
-      <KakaoStaticMap />
+      <KakaoStaticMap height="h-[190px]" />
       <div className="mt-[37px]">
         <Text size="xLarge" weight="bold">
           선택하신 곳에서 주변 카페까지 <br />

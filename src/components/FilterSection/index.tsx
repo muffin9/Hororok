@@ -9,13 +9,14 @@ import useOutsideClick from "@/Hooks/useOutsideClick";
 
 interface FilterSectionProps {
   onCloseButton: () => void;
+  categoryId: "purpose" | "facility" | "atmosphere" | "menu" | "theme";
 }
 
 type SelectedItemsState = {
   [filterId: string]: string | undefined;
 };
 
-const FilterSection = ({ onCloseButton }: FilterSectionProps) => {
+const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
   const router = useRouter();
   const [selectedItems, setSelectedItems] = useState<SelectedItemsState>({});
   const filterRef = useRef<HTMLDivElement>(null);
@@ -59,6 +60,7 @@ const FilterSection = ({ onCloseButton }: FilterSectionProps) => {
       </header> */}
       <div className="px-4">
         <Condition
+          categoryId={categoryId}
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}
         />

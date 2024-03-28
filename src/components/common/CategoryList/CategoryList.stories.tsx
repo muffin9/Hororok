@@ -1,5 +1,7 @@
 import type { Meta } from "@storybook/react";
 import CategoryList from ".";
+import { CategoryIdType } from "@/components/Home/HomeSection";
+import { useState } from "react";
 
 const meta: Meta<typeof CategoryList> = {
   title: "Common/CategoryList",
@@ -9,7 +11,13 @@ const meta: Meta<typeof CategoryList> = {
 export default meta;
 
 const PrimitiveCategoryList = () => {
-  return <CategoryList />;
+  const [categoryId, setCategoryId] = useState<CategoryIdType>("purpose");
+
+  const onClickCategory = (id: CategoryIdType) => {
+    setCategoryId(id);
+  };
+
+  return <CategoryList onClickCategory={() => onClickCategory("purpose")} />;
 };
 
 export const Default = {
