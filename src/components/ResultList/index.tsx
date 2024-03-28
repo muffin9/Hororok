@@ -1,8 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import CategoryList from "@/components/common/CategoryList";
 import { CafeInfoType } from "@/interfaces/Cafe";
 import Text from "@/components/common/Text";
-import Star from "@/components/common/Star";
 import Icon from "@/components/common/Icon";
 import { useRef, useState } from "react";
 import FilterSection from "../FilterSection";
@@ -89,7 +90,10 @@ const ResultList = () => {
                   </header>
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center">
-                      <Star starScore={data.starScore} />
+                      <Icon type="star" size="xSmall" alt="star" />
+                      <Text size="small" className="text-black">
+                        {data.starScore}
+                      </Text>
                       <Text size="extraSmall" className="text-gray-700">
                         ({data.reviewCnt})
                       </Text>

@@ -57,10 +57,12 @@ const FilterSection = ({ onCloseButton }: FilterSectionProps) => {
           </button>
         </div>
       </header> */}
-      <Condition
-        handleItemClick={handleItemClick}
-        checkSelected={checkSelected}
-      />
+      <div className="px-4">
+        <Condition
+          handleItemClick={handleItemClick}
+          checkSelected={checkSelected}
+        />
+      </div>
       <div className="flex h-[50px]">
         <Button
           size="large"

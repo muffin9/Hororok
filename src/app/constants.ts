@@ -7,6 +7,7 @@ export const filterDatas = [
   {
     id: "purpose",
     title: "방문 목적을 알려주세요",
+    subTitle: "필수 선택",
     data: [
       { id: "개인작업/노트북", name: "개인작업/노트북" },
       { id: "데이트", name: "데이트" },
