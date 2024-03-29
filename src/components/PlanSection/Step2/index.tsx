@@ -2,8 +2,23 @@ import KakaoStaticMap from "@/components/KakaoStaticMap";
 import NextButtonSection from "../NextButtonSection";
 import Text from "@/components/common/Text";
 import TimeSelector from "./TimeSelector";
+import usePlanStore from "@/store/\bplanStore";
+import { useState } from "react";
 
 const Step2 = () => {
+  const [selectMinute, setSelectMinute] = useState(0);
+  const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
+  const setFormData = usePlanStore((state) => state.setFormData);
+
+  setCurrentStep("2");
+
+  const saveMinuteData = () => {
+    setFormData({
+      ...usePlanStore.getState().formData,
+      minutes: selectMinute,
+    });
+  };
+
   return (
     <div>
       <KakaoStaticMap height="h-[190px]" />
@@ -14,9 +29,12 @@ const Step2 = () => {
         </Text>
       </div>
       <div className="mt-[53px]">
-        <TimeSelector />
+        <TimeSelector
+          selectMinute={selectMinute}
+          setSelectMinute={setSelectMinute}
+        />
       </div>
-      <NextButtonSection nextStep={"3"} />
+      <NextButtonSection nextStep={"3"} onClickContinueFunc={saveMinuteData} />
     </div>
   );
 };

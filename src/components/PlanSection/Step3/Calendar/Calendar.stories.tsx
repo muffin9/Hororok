@@ -9,7 +9,12 @@ const meta: Meta<typeof Calendar> = {
 export default meta;
 
 const PrimitiveCalendar = () => {
-  return <Calendar />;
+  return (
+    <Calendar
+      checkSelectDay={() => true}
+      onClickday={() => console.log("clicked day")}
+    />
+  );
 };
 
 export const Default = {

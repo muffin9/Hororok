@@ -5,8 +5,8 @@ export default function Loading() {
     <div className="w-full h-full flex justify-center items-center">
       <Image
         src={"/assets/Images/loading.png"}
-        width={24}
-        height={24}
+        width={100}
+        height={100}
         alt="Loading..."
       />
     </div>

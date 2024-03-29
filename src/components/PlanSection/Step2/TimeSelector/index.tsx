@@ -1,9 +1,9 @@
 "use client";
 
 import Text from "@/components/common/Text";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-interface TimeSelectorProps {
+interface TimeButtonProps {
   selectMinute: number;
   timerId: number;
   isFirst?: boolean;
@@ -11,9 +11,12 @@ interface TimeSelectorProps {
   onClickTime: (timerId: number) => void;
 }
 
-const TimeSelector = () => {
-  const [selectMinute, setSelectMinute] = useState(0);
+interface TimeSelectorProps {
+  selectMinute: number;
+  setSelectMinute: Dispatch<SetStateAction<number>>;
+}
 
+const TimeSelector = ({ selectMinute, setSelectMinute }: TimeSelectorProps) => {
   const onClickTime = (id: number) => {
     setSelectMinute(id);
   };
@@ -77,7 +80,7 @@ const TimeSelector = () => {
   );
 };
 
-const TimeButton: React.FC<TimeSelectorProps> = ({
+const TimeButton: React.FC<TimeButtonProps> = ({
   selectMinute,
   timerId,
   isFirst,
