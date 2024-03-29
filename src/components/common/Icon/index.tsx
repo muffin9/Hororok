@@ -30,6 +30,10 @@ const iconUrls = {
   filter: "/assets/Icon/ic_filtering.svg",
   camera: "/assets/Icon/ic_camera.svg",
   review: "/assets/Icon/review.svg",
+  kakao: "/assets/Icon/kakao.svg",
+  apple: "/assets/Icon/apple.svg",
+  google: "/assets/Icon/google.svg",
+  naver: "/assets/Icon/naver.svg",
 };
 
 interface IconProps {
@@ -62,7 +66,11 @@ interface IconProps {
     | "refresh"
     | "filter"
     | "camera"
-    | "review";
+    | "review"
+    | "kakao"
+    | "naver"
+    | "google"
+    | "apple";
 
   size?: "xSmall" | "small" | "medium" | "large" | "xLarge";
   alt: string;
