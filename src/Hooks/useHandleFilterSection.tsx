@@ -1,5 +1,5 @@
 import { CategoryIdType } from "@/components/Home/HomeSection";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const useHandleFilterSection = () => {
   const [categoryId, setCategoryId] = useState<CategoryIdType>("purpose");

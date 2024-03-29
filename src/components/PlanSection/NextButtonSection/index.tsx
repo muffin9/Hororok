@@ -6,14 +6,24 @@ import { useRouter } from "next/navigation";
 
 interface NextButtonSectionProps {
   nextStep: "1" | "2" | "3" | "4";
+  onClickContinueFunc?: () => void;
 }
 
-const NextButtonSection = ({ nextStep }: NextButtonSectionProps) => {
+const NextButtonSection = ({
+  nextStep,
+  onClickContinueFunc,
+}: NextButtonSectionProps) => {
   const router = useRouter();
 
   return (
     <div className="flex flex-col gap-2 pt-32 bg-white">
-      <Button size="full" onClick={() => router.push(`/plan/${nextStep}`)}>
+      <Button
+        size="full"
+        onClick={() => {
+          if (onClickContinueFunc) onClickContinueFunc();
+          router.push(`/plan/${nextStep}`);
+        }}
+      >
         계속하기
       </Button>
       <Button

@@ -6,11 +6,14 @@ import { useRouter } from "next/navigation";
 import SearchInput from "../SearchInput";
 
 import useHandleKeySearchInput from "@/Hooks/useHandleKeySearchInput";
+import usePlanStore from "@/store/\bplanStore";
 
 const SearchResultSection = () => {
   const { resultSearchInfo } = useSearchPlace();
   const router = useRouter();
   const { handleKeyUpSearchInput } = useHandleKeySearchInput();
+  const isWriting = usePlanStore((state) => state.isWriting);
+  const setFormData = usePlanStore((state) => state.setFormData);
 
   const onClickPlace = (place_id: number) => {
     // SearchResultSection 컴포넌트 에게 해당 아이템 onclick시 지도 업데이트 되는 로직 보내줘야한다.
@@ -22,10 +25,20 @@ const SearchResultSection = () => {
     );
 
     if (findPlace) {
-      const queryData = encodeURIComponent(JSON.stringify(findPlace));
-      const path = `/search_map?data=${queryData}`;
+      if (isWriting) {
+        setFormData({
+          ...usePlanStore.getState().formData,
+          latitude: findPlace.latitude,
+          longitude: findPlace.longitude,
+        });
 
-      router.push(path);
+        router.push("/plan/2");
+      } else {
+        const queryData = encodeURIComponent(JSON.stringify(findPlace));
+        const path = `/search_map?data=${queryData}`;
+
+        router.push(path);
+      }
     }
   };
 

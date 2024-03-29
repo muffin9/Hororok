@@ -9,7 +9,12 @@ const meta: Meta<typeof TimeSelector> = {
 export default meta;
 
 const PrimitiveTimeSelector = () => {
-  return <TimeSelector />;
+  return (
+    <TimeSelector
+      selectMinute={30}
+      setSelectMinute={() => console.log("select minute")}
+    />
+  );
 };
 
 export const Default = {
