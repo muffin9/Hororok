@@ -64,11 +64,11 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
           cancelButtonText="아니요, 저장 안 할래요"
           okCallbackFunc={() => {
             setIsWrting(false);
-            router.push("/");
+            router.push("/map");
           }}
           cancelCallbackFunc={() => {
             setIsWrting(false);
-            router.push("/");
+            router.push("/map");
           }}
         />
       )}
