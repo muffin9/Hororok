@@ -19,7 +19,7 @@ export default function Login() {
         </Text>
       </div>
       <div className="w-full flex flex-col gap-2 pt-[100px]">
-        <Link href="/">
+        <Link href="/map">
           <Button
             size="full"
             bgColor="bg-kakao"
@@ -33,7 +33,7 @@ export default function Login() {
             </Text>
           </Button>
         </Link>
-        <Link href="/">
+        <Link href="/map">
           <Button
             size="full"
             bgColor="bg-naver"
@@ -47,7 +47,7 @@ export default function Login() {
             </Text>
           </Button>
         </Link>
-        <Link href="/">
+        <Link href="/map">
           <Button
             size="full"
             className="bg-white px-6 relative enabled:active:bg-naver"
@@ -60,7 +60,7 @@ export default function Login() {
             </Text>
           </Button>
         </Link>
-        <Link href="/">
+        <Link href="/map">
           <Button
             size="full"
             className="bg-black px-6 relative enabled:active:bg-naver"
@@ -73,7 +73,7 @@ export default function Login() {
             </Text>
           </Button>
         </Link>
-        <Link href="/">
+        <Link href="/map">
           <Button size="full" className="bg-white enabled:active:bg-white">
             <Text size="small" className="text-gray-700">
               로그인하지 않고 둘러보기
