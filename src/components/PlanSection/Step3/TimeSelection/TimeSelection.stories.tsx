@@ -9,7 +9,12 @@ const meta: Meta<typeof TimeSelection> = {
 export default meta;
 
 const PrimitiveTimeSelection = () => {
-  return <TimeSelection />;
+  return (
+    <TimeSelection
+      handleItemClick={() => console.log("item clicked")}
+      isIncludeTimeId={() => true}
+    />
+  );
 };
 
 export const Default = {

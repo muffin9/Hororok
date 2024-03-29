@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const Step1 = () => {
   const router = useRouter();
   return (
-    <div className="h-full flex flex-col gap-8">
+    <div className="h-full flex flex-col gap-8 bg-white">
       <Text size="xLarge" weight="bold">
         어디를 방문하시나요?
       </Text>

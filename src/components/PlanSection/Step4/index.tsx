@@ -3,6 +3,7 @@
 import Condition from "@/components/Condition";
 import Button from "@/components/common/Button";
 import Text from "@/components/common/Text";
+import usePlanStore from "@/store/\bplanStore";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -12,6 +13,9 @@ type SelectedItemsState = {
 
 const Step4 = () => {
   const router = useRouter();
+  const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
+
+  setCurrentStep("4");
 
   const [selectedItems, setSelectedItems] = useState<SelectedItemsState>({});
   const handleItemClick = (filterId: string, itemId: string) => {
