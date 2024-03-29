@@ -29,6 +29,8 @@ const config: Config = {
       star: "#FFD600",
       black: "#000000",
       white: "#FFFFFF",
+      kakao: "#FDE401",
+      naver: "#2BC622",
     },
     boxShadow: {
       xl: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
