@@ -5,8 +5,8 @@ import { CategoryIdType } from "../Home/HomeSection";
 
 interface ConditionProps {
   categoryId?: CategoryIdType;
-  handleItemClick: (filterId: string, itemId: string) => void;
-  checkSelected: (conditionId: string, clickedItemId: string) => boolean;
+  handleItemClick: (clickedCategory: string) => void;
+  checkSelected: (clickedCategory: string) => boolean;
 }
 
 const Condition = ({
@@ -14,10 +14,10 @@ const Condition = ({
   handleItemClick,
   checkSelected,
 }: ConditionProps) => {
-  const calculatedFilterData = () => {
+  const sortedFilterData = () => {
     if (categoryId) {
       const clickedCategoryIdx = filterDatas.findIndex(
-        (data) => data.id === categoryId
+        (data) => data.category === categoryId
       );
       if (clickedCategoryIdx !== -1) {
         const clickedCategory = filterDatas.splice(clickedCategoryIdx, 1)[0];
@@ -29,9 +29,9 @@ const Condition = ({
 
   return (
     <div className="py-6 border-t-[1px] border-b-[1px] border-silver">
-      {calculatedFilterData().map((condition) => {
+      {sortedFilterData().map((condition) => {
         return (
-          <div key={condition.id} className="flex flex-col gap-4">
+          <div key={condition.category} className="flex flex-col gap-4">
             <header className="flex items-center gap-2">
               <Text size="medium" weight="bold" className="text-black">
                 {condition.title}
@@ -43,13 +43,13 @@ const Condition = ({
               )}
             </header>
             <div className="flex gap-2 flex-wrap mb-[30px]">
-              {condition.data.map((d) => {
+              {condition.data.map((name) => {
                 return (
                   <Tag
-                    key={d.id}
-                    tagName={d.name}
-                    isSelected={checkSelected(condition.id, d.id)}
-                    handleItemClick={() => handleItemClick(condition.id, d.id)}
+                    key={name}
+                    tagName={name}
+                    isSelected={checkSelected(name)}
+                    handleItemClick={() => handleItemClick(name)}
                   />
                 );
               })}

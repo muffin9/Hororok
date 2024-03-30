@@ -6,39 +6,69 @@ import Condition from "@/components/Condition";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import useOutsideClick from "@/Hooks/useOutsideClick";
+import useGeolocation from "@/Hooks/useGeolocation";
+import { getSearchListByKeywords } from "@/apis/search";
+import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 
 interface FilterSectionProps {
   onCloseButton: () => void;
-  categoryId: "purpose" | "facility" | "atmosphere" | "menu" | "theme";
+  categoryId: "목적" | "시설" | "분위기" | "메뉴" | "테마";
 }
-
-type SelectedItemsState = {
-  [filterId: string]: string | undefined;
-};
 
 const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
   const router = useRouter();
-  const [selectedItems, setSelectedItems] = useState<SelectedItemsState>({});
   const filterRef = useRef<HTMLDivElement>(null);
+  const location = useGeolocation();
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const { setSearchResultList } = useSearcResultListStorehPlace();
 
-  const handleItemClick = (filterId: string, itemId: string) => {
-    setSelectedItems((prevState) => ({
-      ...prevState,
-      [filterId]: prevState[filterId] === itemId ? undefined : itemId,
-    }));
+  const handleItemClick = (category: string) => {
+    if (selectedItems.length === 5 && !selectedItems.includes(category)) {
+      return;
+    }
+
+    if (selectedItems.includes(category)) {
+      setSelectedItems(selectedItems.filter((item) => item !== category));
+    } else {
+      setSelectedItems([...selectedItems, category]);
+    }
   };
 
-  const checkSelected = (conditionId: string, clickedItemId: string) => {
-    return selectedItems[conditionId] === clickedItemId;
+  const checkSelected = (clickedCategory: string) => {
+    return selectedItems.includes(clickedCategory);
   };
 
   const onClickRefresh = () => {
-    setSelectedItems({});
+    setSelectedItems([]);
   };
 
-  const onSubmit = () => {
-    // 서버 API 요청.
-    router.push("/search_map");
+  const checkDisabledSubmit = () => {
+    const targetValues = [
+      "개인작업/노트북",
+      "데이트",
+      "단체회식",
+      "애견동반",
+      "가족모임",
+      "비즈니스미팅",
+      "기념일",
+      "친목/나들이",
+    ];
+
+    return !selectedItems.some((item) => targetValues.includes(item));
+  };
+
+  const onSubmit = async () => {
+    const cafeSearchList = await getSearchListByKeywords(
+      location.latitude,
+      location.longitude,
+      selectedItems
+    );
+
+    setSearchResultList(cafeSearchList);
+
+    const path = `/search_map?latitude=${location.latitude}&longitude=${location.longitude}`;
+    router.push(path);
+    onCloseButton();
   };
 
   useOutsideClick(filterRef, onCloseButton);
@@ -76,7 +106,11 @@ const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
             재설정
           </Text>
         </Button>
-        <SubmitButton onSubmit={onSubmit} className="mr-4" />
+        <SubmitButton
+          onSubmit={onSubmit}
+          className="mr-4"
+          isDisabled={checkDisabledSubmit}
+        />
       </div>
     </section>
   );

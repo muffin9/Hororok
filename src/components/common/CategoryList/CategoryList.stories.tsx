@@ -11,13 +11,13 @@ const meta: Meta<typeof CategoryList> = {
 export default meta;
 
 const PrimitiveCategoryList = () => {
-  const [categoryId, setCategoryId] = useState<CategoryIdType>("purpose");
+  const [categoryId, setCategoryId] = useState<CategoryIdType>("목적");
 
   const onClickCategory = (id: CategoryIdType) => {
     setCategoryId(id);
   };
 
-  return <CategoryList onClickCategory={() => onClickCategory("purpose")} />;
+  return <CategoryList onClickCategory={() => onClickCategory("목적")} />;
 };
 
 export const Default = {

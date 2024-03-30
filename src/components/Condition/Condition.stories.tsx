@@ -9,12 +9,12 @@ const meta: Meta<typeof Condition> = {
 export default meta;
 
 const PrimitiveCondition = () => {
-  const handleItemClick = (filterId: string, itemId: string) => {
-    console.log(`Filter ID: ${filterId}, Item ID: ${itemId}`);
+  const handleItemClick = (clickedCategory: string) => {
+    console.log(`${clickedCategory}~~`);
   };
 
-  const checkSelected = (filterId: string, itemId: string) => {
-    return filterId === itemId;
+  const checkSelected = (clickedCategory: string) => {
+    return true;
   };
 
   return (

@@ -42,9 +42,7 @@ const SearchResultSection = () => {
 
         router.push("/plan/2");
       } else {
-        const queryData = encodeURIComponent(JSON.stringify(findPlace));
-        const path = `/search_map?data=${queryData}`;
-
+        const path = `/search_map?latitude=${findPlace.latitude}&longitude=${findPlace.longitude}`;
         router.push(path);
       }
     }

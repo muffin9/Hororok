@@ -1,10 +1,12 @@
 "use client";
 
-import { SearchPlaceInfoType } from "@/interfaces/SearchPlace";
 import { useEffect, useRef, useState } from "react";
-import { pinImage } from "@/app/constants";
-import { useSearchParams } from "next/navigation";
+import { cafePinImage, currentPinImage } from "@/app/constants";
 import useGeolocation from "@/Hooks/useGeolocation";
+import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
+import { CafeInfoType } from "@/interfaces/Cafe";
+import { useSearchParams } from "next/navigation";
+import useCoordinatesStore from "@/store/useCoordinatesStore";
 
 declare global {
   interface Window {
@@ -17,22 +19,26 @@ interface KakaoMapProps {
 }
 
 const KakaoMap = ({ children }: KakaoMapProps) => {
-  const location = useGeolocation();
+  const { searchResultList } = useSearcResultListStorehPlace();
+  const { setCoordinates } = useCoordinatesStore();
+
   const params = useSearchParams();
-  const mapRef = useRef<HTMLElement | null>(null);
+  const location = useGeolocation();
+
+  const mapRef = useRef<HTMLDivElement | null | any>(null);
   const [currentCoordinates, setCurrentCoordinates] = useState({
     latitude: location.latitude,
     longitude: location.longitude,
   });
 
-  const displayPlaces = (place: SearchPlaceInfoType) => {
+  const displayPlaces = (latitude: number, longitude: number) => {
     const imageSize = new window.kakao.maps.Size(24, 35);
-    const markerImage = new window.kakao.maps.MarkerImage(pinImage, imageSize);
-
-    const myMarkerPosition = new window.kakao.maps.LatLng(
-      place.latitude,
-      place.longitude
+    const markerImage = new window.kakao.maps.MarkerImage(
+      currentPinImage,
+      imageSize
     );
+
+    const myMarkerPosition = new window.kakao.maps.LatLng(latitude, longitude);
 
     const marker = new window.kakao.maps.Marker({
       position: myMarkerPosition,
@@ -40,10 +46,31 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
     });
 
     setCurrentCoordinates({
-      latitude: place.latitude,
-      longitude: place.longitude,
+      latitude,
+      longitude,
     });
     marker.setMap(mapRef.current);
+
+    // searchResultList 핀 꽂기
+    const newMarkers = [] as any;
+    const cafeMarkerSize = new window.kakao.maps.Size(34, 34);
+    const cafeMarkerImage = new window.kakao.maps.MarkerImage(
+      cafePinImage,
+      cafeMarkerSize
+    );
+
+    searchResultList.forEach((cafe: CafeInfoType) => {
+      const marker = new window.kakao.maps.Marker({
+        map: mapRef.current,
+        position: new window.kakao.maps.LatLng(cafe.latitude, cafe.longitude),
+        image: cafeMarkerImage,
+        zIndex: 10,
+      });
+
+      newMarkers.push(marker);
+    });
+
+    newMarkers.forEach((marker: any) => marker.setMap(mapRef.current));
   };
 
   useEffect(() => {
@@ -53,7 +80,6 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
 
     script.onload = () => {
       window.kakao.maps.load(() => {
-        const placeInfo = params.values().next().value;
         const mapContainer = document.getElementById("map");
 
         const options = {
@@ -66,8 +92,30 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
 
         mapRef.current = new window.kakao.maps.Map(mapContainer, options);
 
-        if (window.kakao && placeInfo) {
-          displayPlaces(JSON.parse(placeInfo));
+        if (window.kakao) {
+          const zoomControl = new window.kakao.maps.ZoomControl();
+          mapRef.current?.addControl(
+            zoomControl,
+            window.kakao.maps.ControlPosition.RIGHT
+          );
+
+          window.kakao.maps.event.addListener(
+            mapRef.current,
+            "dragend",
+            function () {
+              const center = mapRef.current?.getCenter(); // 지도의 중심 좌표 가져오기
+
+              if (center) {
+                setCoordinates(center.getLat(), center.getLng());
+              }
+            }
+          );
+        }
+
+        const latitude = params.get("latitude");
+        const longitude = params.get("longitude");
+        if (window.kakao && latitude && longitude) {
+          displayPlaces(+latitude, +longitude);
         }
       });
     };
@@ -78,7 +126,7 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
   }, [currentCoordinates.latitude, currentCoordinates.longitude, params]);
 
   return (
-    <div id="map" className="w-full h-screen">
+    <div id="map" className="fixed top-0 w-[390px] h-2/4">
       {children}
     </div>
   );

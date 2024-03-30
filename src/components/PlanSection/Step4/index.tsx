@@ -7,26 +7,28 @@ import usePlanStore from "@/store/\bplanStore";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-type SelectedItemsState = {
-  [filterId: string]: string | undefined;
-};
-
 const Step4 = () => {
   const router = useRouter();
   const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
 
   setCurrentStep("4");
 
-  const [selectedItems, setSelectedItems] = useState<SelectedItemsState>({});
-  const handleItemClick = (filterId: string, itemId: string) => {
-    setSelectedItems((prevState) => ({
-      ...prevState,
-      [filterId]: prevState[filterId] === itemId ? undefined : itemId,
-    }));
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+
+  const handleItemClick = (category: string) => {
+    if (selectedItems.length === 5 && !selectedItems.includes(category)) {
+      return;
+    }
+
+    if (selectedItems.includes(category)) {
+      setSelectedItems(selectedItems.filter((item) => item !== category));
+    } else {
+      setSelectedItems([...selectedItems, category]);
+    }
   };
 
-  const checkSelected = (conditionId: string, clickedItemId: string) => {
-    return selectedItems[conditionId] === clickedItemId;
+  const checkSelected = (clickedCategory: string) => {
+    return selectedItems.includes(clickedCategory);
   };
 
   return (

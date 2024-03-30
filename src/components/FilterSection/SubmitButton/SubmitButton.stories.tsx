@@ -9,7 +9,12 @@ const meta: Meta<typeof SubmitButton> = {
 export default meta;
 
 const PrimitiveSubmitButton = () => {
-  return <SubmitButton onSubmit={() => console.log("submit.")} />;
+  return (
+    <SubmitButton
+      onSubmit={() => console.log("submit.")}
+      isDisabled={() => false}
+    />
+  );
 };
 
 export const Default = {
