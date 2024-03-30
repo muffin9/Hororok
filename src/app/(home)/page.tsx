@@ -17,7 +17,7 @@ export default function Login() {
     const kakao = (window as any).Kakao;
 
     kakao.Auth.authorize({
-      redirectUri: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_SERVER_API}`,
+      redirectUri: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_API}`,
     });
   };
 
@@ -79,7 +79,8 @@ export default function Login() {
         <Link href="?show=true">
           <Button
             size="full"
-            className="bg-black px-6 relative enabled:active:bg-naver"
+            className="px-6 relative enabled:active:bg-black"
+            bgColor={"bg-black"}
           >
             <div className="absolute left-4">
               <Icon type="apple" size="xSmall" alt="kakao image" />

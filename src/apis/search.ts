@@ -7,7 +7,7 @@ export const getSearchList = async (latitude: number, longitude: number) => {
       `${apiSearchUrl}/search/bar?latitude=${latitude}&longitude=${longitude}`
     );
 
-    return response.data.cafe;
+    return response.data.cafes;
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
   }
@@ -23,7 +23,7 @@ export const getSearchListByKeywords = async (
       `${apiSearchUrl}/search/bar?latitude=${latitude}&longitude=${longitude}&keywords=${keywords.join(",")}`
     );
 
-    return response.data.cafe;
+    return response.data.cafes;
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
   }
