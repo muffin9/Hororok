@@ -1,3 +1,5 @@
+export const apiSearchUrl = `${process.env.NEXT_PUBLIC_SERVER_API}`;
+
 export const defaultCoords = {
   lat: 37.572594523923904,
   lng: 126.97577874563281,

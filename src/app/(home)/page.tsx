@@ -1,10 +1,26 @@
+"use client";
+
 import Button from "@/components/common/Button";
 import Icon from "@/components/common/Icon";
+import Modal from "@/components/common/Modal";
 import Text from "@/components/common/Text";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Login() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const show = searchParams.get("show");
+
+  const kakaoLogin = () => {
+    const kakao = (window as any).Kakao;
+
+    kakao.Auth.authorize({
+      redirectUri: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_API_URL}/auth/kakao/login`,
+    });
+  };
+
   return (
     <main className="w-full h-full px-4 flex flex-col items-center justify-center bg-white">
       <div className="text-center">
@@ -19,21 +35,21 @@ export default function Login() {
         </Text>
       </div>
       <div className="w-full flex flex-col gap-2 pt-[100px]">
-        <Link href="/map">
-          <Button
-            size="full"
-            bgColor="bg-kakao"
-            className="px-6 relative enabled:active:bg-kakao"
-          >
-            <div className="absolute left-4">
-              <Icon type="kakao" size="xSmall" alt="kakao image" />
-            </div>
-            <Text size="small" className="text-black">
-              카카오로 계속하기
-            </Text>
-          </Button>
-        </Link>
-        <Link href="/map">
+        <Button
+          size="full"
+          bgColor="bg-kakao"
+          className="px-6 relative enabled:active:bg-kakao"
+          onClick={kakaoLogin}
+        >
+          <div className="absolute left-4">
+            <Icon type="kakao" size="xSmall" alt="kakao image" />
+          </div>
+          <Text size="small" className="text-black">
+            카카오로 계속하기
+          </Text>
+        </Button>
+
+        <Link href="?show=true">
           <Button
             size="full"
             bgColor="bg-naver"
@@ -47,7 +63,7 @@ export default function Login() {
             </Text>
           </Button>
         </Link>
-        <Link href="/map">
+        <Link href="?show=true">
           <Button
             size="full"
             className="bg-white px-6 relative enabled:active:bg-naver"
@@ -60,7 +76,7 @@ export default function Login() {
             </Text>
           </Button>
         </Link>
-        <Link href="/map">
+        <Link href="?show=true">
           <Button
             size="full"
             className="bg-black px-6 relative enabled:active:bg-naver"
@@ -81,6 +97,15 @@ export default function Login() {
           </Button>
         </Link>
       </div>
+      {show && (
+        <Modal
+          title={`현재 KAKAO 로그인만 지원해요.\n 로그인하지 않고 둘러볼수도 있어요.`}
+          okButtonText="확인"
+          okCallbackFunc={() => {
+            router.back();
+          }}
+        />
+      )}
     </main>
   );
 }

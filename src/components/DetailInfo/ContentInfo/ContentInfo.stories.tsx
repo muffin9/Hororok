@@ -1,5 +1,6 @@
 import type { Meta } from "@storybook/react";
 import ContentInfo from ".";
+import { fakeCafeDetailInfo } from "@/app/mockData";
 
 const meta: Meta<typeof ContentInfo> = {
   title: "ContentInfo/Default",
@@ -9,7 +10,7 @@ const meta: Meta<typeof ContentInfo> = {
 export default meta;
 
 const PrimitiveContentInfo = () => {
-  return <ContentInfo />;
+  return <ContentInfo cafeDetailInfo={fakeCafeDetailInfo} />;
 };
 
 export const Default = {

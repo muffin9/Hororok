@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
+import QueryProvider from "@/Hooks/useReactQuery";
 
 export const metadata: Metadata = {
   title: "Hororok",
@@ -14,7 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <head>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js" defer />
+      </head>
+      <body>
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 }
