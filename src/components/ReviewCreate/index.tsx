@@ -21,16 +21,21 @@ const ReviewCreate = () => {
   const searchParams = useSearchParams();
   const show = searchParams.get("show");
 
-  const [selectedItems, setSelectedItems] = useState<SelectedItemsState>({});
-  const handleItemClick = (filterId: string, itemId: string) => {
-    setSelectedItems((prevState) => ({
-      ...prevState,
-      [filterId]: prevState[filterId] === itemId ? undefined : itemId,
-    }));
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const handleItemClick = (category: string) => {
+    if (selectedItems.length === 5 && !selectedItems.includes(category)) {
+      return;
+    }
+
+    if (selectedItems.includes(category)) {
+      setSelectedItems(selectedItems.filter((item) => item !== category));
+    } else {
+      setSelectedItems([...selectedItems, category]);
+    }
   };
 
-  const checkSelected = (conditionId: string, clickedItemId: string) => {
-    return selectedItems[conditionId] === clickedItemId;
+  const checkSelected = (clickedCategory: string) => {
+    return selectedItems.includes(clickedCategory);
   };
 
   const onReviewSubmit = () => {
