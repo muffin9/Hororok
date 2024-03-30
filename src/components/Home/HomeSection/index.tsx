@@ -10,12 +10,7 @@ interface HomeSectionProps {
   isInput?: boolean;
 }
 
-export type CategoryIdType =
-  | "purpose"
-  | "facility"
-  | "atmosphere"
-  | "menu"
-  | "theme";
+export type CategoryIdType = "목적" | "시설" | "분위기" | "메뉴" | "테마";
 
 const HomeSection = ({ isInput }: HomeSectionProps) => {
   const router = useRouter();

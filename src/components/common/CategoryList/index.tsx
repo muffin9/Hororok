@@ -13,11 +13,11 @@ type CategoryType = {
 
 const CategoryList = ({ onClickCategory }: CategoryListProps) => {
   const categoryNames = [
-    { id: "purpose", name: "목적" },
-    { id: "facility", name: "시설" },
-    { id: "atmosphere", name: "분위기" },
-    { id: "menu", name: "메뉴" },
-    { id: "theme", name: "테마" },
+    { id: "목적", name: "목적" },
+    { id: "시설", name: "시설" },
+    { id: "분위기", name: "분위기" },
+    { id: "메뉴", name: "메뉴" },
+    { id: "테마", name: "테마" },
   ] as CategoryType[];
 
   return (
