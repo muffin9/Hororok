@@ -9,7 +9,7 @@ const meta: Meta<typeof PhotoInfo> = {
 export default meta;
 
 const PrimitivePhotoInfo = () => {
-  return <PhotoInfo />;
+  return <PhotoInfo cafePhotoInfo={[]} />;
 };
 
 export const Default = {

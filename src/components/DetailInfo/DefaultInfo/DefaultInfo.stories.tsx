@@ -1,5 +1,6 @@
 import type { Meta } from "@storybook/react";
 import DetaiInfo from ".";
+import { faceCafeDefaultInfo } from "@/app/mockData";
 
 const meta: Meta<typeof DetaiInfo> = {
   title: "DetaiInfo/Default",
@@ -9,7 +10,7 @@ const meta: Meta<typeof DetaiInfo> = {
 export default meta;
 
 const PrimitiveDetaiInfo = () => {
-  return <DetaiInfo />;
+  return <DetaiInfo cafeDefaultInfo={faceCafeDefaultInfo} />;
 };
 
 export const Default = {

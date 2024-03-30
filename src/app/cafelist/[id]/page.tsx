@@ -6,12 +6,10 @@ type CafeListProps = {
   };
 };
 
-// server api call
-
 export default async function CafeListPage({ params }: CafeListProps) {
   return (
     <main>
-      <DetailInfo />
+      <DetailInfo cafeId={params.id} />
     </main>
   );
 }

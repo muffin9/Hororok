@@ -18,6 +18,7 @@ interface PlanSectionProps {
 
 const PlanSection = ({ planId }: PlanSectionProps) => {
   const setIsWrting = usePlanStore((state) => state.setIsWrting);
+  const resetPlanStore = usePlanStore((state) => state.resetPlanStore);
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -68,6 +69,7 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
           }}
           cancelCallbackFunc={() => {
             setIsWrting(false);
+            resetPlanStore();
             router.push("/map");
           }}
         />

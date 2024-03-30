@@ -49,7 +49,7 @@ const GNB = () => {
         </div>
         <div
           className="flex flex-col items-center cursor-pointer"
-          onClick={() => alert("서비스 준비중입니다...")}
+          onClick={() => router.push("/")}
         >
           <Icon type="account" size="medium" alt="로그인" />
           <Text size="extraSmall" className="text-black">

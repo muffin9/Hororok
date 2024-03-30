@@ -11,7 +11,7 @@ interface ModalProps {
   okButtonText: string;
   okCallbackFunc: () => void;
   cancelButtonText?: string;
-  cancelCallbackFunc: () => void;
+  cancelCallbackFunc?: () => void;
 }
 
 const Modal = ({
@@ -48,15 +48,17 @@ const Modal = ({
           <Button size="full" onClick={okCallbackFunc}>
             <Text size="large">{okButtonText}</Text>
           </Button>
-          <Button
-            size="full"
-            className="bg-gray-300"
-            onClick={cancelCallbackFunc}
-          >
-            <Text size="large" className="text-gray-700">
-              {cancelButtonText}
-            </Text>
-          </Button>
+          {cancelButtonText && (
+            <Button
+              size="full"
+              bgColor="bg-gray-300"
+              onClick={cancelCallbackFunc}
+            >
+              <Text size="large" className="text-gray-700">
+                {cancelButtonText}
+              </Text>
+            </Button>
+          )}
         </div>
       </div>
     </div>
