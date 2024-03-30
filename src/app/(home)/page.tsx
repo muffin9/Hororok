@@ -17,7 +17,7 @@ export default function Login() {
     const kakao = (window as any).Kakao;
 
     kakao.Auth.authorize({
-      redirectUri: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_API}`,
+      redirectUri: `${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_API}`,
     });
   };
 
