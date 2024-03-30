@@ -1,17 +1,18 @@
 "use client";
 
+import { getSearchListToPlan } from "@/apis/plans";
 import Condition from "@/components/Condition";
 import Button from "@/components/common/Button";
 import Text from "@/components/common/Text";
 import usePlanStore from "@/store/\bplanStore";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Step4 = () => {
   const router = useRouter();
+  const formData = usePlanStore((state) => state.formData);
   const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
-
-  setCurrentStep("4");
+  const setFormData = usePlanStore((state) => state.setFormData);
 
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
@@ -25,11 +26,43 @@ const Step4 = () => {
     } else {
       setSelectedItems([...selectedItems, category]);
     }
+
+    setFormData({
+      ...formData,
+      keywords: selectedItems,
+    });
   };
 
   const checkSelected = (clickedCategory: string) => {
     return selectedItems.includes(clickedCategory);
   };
+
+  const checkDisabledSubmit = () => {
+    const targetValues = [
+      "개인작업/노트북",
+      "데이트",
+      "단체회식",
+      "애견동반",
+      "가족모임",
+      "비즈니스미팅",
+      "기념일",
+      "친목/나들이",
+    ];
+
+    return !selectedItems.some((item) => targetValues.includes(item));
+  };
+
+  const onClickSubmit = async () => {
+    const data = await getSearchListToPlan(formData);
+
+    router.push(
+      `/plan/result?latitude=${formData.latitude}&longitude=${formData.longitude}`
+    );
+  };
+
+  useEffect(() => {
+    setCurrentStep("4");
+  }, []);
 
   return (
     <div>
@@ -45,7 +78,11 @@ const Step4 = () => {
         handleItemClick={handleItemClick}
         checkSelected={checkSelected}
       />
-      <Button size="full" onClick={() => router.push("/plan/result")}>
+      <Button
+        size="full"
+        onClick={onClickSubmit}
+        disabled={checkDisabledSubmit()}
+      >
         결과보기
       </Button>
     </div>

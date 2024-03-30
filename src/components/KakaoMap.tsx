@@ -7,6 +7,7 @@ import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 import { CafeInfoType } from "@/interfaces/Cafe";
 import { useSearchParams } from "next/navigation";
 import useCoordinatesStore from "@/store/useCoordinatesStore";
+import ReBoundButton from "./common/ReBoundButton";
 
 declare global {
   interface Window {
@@ -59,18 +60,20 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
       cafeMarkerSize
     );
 
-    searchResultList.forEach((cafe: CafeInfoType) => {
-      const marker = new window.kakao.maps.Marker({
-        map: mapRef.current,
-        position: new window.kakao.maps.LatLng(cafe.latitude, cafe.longitude),
-        image: cafeMarkerImage,
-        zIndex: 10,
+    if (searchResultList) {
+      searchResultList.forEach((cafe: CafeInfoType) => {
+        const marker = new window.kakao.maps.Marker({
+          map: mapRef.current,
+          position: new window.kakao.maps.LatLng(cafe.latitude, cafe.longitude),
+          image: cafeMarkerImage,
+          zIndex: 10,
+        });
+
+        newMarkers.push(marker);
       });
 
-      newMarkers.push(marker);
-    });
-
-    newMarkers.forEach((marker: any) => marker.setMap(mapRef.current));
+      newMarkers.forEach((marker: any) => marker.setMap(mapRef.current));
+    }
   };
 
   useEffect(() => {
@@ -125,9 +128,17 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
     };
   }, [currentCoordinates.latitude, currentCoordinates.longitude, params]);
 
+  const onClickReBound = () => {
+    const latitude = params.get("latitude");
+    const longitude = params.get("longitude");
+    const moveLatLon = new window.kakao.maps.LatLng(latitude, longitude);
+    mapRef.current.panTo(moveLatLon);
+  };
+
   return (
     <div id="map" className="fixed top-0 w-[390px] h-2/4">
       {children}
+      <ReBoundButton onClickReBound={onClickReBound} />
     </div>
   );
 };

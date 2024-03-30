@@ -6,7 +6,7 @@ import Calendar from "./Calendar";
 import TimeSelection from "./TimeSelection";
 import usePlanStore from "@/store/\bplanStore";
 import useDate from "@/Hooks/useDate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { timeDatas } from "@/app/constants";
 
 const Step3 = () => {
@@ -78,7 +78,9 @@ const Step3 = () => {
     });
   };
 
-  setCurrentStep("3");
+  useEffect(() => {
+    setCurrentStep("3");
+  }, []);
 
   return (
     <div>
