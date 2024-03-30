@@ -13,7 +13,7 @@ export default function SearchMapPage() {
         <Suspense fallback={<Loading />}>
           <KakaoMap>
             <div className="w-full absolute top-8 z-[999]">
-              <div className="flex flex-col justify-center gap-6 px-4">
+              <div className="flex flex-col justify-center gap-2 px-4">
                 <MoveInput />
                 <ReSearchButton />
               </div>

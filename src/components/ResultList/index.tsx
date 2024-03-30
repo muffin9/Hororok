@@ -10,39 +10,14 @@ import FilterSection from "../FilterSection";
 import { useRouter } from "next/navigation";
 import useOutsideClick from "@/Hooks/useOutsideClick";
 import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
+import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 
 const ResultList = () => {
   const router = useRouter();
   const filterRef = useRef<HTMLDivElement>(null);
   const { categoryId, isFilter, setIsFilter, onClickCategory } =
     useHandleFilterSection();
-
-  const resultListDummyData = [
-    {
-      id: "cafe-1",
-      imageUrl: "/assets/Images/sample.jpeg",
-      title: "카페이름",
-      starScore: "5.0",
-      reviewCnt: 12,
-      address: "서울 강남구 테헤란로",
-    },
-    {
-      id: "cafe-2",
-      imageUrl: "/assets/Images/sample.jpeg",
-      title: "카페이름",
-      starScore: "5.0",
-      reviewCnt: 12,
-      address: "서울 강남구 테헤란로",
-    },
-    {
-      id: "cafe-3",
-      imageUrl: "/assets/Images/sample.jpeg",
-      title: "카페이름",
-      starScore: "5.0",
-      reviewCnt: 12,
-      address: "서울 강남구 테헤란로",
-    },
-  ];
+  const { searchResultList } = useSearcResultListStorehPlace();
 
   useOutsideClick(filterRef, () => setIsFilter(false));
 
@@ -69,7 +44,7 @@ const ResultList = () => {
           )}
         </header>
         <div>
-          {resultListDummyData.map((data: CafeInfoType) => {
+          {searchResultList.map((data: CafeInfoType) => {
             return (
               <div
                 key={data.id}
@@ -77,7 +52,7 @@ const ResultList = () => {
                 onClick={() => router.push(`/cafelist/${data.id}`)}
               >
                 <Image
-                  src={data.imageUrl}
+                  src={data.imageUrl || "/assets/Images/sample.jpeg"}
                   width={110}
                   height={110}
                   alt={"카페 이미지"}
@@ -86,7 +61,7 @@ const ResultList = () => {
                 <div className="w-full flex flex-col py-4 gap-3">
                   <header className="flex justify-between">
                     <Text size="large" className="text-black">
-                      {data.title}
+                      {data.name}
                     </Text>
                     <div className="flex gap-4">
                       <Icon type="share" size="small" alt="공유하기" />
@@ -97,14 +72,14 @@ const ResultList = () => {
                     <div className="flex items-center">
                       <Icon type="star" size="xSmall" alt="star" />
                       <Text size="small" className="text-black">
-                        {data.starScore}
+                        {data.starRating}
                       </Text>
                       <Text size="extraSmall" className="text-gray-700">
-                        ({data.reviewCnt})
+                        ({data.reviewCount})
                       </Text>
                     </div>
                     <Text size="extraSmall" className="text-gray-700">
-                      {data.address}
+                      {data.roadAddress}
                     </Text>
                   </div>
                 </div>

@@ -7,6 +7,8 @@ import SearchInput from "../SearchInput";
 
 import useHandleKeySearchInput from "@/Hooks/useHandleKeySearchInput";
 import usePlanStore from "@/store/\bplanStore";
+import { getSearchList } from "@/apis/search";
+import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 
 const SearchResultSection = () => {
   const { resultSearchInfo } = useSearchPlace();
@@ -14,8 +16,9 @@ const SearchResultSection = () => {
   const { handleKeyUpSearchInput } = useHandleKeySearchInput();
   const isWriting = usePlanStore((state) => state.isWriting);
   const setFormData = usePlanStore((state) => state.setFormData);
+  const { setSearchResultList } = useSearcResultListStorehPlace();
 
-  const onClickPlace = (place_id: number) => {
+  const onClickPlace = async (place_id: number) => {
     // SearchResultSection 컴포넌트 에게 해당 아이템 onclick시 지도 업데이트 되는 로직 보내줘야한다.
     // router push searchMap?
     // 이 Place_id 주변 카페를 서버로부터 가져와서 findPlace와 zustand에 저장할 필요가 있어보임. 우선 임시로 이 데이터만 뿌려주자.
@@ -25,6 +28,11 @@ const SearchResultSection = () => {
     );
 
     if (findPlace) {
+      const { latitude, longitude } = findPlace;
+      const cafeSearchList = await getSearchList(latitude, longitude);
+
+      setSearchResultList(cafeSearchList);
+
       if (isWriting) {
         setFormData({
           ...usePlanStore.getState().formData,
@@ -34,9 +42,7 @@ const SearchResultSection = () => {
 
         router.push("/plan/2");
       } else {
-        const queryData = encodeURIComponent(JSON.stringify(findPlace));
-        const path = `/search_map?data=${queryData}`;
-
+        const path = `/search_map?latitude=${findPlace.latitude}&longitude=${findPlace.longitude}`;
         router.push(path);
       }
     }

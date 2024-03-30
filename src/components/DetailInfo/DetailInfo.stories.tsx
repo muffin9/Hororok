@@ -9,7 +9,7 @@ const meta: Meta<typeof DetailInfo> = {
 export default meta;
 
 const PrimitiveDetailInfo = () => {
-  return <DetailInfo />;
+  return <DetailInfo cafeId={"1"} />;
 };
 
 export const Default = {
