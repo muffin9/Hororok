@@ -1,11 +1,12 @@
 import KakaoMap from "@/components/KakaoMap";
 import PlanResultSection from "@/components/PlanSection/PlanResultSection";
+import RePlanButton from "@/components/PlanSection/RePlanButton";
 
 export default async function PlanResult() {
   return (
     <main className="relative">
       <KakaoMap>
-        <button>다시 계획하기</button>
+        <RePlanButton />
       </KakaoMap>
       <PlanResultSection />
     </main>
