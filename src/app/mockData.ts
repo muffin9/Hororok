@@ -24,6 +24,7 @@ export const fakeCafeDetailInfo: CafeDetailInfoType = {
   reviewImageUrls: [],
   reviews: [],
   roadAddress: "123 Main St, City, Country",
+  starRating: "5.0",
 };
 
 export const faceCafeDefaultInfo: CafeDefaultInfoType = {

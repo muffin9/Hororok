@@ -1,6 +1,6 @@
 "use client";
 
-import { getSearchListToPlan } from "@/apis/plans";
+import { postSearchListToPlan } from "@/apis/plans";
 import Condition from "@/components/Condition";
 import Button from "@/components/common/Button";
 import Text from "@/components/common/Text";
@@ -53,7 +53,15 @@ const Step4 = () => {
   };
 
   const onClickSubmit = async () => {
-    const data = await getSearchListToPlan(formData);
+    const data = await postSearchListToPlan({
+      startTime: `${formData.startTime.hour}-${formData.startTime.minute}`,
+      endTime: `${formData.endTime.hour}-${formData.endTime.minute}`,
+      latitude: formData.latitude,
+      longitude: formData.longitude,
+      minutes: formData.minutes,
+      date: formData.date,
+      keywords: formData.keywords,
+    });
 
     router.push(
       `/plan/result?latitude=${formData.latitude}&longitude=${formData.longitude}`

@@ -11,6 +11,7 @@ import Link from "next/link";
 import Modal from "../common/Modal";
 import { useRouter, useSearchParams } from "next/navigation";
 import usePlanStore from "@/store/\bplanStore";
+import { useEffect } from "react";
 
 interface PlanSectionProps {
   planId: "1" | "2" | "3" | "4";
@@ -24,7 +25,6 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
   const searchParams = useSearchParams();
 
   const show = searchParams.get("show");
-  setIsWrting(true);
 
   const renderPlanStep = () => {
     switch (planId) {
@@ -38,6 +38,10 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
         return <Step4 />;
     }
   };
+
+  useEffect(() => {
+    setIsWrting(true);
+  }, []);
 
   return (
     // zustand로 planData가 가공 필요.
@@ -64,12 +68,12 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
           cancelButtonText="아니요, 저장 안 할래요"
           okCallbackFunc={() => {
             setIsWrting(false);
-            router.push("/map");
+            router.push("/");
           }}
           cancelCallbackFunc={() => {
             setIsWrting(false);
             resetPlanStore();
-            router.push("/map");
+            router.push("/");
           }}
         />
       )}

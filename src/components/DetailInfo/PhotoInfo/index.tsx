@@ -24,7 +24,7 @@ const PhotoInfo = ({ moreButton, cafePhotoInfo }: PhotoInfoProps) => {
           </Text>
         </div>
       ) : (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1">
           {visiblePhotoData.map((photoUrl: string) => {
             return (
               <div
