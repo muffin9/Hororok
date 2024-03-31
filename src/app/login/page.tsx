@@ -97,7 +97,7 @@ export default function Login() {
             </Text>
           </Button>
         </Link>
-        <Link href="/map">
+        <Link href="/">
           <Button size="full" className="bg-white enabled:active:bg-white">
             <Text size="small" className="text-gray-700">
               로그인하지 않고 둘러보기
