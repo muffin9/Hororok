@@ -28,7 +28,7 @@ const Step3 = () => {
     return selectedIds.includes(timeId);
   };
 
-  const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
+  // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
   const setFormData = usePlanStore((state) => state.setFormData);
 
   const checkSelectDay = (day: number | null) => {
@@ -78,9 +78,9 @@ const Step3 = () => {
     });
   };
 
-  useEffect(() => {
-    setCurrentStep("3");
-  }, []);
+  // useEffect(() => {
+  //   setCurrentStep("3");
+  // }, []);
 
   return (
     <div>

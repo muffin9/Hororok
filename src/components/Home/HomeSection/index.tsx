@@ -5,6 +5,8 @@ import Input from "@/components/common/Input";
 import { useRouter } from "next/navigation";
 import CategoryList from "@/components/common/CategoryList";
 import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
+import { useEffect } from "react";
+import usePlanStore from "@/store/\bplanStore";
 
 interface HomeSectionProps {
   isInput?: boolean;
