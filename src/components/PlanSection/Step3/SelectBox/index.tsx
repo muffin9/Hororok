@@ -1,3 +1,5 @@
+import Icon from "@/components/common/Icon";
+import Text from "@/components/common/Text";
 import * as React from "react";
 
 interface Option {
@@ -32,17 +34,18 @@ const SelectBox: React.FC<SelectBoxProps> = ({
         className="flex items-center gap-1 cursor-pointer"
         onClick={toggleSelectBox}
       >
-        <span>{selectedOption.label}</span>
+        <Text size="small">{selectedOption.label}</Text>
+        {isOpen ? (
+          <Icon type="arrow_up" size="xSmall" alt="arrow_up" />
+        ) : (
+          <Icon type="arrow_under" size="xSmall" alt="arrow_down" />
+        )}
       </div>
       {isOpen && (
         <div className="absolute top-8 flex flex-col text-center cursor-pointer bg-white">
           {options.map((option) => (
-            <div
-              key={option.value}
-              className="select-option"
-              onClick={() => handleOptionSelect(option)}
-            >
-              {option.label}
+            <div key={option.value} onClick={() => handleOptionSelect(option)}>
+              <Text size="small">{option.label}</Text>
             </div>
           ))}
         </div>

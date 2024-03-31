@@ -12,6 +12,7 @@ const iconUrls = {
   arrow_left_white: "/assets/Icon/arrow_left_white.svg",
   arrow_right: "/assets/Icon/arrow_right.svg",
   arrow_under: "/assets/Icon/arrow_under.svg",
+  arrow_up: "/assets/Icon/arrow_up.svg",
   bookmark: "/assets/Icon/bookmark.svg",
   bookmark_white: "/assets/Icon/bookmark_white.svg",
   share: "/assets/Icon/share.svg",
@@ -49,6 +50,7 @@ interface IconProps {
     | "arrow_left_white"
     | "arrow_right"
     | "arrow_under"
+    | "arrow_up"
     | "bookmark"
     | "bookmark_white"
     | "share"
