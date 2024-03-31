@@ -48,6 +48,7 @@ export interface CafeDetailInfoType {
   reviewImageUrls: string[];
   reviews: ReviewType[];
   roadAddress: string;
+  starRating: string;
 }
 
 export interface CafeDefaultInfoType {

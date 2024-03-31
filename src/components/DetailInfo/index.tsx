@@ -61,7 +61,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
               {data.roadAddress}
             </Text>
             <div className="flex items-center gap-[2px]">
-              <Star starSize="xSmall" starScore={5.0} />
+              <Star starSize="xSmall" starScore={Math.ceil(+data.starRating)} />
               <Text size="small" weight="bold">
                 {/* TODO: starCount 데이터 교체 필요. */}
                 {data.reviewCount.toFixed(1)}

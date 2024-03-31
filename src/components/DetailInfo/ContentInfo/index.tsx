@@ -20,6 +20,8 @@ const ContentInfo = ({ cafeDetailInfo }: ContentInfoProps) => {
     { id: "review", name: "리뷰", isClicked: false },
   ]);
 
+  console.log(cafeDetailInfo);
+
   const handleOnMenuClick = (clickedId: string) => {
     const updatedMenuInfo = menuInfo.map((item) => ({
       ...item,
