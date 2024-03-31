@@ -6,11 +6,12 @@ import Calendar from "./Calendar";
 import TimeSelection from "./TimeSelection";
 import usePlanStore from "@/store/\bplanStore";
 import useDate from "@/Hooks/useDate";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { timeDatas } from "@/app/constants";
 
 const Step3 = () => {
-  const { currentYear, currentMonth, currentDay } = useDate();
+  const currentMonth = new Date().getMonth() + 1;
+  const { currentYear, currentDay } = useDate(currentMonth);
   const [selectDay, setSelectDay] = useState<number>(currentDay);
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
@@ -64,16 +65,16 @@ const Step3 = () => {
       ...usePlanStore.getState().formData,
       date: `${currentYear}-${currentMonth}-${currentDay}`,
       startTime: getStartEndTime().startTime || {
-        hour: 0,
-        minute: 0,
-        second: 0,
-        nano: 0,
+        hour: "00",
+        minute: "00",
+        second: "00",
+        nano: "00",
       },
       endTime: getStartEndTime().endTime || {
-        hour: 0,
-        minute: 0,
-        second: 0,
-        nano: 0,
+        hour: "00",
+        minute: "00",
+        second: "00",
+        nano: "00",
       },
     });
   };

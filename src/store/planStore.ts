@@ -2,10 +2,10 @@ import create from "zustand";
 import { persist } from "zustand/middleware";
 
 interface Time {
-  hour: number;
-  minute: number;
-  second: number;
-  nano: number;
+  hour: string;
+  minute: string;
+  second: string;
+  nano: string;
 }
 
 export interface FormDataType {
@@ -34,16 +34,16 @@ const initialFormData: FormDataType = {
   minutes: 0,
   date: "",
   startTime: {
-    hour: 0,
-    minute: 0,
-    second: 0,
-    nano: 0,
+    hour: "00",
+    minute: "00",
+    second: "00",
+    nano: "00",
   },
   endTime: {
-    hour: 0,
-    minute: 0,
-    second: 0,
-    nano: 0,
+    hour: "00",
+    minute: "00",
+    second: "00",
+    nano: "00",
   },
   keywords: [],
 };
