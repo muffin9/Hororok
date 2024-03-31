@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 const Step4 = () => {
   const router = useRouter();
   const formData = usePlanStore((state) => state.formData);
-  const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
+  // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
   const setFormData = usePlanStore((state) => state.setFormData);
 
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
@@ -68,9 +68,9 @@ const Step4 = () => {
     );
   };
 
-  useEffect(() => {
-    setCurrentStep("4");
-  }, []);
+  // useEffect(() => {
+  //   setCurrentStep("4");
+  // }, []);
 
   return (
     <div>

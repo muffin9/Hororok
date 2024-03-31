@@ -3,22 +3,23 @@ import Text from "@/components/common/Text";
 import usePlanStore from "@/store/\bplanStore";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import Modal from "../Modal";
+// import Modal from "../Modal";
 
 const GNB = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const show = searchParams.get("show");
+  // const searchParams = useSearchParams();
+  // const show = searchParams.get("show");
 
-  const currentStep = usePlanStore((state) => state.currentStep);
-  const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
+  // const currentStep = usePlanStore((state) => state.currentStep);
+  // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
 
   const checkCurrentStep = () => {
-    if (currentStep !== "1") {
-      router.push("?show=true");
-    } else {
-      router.push("/plan/1");
-    }
+    // if (currentStep !== "1") {
+    //   router.push("?show=true");
+    // } else {
+    //   router.push("/plan/1");
+    // }
+    router.push("/plan/1");
   };
 
   return (
@@ -57,10 +58,10 @@ const GNB = () => {
           </Text>
         </div>
       </footer>
-      {show && (
+      {/* {show && (
         <Modal
-          title={`계획했던 여정이 있어요.\n이어서 계획할까요?`}
-          okButtonText="네,이어서 계획할래요"
+          title={`계획했던 여정이 있어요.\n나가시면 다시 처음부터 해야해요.`}
+          okButtonText="나가기"
           cancelButtonText="아니오, 처음부터 할래요"
           okCallbackFunc={() => {
             router.push(`/plan/${currentStep}`);
@@ -70,7 +71,7 @@ const GNB = () => {
             setCurrentStep("1");
           }}
         />
-      )}
+      )} */}
     </>
   );
 };

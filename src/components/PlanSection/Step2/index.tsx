@@ -7,7 +7,7 @@ import KakaoPlaceStaticMap from "@/components/KakaoPlaceStaticMap";
 
 const Step2 = () => {
   const [selectMinute, setSelectMinute] = useState(0);
-  const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
+  // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
   const setFormData = usePlanStore((state) => state.setFormData);
 
   const saveMinuteData = () => {
@@ -17,9 +17,9 @@ const Step2 = () => {
     });
   };
 
-  useEffect(() => {
-    setCurrentStep("2");
-  }, []);
+  // useEffect(() => {
+  //   setCurrentStep("2");
+  // }, []);
 
   return (
     <div>

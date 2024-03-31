@@ -63,12 +63,12 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
       </section>
       {show && (
         <Modal
-          title={`홈 화면으로 돌아갑니다.\n계획했던 여정을 저장할까요?`}
-          okButtonText="네, 저장할게요"
-          cancelButtonText="아니요, 저장 안 할래요"
+          title={`홈 화면으로 돌아갑니다.\n나가시면 다시 처음부터 해야해요.`}
+          okButtonText="계속하기"
+          cancelButtonText="나가기"
           okCallbackFunc={() => {
             setIsWrting(false);
-            router.push("/");
+            router.back();
           }}
           cancelCallbackFunc={() => {
             setIsWrting(false);
