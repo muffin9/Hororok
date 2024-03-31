@@ -4,9 +4,8 @@ import SubmitButton from "./SubmitButton";
 import Button from "@/components/common/Button";
 import Condition from "@/components/Condition";
 import { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import useOutsideClick from "@/Hooks/useOutsideClick";
-import useGeolocation from "@/Hooks/useGeolocation";
 import { getSearchListByKeywords } from "@/apis/search";
 import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 
@@ -18,7 +17,9 @@ interface FilterSectionProps {
 const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
   const router = useRouter();
   const filterRef = useRef<HTMLDivElement>(null);
-  const location = useGeolocation();
+
+  const params = useSearchParams();
+
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const { setSearchResultList } = useSearcResultListStorehPlace();
 
@@ -58,17 +59,22 @@ const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
   };
 
   const onSubmit = async () => {
-    const cafeSearchList = await getSearchListByKeywords(
-      location.latitude,
-      location.longitude,
-      selectedItems
-    );
+    let latitude = params.get("latitude");
+    let longitude = params.get("longitude");
 
-    setSearchResultList(cafeSearchList);
+    if (latitude && longitude) {
+      const cafeSearchList = await getSearchListByKeywords(
+        +latitude,
+        +longitude,
+        selectedItems
+      );
 
-    const path = `/search_map?latitude=${location.latitude}&longitude=${location.longitude}`;
-    router.push(path);
-    onCloseButton();
+      setSearchResultList(cafeSearchList);
+
+      const path = `/search_map?latitude=${latitude}&longitude=${longitude}`;
+      router.push(path);
+      onCloseButton();
+    }
   };
 
   useOutsideClick(filterRef, onCloseButton);

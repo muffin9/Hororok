@@ -1,15 +1,14 @@
-const useDate = () => {
+const useDate = (selectMonth: number) => {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth() + 1;
   const currentDay = currentDate.getDate();
 
   const calculatedCalendarData = (): (number | null)[][] | undefined => {
     const calendarData: (number | null)[][] = [];
-    const firstDayOfMonth = new Date(currentYear, currentMonth - 1, 1); // 월의 첫째날로 설정
+    const firstDayOfMonth = new Date(currentYear, selectMonth - 1, 1); // 월의 첫째날로 설정
     let startingDay = firstDayOfMonth.getDay(); // 첫째날의 요일
 
-    const lastDayOfMonth = new Date(currentYear, currentMonth, 0); // 월의 마지막 날로 설정
+    const lastDayOfMonth = new Date(currentYear, selectMonth, 0); // 월의 마지막 날로 설정
     const numDays = lastDayOfMonth.getDate(); // 월의 일 수
 
     let date = 1;
@@ -35,7 +34,7 @@ const useDate = () => {
     }
   };
 
-  return { currentYear, currentMonth, currentDay, calculatedCalendarData };
+  return { currentYear, currentDay, calculatedCalendarData };
 };
 
 export default useDate;
