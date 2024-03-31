@@ -6,7 +6,7 @@ import Button from "@/components/common/Button";
 import Text from "@/components/common/Text";
 import usePlanStore from "@/store/\bplanStore";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Step4 = () => {
   const router = useRouter();
@@ -54,8 +54,8 @@ const Step4 = () => {
 
   const onClickSubmit = async () => {
     const data = await postSearchListToPlan({
-      startTime: `${formData.startTime.hour}-${formData.startTime.minute}`,
-      endTime: `${formData.endTime.hour}-${formData.endTime.minute}`,
+      startTime: `${formData.startTime.hour}:${formData.startTime.minute}`,
+      endTime: `${formData.endTime.hour}:${formData.endTime.minute}`,
       latitude: formData.latitude,
       longitude: formData.longitude,
       minutes: formData.minutes,

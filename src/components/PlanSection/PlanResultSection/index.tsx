@@ -6,6 +6,7 @@ import { CafeInfoType } from "@/interfaces/Cafe";
 import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 import { useRouter } from "next/navigation";
 import PlanResultHeader from "../PlanResultHeader";
+import Button from "@/components/common/Button";
 
 const PlanResultSection = () => {
   const router = useRouter();
@@ -54,6 +55,9 @@ const PlanResultSection = () => {
             </div>
           );
         })}
+      <Button size="full" onClick={() => router.push("/")}>
+        홈으로 돌아가기
+      </Button>
     </section>
   );
 };
