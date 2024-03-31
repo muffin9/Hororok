@@ -19,6 +19,7 @@ const KakaoPlaceStaticMap = ({
   children,
   height,
 }: KakaoPlaceStaticMapProps) => {
+  const location = useGeolocation();
   const formData = usePlanStore((state) => state.formData);
   const kakaoMapRef = useRef<HTMLElement | null>(null);
 
@@ -39,16 +40,16 @@ const KakaoPlaceStaticMap = ({
 
         const options = {
           center: new window.kakao.maps.LatLng(
-            formData.latitude,
-            formData.longitude
+            formData.latitude || location.latitude,
+            formData.longitude || location.longitude
           ),
           level: 5,
         };
         kakaoMapRef.current = new window.kakao.maps.Map(container, options);
 
         const myMarkerPosition = new window.kakao.maps.LatLng(
-          formData.latitude,
-          formData.longitude
+          formData.latitude || location.latitude,
+          formData.longitude || location.longitude
         );
 
         const marker = new window.kakao.maps.Marker({
