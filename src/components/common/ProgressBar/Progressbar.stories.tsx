@@ -9,7 +9,7 @@ const meta: Meta<typeof ProgressBar> = {
 export default meta;
 
 const PrimitiveProgressBar = () => {
-  return <ProgressBar currentStep={"1"} bgColor={"primary-300"} />;
+  return <ProgressBar width={"w-full"} bgColor={"primary-300"} />;
 };
 
 export const Default = {
