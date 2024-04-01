@@ -35,6 +35,7 @@ const iconUrls = {
   apple: "/assets/Icon/apple.svg",
   google: "/assets/Icon/google.svg",
   naver: "/assets/Icon/naver.svg",
+  re_plan: "/assets/Icon/re-plan.svg",
 };
 
 interface IconProps {
@@ -72,7 +73,8 @@ interface IconProps {
     | "kakao"
     | "naver"
     | "google"
-    | "apple";
+    | "apple"
+    | "re_plan";
 
   size?: "xSmall" | "small" | "medium" | "large" | "xLarge";
   alt: string;
