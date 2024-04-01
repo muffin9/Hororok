@@ -1,20 +1,19 @@
 interface ProgressBarProps {
-  currentStep: "1" | "2" | "3" | "4";
   bgColor: string;
+  width: string;
+  height?: string;
 }
 
-const WidthSize = {
-  "1": "w-1/3",
-  "2": "w-1/2",
-  "3": "w-3/4",
-  "4": "w-full",
-};
-
-const ProgressBar = ({ currentStep, bgColor }: ProgressBarProps) => {
+const ProgressBar = ({
+  bgColor,
+  width,
+  height = "h-[6px]",
+}: ProgressBarProps) => {
   return (
-    <div className="max-w-[390px] w-full flex justify-start mt-4 bg-bluegray rounded-lg">
+    <div className="flex justify-start mt-4 bg-bluegray rounded-lg">
       <div
-        className={`${WidthSize[currentStep]} h-[6px] ${bgColor} rounded-lg`}
+        style={{ width: width }}
+        className={`${height} ${bgColor} rounded-lg`}
       />
     </div>
   );

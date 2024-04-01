@@ -53,6 +53,7 @@ const Step4 = () => {
   };
 
   const onClickSubmit = async () => {
+    // TODO: 방문시간 visitTime으로 변경 예정
     const data = await postSearchListToPlan({
       startTime: `${formData.startTime.hour}:${formData.startTime.minute}`,
       endTime: `${formData.endTime.hour}:${formData.endTime.minute}`,

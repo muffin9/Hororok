@@ -6,14 +6,14 @@ import { useEffect, useState } from "react";
 import KakaoPlaceStaticMap from "@/components/KakaoPlaceStaticMap";
 
 const Step2 = () => {
-  const [selectMinute, setSelectMinute] = useState(0);
+  const [selectId, setSelectId] = useState(0);
   // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
   const setFormData = usePlanStore((state) => state.setFormData);
 
   const saveMinuteData = () => {
     setFormData({
       ...usePlanStore.getState().formData,
-      minutes: selectMinute,
+      minutes: (selectId - 1) * 5,
     });
   };
 
@@ -31,10 +31,7 @@ const Step2 = () => {
         </Text>
       </div>
       <div className="mt-[53px]">
-        <TimeSelector
-          selectMinute={selectMinute}
-          setSelectMinute={setSelectMinute}
-        />
+        <TimeSelector selectId={selectId} setSelectId={setSelectId} />
       </div>
       <NextButtonSection nextStep={"3"} onClickContinueFunc={saveMinuteData} />
     </div>

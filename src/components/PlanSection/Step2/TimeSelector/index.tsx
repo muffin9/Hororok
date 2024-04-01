@@ -1,63 +1,54 @@
 "use client";
 
+import ProgressBar from "@/components/common/ProgressBar";
 import Text from "@/components/common/Text";
 import { Dispatch, SetStateAction } from "react";
 
 interface TimeButtonProps {
-  selectMinute: number;
-  timerId: number;
+  id: number;
+  selectId: number;
   isFirst?: boolean;
   isLast?: boolean;
-  onClickTime: (timerId: number) => void;
+  onClickTime: (selectId: number) => void;
 }
 
 interface TimeSelectorProps {
-  selectMinute: number;
-  setSelectMinute: Dispatch<SetStateAction<number>>;
+  selectId: number;
+  setSelectId: Dispatch<SetStateAction<number>>;
 }
 
-const TimeSelector = ({ selectMinute, setSelectMinute }: TimeSelectorProps) => {
+const TimeSelector = ({ selectId, setSelectId }: TimeSelectorProps) => {
   const onClickTime = (id: number) => {
-    setSelectMinute(id);
+    setSelectId(id);
   };
+
+  const calculatedWidth =
+    selectId === 1 ? (selectId / 6) * 100 + 4 : (selectId / 6) * 100;
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="w-full flex justify-between items-center gap-4">
+      <div className="w-full relative flex justify-between items-center gap-4 overflow-hidden">
+        <div className="w-[calc(100%)] absolute left-[-4px] bottom-[13px]">
+          <ProgressBar
+            width={`${calculatedWidth}%`}
+            bgColor={"bg-primary-300"}
+            height="h-[2.5px]"
+          />
+        </div>
         <TimeButton
           isFirst
-          selectMinute={selectMinute}
-          timerId={0}
+          id={0}
+          selectId={selectId}
           onClickTime={onClickTime}
         />
+        <TimeButton id={1} selectId={selectId} onClickTime={onClickTime} />
+        <TimeButton id={2} selectId={selectId} onClickTime={onClickTime} />
+        <TimeButton id={3} selectId={selectId} onClickTime={onClickTime} />
+        <TimeButton id={4} selectId={selectId} onClickTime={onClickTime} />
+        <TimeButton id={5} selectId={selectId} onClickTime={onClickTime} />
         <TimeButton
-          selectMinute={selectMinute}
-          timerId={5}
-          onClickTime={onClickTime}
-        />
-        <TimeButton
-          selectMinute={selectMinute}
-          timerId={10}
-          onClickTime={onClickTime}
-        />
-        <TimeButton
-          selectMinute={selectMinute}
-          timerId={15}
-          onClickTime={onClickTime}
-        />
-        <TimeButton
-          selectMinute={selectMinute}
-          timerId={20}
-          onClickTime={onClickTime}
-        />
-        <TimeButton
-          selectMinute={selectMinute}
-          timerId={25}
-          onClickTime={onClickTime}
-        />
-        <TimeButton
-          selectMinute={selectMinute}
-          timerId={30}
+          id={6}
+          selectId={selectId}
           onClickTime={onClickTime}
           isLast
         />
@@ -81,22 +72,21 @@ const TimeSelector = ({ selectMinute, setSelectMinute }: TimeSelectorProps) => {
 };
 
 const TimeButton: React.FC<TimeButtonProps> = ({
-  selectMinute,
-  timerId,
+  id,
+  selectId,
   isFirst,
   isLast,
   onClickTime,
 }) => {
   const buttonSize = isFirst || isLast ? "w-7 h-7" : "w-[18px] h-[18px]";
-  const buttonColor =
-    timerId <= selectMinute ? "bg-primary-300" : "bg-bluegray";
+
+  const buttonColor = id <= selectId ? "bg-primary-300" : "bg-bluegray";
 
   return (
     <button
-      data-id={timerId}
       type="button"
-      className={`${buttonColor} rounded-full ${buttonSize}`}
-      onClick={() => onClickTime(timerId)}
+      className={`${buttonColor} rounded-full ${buttonSize} z-[100]`}
+      onClick={() => onClickTime(id)}
     />
   );
 };
