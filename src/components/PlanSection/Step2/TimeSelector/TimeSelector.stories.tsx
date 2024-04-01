@@ -11,8 +11,8 @@ export default meta;
 const PrimitiveTimeSelector = () => {
   return (
     <TimeSelector
-      selectMinute={30}
-      setSelectMinute={() => console.log("select minute")}
+      selectId={30}
+      setSelectId={() => console.log("select minute")}
     />
   );
 };
