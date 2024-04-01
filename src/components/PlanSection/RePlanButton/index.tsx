@@ -19,7 +19,7 @@ const RePlanButton = () => {
       className="absolute bottom-[14px] left-1/2 transform -translate-x-1/2 h-[38px] px-2 flex items-center gap-[4px] m-auto bg-white rounded-lg z-[1000]"
       onClick={onClickRePlan}
     >
-      <Icon size="small" type="arrow_left" alt="arrow_left" />
+      <Icon size="small" type="re_plan" alt="re_plan" />
       <Text size="small" className="text-primary-300">
         다시 계획하기
       </Text>

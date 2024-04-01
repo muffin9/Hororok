@@ -3,6 +3,7 @@ import Text from "@/components/common/Text";
 import usePlanStore from "@/store/\bplanStore";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 // import Modal from "../Modal";
 
 const GNB = () => {
@@ -12,6 +13,7 @@ const GNB = () => {
 
   // const currentStep = usePlanStore((state) => state.currentStep);
   // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
+  const setIsWrting = usePlanStore((state) => state.setIsWrting);
 
   const checkCurrentStep = () => {
     // if (currentStep !== "1") {
@@ -21,6 +23,10 @@ const GNB = () => {
     // }
     router.push("/plan/1");
   };
+
+  useEffect(() => {
+    setIsWrting(false);
+  }, []);
 
   return (
     <>

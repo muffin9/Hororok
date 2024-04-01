@@ -13,7 +13,7 @@ const PlanResultSection = () => {
   const { searchResultList } = useSearcResultListStorehPlace();
 
   return (
-    <section className="w-[390px] h-1/2 z-[1000] px-4 pb-12 py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl boxShadow-xl overflow-x-hidden overflow-y-scroll">
+    <section className="w-[390px] h-1/2 flex flex-col justify-between z-[1000] px-4 pb-12 py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl boxShadow-xl overflow-x-hidden overflow-y-scroll">
       <PlanResultHeader />
       {searchResultList &&
         searchResultList.map((data: CafeInfoType) => {
@@ -55,7 +55,7 @@ const PlanResultSection = () => {
             </div>
           );
         })}
-      <Button size="full" onClick={() => router.push("/")}>
+      <Button size="full" onClick={() => router.push("/")} className="">
         홈으로 돌아가기
       </Button>
     </section>

@@ -57,7 +57,10 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
             </button>
           </div>
 
-          <ProgressBar currentStep={planId} bgColor={"bg-primary-300"} />
+          <ProgressBar
+            width={`${(+planId / 4) * 100}%`}
+            bgColor={"bg-primary-300"}
+          />
         </header>
         <div className="h-full mt-10">{renderPlanStep()}</div>
       </section>
