@@ -1,6 +1,6 @@
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
-import usePlanStore from "@/store/\bplanStore";
+import usePlanStore from "@/store/usePlanStore";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
@@ -13,7 +13,7 @@ const GNB = () => {
 
   // const currentStep = usePlanStore((state) => state.currentStep);
   // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
-  const setIsWrting = usePlanStore((state) => state.setIsWrting);
+  const { setIsWrting } = usePlanStore();
 
   const checkCurrentStep = () => {
     // if (currentStep !== "1") {

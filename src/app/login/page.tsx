@@ -4,7 +4,7 @@ import Button from "@/components/common/Button";
 import Icon from "@/components/common/Icon";
 import Modal from "@/components/common/Modal";
 import Text from "@/components/common/Text";
-import usePlanStore from "@/store/\bplanStore";
+import usePlanStore from "@/store/usePlanStore";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -14,7 +14,7 @@ export default function Login() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const show = searchParams.get("show");
-  const setIsWrting = usePlanStore((state) => state.setIsWrting);
+  const { setIsWrting } = usePlanStore();
 
   const kakaoLogin = () => {
     const kakao = (window as any).Kakao;

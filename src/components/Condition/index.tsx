@@ -5,8 +5,8 @@ import { CategoryIdType } from "../Home/HomeSection";
 
 interface ConditionProps {
   categoryId?: CategoryIdType;
-  handleItemClick: (clickedCategory: string) => void;
-  checkSelected: (clickedCategory: string) => boolean;
+  handleItemClick: (category: string, name: string) => void;
+  checkSelected: (category: string, name: string) => boolean;
 }
 
 const Condition = ({
@@ -48,8 +48,10 @@ const Condition = ({
                   <Tag
                     key={name}
                     tagName={name}
-                    isSelected={checkSelected(name)}
-                    handleItemClick={() => handleItemClick(name)}
+                    isSelected={checkSelected(condition.category, name)}
+                    handleItemClick={() =>
+                      handleItemClick(condition.category, name)
+                    }
                   />
                 );
               })}

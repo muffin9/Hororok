@@ -9,7 +9,7 @@ export const cafePinImage = "/assets/Images/pin.png";
 export const reboundButtonImage = "/assets/Images/location_rebound.png";
 export const filterDatas = [
   {
-    category: "목적",
+    category: "purpose",
     title: "방문 목적을 알려주세요",
     subTitle: "필수 선택",
     data: [
@@ -24,7 +24,7 @@ export const filterDatas = [
     ],
   },
   {
-    category: "시설",
+    category: "facility",
     title: "어떤 시설을 찾으세요?",
     data: [
       "베리어프리",
@@ -37,7 +37,7 @@ export const filterDatas = [
     ],
   },
   {
-    category: "분위기",
+    category: "atmosphere",
     title: "어떤 분위기의 카페를 찾으세요?",
     data: [
       "분위기 좋아요",
@@ -50,7 +50,7 @@ export const filterDatas = [
     ],
   },
   {
-    category: "메뉴",
+    category: "menu",
     title: "어떤 메뉴를 찾으세요?",
     data: [
       "아메리카노",
@@ -64,7 +64,7 @@ export const filterDatas = [
     ],
   },
   {
-    category: "테마",
+    category: "theme",
     title: "어떤 테마를 찾으세요?",
     data: ["새로오픈", "감성인테리어", "사진맛집", "뷰맛집", "넓은", "복층"],
   },
@@ -254,6 +254,11 @@ export const planCafeHeader = {
   },
   recommendCafes: {
     title: "아쉽지만, 찾는 카페가 없어요.\n이런 카페는 어때요?",
-    subTitle: "서울에서 별점이 높은 카페",
+    subTitle: "에서 별점이 높은 카페",
+  },
+  matchSimilarCafes: {
+    title: "비슷한 카페",
+    subTitle:
+      "방문 지역, 날짜, 시간은 동일해요.\n조금 더 걷거나 조건이 다를 수 있어요.",
   },
 };
