@@ -1,14 +1,14 @@
 import NextButtonSection from "../NextButtonSection";
 import Text from "@/components/common/Text";
 import TimeSelector from "./TimeSelector";
-import usePlanStore from "@/store/\bplanStore";
+import usePlanStore from "@/store/usePlanStore";
 import { useEffect, useState } from "react";
 import KakaoPlaceStaticMap from "@/components/KakaoPlaceStaticMap";
 
 const Step2 = () => {
   const [selectId, setSelectId] = useState(0);
   // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
-  const setFormData = usePlanStore((state) => state.setFormData);
+  const { setFormData } = usePlanStore();
 
   const saveMinuteData = () => {
     setFormData({

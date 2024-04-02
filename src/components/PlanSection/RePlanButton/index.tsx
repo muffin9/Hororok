@@ -2,12 +2,12 @@
 
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
-import usePlanStore from "@/store/\bplanStore";
+import usePlanStore from "@/store/usePlanStore";
 import { useRouter } from "next/navigation";
 
 const RePlanButton = () => {
   const router = useRouter();
-  const resetPlanStore = usePlanStore((state) => state.resetPlanStore);
+  const { resetPlanStore } = usePlanStore();
 
   const onClickRePlan = async () => {
     resetPlanStore();

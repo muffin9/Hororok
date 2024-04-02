@@ -5,14 +5,17 @@ import Input from "@/components/common/Input";
 import { useRouter } from "next/navigation";
 import CategoryList from "@/components/common/CategoryList";
 import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
-import { useEffect } from "react";
-import usePlanStore from "@/store/\bplanStore";
 
 interface HomeSectionProps {
   isInput?: boolean;
 }
 
-export type CategoryIdType = "목적" | "시설" | "분위기" | "메뉴" | "테마";
+export type CategoryIdType =
+  | "purpose"
+  | "facility"
+  | "atmosphere"
+  | "menu"
+  | "theme";
 
 const HomeSection = ({ isInput }: HomeSectionProps) => {
   const router = useRouter();

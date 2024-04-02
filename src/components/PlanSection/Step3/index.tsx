@@ -4,7 +4,7 @@ import Text from "@/components/common/Text";
 import NextButtonSection from "../NextButtonSection";
 import Calendar from "./Calendar";
 import TimeSelection from "./TimeSelection";
-import usePlanStore from "@/store/\bplanStore";
+import usePlanStore from "@/store/usePlanStore";
 import useDate from "@/Hooks/useDate";
 import { useState } from "react";
 import { timeDatas } from "@/app/constants";
@@ -30,7 +30,7 @@ const Step3 = () => {
   };
 
   // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
-  const setFormData = usePlanStore((state) => state.setFormData);
+  const { formData, setFormData } = usePlanStore();
 
   const checkSelectDay = (day: number | null) => {
     return selectDay === day;
@@ -62,8 +62,8 @@ const Step3 = () => {
 
   const saveDayAndTimeData = () => {
     setFormData({
-      ...usePlanStore.getState().formData,
-      date: `${currentYear}-${currentMonth}-${currentDay}`,
+      ...formData,
+      date: `${currentYear}-${currentMonth < 10 ? `0${currentMonth}` : currentMonth}-${currentDay < 10 ? `0${currentDay}` : currentDay}`,
       startTime: getStartEndTime().startTime || {
         hour: "00",
         minute: "00",

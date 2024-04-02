@@ -1,7 +1,7 @@
 "use client";
 
 import useGeolocation from "@/Hooks/useGeolocation";
-import usePlanStore from "@/store/\bplanStore";
+import usePlanStore from "@/store/usePlanStore";
 import { useEffect, useRef } from "react";
 
 declare global {
@@ -20,7 +20,7 @@ const KakaoPlaceStaticMap = ({
   height,
 }: KakaoPlaceStaticMapProps) => {
   const location = useGeolocation();
-  const formData = usePlanStore((state) => state.formData);
+  const { formData } = usePlanStore();
   const kakaoMapRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {

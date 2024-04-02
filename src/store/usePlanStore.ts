@@ -15,7 +15,6 @@ export interface FormDataType {
   date: string;
   startTime: Time;
   endTime: Time;
-  keywords: string[];
 }
 
 interface planStoreState {
@@ -45,7 +44,6 @@ const initialFormData: FormDataType = {
     second: "00",
     nano: "00",
   },
-  keywords: [],
 };
 
 const persistedPlanStore = persist<planStoreState>(
