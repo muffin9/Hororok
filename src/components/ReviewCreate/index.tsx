@@ -5,38 +5,19 @@ import Icon from "@/components/common/Icon";
 import Star from "@/components/common/Star";
 import Text from "@/components/common/Text";
 import Condition from "@/components/Condition";
-import { useState } from "react";
 import Button from "@/components/common/Button";
 import TextArea from "@/components/common/TextArea";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Modal from "../common/Modal";
-
-type SelectedItemsState = {
-  [filterId: string]: string | undefined;
-};
+import useKeyword from "@/Hooks/Keyword/useKeyword";
 
 const ReviewCreate = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const show = searchParams.get("show");
 
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
-  const handleItemClick = (category: string) => {
-    if (selectedItems.length === 5 && !selectedItems.includes(category)) {
-      return;
-    }
-
-    if (selectedItems.includes(category)) {
-      setSelectedItems(selectedItems.filter((item) => item !== category));
-    } else {
-      setSelectedItems([...selectedItems, category]);
-    }
-  };
-
-  const checkSelected = (clickedCategory: string) => {
-    return selectedItems.includes(clickedCategory);
-  };
+  const { handleItemClick, checkSelected } = useKeyword();
 
   const onReviewSubmit = () => {
     alert("서비스 준비중입니다..");

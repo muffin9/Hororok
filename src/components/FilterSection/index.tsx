@@ -3,16 +3,18 @@ import Icon from "@/components/common/Icon";
 import SubmitButton from "./SubmitButton";
 import Button from "@/components/common/Button";
 import Condition from "@/components/Condition";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import useOutsideClick from "@/Hooks/useOutsideClick";
 import { getSearchListByKeywords } from "@/apis/search";
 import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 import useGeolocation from "@/Hooks/useGeolocation";
+import useKeyword from "@/Hooks/Keyword/useKeyword";
+import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
 
 interface FilterSectionProps {
   onCloseButton: () => void;
-  categoryId: "목적" | "시설" | "분위기" | "메뉴" | "테마";
+  categoryId: "purpose" | "facility" | "atmosphere" | "menu" | "theme";
 }
 
 const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
@@ -22,43 +24,15 @@ const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
   const params = useSearchParams();
   const location = useGeolocation();
 
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const { categoryKeywords } = useCategoryKeywordStore();
   const { setSearchResultList } = useSearcResultListStorehPlace();
 
-  const handleItemClick = (category: string) => {
-    if (selectedItems.length === 5 && !selectedItems.includes(category)) {
-      return;
-    }
-
-    if (selectedItems.includes(category)) {
-      setSelectedItems(selectedItems.filter((item) => item !== category));
-    } else {
-      setSelectedItems([...selectedItems, category]);
-    }
-  };
-
-  const checkSelected = (clickedCategory: string) => {
-    return selectedItems.includes(clickedCategory);
-  };
-
-  const onClickRefresh = () => {
-    setSelectedItems([]);
-  };
-
-  const checkDisabledSubmit = () => {
-    const targetValues = [
-      "개인작업/노트북",
-      "데이트",
-      "단체회식",
-      "애견동반",
-      "가족모임",
-      "비즈니스미팅",
-      "기념일",
-      "친목/나들이",
-    ];
-
-    return !selectedItems.some((item) => targetValues.includes(item));
-  };
+  const {
+    handleItemClick,
+    checkSelected,
+    onClickRefresh,
+    checkDisabledSubmit,
+  } = useKeyword();
 
   const onSubmit = async () => {
     let latitude = params.get("latitude") || location.latitude;
@@ -67,7 +41,7 @@ const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
     const cafeSearchList = await getSearchListByKeywords(
       +latitude,
       +longitude,
-      selectedItems
+      categoryKeywords
     );
 
     setSearchResultList(cafeSearchList);

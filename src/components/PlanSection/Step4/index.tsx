@@ -1,69 +1,40 @@
 "use client";
 
+import useKeyword from "@/Hooks/Keyword/useKeyword";
+import useHandleKeySearchInput from "@/Hooks/useHandleKeySearchInput";
 import { postSearchListToPlan } from "@/apis/plans";
 import Condition from "@/components/Condition";
 import Button from "@/components/common/Button";
 import Text from "@/components/common/Text";
-import usePlanStore from "@/store/\bplanStore";
+import usePlanStore from "@/store/usePlanStore";
+import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
+import usePlanMatchStore from "@/store/usePlanMatchStore";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 const Step4 = () => {
   const router = useRouter();
-  const formData = usePlanStore((state) => state.formData);
+  const { searchInputValue } = useHandleKeySearchInput();
+  const { formData } = usePlanStore();
+  const { categoryKeywords, resetKeywords } = useCategoryKeywordStore();
   // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
-  const setFormData = usePlanStore((state) => state.setFormData);
 
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
-
-  const handleItemClick = (category: string) => {
-    if (selectedItems.length === 5 && !selectedItems.includes(category)) {
-      return;
-    }
-
-    if (selectedItems.includes(category)) {
-      setSelectedItems(selectedItems.filter((item) => item !== category));
-    } else {
-      setSelectedItems([...selectedItems, category]);
-    }
-
-    setFormData({
-      ...formData,
-      keywords: selectedItems,
-    });
-  };
-
-  const checkSelected = (clickedCategory: string) => {
-    return selectedItems.includes(clickedCategory);
-  };
-
-  const checkDisabledSubmit = () => {
-    const targetValues = [
-      "개인작업/노트북",
-      "데이트",
-      "단체회식",
-      "애견동반",
-      "가족모임",
-      "비즈니스미팅",
-      "기념일",
-      "친목/나들이",
-    ];
-
-    return !selectedItems.some((item) => targetValues.includes(item));
-  };
+  const { handleItemClick, checkSelected, checkDisabledSubmit } = useKeyword();
+  const { setMatchPlan } = usePlanMatchStore();
 
   const onClickSubmit = async () => {
-    // TODO: 방문시간 visitTime으로 변경 예정
-    const data = await postSearchListToPlan({
+    const planResultInfo = await postSearchListToPlan({
       startTime: `${formData.startTime.hour}:${formData.startTime.minute}`,
       endTime: `${formData.endTime.hour}:${formData.endTime.minute}`,
       latitude: formData.latitude,
       longitude: formData.longitude,
       minutes: formData.minutes,
       date: formData.date,
-      keywords: formData.keywords,
+      locationName: searchInputValue,
+      categoryKeywords: categoryKeywords,
     });
 
+    setMatchPlan(planResultInfo);
+    resetKeywords();
     router.push(
       `/plan/result?latitude=${formData.latitude}&longitude=${formData.longitude}`
     );

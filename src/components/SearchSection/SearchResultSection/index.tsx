@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import SearchInput from "../SearchInput";
 
 import useHandleKeySearchInput from "@/Hooks/useHandleKeySearchInput";
-import usePlanStore from "@/store/\bplanStore";
+import usePlanStore from "@/store/usePlanStore";
 import { getSearchList } from "@/apis/search";
 import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 
@@ -14,8 +14,8 @@ const SearchResultSection = () => {
   const { resultSearchInfo } = useSearchPlace();
   const router = useRouter();
   const { handleKeyUpSearchInput } = useHandleKeySearchInput();
-  const isWriting = usePlanStore((state) => state.isWriting);
-  const setFormData = usePlanStore((state) => state.setFormData);
+  const { formData, isWriting, setFormData } = usePlanStore();
+
   const { setSearchResultList } = useSearcResultListStorehPlace();
 
   const onClickPlace = async (place_id: number) => {
@@ -35,7 +35,7 @@ const SearchResultSection = () => {
 
       if (isWriting) {
         setFormData({
-          ...usePlanStore.getState().formData,
+          ...formData,
           latitude: findPlace.latitude,
           longitude: findPlace.longitude,
         });

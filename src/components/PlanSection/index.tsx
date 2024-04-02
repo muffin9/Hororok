@@ -10,7 +10,7 @@ import Step4 from "./Step4";
 import Link from "next/link";
 import Modal from "../common/Modal";
 import { useRouter, useSearchParams } from "next/navigation";
-import usePlanStore from "@/store/\bplanStore";
+import usePlanStore from "@/store/usePlanStore";
 import { useEffect } from "react";
 
 interface PlanSectionProps {
@@ -18,8 +18,7 @@ interface PlanSectionProps {
 }
 
 const PlanSection = ({ planId }: PlanSectionProps) => {
-  const setIsWrting = usePlanStore((state) => state.setIsWrting);
-  const resetPlanStore = usePlanStore((state) => state.resetPlanStore);
+  const { setIsWrting, resetPlanStore } = usePlanStore();
 
   const router = useRouter();
   const searchParams = useSearchParams();

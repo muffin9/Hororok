@@ -1,11 +1,11 @@
 import { apiSearchUrl } from "@/app/constants";
+import { FormPostDataType } from "@/interfaces/Plan";
 
 import axios from "axios";
 
-export const postSearchListToPlan = async (formData: any) => {
+export const postSearchListToPlan = async (formData: FormPostDataType) => {
   try {
     const response = await axios.post(`${apiSearchUrl}/plans`, formData);
-    console.log(response);
 
     return response.data;
   } catch (error) {
