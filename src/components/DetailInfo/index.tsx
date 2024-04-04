@@ -48,7 +48,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
             <Button
               size="small"
               className="flex gap-2 bg-white border-[1px] border-solid border-silver"
-              onClick={() => router.push("/review/create")}
+              onClick={() => router.push(`/review/create/${cafeId}`)}
             >
               <Icon size="small" type="edit" alt="edit" />
               <Text size="small" className="text-black">
