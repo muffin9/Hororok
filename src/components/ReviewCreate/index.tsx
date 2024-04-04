@@ -12,10 +12,13 @@ import Modal from "../common/Modal";
 import useKeyword from "@/Hooks/Keyword/useKeyword";
 import useModal from "@/Hooks/useModal";
 
-const ReviewCreate = () => {
+interface ReviewCreateProps {
+  cafeId: string;
+}
+
+const ReviewCreate = ({ cafeId }: ReviewCreateProps) => {
   const router = useRouter();
   // TODO: cafeId -> cafe detail id로 수정필요
-  const cafeId = 2;
   const { showModal, openModal, closeModal } = useModal();
 
   const { handleItemClick, checkSelected } = useKeyword();

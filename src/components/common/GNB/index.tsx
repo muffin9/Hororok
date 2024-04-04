@@ -1,6 +1,8 @@
+import { useTokenCookies } from "@/Hooks/useTokenCookies";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import usePlanStore from "@/store/usePlanStore";
+import useUserInfoStore from "@/store/useUserInfo";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
@@ -8,6 +10,7 @@ import { useEffect } from "react";
 
 const GNB = () => {
   const router = useRouter();
+  const { userInfo } = useUserInfoStore();
   // const searchParams = useSearchParams();
   // const show = searchParams.get("show");
 
@@ -56,11 +59,13 @@ const GNB = () => {
         </div>
         <div
           className="flex flex-col items-center cursor-pointer"
-          onClick={() => router.push("/login")}
+          onClick={() => {
+            userInfo?.email ? router.push("/mypage") : router.push("/login");
+          }}
         >
           <Icon type="account" size="medium" alt="로그인" />
           <Text size="extraSmall" className="text-black">
-            로그인
+            {userInfo?.email ? "마이페이지" : "로그인"}
           </Text>
         </div>
       </footer>

@@ -17,11 +17,8 @@ export default function Login() {
   const { setIsWrting } = usePlanStore();
 
   const kakaoLogin = () => {
-    const kakao = (window as any).Kakao;
-
-    kakao.Auth.authorize({
-      redirectUri: `${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_API}`,
-    });
+    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_API}&response_type=code`;
+    router.push(kakaoURL);
   };
 
   useEffect(() => {
