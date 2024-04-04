@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import Icon from "../Icon";
 import Text from "../Text";
 import Button from "../Button";
@@ -22,14 +21,13 @@ const Modal = ({
   okCallbackFunc,
   cancelCallbackFunc,
 }: ModalProps) => {
-  const router = useRouter();
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-[1000]">
       <div className="w-[358px] p-4 rounded-md bg-white relative">
         <div className="flex justify-end">
           <button
-            onClick={router.back}
             className="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
+            onClick={okCallbackFunc}
           >
             <Icon type="close" size="small" alt="close" />
           </button>

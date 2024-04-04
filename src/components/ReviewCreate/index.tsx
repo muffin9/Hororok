@@ -7,15 +7,16 @@ import Text from "@/components/common/Text";
 import Condition from "@/components/Condition";
 import Button from "@/components/common/Button";
 import TextArea from "@/components/common/TextArea";
-import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Modal from "../common/Modal";
 import useKeyword from "@/Hooks/Keyword/useKeyword";
+import useModal from "@/Hooks/useModal";
 
 const ReviewCreate = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const show = searchParams.get("show");
+  // TODO: cafeId -> cafe detail id로 수정필요
+  const cafeId = 2;
+  const { showModal, openModal, closeModal } = useModal();
 
   const { handleItemClick, checkSelected } = useKeyword();
 
@@ -30,10 +31,11 @@ const ReviewCreate = () => {
           <div></div>
           <div className="m-auto">리뷰 쓰기</div>
 
-          <button className="absolute top-1/2 right-[16px] transform -translate-y-1/2">
-            <Link href="?show=true">
-              <Icon type="close" alt="close" />
-            </Link>
+          <button
+            className="absolute top-1/2 right-[16px] transform -translate-y-1/2"
+            onClick={openModal}
+          >
+            <Icon type="close" alt="close" />
           </button>
         </header>
         <div className="flex flex-col items-center gap-4 py-6">
@@ -108,15 +110,13 @@ const ReviewCreate = () => {
           </div>
         </div>
       </div>
-      {show && (
+      {showModal && (
         <Modal
           title={`작성하던 리뷰는 저장되지 않아요.\n의견을 남기지 않고 나가시겠어요?`}
           okButtonText="이어서 리뷰남기기"
           cancelButtonText="나가기"
-          okCallbackFunc={() => {
-            router.back();
-          }}
-          cancelCallbackFunc={() => router.push("/cafelist/cafe-1")}
+          okCallbackFunc={closeModal}
+          cancelCallbackFunc={() => router.push(`/cafelist/${cafeId}`)}
         />
       )}
     </>
