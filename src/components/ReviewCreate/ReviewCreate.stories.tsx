@@ -9,7 +9,7 @@ const meta: Meta<typeof ReviewCreate> = {
 export default meta;
 
 const PrimitiveReviewCreate = () => {
-  return <ReviewCreate />;
+  return <ReviewCreate cafeId={"2"} />;
 };
 
 export const Default = {
