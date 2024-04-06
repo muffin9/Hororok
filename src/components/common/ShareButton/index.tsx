@@ -7,11 +7,16 @@ declare global {
   }
 }
 
-const ShareButton = () => {
+interface ShareButtonProps {
+  cafeId: number;
+}
+
+const ShareButton = ({ cafeId }: ShareButtonProps) => {
   const handleShareToKakao = useCallback(() => {
     const { Kakao, location } = window;
+
     Kakao.Share.sendScrap({
-      redirectUrl: location.href,
+      requestUrl: `${location.href}/cafelist/${cafeId}`,
     });
   }, []);
 
