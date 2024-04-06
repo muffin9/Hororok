@@ -16,7 +16,7 @@ const PlanResultHeader = () => {
               {resultPlanInfos.visitDateTime}
             </Text>
             <div className="flex gap-4">
-              <ShareButton />
+              {/* <ShareButton /> */}
               <Icon type="bookmark" size="small" alt="북마크" />
             </div>
           </div>
