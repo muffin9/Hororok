@@ -1,10 +1,10 @@
 import { apiSearchUrl } from "@/app/constants";
 import { CategoryKeywordsType } from "@/store/useCategoryKeywordStore";
-import axios from "axios";
+import axiosInstance from "./apiClient";
 
 export const getSearchList = async (latitude: number, longitude: number) => {
   try {
-    const response = await axios(
+    const response = await axiosInstance(
       `${apiSearchUrl}/search/bar?latitude=${latitude}&longitude=${longitude}`
     );
 
@@ -20,7 +20,7 @@ export const getSearchListByKeywords = async (
   categoryKeywords: CategoryKeywordsType
 ) => {
   try {
-    const response = await axios(
+    const response = await axiosInstance(
       `${apiSearchUrl}/search/bar?latitude=${latitude}&longitude=${longitude}&keywords=${Object.entries(categoryKeywords).join(",")}`
     );
 
@@ -32,7 +32,7 @@ export const getSearchListByKeywords = async (
 
 export const getReSearch = async (latitude: number, longitude: number) => {
   try {
-    const response = await axios(
+    const response = await axiosInstance(
       `${apiSearchUrl}/search/re?latitude=${latitude}&longitude=${longitude}`
     );
 

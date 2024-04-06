@@ -48,7 +48,11 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
             <Button
               size="small"
               className="flex gap-2 bg-white border-[1px] border-solid border-silver"
-              onClick={() => router.push(`/review/create/${cafeId}`)}
+              onClick={() =>
+                router.push(
+                  `/review/create/${cafeId}?cafeName=${data.cafeName}`
+                )
+              }
             >
               <Icon size="small" type="edit" alt="edit" />
               <Text size="small" className="text-black">
@@ -63,7 +67,6 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
             <div className="flex items-center gap-[2px]">
               <Star starSize="xSmall" starScore={Math.ceil(+data.starRating)} />
               <Text size="small" weight="bold">
-                {/* TODO: starCount 데이터 교체 필요. */}
                 {data.reviewCount.toFixed(1)}
               </Text>
               <Text size="extraSmall" className="text-gray-700">

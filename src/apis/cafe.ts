@@ -1,9 +1,9 @@
 import { apiSearchUrl } from "@/app/constants";
-import axios from "axios";
+import axiosInstance from "./apiClient";
 
 export const getCafeDetailInfo = async (cafeId: string) => {
   try {
-    const response = await axios(`${apiSearchUrl}/detail/${cafeId}`);
+    const response = await axiosInstance(`${apiSearchUrl}/detail/${cafeId}`);
     return response.data;
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);

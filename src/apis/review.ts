@@ -1,13 +1,13 @@
 import { apiSearchUrl } from "@/app/constants";
-import { FormPostDataType } from "@/interfaces/Plan";
+import { ReviewInfoType } from "@/interfaces/Review";
 
 import axiosInstance from "./apiClient";
 
-export const postSearchListToPlan = async (formData: FormPostDataType) => {
+export const postAddReview = async (reviewData: ReviewInfoType) => {
   try {
     const response = await axiosInstance.post(
-      `${apiSearchUrl}/plans`,
-      formData
+      `${apiSearchUrl}/reviews`,
+      reviewData
     );
 
     return response.data;
