@@ -18,7 +18,8 @@ const Step4 = () => {
   const { categoryKeywords, resetKeywords } = useCategoryKeywordStore();
   // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
 
-  const { handleItemClick, checkSelected, checkDisabledSubmit } = useKeyword();
+  const { handleItemClick, checkSelected, checkKeywordDisabledSubmit } =
+    useKeyword();
   const { setMatchPlan } = usePlanMatchStore();
 
   const onClickSubmit = async () => {
@@ -61,7 +62,7 @@ const Step4 = () => {
       <Button
         size="full"
         onClick={onClickSubmit}
-        disabled={checkDisabledSubmit()}
+        disabled={checkKeywordDisabledSubmit()}
       >
         결과보기
       </Button>

@@ -59,7 +59,7 @@ const useKeyword = () => {
     setSelectedItems(initKeywords);
   };
 
-  const checkDisabledSubmit = () => {
+  const checkKeywordDisabledSubmit = () => {
     const targetValues = [
       "개인작업/노트북",
       "데이트",
@@ -80,7 +80,7 @@ const useKeyword = () => {
     handleItemClick,
     checkSelected,
     onClickRefresh,
-    checkDisabledSubmit,
+    checkKeywordDisabledSubmit,
   };
 };
 

@@ -27,7 +27,12 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
 
   const { showModal, openModal, closeModal } = useModal();
 
-  const { selectedItems, handleItemClick, checkSelected } = useKeyword();
+  const {
+    selectedItems,
+    handleItemClick,
+    checkSelected,
+    checkKeywordDisabledSubmit,
+  } = useKeyword();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(event.target.files as FileList);
@@ -45,6 +50,11 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
     });
     // TODO: 정확한 응답값에 따라 redirect 필요.
     if (reviewResultInfo) router.push(`/cafelist/${cafeId}`);
+  };
+
+  const checkDisabledSubmit = () => {
+    if (!starRating || checkKeywordDisabledSubmit()) return true;
+    return false;
   };
 
   return (
@@ -140,6 +150,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
               onClick={(e: React.SyntheticEvent<HTMLButtonElement>) =>
                 onReviewSubmit()
               }
+              disabled={checkDisabledSubmit()}
             >
               등록하기
             </Button>
