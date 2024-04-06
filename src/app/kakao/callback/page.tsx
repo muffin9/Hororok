@@ -1,18 +1,24 @@
 "use client";
 
-import { useTokenCookies } from "@/Hooks/useTokenCookies";
 import { LoginType } from "@/interfaces/Login";
 import useUserInfoStore from "@/store/useUserInfo";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function KakaoCallback() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const code = searchParams.get("code");
-  const { setAccessToken } = useTokenCookies();
+
+  const [code, setCode] = useState<string | null>(null);
   const { setUserInfo } = useUserInfoStore();
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.has("code")) {
+      setCode(searchParams.get("code"));
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (code) {
@@ -20,15 +26,16 @@ export default function KakaoCallback() {
         .get(`https://api.hororok.o-r.kr/auth/kakao/login?code=${code}`)
         .then(({ data }: { data: LoginType }) => {
           const { account, accessToken } = data;
+          localStorage.setItem("accessToken", accessToken);
+
           setUserInfo(account);
-          setAccessToken(accessToken);
           router.push("/");
         })
         .catch((error) => {
           console.error(error);
         });
     }
-  }, []);
+  }, [code, router, setUserInfo]);
 
   return <></>;
 }

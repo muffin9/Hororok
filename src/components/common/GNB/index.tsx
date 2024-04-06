@@ -1,12 +1,11 @@
-import { useTokenCookies } from "@/Hooks/useTokenCookies";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import usePlanStore from "@/store/usePlanStore";
 import useUserInfoStore from "@/store/useUserInfo";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-// import Modal from "../Modal";
+
 
 const GNB = () => {
   const router = useRouter();
