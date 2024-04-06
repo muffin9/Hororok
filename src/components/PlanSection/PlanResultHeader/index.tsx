@@ -1,5 +1,6 @@
 import { planCafeHeader } from "@/app/constants";
 import Icon from "@/components/common/Icon";
+import ShareButton from "@/components/common/ShareButton";
 import Text from "@/components/common/Text";
 import usePlanMatchStore from "@/store/usePlanMatchStore";
 
@@ -15,7 +16,7 @@ const PlanResultHeader = () => {
               {resultPlanInfos.visitDateTime}
             </Text>
             <div className="flex gap-4">
-              <Icon type="share" size="small" alt="공유하기" />
+              <ShareButton />
               <Icon type="bookmark" size="small" alt="북마크" />
             </div>
           </div>

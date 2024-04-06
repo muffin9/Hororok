@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Text from "../common/Text";
 import Icon from "../common/Icon";
 import { CafeInfoType } from "@/interfaces/Cafe";
+import ShareButton from "../common/ShareButton";
 
 interface CardResultCafeInfoProps {
   cafeDatas: CafeType[] | CafeInfoType[];
@@ -31,7 +32,7 @@ const CardResultCafeInfo = ({ cafeDatas }: CardResultCafeInfoProps) => {
                 {cafeData.name}
               </Text>
               <div className="flex gap-4">
-                <Icon type="share" size="small" alt="공유하기" />
+                <ShareButton />
                 <Icon type="bookmark" size="small" alt="북마크" />
               </div>
             </header>
