@@ -31,7 +31,7 @@ const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
     handleItemClick,
     checkSelected,
     onClickRefresh,
-    checkDisabledSubmit,
+    checkKeywordDisabledSubmit,
   } = useKeyword();
 
   const onSubmit = async () => {
@@ -89,7 +89,7 @@ const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
         <SubmitButton
           onSubmit={onSubmit}
           className="mr-4"
-          isDisabled={checkDisabledSubmit}
+          isDisabled={checkKeywordDisabledSubmit}
         />
       </div>
     </section>
