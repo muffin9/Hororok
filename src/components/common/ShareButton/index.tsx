@@ -13,10 +13,10 @@ interface ShareButtonProps {
 
 const ShareButton = ({ cafeId }: ShareButtonProps) => {
   const handleShareToKakao = useCallback(() => {
-    const { Kakao, location } = window;
+    const { Kakao } = window;
 
     Kakao.Share.sendScrap({
-      requestUrl: `/cafelist/${cafeId}`,
+      requestUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafelist/${cafeId}`,
     });
   }, []);
 
