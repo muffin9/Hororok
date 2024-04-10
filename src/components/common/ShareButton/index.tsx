@@ -16,7 +16,7 @@ const ShareButton = ({ cafeId }: ShareButtonProps) => {
     const { Kakao, location } = window;
 
     Kakao.Share.sendScrap({
-      requestUrl: `${location.href}/cafelist/${cafeId}`,
+      requestUrl: `/cafelist/${cafeId}`,
     });
   }, []);
 
