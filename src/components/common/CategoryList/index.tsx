@@ -1,6 +1,5 @@
 import { CategoryIdType } from "@/components/Home/HomeSection";
 import Category from "@/components/common/Category";
-import Icon from "@/components/common/Icon";
 
 interface CategoryListProps {
   onClickCategory: (id: CategoryIdType) => void;
@@ -27,8 +26,6 @@ const CategoryList = ({ onClickCategory }: CategoryListProps) => {
           <Category
             key={tag.id}
             name={tag.name}
-            icon={<Icon type="arrow_under" size="xSmall" alt="더보기" />}
-            posIcon="right"
             onClick={() => onClickCategory(tag.id)}
           />
         );

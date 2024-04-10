@@ -1,3 +1,5 @@
+"use client";
+
 import FilterSection from "@/components/FilterSection";
 
 import GNB from "@/components/common/GNB";
@@ -6,10 +8,6 @@ import { useRouter } from "next/navigation";
 import CategoryList from "@/components/common/CategoryList";
 import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
 
-interface HomeSectionProps {
-  isInput?: boolean;
-}
-
 export type CategoryIdType =
   | "purpose"
   | "facility"
@@ -17,28 +15,24 @@ export type CategoryIdType =
   | "menu"
   | "theme";
 
-const HomeSection = ({ isInput }: HomeSectionProps) => {
+const HomeSection = () => {
   const router = useRouter();
-  const { categoryId, isFilter, setIsFilter, onClickCategory } =
+  const { isFilter, onClickCategory } =
     useHandleFilterSection();
 
   return (
-    <section className="relative">
-      {isInput && (
-        <div className="px-4">
-          <Input
-            type="text"
-            placeholder="어디 근처 카페 찾으세요?"
-            onClick={() => router.push("/search")}
-            className="w-full h-[50px] p-4 bg-white border-[1px] border-gray-400 rounded-lg focus:outline-none"
-          />
-        </div>
-      )}
-      {isFilter ? (
-        <FilterSection
-          categoryId={categoryId}
-          onCloseButton={() => setIsFilter(false)}
+    <section className="w-full absolute top-8 z-[999]">
+      <div className="px-4">
+        <Input
+          type="text"
+          placeholder="어디 근처 카페 찾으세요?"
+          onClick={() => router.push("/search")}
+          className="w-full h-[50px] p-4 rounded-lg focus:outline-none shadow-default"
         />
+      </div>
+
+      {isFilter ? (
+        <FilterSection />
       ) : (
         <>
           <div className="px-4 mt-4">

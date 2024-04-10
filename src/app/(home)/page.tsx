@@ -1,5 +1,3 @@
-"use client";
-
 import HomeSection from "@/components/Home/HomeSection";
 import KakaoStaticMap from "@/components/KakaoStaticMap";
 import { Suspense } from "react";
@@ -10,9 +8,7 @@ export default function Home() {
     <main className="relative">
       <Suspense fallback={<Loading />}>
         <KakaoStaticMap height="h-screen">
-          <div className="w-full absolute top-8 z-[999]">
-            <HomeSection isInput={true} />
-          </div>
+            <HomeSection />
         </KakaoStaticMap>
       </Suspense>
     </main>
