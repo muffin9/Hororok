@@ -10,8 +10,7 @@ import CardResultCafeInfo from "../CardResultCafeInfo";
 
 const ResultList = () => {
   const filterRef = useRef<HTMLDivElement>(null);
-  const { categoryId, isFilter, setIsFilter, onClickCategory } =
-    useHandleFilterSection();
+  const { isFilter, setIsFilter, onClickCategory } = useHandleFilterSection();
   const { searchResultList } = useSearcResultListStorehPlace();
 
   useOutsideClick(filterRef, () => setIsFilter(false));
@@ -19,7 +18,7 @@ const ResultList = () => {
   return (
     <section
       ref={filterRef}
-      className="w-[390px] h-1/2 z-[1000] pb-12 py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl boxShadow-xl overflow-x-hidden overflow-y-scroll"
+      className="w-[390px] h-1/2 z-[1000] pb-12 py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-x-hidden overflow-y-scroll"
     >
       <div className="flex flex-col gap-6">
         <header className="w-screen flex items-center gap-[2px]">
@@ -30,10 +29,7 @@ const ResultList = () => {
             </Text>
           </button> */}
           {isFilter ? (
-            <FilterSection
-              categoryId={categoryId}
-              onCloseButton={() => setIsFilter(false)}
-            />
+            <FilterSection />
           ) : (
             <div className="px-4">
               <CategoryList onClickCategory={onClickCategory} />

@@ -11,19 +11,16 @@ import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 import useGeolocation from "@/Hooks/useGeolocation";
 import useKeyword from "@/Hooks/Keyword/useKeyword";
 import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
+import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
 
-interface FilterSectionProps {
-  onCloseButton: () => void;
-  categoryId: "purpose" | "facility" | "atmosphere" | "menu" | "theme";
-}
-
-const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
+const FilterSection = () => {
   const router = useRouter();
   const filterRef = useRef<HTMLDivElement>(null);
 
   const params = useSearchParams();
   const location = useGeolocation();
 
+  const { categoryId, setIsFilter } = useHandleFilterSection();
   const { categoryKeywords } = useCategoryKeywordStore();
   const { setSearchResultList } = useSearcResultListStorehPlace();
 
@@ -48,26 +45,16 @@ const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
 
     const path = `/search_map?latitude=${latitude}&longitude=${longitude}`;
     router.push(path);
-    onCloseButton();
+    setIsFilter(false);
   };
 
-  useOutsideClick(filterRef, onCloseButton);
+  useOutsideClick(filterRef, () => setIsFilter(false));
 
   return (
     <section
       ref={filterRef}
-      className="w-[390px] h-1/2 z-[1000] bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl boxShadow-xl overflow-scroll"
+      className="w-[390px] h-1/2 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-scroll"
     >
-      {/* <header>
-        <div className="flex justify-between px-4 my-6">
-          <Text size="large" weight="medium" className="text-black">
-            카페 필터
-          </Text>
-          <button onClick={onCloseButton}>
-            <Icon type="close" alt="close" />
-          </button>
-        </div>
-      </header> */}
       <div className="px-4">
         <Condition
           categoryId={categoryId}
@@ -75,7 +62,7 @@ const FilterSection = ({ categoryId, onCloseButton }: FilterSectionProps) => {
           checkSelected={checkSelected}
         />
       </div>
-      <div className="flex h-[50px]">
+      <div className="flex h-[50px] border-t-[1px] border-silver">
         <Button
           size="large"
           className="w-1/3 bg-white flex gap-[2px]"

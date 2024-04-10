@@ -4,8 +4,8 @@ export const defaultCoords = {
   lat: 37.572594523923904,
   lng: 126.97577874563281,
 };
-export const currentPinImage = "/assets/Images/current_place.png";
-export const cafePinImage = "/assets/Images/pin.png";
+export const currentPinImage = "/assets/Icon/current_place.svg";
+export const cafePinImage = "/assets/Icon/pin.svg";
 export const reboundButtonImage = "/assets/Images/location_rebound.png";
 export const filterDatas = [
   {

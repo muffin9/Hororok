@@ -21,7 +21,5 @@ export const Default: Story = {
 export const IconCategory: Story = {
   args: {
     name: "분위기 좋아요",
-    icon: <Icon type="check" size="small" alt="check" />,
-    posIcon: "left",
   },
 };
