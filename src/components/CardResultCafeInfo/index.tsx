@@ -19,14 +19,14 @@ const CardResultCafeInfo = ({ cafeDatas }: CardResultCafeInfoProps) => {
       return (
         <div
           key={cafeData.id}
-          className="flex gap-3 my-6 cursor-pointer"
+          className="flex gap-3 my-4 cursor-pointer"
           onClick={() => router.push(`/cafelist/${cafeData.id}`)}
         >
           <div
             className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
             style={{ backgroundImage: `url(http:${cafeData.imageUrl})` }}
           />
-          <div className="w-full flex flex-col py-4 gap-3">
+          <div className="w-full flex flex-col py-2 gap-3">
             <header className="flex justify-between">
               <Text size="large" className="text-black">
                 {cafeData.name}

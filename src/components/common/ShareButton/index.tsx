@@ -24,8 +24,9 @@ const ShareButton = ({ cafeId }: ShareButtonProps) => {
     e.stopPropagation();
     handleShareToKakao();
   };
+  
   return (
-    <button className="z-[1000]" onClick={onClickShareButton}>
+    <button onClick={onClickShareButton}>
       <Icon type="share" size="small" alt="공유하기" />
     </button>
   );

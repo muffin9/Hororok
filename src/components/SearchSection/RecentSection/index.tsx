@@ -26,7 +26,7 @@ const RecentSection = ({ onClickRecentSearch }: RecentSectionProps) => {
 
   return (
     <section>
-      <Text size="large" weight="bold" className="text-black">
+      <Text size="large" weight="bold" className="px-4 text-black">
         최근검색
       </Text>
       {recentSearches.map((search) => {
@@ -36,13 +36,16 @@ const RecentSection = ({ onClickRecentSearch }: RecentSectionProps) => {
             className="w-full h-16 flex justify-between items-center border-b-[1px] border-silver cursor-pointer"
             onClick={() => onClickRecentSearch(search)}
           >
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 px-4">
               <Icon type="marker" size="medium" alt="marker" />
               <Text size="medium" className="text-black">
                 {search}
               </Text>
             </div>
-            <button onClick={(e) => onClickRemoveButton(e, search)}>
+            <button
+              onClick={(e) => onClickRemoveButton(e, search)}
+              className="px-4"
+            >
               <Icon type="close" size="xSmall" alt="close" />
             </button>
           </div>

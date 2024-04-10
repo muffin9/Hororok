@@ -49,7 +49,7 @@ const SearchResultSection = () => {
   };
 
   return (
-    <section className="py-8 px-4 bg-white">
+    <section className="py-8 bg-white">
       <SearchInput handleKeyUpSearchInput={handleKeyUpSearchInput} />
       {resultSearchInfo.map((data) => {
         return (
@@ -58,7 +58,7 @@ const SearchResultSection = () => {
             className="w-full h-20 flex justify-between items-center border-b-[1px] border-silver cursor-pointer"
             onClick={() => onClickPlace(data.place_id)}
           >
-            <div className="flex flex-col">
+            <div className="flex flex-col pl-4">
               <Text size="large" className="text-primary-300">
                 {data.place_name}
               </Text>
@@ -66,7 +66,7 @@ const SearchResultSection = () => {
                 {data.address}
               </Text>
             </div>
-            <Text size="small" className="text-gray-700">
+            <Text size="small" className="text-gray-700 pr-4">
               {data.distance}km
             </Text>
           </div>

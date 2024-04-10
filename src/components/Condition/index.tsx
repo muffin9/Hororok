@@ -28,7 +28,7 @@ const Condition = ({
   };
 
   return (
-    <div className="py-6 border-t-[1px] border-b-[1px] border-silver">
+    <div className="py-6 border-t-[1px] border-silver">
       {sortedFilterData().map((condition) => {
         return (
           <div key={condition.category} className="flex flex-col gap-4">

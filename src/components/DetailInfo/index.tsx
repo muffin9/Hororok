@@ -30,7 +30,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
               type="button"
               onClick={() => router.back()}
               aria-label="back button"
-              className="boxShadow-xl"
+              className="shadow-xl"
             >
               <Icon type="arrow_left_white" size="small" alt="뒤로 가기" />
             </button>

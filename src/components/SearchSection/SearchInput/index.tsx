@@ -25,7 +25,7 @@ const SearchInput = ({ handleKeyUpSearchInput }: SearchInputProps) => {
   };
 
   return (
-    <div className="w-full h-[50px] flex relative">
+    <div className="w-full h-[50px] px-4 flex relative">
       <div className="h-6 absolute top-1/2 transform -translate-y-1/2">
         <BackButton />
       </div>
@@ -40,7 +40,7 @@ const SearchInput = ({ handleKeyUpSearchInput }: SearchInputProps) => {
       />
       {searchInputValue && (
         <button
-          className="absolute top-1/2 right-0 transform -translate-y-1/2"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2"
           onClick={handleClear}
         >
           <Icon type="close" alt="close" />
