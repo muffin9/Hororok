@@ -12,6 +12,7 @@ import useGeolocation from "@/Hooks/useGeolocation";
 import useKeyword from "@/Hooks/Keyword/useKeyword";
 import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
 import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
+import { filterDatas } from "@/app/constants";
 
 const FilterSection = () => {
   const router = useRouter();
@@ -60,6 +61,7 @@ const FilterSection = () => {
           categoryId={categoryId}
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}
+          filterDatas={filterDatas}
         />
       </div>
       <div className="flex h-[50px] border-t-[1px] border-silver">

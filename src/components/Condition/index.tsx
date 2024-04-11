@@ -1,18 +1,20 @@
-import { filterDatas } from "@/app/constants";
 import Text from "../common/Text";
 import Tag from "../common/Tag";
 import { CategoryIdType } from "../Home/HomeSection";
+import { FilterDataType } from "@/interfaces/Cafe";
 
 interface ConditionProps {
   categoryId?: CategoryIdType;
   handleItemClick: (category: string, name: string) => void;
   checkSelected: (category: string, name: string) => boolean;
+  filterDatas: FilterDataType[];
 }
 
 const Condition = ({
   categoryId,
   handleItemClick,
   checkSelected,
+  filterDatas,
 }: ConditionProps) => {
   const sortedFilterData = () => {
     if (categoryId) {
@@ -28,7 +30,7 @@ const Condition = ({
   };
 
   return (
-    <div className="py-6 border-t-[1px] border-silver">
+    <div className="py-6 border-silver">
       {sortedFilterData().map((condition) => {
         return (
           <div key={condition.category} className="flex flex-col gap-4">

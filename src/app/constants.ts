@@ -25,7 +25,7 @@ export const filterDatas = [
   },
   {
     category: "facility",
-    title: "어떤 시설을 찾으세요?",
+    title: "어떤 시설을 포함할까요?",
     data: [
       "베리어프리",
       "콘셉트",
@@ -38,7 +38,7 @@ export const filterDatas = [
   },
   {
     category: "atmosphere",
-    title: "어떤 분위기의 카페를 찾으세요?",
+    title: "어떤 분위기를 찾으세요?",
     data: [
       "분위기 좋아요",
       "집중이 잘돼요",
@@ -51,7 +51,7 @@ export const filterDatas = [
   },
   {
     category: "menu",
-    title: "어떤 메뉴를 찾으세요?",
+    title: "찾는 메뉴가 있나요?",
     data: [
       "아메리카노",
       "민트초코",
@@ -65,7 +65,71 @@ export const filterDatas = [
   },
   {
     category: "theme",
-    title: "어떤 테마를 찾으세요?",
+    title: "원하는 테마가 있나요?",
+    data: ["새로오픈", "감성인테리어", "사진맛집", "뷰맛집", "넓은", "복층"],
+  },
+];
+
+export const reviewFilterDatas = [
+  {
+    category: "purpose",
+    title: "방문 목적을 알려주세요",
+    subTitle: "필수 선택",
+    data: [
+      "개인작업/노트북",
+      "데이트",
+      "단체회식",
+      "애견동반",
+      "가족모임",
+      "비즈니스미팅",
+      "기념일",
+      "친목/나들이",
+    ],
+  },
+  {
+    category: "facility",
+    title: "어떤 시설이 좋았나요?",
+    data: [
+      "베리어프리",
+      "콘셉트",
+      "실내화장실",
+      "주차",
+      "루프탑",
+      "1인석",
+      "유아의자",
+    ],
+  },
+  {
+    category: "atmosphere",
+    title: "카페의 분위기는 어땠나요?",
+    data: [
+      "분위기 좋아요",
+      "집중이 잘돼요",
+      "모던해요",
+      "좌석이편해요",
+      "대화하기 좋아요",
+      "조용해요",
+      "이색 분위기에요",
+    ],
+  },
+  {
+    category: "menu",
+    title: "추천하고 싶은 메뉴를 알려주세요.",
+    subTitle: "최대 3개 선택",
+    data: [
+      "아메리카노",
+      "민트초코",
+      "라떼",
+      "아인슈페너",
+      "음료",
+      "드립커피",
+      "차",
+      "과일/주스",
+    ],
+  },
+  {
+    category: "theme",
+    title: "카페의 테마를 알려주세요.",
     data: ["새로오픈", "감성인테리어", "사진맛집", "뷰맛집", "넓은", "복층"],
   },
 ];
