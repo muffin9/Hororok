@@ -69,7 +69,7 @@ const Calendar = ({ checkSelectDay, onClickday }: CalendarProps) => {
                   {week.map((day: number | null, index: number) => (
                     <td
                       key={index}
-                      className={`w-[50px] h-[35px] text-center cursor-pointer ${checkSelectDay(day) && "bg-subcolor border-solid border-primary-300 border-[1px] rounded-lg"}`}
+                      className={`w-[50px] h-[35px] text-center cursor-pointer rounded-lg ${checkSelectDay(day) && "bg-subcolor"}`}
                       onClick={() => onClickday(day)}
                     >
                       {day}

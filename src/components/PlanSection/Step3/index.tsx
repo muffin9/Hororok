@@ -84,7 +84,7 @@ const Step3 = () => {
   // }, []);
 
   return (
-    <div>
+    <div className="px-4">
       <header className="flex flex-col gap-3">
         <Text size="x2Large" weight="bold">
           언제 방문하실 예정인가요?

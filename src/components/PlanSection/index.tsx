@@ -42,8 +42,8 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
 
   return (
     <>
-      <section className="h-full px-4 bg-white overflow-y-scroll">
-        <header className="flex flex-col gap-4 pt-12">
+      <section className="h-full bg-white overflow-y-scroll">
+        <header className="flex flex-col px-4 gap-4 pt-12">
           <div className="flex justify-between">
             {planId === "1" ? <div /> : <BackButton />}
             <button onClick={openModal}>

@@ -16,7 +16,7 @@ const NextButtonSection = ({
   const router = useRouter();
 
   return (
-    <div className="flex flex-col gap-2 pt-32 bg-white">
+    <div className="w-[358px] fixed bottom-0 flex flex-col gap-2 bg-white">
       <Button
         size="full"
         onClick={() => {
