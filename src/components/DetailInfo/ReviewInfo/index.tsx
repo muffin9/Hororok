@@ -18,7 +18,12 @@ const ReviewInfo = ({ moreButton, cafeReviewInfo }: ReviewInfoProps) => {
     !showMore && moreButton ? cafeReviewInfo.slice(0, 2) : cafeReviewInfo;
 
   return (
-    <div className="h-full flex flex-col gap-4 border-b-[1px] border-solid border-gray-200 px-4 py-6 bg-white">
+    <div className="h-full flex flex-col gap-4 border-b-[1px] border-solid border-gray-200 py-6 bg-white">
+      <header className="px-4">
+        <Text size="large" weight="bold">
+          리뷰
+        </Text>
+      </header>
       {cafeReviewInfo.length === 0 ? (
         <div className="h-full flex flex-col justify-center items-center">
           <Icon type="review" size="xLarge" alt="camera" />
@@ -29,9 +34,11 @@ const ReviewInfo = ({ moreButton, cafeReviewInfo }: ReviewInfoProps) => {
       ) : (
         visibleReviewData.map((review: ReviewType) => {
           return (
-            <article key={review.id}>
+            <article
+              key={review.id}
+              className="px-4 border-gray-200 border-b-[1px] pb-6"
+            >
               <header className="flex justify-between">
-                {/* TODO: // 작성자 정보, 별점, 등록날짜 */}
                 <div className="flex gap-3">
                   <Image
                     src={"/assets/Images/profile.png"}
@@ -40,14 +47,14 @@ const ReviewInfo = ({ moreButton, cafeReviewInfo }: ReviewInfoProps) => {
                     alt="profile image"
                   />
                   <div className="flex flex-col gap-[6px]">
-                    <Text size="small">춘식이</Text>
+                    <Text size="small">{review.userNickname || "익명"}</Text>
                     <div className="flex">
-                      <Star starSize="xSmall" starScore={5.0} />
+                      <Star starSize="xSmall" starScore={review.starRating} />
                     </div>
                   </div>
                 </div>
                 <Text size="extraSmall" className="text-gray-700">
-                  2024.03.12
+                  {review.createdDate}
                 </Text>
               </header>
               <div className="flex flex-col gap-3.5">
@@ -78,7 +85,7 @@ const ReviewInfo = ({ moreButton, cafeReviewInfo }: ReviewInfoProps) => {
                   <Text size="small" className="text-gray-800">
                     추천메뉴
                   </Text>
-                  <div className="text-gray-800 mb-[3px]">|</div>
+                  <div className="text-gray-800 mb-[-1px]">|</div>
                   <div className="flex gap-1.5"></div>
                   {review.keywords.slice(0, 2).map((keyword) => {
                     return (

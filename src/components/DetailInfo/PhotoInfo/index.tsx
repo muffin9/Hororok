@@ -15,7 +15,12 @@ const PhotoInfo = ({ moreButton, cafePhotoInfo }: PhotoInfoProps) => {
     !showMore && moreButton ? cafePhotoInfo.slice(0, 4) : cafePhotoInfo;
 
   return (
-    <div className="h-full flex flex-col justify-center items-center px-4 py-6 bg-white">
+    <div className="h-full flex flex-col py-6 bg-white">
+      <header className="px-4">
+        <Text size="large" weight="bold">
+          사진
+        </Text>
+      </header>
       {cafePhotoInfo.length === 0 ? (
         <div className="h-full flex flex-col justify-center items-center">
           <Icon type="camera" size="xLarge" alt="camera" />
@@ -24,7 +29,7 @@ const PhotoInfo = ({ moreButton, cafePhotoInfo }: PhotoInfoProps) => {
           </Text>
         </div>
       ) : (
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap justify-center gap-1 mt-4">
           {visiblePhotoData.map((photoUrl: string) => {
             return (
               <div
@@ -35,7 +40,7 @@ const PhotoInfo = ({ moreButton, cafePhotoInfo }: PhotoInfoProps) => {
             );
           })}
           {moreButton && cafePhotoInfo.length >= 5 && !showMore && (
-            <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[38px]">
+            <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[20px]">
               <MoreButton
                 text={"사진 더보기"}
                 handleClickMoreButton={handleClickMoreButton}

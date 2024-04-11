@@ -15,13 +15,13 @@ const MenuInfo = ({ moreButton, cafeMenuInfo }: MenuInfoProps) => {
     !showMore && moreButton ? cafeMenuInfo.slice(0, 2) : cafeMenuInfo;
 
   return (
-    <div className="h-full px-4 py-6 bg-white">
-      <header>
+    <div className="h-full py-6 bg-white">
+      <header className="px-4">
         <Text size="large" weight="bold">
           메뉴
         </Text>
       </header>
-      <div className="flex flex-col gap-3 mt-4">
+      <div className="flex flex-col gap-3 px-4 mt-4">
         {visibleMenuData.map((menuData: CafeMenuType) => {
           return (
             <div className="flex gap-4" key={menuData.name}>
