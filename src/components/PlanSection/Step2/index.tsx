@@ -22,7 +22,7 @@ const Step2 = () => {
   // }, []);
 
   return (
-    <div>
+    <div className="px-4">
       <KakaoPlaceStaticMap height="h-[190px]" />
       <div className="mt-[37px]">
         <Text size="xLarge" weight="bold">
