@@ -9,9 +9,10 @@ declare global {
 
 interface ShareButtonProps {
   cafeId: number;
+  children: React.ReactNode;
 }
 
-const ShareButton = ({ cafeId }: ShareButtonProps) => {
+const ShareButton = ({ cafeId, children }: ShareButtonProps) => {
   const handleShareToKakao = useCallback(() => {
     const { Kakao } = window;
 
@@ -24,12 +25,8 @@ const ShareButton = ({ cafeId }: ShareButtonProps) => {
     e.stopPropagation();
     handleShareToKakao();
   };
-  
-  return (
-    <button onClick={onClickShareButton}>
-      <Icon type="share" size="small" alt="공유하기" />
-    </button>
-  );
+
+  return <button onClick={onClickShareButton}>{children}</button>;
 };
 
 export default ShareButton;
