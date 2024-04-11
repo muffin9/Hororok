@@ -32,7 +32,9 @@ const CardResultCafeInfo = ({ cafeDatas }: CardResultCafeInfoProps) => {
                 {cafeData.name}
               </Text>
               <div className="flex gap-4">
-                <ShareButton cafeId={cafeData.id} />
+                <ShareButton cafeId={cafeData.id}>
+                  <Icon type="share" size="small" alt="공유하기" />
+                </ShareButton>
                 <Icon type="bookmark" size="small" alt="북마크" />
               </div>
             </header>

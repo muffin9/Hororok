@@ -22,6 +22,9 @@ export interface ReviewType {
   specialNote: string;
   images: { id: number; imageUrl: string }[];
   keywords: CafeKeyWordType[];
+  starRating: number;
+  userNickname: string;
+  createdDate: string;
 }
 
 export interface CafeKeyWordType {
@@ -57,4 +60,11 @@ export interface CafeDefaultInfoType {
   businessHours: string[];
   closedDay: string[];
   phoneNumber: string;
+}
+
+export interface FilterDataType {
+  category: string;
+  title: string;
+  subTitle?: string;
+  data: string[];
 }

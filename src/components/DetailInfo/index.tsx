@@ -9,6 +9,10 @@ import ContentInfo from "./ContentInfo";
 import Star from "../common/Star";
 import useCafeDetailInfo from "@/Hooks/Cafe/useCafeDetailInfo";
 import { CafeDetailInfoType, CafeKeyWordType } from "@/interfaces/Cafe";
+import ShareButton from "../common/ShareButton";
+import useModal from "@/Hooks/useModal";
+import Modal from "../common/Modal";
+import useUserInfoStore from "@/store/useUserInfo";
 
 interface DetailInfoProps {
   cafeId: string;
@@ -16,7 +20,8 @@ interface DetailInfoProps {
 
 const DetailInfo = ({ cafeId }: DetailInfoProps) => {
   const { data }: { data: CafeDetailInfoType } = useCafeDetailInfo(cafeId);
-
+  const { showModal, openModal, closeModal } = useModal();
+  const { userInfo } = useUserInfoStore();
   const router = useRouter();
 
   return (
@@ -35,8 +40,12 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
               <Icon type="arrow_left_white" size="small" alt="뒤로 가기" />
             </button>
             <div className="flex gap-4">
-              <Icon type="share_white" alt="공유하기" />
-              <Icon type="bookmark_white" alt="저장하기" />
+              <ShareButton cafeId={+cafeId}>
+                <Icon type="share_white" alt="공유하기" />
+              </ShareButton>
+              <button className="cursor">
+                <Icon type="bookmark_white" alt="저장하기" />
+              </button>
             </div>
           </header>
         </div>
@@ -48,11 +57,15 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
             <Button
               size="small"
               className="flex gap-2 bg-white border-[1px] border-solid border-silver"
-              onClick={() =>
-                router.push(
-                  `/review/create/${cafeId}?cafeName=${data.cafeName}`
-                )
-              }
+              onClick={() => {
+                if (!userInfo.email) {
+                  openModal();
+                } else {
+                  router.push(
+                    `/review/create/${cafeId}?cafeName=${data.cafeName}`
+                  );
+                }
+              }}
             >
               <Icon size="small" type="edit" alt="edit" />
               <Text size="small" className="text-black">
@@ -90,6 +103,19 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
           </div>
         </div>
         <ContentInfo cafeDetailInfo={data} />
+        {showModal && (
+          <Modal
+            title={`로그인을 하면 리뷰를 남길 수 있어요.\n소중한 의견을 공유해주세요.`}
+            okButtonText="로그인하고 리뷰남기기"
+            cancelButtonText="둘러만보기"
+            okCallbackFunc={() => {
+              router.push("/login");
+            }}
+            cancelCallbackFunc={() => {
+              closeModal();
+            }}
+          />
+        )}
       </section>
     )
   );

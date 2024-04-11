@@ -12,6 +12,7 @@ import useKeyword from "@/Hooks/Keyword/useKeyword";
 import useModal from "@/Hooks/useModal";
 import { useState } from "react";
 import { postAddReview } from "@/apis/review";
+import { reviewFilterDatas } from "@/app/constants";
 
 interface ReviewCreateProps {
   cafeId: string;
@@ -29,7 +30,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
 
   const {
     selectedItems,
-    handleItemClick,
+    handleReviewItemClick,
     checkSelected,
     checkKeywordDisabledSubmit,
   } = useKeyword();
@@ -62,7 +63,9 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
       <div className="h-screen relative bg-white overflow-y-scroll">
         <header className="w-full h-[50px] relative flex justify-between">
           <div></div>
-          <div className="m-auto">리뷰 쓰기</div>
+          <div className="m-auto">
+            <Text size="medium">리뷰 쓰기</Text>
+          </div>
 
           <button
             className="absolute top-1/2 right-[16px] transform -translate-y-1/2"
@@ -122,28 +125,38 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
         </div>
         <div className="px-4">
           <Condition
-            handleItemClick={handleItemClick}
+            handleItemClick={handleReviewItemClick}
             checkSelected={checkSelected}
+            filterDatas={reviewFilterDatas}
           />
         </div>
         <div className="px-4">
-          <div className="flex flex-col gap-7 mt-5">
+          <div className="flex flex-col gap-2 mt-5">
             <Text size="medium">리뷰</Text>
             <TextArea
               placeholder="가게에 대한 소감을 30자 이상 적어주세요"
               value={content}
               onChange={(e) => setContent(e.target.value)}
+              className="h-[290px]"
+              maxlength={400}
             />
+            <Text size="small" className="ml-auto text-gray-400">
+              {content.length}/400
+            </Text>
           </div>
-          <div className="flex flex-col gap-7 mt-5">
+          <div className="flex flex-col gap-2 mt-5">
             <Text size="medium">특이사항</Text>
             <TextArea
               placeholder="방문에 도움이 될 만한 정보를 공유해주세요.ex ) 콘센트 유무 / 2시간 이용 제한 / 평일 점심 웨이팅 1시간 / 영업시간 일시 변경 등"
               value={specialNote}
               onChange={(e) => setSpecialNote(e.target.value)}
+              maxlength={200}
             />
+            <Text size="small" className="ml-auto text-gray-400">
+              {specialNote.length}/200
+            </Text>
           </div>
-          <div className="mt-10">
+          <div className="mt-10 mb-10">
             <Button
               size="full"
               type="submit"

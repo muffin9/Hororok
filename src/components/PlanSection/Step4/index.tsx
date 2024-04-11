@@ -10,6 +10,7 @@ import usePlanStore from "@/store/usePlanStore";
 import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
 import usePlanMatchStore from "@/store/usePlanMatchStore";
 import { useRouter } from "next/navigation";
+import { filterDatas } from "@/app/constants";
 
 const Step4 = () => {
   const router = useRouter();
@@ -58,6 +59,7 @@ const Step4 = () => {
       <Condition
         handleItemClick={handleItemClick}
         checkSelected={checkSelected}
+        filterDatas={filterDatas}
       />
       <Button
         size="full"

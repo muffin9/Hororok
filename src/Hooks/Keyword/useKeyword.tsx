@@ -17,18 +17,7 @@ const useKeyword = () => {
 
   const { setCategoryKeywords } = useCategoryKeywordStore();
 
-  const handleItemClick = (category: string, name: string) => {
-    const totalSelectedItems = Object.values(selectedItems).reduce(
-      (total, categoryArray) => {
-        return total + categoryArray.length;
-      },
-      0
-    );
-
-    if (totalSelectedItems === 5 && !selectedItems[category].includes(name)) {
-      return;
-    }
-
+  const updatedKeywords = (category: string, name: string) => {
     const updatedItems = { ...selectedItems };
 
     if (updatedItems[category]) {
@@ -49,6 +38,43 @@ const useKeyword = () => {
 
     setSelectedItems(updatedItems);
     setCategoryKeywords(updatedItems);
+  };
+
+  const handleItemClick = (category: string, name: string) => {
+    const totalSelectedItems = Object.values(selectedItems).reduce(
+      (total, categoryArray) => {
+        return total + categoryArray.length;
+      },
+      0
+    );
+
+    if (totalSelectedItems === 5 && !selectedItems[category].includes(name)) {
+      return;
+    }
+
+    updatedKeywords(category, name);
+  };
+
+  const handleReviewItemClick = (category: string, name: string) => {
+    const totalSelectedItems = Object.values(selectedItems).reduce(
+      (total, categoryArray) => {
+        return total + categoryArray.length;
+      },
+      0
+    );
+
+    if (totalSelectedItems === 10 && !selectedItems[category].includes(name)) {
+      return;
+    }
+
+    if (
+      category === "menu" &&
+      selectedItems.menu.length === 3 &&
+      !selectedItems.menu.includes(name)
+    )
+      return;
+
+    updatedKeywords(category, name);
   };
 
   const checkSelected = (category: string, name: string) => {
@@ -77,6 +103,7 @@ const useKeyword = () => {
   return {
     selectedItems,
     setSelectedItems,
+    handleReviewItemClick,
     handleItemClick,
     checkSelected,
     onClickRefresh,
