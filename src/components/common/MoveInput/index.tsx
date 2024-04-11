@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import Input from "../Input";
 import BackButton from "../BackButton";
+import Icon from "../Icon";
 
 const MoveInput = () => {
   const router = useRouter();
@@ -17,6 +18,12 @@ const MoveInput = () => {
         onClick={() => router.push("/search")}
         className="w-full h-[50px] px-10 bg-white border-[1xps] border-gray-400 rounded-lg focus:outline-none"
       />
+      <button
+        className="absolute right-4 top-0 transform translate-y-1/2 cursor-pointer"
+        onClick={() => router.push("/")} 
+      >
+        <Icon type="close" size="small" alt="close" />
+      </button>
     </div>
   );
 };
