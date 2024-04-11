@@ -1,5 +1,6 @@
 import type { Meta } from "@storybook/react";
 import Condition from ".";
+import { filterDatas } from "@/app/constants";
 
 const meta: Meta<typeof Condition> = {
   title: "Search/Condition",
@@ -21,6 +22,7 @@ const PrimitiveCondition = () => {
     <Condition
       handleItemClick={handleItemClick}
       checkSelected={checkSelected}
+      filterDatas={filterDatas}
     />
   );
 };
