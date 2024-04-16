@@ -50,6 +50,10 @@ const ContentInfo = ({ cafeDetailInfo }: ContentInfoProps) => {
     return cafeDetailInfo.reviews;
   };
 
+  const calculatedCafeKeywordsInfo = () => {
+    return cafeDetailInfo.cafeKeywords;
+  };
+
   const renderMenuContent = () => {
     const clickedMenu = menuInfo.find((item) => item.isClicked);
     switch (clickedMenu?.id) {
@@ -68,6 +72,7 @@ const ContentInfo = ({ cafeDetailInfo }: ContentInfoProps) => {
             <ReviewInfo
               moreButton={true}
               cafeReviewInfo={calculatedReviewInfo()}
+              cafeKeywords={calculatedCafeKeywordsInfo()}
             />
           </div>
         );
@@ -76,7 +81,12 @@ const ContentInfo = ({ cafeDetailInfo }: ContentInfoProps) => {
       case "photo":
         return <PhotoInfo cafePhotoInfo={calculatedPhotoInfo()} />;
       case "review":
-        return <ReviewInfo cafeReviewInfo={calculatedReviewInfo()} />;
+        return (
+          <ReviewInfo
+            cafeReviewInfo={calculatedReviewInfo()}
+            cafeKeywords={calculatedCafeKeywordsInfo()}
+          />
+        );
       default:
         return null;
     }

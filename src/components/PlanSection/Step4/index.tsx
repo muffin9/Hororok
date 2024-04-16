@@ -41,7 +41,7 @@ const Step4 = () => {
       locationName: searchInputValue,
       categoryKeywords: categoryKeywords,
     };
-    
+
     const planResultInfo = await postSearchListToPlan(convertPlanData);
 
     setMatchPlan(planResultInfo);
@@ -70,6 +70,7 @@ const Step4 = () => {
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}
           filterDatas={filterDatas}
+          maxSelectCount={5}
         />
       </div>
       <div className="flex p-[-16px] h-[50px] border-t-[1px] border-silver">

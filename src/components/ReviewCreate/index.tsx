@@ -128,6 +128,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
             handleItemClick={handleReviewItemClick}
             checkSelected={checkSelected}
             filterDatas={reviewFilterDatas}
+            maxSelectCount={10}
           />
         </div>
         <div className="px-4">

@@ -2,12 +2,14 @@ import Text from "../common/Text";
 import Tag from "../common/Tag";
 import { CategoryIdType } from "../Home/HomeSection";
 import { FilterDataType } from "@/interfaces/Cafe";
+import Icon from "../common/Icon";
 
 interface ConditionProps {
   categoryId?: CategoryIdType;
   handleItemClick: (category: string, name: string) => void;
   checkSelected: (category: string, name: string) => boolean;
   filterDatas: FilterDataType[];
+  maxSelectCount: number;
 }
 
 const Condition = ({
@@ -15,6 +17,7 @@ const Condition = ({
   handleItemClick,
   checkSelected,
   filterDatas,
+  maxSelectCount,
 }: ConditionProps) => {
   const sortedFilterData = () => {
     if (categoryId) {
@@ -31,6 +34,10 @@ const Condition = ({
 
   return (
     <div className="py-6 border-silver">
+      <div className="flex gap-1 text-primary-300 pb-4">
+        <Icon size="xSmall" type="info" alt="info" />
+        <Text size="small">최대 {maxSelectCount}개 선택할 수 있어요</Text>
+      </div>
       {sortedFilterData().map((condition) => {
         return (
           <div key={condition.category} className="flex flex-col gap-4">
