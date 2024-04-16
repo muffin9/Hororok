@@ -23,6 +23,7 @@ const PrimitiveCondition = () => {
       handleItemClick={handleItemClick}
       checkSelected={checkSelected}
       filterDatas={filterDatas}
+      maxSelectCount={5}
     />
   );
 };
