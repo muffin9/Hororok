@@ -6,7 +6,7 @@ import axiosInstance from "./apiClient";
 export const postSearchListToPlan = async (formData: FormPostDataType) => {
   try {
     const response = await axiosInstance.post(
-      `${apiSearchUrl}/plans`,
+      `${apiSearchUrl}/cafe/plans`,
       formData
     );
 

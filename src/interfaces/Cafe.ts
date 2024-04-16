@@ -30,6 +30,7 @@ export interface ReviewType {
 export interface CafeKeyWordType {
   id: number;
   name: string;
+  count?: number;
 }
 
 export interface CafeDetailInfoType {

@@ -40,6 +40,6 @@ export const IconButton: Story = {
       console.log("clicked");
     },
     className:
-      "bg-white border-[1px] border-solid border-gray-400 enabled:hover:bg-primary-100",
+      "bg-white border-[1px] border-solid border-gray-400 enabled:hover:bg-primary-300",
   },
 };

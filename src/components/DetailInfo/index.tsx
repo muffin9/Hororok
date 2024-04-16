@@ -87,18 +87,20 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
               </Text>
             </div>
             <div className="flex mt-2 gap-2">
-              {data.cafeKeywords.map((cafeKeyword: CafeKeyWordType) => {
-                return (
-                  <button
-                    key={cafeKeyword.id}
-                    className="h-[31px] px-3 rounded-2xl border-[1px] border-solid border-primary-300"
-                  >
-                    <Text size="small" className="text-primary-300">
-                      {cafeKeyword.name}
-                    </Text>
-                  </button>
-                );
-              })}
+              {data.cafeKeywords
+                .slice(0, 3)
+                .map((cafeKeyword: CafeKeyWordType) => {
+                  return (
+                    <button
+                      key={cafeKeyword.id}
+                      className="h-[31px] px-3 rounded-2xl border-[1px] border-solid border-primary-300"
+                    >
+                      <Text size="small" className="text-primary-300">
+                        {cafeKeyword.name}
+                      </Text>
+                    </button>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -106,13 +108,13 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
         {showModal && (
           <Modal
             title={`로그인을 하면 리뷰를 남길 수 있어요.\n소중한 의견을 공유해주세요.`}
-            okButtonText="로그인하고 리뷰남기기"
-            cancelButtonText="둘러만보기"
+            okButtonText="둘러만보기"
+            cancelButtonText="로그인하고 리뷰남기기"
             okCallbackFunc={() => {
-              router.push("/login");
+              closeModal();
             }}
             cancelCallbackFunc={() => {
-              closeModal();
+              router.push("/login");
             }}
           />
         )}

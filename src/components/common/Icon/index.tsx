@@ -22,7 +22,7 @@ const iconUrls = {
   check: "/assets/Icon/ic_check.svg",
   close: "/assets/Icon/ic_close.svg",
   heart: "/assets/Icon/ic_herat.svg",
-  edit: "/assets/Icon/icon_edit.svg",
+  edit: "/assets/Icon/edit.svg",
   thumb: "/assets/Icon/icon_thumb.svg",
   calendar: "/assets/Icon/icon_calendar.svg",
   account: "/assets/Icon/icon_account.svg",
@@ -37,6 +37,7 @@ const iconUrls = {
   google: "/assets/Icon/google.svg",
   naver: "/assets/Icon/naver.svg",
   re_plan: "/assets/Icon/re-plan.svg",
+  info: "/assets/Icon/ic_info.svg",
 };
 
 interface IconProps {
@@ -76,7 +77,8 @@ interface IconProps {
     | "naver"
     | "google"
     | "apple"
-    | "re_plan";
+    | "re_plan"
+    | "info";
 
   size?: "xSmall" | "small" | "medium" | "large" | "xLarge";
   alt: string;

@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-
 const GNB = () => {
   const router = useRouter();
   const { userInfo } = useUserInfoStore();
@@ -35,17 +34,11 @@ const GNB = () => {
       <footer className="w-[390px] h-16 fixed bottom-0 flex justify-between items-center px-20 bg-white z-[999]">
         <div className="absolute top-[-43px] left-[70px]">
           <Image
-            src={"/assets/Images/tooltip.png"}
+            src={"/assets/Icon/tooltip.svg"}
             alt="tooltip"
             width={222}
             height={41}
           />
-          <Text
-            size="extraSmall"
-            className="text-black absolute top-[12px] left-[15px]"
-          >
-            내일 방문할 라떼 맛있는 카페 찾는다면?
-          </Text>
         </div>
         <div
           className="flex flex-col items-center cursor-pointer"

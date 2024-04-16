@@ -60,6 +60,7 @@ const FilterSection = () => {
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}
           filterDatas={filterDatas}
+          maxSelectCount={5}
         />
       </div>
       <div className="flex h-[50px] border-t-[1px] border-silver">
