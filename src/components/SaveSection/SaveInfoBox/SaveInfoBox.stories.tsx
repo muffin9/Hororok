@@ -9,7 +9,7 @@ const meta: Meta<typeof SaveInfoBox> = {
 export default meta;
 
 const PrimitiveSaveInfoBox = () => {
-  return <SaveInfoBox />;
+  return <SaveInfoBox saveData={{ id: 1, folderName: "test", count: 9 }} />;
 };
 
 export const Default = {
