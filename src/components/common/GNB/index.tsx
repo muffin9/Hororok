@@ -1,3 +1,5 @@
+import useHandleBottomSheet from "@/Hooks/useHandleBottomSheet";
+import SaveSection from "@/components/SaveSection";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import usePlanStore from "@/store/usePlanStore";
@@ -9,6 +11,7 @@ import { useEffect } from "react";
 const GNB = () => {
   const router = useRouter();
   const { userInfo } = useUserInfoStore();
+  const { isBottomSheet, setIsBottomSheet } = useHandleBottomSheet();
   // const searchParams = useSearchParams();
   // const show = searchParams.get("show");
 
@@ -32,14 +35,16 @@ const GNB = () => {
   return (
     <>
       <footer className="w-[390px] h-16 fixed bottom-0 flex justify-between items-center px-20 bg-white z-[999]">
-        <div className="absolute top-[-43px] left-[70px]">
-          <Image
-            src={"/assets/Icon/tooltip.svg"}
-            alt="tooltip"
-            width={222}
-            height={41}
-          />
-        </div>
+        {!isBottomSheet && (
+          <div className="absolute top-[-43px] left-[70px]">
+            <Image
+              src={"/assets/Icon/tooltip.svg"}
+              alt="tooltip"
+              width={222}
+              height={41}
+            />
+          </div>
+        )}
         <div
           className="flex flex-col items-center cursor-pointer"
           onClick={checkCurrentStep}
@@ -47,6 +52,19 @@ const GNB = () => {
           <Icon type="logo" size="medium" alt="계획하기" />
           <Text size="extraSmall" className="text-black">
             계획하기
+          </Text>
+        </div>
+        <div
+          className="flex flex-col items-center cursor-pointer"
+          onClick={() => {
+            userInfo?.email
+              ? setIsBottomSheet(!isBottomSheet)
+              : router.push("/login");
+          }}
+        >
+          <Icon type="bookmark" size="medium" alt="저장" />
+          <Text size="extraSmall" className="text-black">
+            저장
           </Text>
         </div>
         <div
@@ -61,6 +79,11 @@ const GNB = () => {
           </Text>
         </div>
       </footer>
+      {isBottomSheet && (
+        <div className="fixed bottom-16">
+          <SaveSection />
+        </div>
+      )}
       {/* {show && (
         <Modal
           title={`계획했던 여정이 있어요.\n나가시면 다시 처음부터 해야해요.`}
