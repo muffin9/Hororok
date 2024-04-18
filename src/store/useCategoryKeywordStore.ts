@@ -1,9 +1,6 @@
+import { CategoryKeywordsType } from "@/interfaces/Cafe";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
-export interface CategoryKeywordsType {
-  [key: string]: string[];
-}
 
 interface categoryKeywordState {
   categoryKeywords: CategoryKeywordsType;

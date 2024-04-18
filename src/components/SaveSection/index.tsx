@@ -36,7 +36,7 @@ const SaveSection = () => {
           </div>
           <button
             className="flex gap-1 cursor-pointer"
-            onClick={() => router.push("/save/folderEdit")}
+            onClick={() => router.push("/save/folderList")}
           >
             <Icon type="edit" alt="edit" />
             <Text size="small" className="text-primary-300">
