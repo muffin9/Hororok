@@ -1,16 +1,5 @@
-import HomeSection from "@/components/Home/HomeSection";
-import KakaoStaticMap from "@/components/KakaoStaticMap";
-import { Suspense } from "react";
-import Loading from "../loading";
+import Home from "@/components/Home";
 
-export default function Home() {
-  return (
-    <main className="relative">
-      <Suspense fallback={<Loading />}>
-        <KakaoStaticMap height="h-screen">
-            <HomeSection />
-        </KakaoStaticMap>
-      </Suspense>
-    </main>
-  );
+export default function HomePage() {
+  return <Home />;
 }
