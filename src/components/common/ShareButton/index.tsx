@@ -1,5 +1,4 @@
 import { useCallback } from "react";
-import Icon from "../Icon";
 
 declare global {
   interface Window {

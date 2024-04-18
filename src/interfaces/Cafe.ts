@@ -69,3 +69,32 @@ export interface FilterDataType {
   subTitle?: string;
   data: string[];
 }
+
+export interface CategoryKeywordsType {
+  [key: string]: string[];
+}
+
+export interface CafeType {
+  createdDate: string;
+  lastModifiedDate: string;
+  id: number;
+  name: string;
+  phoneNumber: string;
+  roadAddress: string;
+  longitude: number;
+  latitude: number;
+  starRating: number;
+  reviewCount: number;
+  imageUrl: string;
+}
+
+export interface PlanMatchType {
+  matchType: string;
+  locationName: string;
+  minutes: number;
+  visitDateTime: string;
+  categoryKeywords: CategoryKeywordsType;
+  recommendCafes: CafeType[];
+  matchCafes: CafeType[];
+  similarCafes: CafeType[];
+}
