@@ -1,11 +1,10 @@
-import MyPageSection from "@/components/MyPageSection";
 import TopNavigation from "@/components/common/TopNavigation";
 
-export default function MyPage() {
+export default function MyPageEdit() {
   return (
     <section className="h-full bg-white">
       <TopNavigation title="" />
-      <MyPageSection />
+      사진과 닉네임을 변경할 수 있도록 서비스 준비중입니다...
     </section>
   );
 }

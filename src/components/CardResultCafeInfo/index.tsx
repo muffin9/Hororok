@@ -1,6 +1,6 @@
 "use client";
 
-import { CafeType } from "@/store/usePlanMatchStore";
+import { CafeType } from "@/interfaces/Cafe";
 import { useRouter } from "next/navigation";
 import Text from "../common/Text";
 import Icon from "../common/Icon";
