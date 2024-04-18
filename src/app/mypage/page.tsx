@@ -1,3 +1,11 @@
+import MyPageSection from "@/components/MyPageSection";
+import TopNavigation from "@/components/common/TopNavigation";
+
 export default function MyPage() {
-  return <section>준비중입니다...</section>;
+  return (
+    <section className="h-full bg-white">
+      <TopNavigation title="" />
+      <MyPageSection />
+    </section>
+  );
 }
