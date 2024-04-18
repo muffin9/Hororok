@@ -2,7 +2,7 @@ import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 
 interface FolderEditProps {
-  saveData: any;
+  saveData: { id: number; color: string; cafeName: string; address: string }[];
 }
 
 const FolderEdit = ({ saveData }: FolderEditProps) => {

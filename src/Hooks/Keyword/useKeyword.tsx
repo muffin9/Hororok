@@ -1,6 +1,5 @@
-import useCategoryKeywordStore, {
-  CategoryKeywordsType,
-} from "@/store/useCategoryKeywordStore";
+import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
+import { CategoryKeywordsType } from "@/interfaces/Cafe";
 import { useState } from "react";
 
 const initKeywords = {

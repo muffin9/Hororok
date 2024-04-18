@@ -1,5 +1,5 @@
 import { apiSearchUrl } from "@/app/constants";
-import { CategoryKeywordsType } from "@/store/useCategoryKeywordStore";
+import { CategoryKeywordsType } from "@/interfaces/Cafe";
 import axiosInstance from "./apiClient";
 
 export const getSearchList = async (latitude: number, longitude: number) => {

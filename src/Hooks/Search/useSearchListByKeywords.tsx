@@ -1,7 +1,7 @@
 import { getSearchListByKeywords } from "@/apis/search";
 import { useQuery } from "@tanstack/react-query";
 import useGeolocation from "../useGeolocation";
-import { CategoryKeywordsType } from "@/store/useCategoryKeywordStore";
+import { CategoryKeywordsType } from "@/interfaces/Cafe";
 
 const useCafeDetailInfo = (categoryKeywords: CategoryKeywordsType) => {
   const location = useGeolocation();

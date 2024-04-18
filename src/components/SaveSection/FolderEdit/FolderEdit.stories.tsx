@@ -9,7 +9,7 @@ const meta: Meta<typeof FolderEdit> = {
 export default meta;
 
 const PrimitiveFolderEdit = () => {
-  return <FolderEdit />;
+  return <FolderEdit saveData={[]} />;
 };
 
 export const Default = {

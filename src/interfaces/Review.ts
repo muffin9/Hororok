@@ -1,4 +1,4 @@
-import { CategoryKeywordsType } from "@/store/useCategoryKeywordStore";
+import { CategoryKeywordsType } from "./Cafe";
 
 export interface ReviewInfoType {
   cafeId: string;
