@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 import TabMenu from "../common/TabMenu";
+import Profile from "./Profile";
+import FolderList from "../common/FolderList";
+import PlanSave from "./PlanSave";
+import MyReview from "./MyReview";
+import MyUnionCafe from "./MyUnionCafe";
 
 const MyPageSection = () => {
   const [menuInfo, setMenuInfo] = useState([
@@ -19,9 +24,27 @@ const MyPageSection = () => {
     setMenuInfo(updatedMenuInfo);
   };
 
+  const renderMenuContent = () => {
+    const clickedMenu = menuInfo.find((item) => item.isClicked);
+    switch (clickedMenu?.id) {
+      case "save":
+        return <FolderList />;
+      case "plan":
+        return <PlanSave />;
+      case "review":
+        return <MyReview />;
+      case "myUnion":
+        return <MyUnionCafe />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div>
+      <Profile />
       <TabMenu menuInfo={menuInfo} handleOnMenuClick={handleOnMenuClick} />
+      <div>{renderMenuContent()}</div>
     </div>
   );
 };
