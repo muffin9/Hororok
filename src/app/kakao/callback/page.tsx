@@ -23,7 +23,7 @@ export default function KakaoCallback() {
   useEffect(() => {
     if (code) {
       axios
-        .get(`https://api.hororok.o-r.kr/auth/kakao/login?code=${code}`)
+        .get(`https://api.hororok.o-r.kr/api/auth/login?code=${code}`)
         .then(({ data }: { data: LoginType }) => {
           const { account, accessToken } = data;
           localStorage.setItem("accessToken", accessToken);
