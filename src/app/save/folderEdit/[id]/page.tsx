@@ -1,3 +1,5 @@
+"use client";
+
 import useGetFolderList from "@/Hooks/Api/useGetFolderList";
 import FolderEdit from "@/components/SaveSection/FolderEdit";
 import TopNavigation from "@/components/common/TopNavigation";
