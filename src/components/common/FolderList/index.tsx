@@ -5,7 +5,13 @@ import Button from "@/components/common/Button";
 import { useRouter } from "next/navigation";
 import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
 import { BookMarksType, FolderType } from "@/interfaces/Save";
-import Link from "next/link";
+
+interface FolderInfoType {
+  folderId: number;
+  folderName: string;
+  color: string;
+  isVisible: boolean;
+}
 
 const FolderList = () => {
   const {
@@ -17,6 +23,16 @@ const FolderList = () => {
   } = useBookMarkFolderMutation();
 
   const router = useRouter();
+
+  const handleClickUpdate = (
+    e: React.SyntheticEvent<HTMLButtonElement>,
+    folderInfo: FolderInfoType
+  ) => {
+    e.stopPropagation();
+    router.push(
+      `/save/createEdit?folderId=${folderInfo.folderId}&folderName=${folderInfo.folderName}&color=${folderInfo.color}&isVisible=${folderInfo.isVisible}`
+    );
+  };
 
   const handleClickDelete = (
     e: React.SyntheticEvent<HTMLButtonElement>,
@@ -38,18 +54,21 @@ const FolderList = () => {
             >
               <SaveInfoBox folderData={data} />
               <div className="flex gap-1">
-                <Link
-                  href={{
-                    pathname: `/save/createEdit?folderId=${data.folderId}`,
-                    query: {
+                <Button
+                  size="small"
+                  onClick={(e) => {
+                    const folderInfo = {
+                      folderId: data.folderId,
                       folderName: data.name,
                       color: data.color,
                       isVisible: data.visible,
-                    },
+                    };
+                    handleClickUpdate(e, folderInfo);
                   }}
                 >
-                  <Button size="small">수정</Button>
-                </Link>
+                  수정
+                </Button>
+
                 <Button
                   size="small"
                   bgColor="bg-gray-400"

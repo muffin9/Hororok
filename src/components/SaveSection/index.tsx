@@ -16,14 +16,14 @@ const SaveSection = ({
   currentSelectCafeId?: number;
 }) => {
   const { bookMarks } = useBookMarkFolderMutation();
-  const { toggleBookmark } = useToggleBookmark(currentSelectCafeId!);
+  const { toggleBookmark } = useToggleBookmark();
 
   const router = useRouter();
   const saveRef = useRef<HTMLDivElement>(null);
 
   const handleClickFolder = (folderId: number) => {
     if (currentSelectCafeId) {
-      toggleBookmark(folderId);
+      toggleBookmark(currentSelectCafeId, folderId);
     } else router.push(`/save/folderEdit/${folderId}`);
   };
 

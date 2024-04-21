@@ -2,10 +2,11 @@ import { FolderType } from "@/interfaces/Save";
 import useBookMarkMutation from "./useBookMarkMutation";
 import { getFolderList } from "@/apis/save";
 
-const useToggleBookmark = (cafeId: number) => {
+const useToggleBookmark = () => {
   const { postBookmark, deleteBookmark } = useBookMarkMutation();
 
-  const toggleBookmark = async (folderId: number) => {
+  const toggleBookmark = async (cafeId: number, folderId: number) => {
+    // TODO : 에러 수정 필요.
     const { data: folderList } = await getFolderList(folderId);
     const findFolder: FolderType = folderList.folders.find(
       (folder: FolderType) => {
