@@ -25,10 +25,9 @@ export default function KakaoCallback() {
       axios
         .get(`https://api.hororok.o-r.kr/api/auth/login?code=${code}`)
         .then(({ data }: { data: LoginType }) => {
-          const { account, accessToken } = data;
+          const { accessToken, refreshToken } = data;
           localStorage.setItem("accessToken", accessToken);
 
-          setUserInfo(account);
           router.push("/");
         })
         .catch((error) => {
