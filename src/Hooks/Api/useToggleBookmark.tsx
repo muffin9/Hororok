@@ -7,6 +7,7 @@ const useToggleBookmark = () => {
 
   const toggleBookmark = async (cafeId: number, folderId: number) => {
     // TODO : 에러 수정 필요.
+    console.log(cafeId, folderId);
     const { data: folderList } = await getFolderList(folderId);
     const findFolder: FolderType = folderList.folders.find(
       (folder: FolderType) => {
