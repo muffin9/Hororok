@@ -1,4 +1,4 @@
 export interface LoginType {
-  account: { email: string | null; nickname: string | null };
+  refreshToken: string;
   accessToken: string;
 }
