@@ -1,18 +1,12 @@
-import { getFolderList } from "@/apis/save";
-import { useQuery } from "@tanstack/react-query";
 import { FolderType } from "@/interfaces/Save";
 import useBookMarkMutation from "./useBookMarkMutation";
+import { getFolderList } from "@/apis/save";
 
 const useToggleBookmark = (cafeId: number) => {
   const { postBookmark, deleteBookmark } = useBookMarkMutation();
 
-  const { data: folderList } = useQuery({
-    queryKey: ["FolderList", cafeId],
-    queryFn: () => getFolderList(cafeId),
-    enabled: !!cafeId,
-  });
-
-  const toggleBookmark = (folderId: number) => {
+  const toggleBookmark = async (folderId: number) => {
+    const { data: folderList } = await getFolderList(folderId);
     const findFolder: FolderType = folderList.folders.find(
       (folder: FolderType) => {
         return folder.folderId === folderId;

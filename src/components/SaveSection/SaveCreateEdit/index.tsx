@@ -21,7 +21,8 @@ const SaveCreateEdit = ({
   paramColor,
   paramIsVisible,
 }: SaveCreateEditProps) => {
-  const { postBookmarkFolder, patchBookmarkFolder } = useBookMarkFolderMutation();
+  const { postBookmarkFolder, patchBookmarkFolder } =
+    useBookMarkFolderMutation();
   const possibleColors = [
     "#FE8282",
     "#FFC43C",
@@ -71,7 +72,7 @@ const SaveCreateEdit = ({
           return (
             <button
               key={c}
-              className={`opacity-50 w-[30px] h-[30px] rounded-full ${color === c && "opacity-100"}`}
+              className={`w-[30px] h-[30px] rounded-full ${color === c ? "opacity-100" : "opacity-50"}`}
               style={{ backgroundColor: `${c}` }}
               onClick={() => setColor(c)}
             ></button>

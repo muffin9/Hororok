@@ -31,7 +31,9 @@ const useBookMarkFolderMutation = () => {
   const { mutateAsync: postBookmarkFolder } = useMutation({
     mutationFn: async (folderInfo: postFolderType) => {
       return axiosInstance.post(`${apiSearchUrl}/bookmark/folder/save`, {
-        folderInfo,
+        name: folderInfo.name,
+        color: folderInfo.color,
+        isVisible: folderInfo.isVisible,
       });
     },
     onSuccess: () => {
