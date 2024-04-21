@@ -1,11 +1,12 @@
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
+import { BookmarkType, FolderListType } from "@/interfaces/Save";
 
 interface FolderEditProps {
-  saveData: { id: number; color: string; cafeName: string; address: string }[];
+  folderList: FolderListType;
 }
 
-const FolderEdit = ({ saveData }: FolderEditProps) => {
+const FolderEdit = ({ folderList }: FolderEditProps) => {
   return (
     <div>
       <div className="flex gap-1 justify-center">
@@ -19,20 +20,20 @@ const FolderEdit = ({ saveData }: FolderEditProps) => {
         </Text>
       </div>
       <div className="flex flex-col">
-        {saveData.map((data) => {
+        {folderList.bookmarks.map((bookmark: BookmarkType) => {
           return (
             <div
-              key={data.id}
+              key={bookmark.cafeId}
               className="flex justify-between py-3 border-solid border-b-[1px] border-gray-200"
             >
               <div className="flex gap-3 px-4">
                 <Icon type="defaultCup" alt="cup" />
                 <div className="flex flex-col">
-                  <Text size="medium" className={`text-${data.color}`}>
-                    {data.cafeName}
+                  <Text size="medium" className={`text-${folderList.color}`}>
+                    {bookmark.cafeName}
                   </Text>
                   <Text size="small" className="text-gray-700">
-                    {data.address}
+                    {bookmark.roadAddress}
                   </Text>
                 </div>
               </div>

@@ -5,23 +5,23 @@ import Input from "@/components/common/Input";
 import Text from "@/components/common/Text";
 import ToastMessage from "@/components/common/ToastMessage";
 import ToggleButton from "@/components/common/ToggleButton";
-import useToastStore from "@/store/useToastStore";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
 
 interface SaveCreateEditProps {
-  id?: number;
-  folderName?: string;
-  color?: string;
-  show?: boolean;
+  paramId?: number;
+  paramFolderName?: string | null;
+  paramColor?: string | null;
+  paramIsVisible?: boolean | null;
 }
 
 const SaveCreateEdit = ({
-  id,
-  folderName,
-  color,
-  show,
+  paramId,
+  paramFolderName,
+  paramColor,
+  paramIsVisible,
 }: SaveCreateEditProps) => {
+  const { postBookmarkFolder, patchBookmarkFolder } = useBookMarkFolderMutation();
   const possibleColors = [
     "#FE8282",
     "#FFC43C",
@@ -31,33 +31,37 @@ const SaveCreateEdit = ({
     "#B29EFF",
     "#F498E3",
   ];
-  // id has -> create axios, id no has -> modify axios
-  const router = useRouter();
-  const [inputValue, setInputValue] = useState(folderName || "");
-  const [folderColor, setFolderColor] = useState(color || "");
-  const { showMessage } = useToastStore();
+
+  const [name, setName] = useState(paramFolderName || "");
+  const [color, setColor] = useState(paramColor || "");
+  const [isVisible, setIsVisible] = useState(paramIsVisible || false);
 
   const handleChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+    setName(e.target.value);
   };
 
   const checkDisabledSubmit = () => {
-    if (inputValue === "" || folderColor === "") return true;
+    if (name === "" || color === "") return true;
     return false;
   };
 
   const completeSubmit = () => {
-    showMessage("새 폴더를 추가했어요");
-    setTimeout(() => {
-      router.push("/");
-    }, 1000);
+    // paramId has -> patch axios, id no has -> post axios
+    if (paramId)
+      patchBookmarkFolder({ folderId: paramId, name, color, isVisible });
+    else
+      postBookmarkFolder({
+        name,
+        color,
+        isVisible,
+      });
   };
 
   return (
     <div className="p-4">
       <Input
         type="text"
-        value={inputValue}
+        value={name}
         placeholder="폴더명을 입력해 주세요."
         onChange={handleChangeInputValue}
         className="w-full bg-gray-200 p-3 rounded"
@@ -67,9 +71,9 @@ const SaveCreateEdit = ({
           return (
             <button
               key={c}
-              className={`w-[30px] h-[30px] rounded-full`}
+              className={`opacity-50 w-[30px] h-[30px] rounded-full ${color === c && "opacity-100"}`}
               style={{ backgroundColor: `${c}` }}
-              onClick={() => setFolderColor(c)}
+              onClick={() => setColor(c)}
             ></button>
           );
         })}
@@ -85,7 +89,11 @@ const SaveCreateEdit = ({
             지도 위에 표시할 폴더는 최대 10개 선택할 수 있어요.
           </Text>
         </div>
-        <ToggleButton saveId={id} isShow={show || false} />
+        <ToggleButton
+          folderId={paramId}
+          isVisible={isVisible}
+          callbackFunc={() => setIsVisible(!isVisible)}
+        />
       </div>
       <div className="w-[358px] fixed bottom-12">
         <Button

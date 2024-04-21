@@ -326,9 +326,3 @@ export const planCafeHeader = {
       "방문 지역, 날짜, 시간은 동일해요.\n조금 더 걷거나 조건이 다를 수 있어요.",
   },
 };
-
-export const dummySaveData = [
-  { id: 1, folderName: "기본 폴더", count: 2 },
-  { id: 1, folderName: "기본 폴더", count: 2 },
-  { id: 1, folderName: "기본 폴더", count: 2 },
-];

@@ -7,7 +7,7 @@ const Splash = () => {
       <Text size="x2Large" className="text-white">
         원하는 카페만 골라주는
       </Text>
-      <div className="flex items-center">
+      <div className="flex items-center mt-[-5px]">
         <Text size="extraLarge" weight="bold" className="text-white">
           카페콕
         </Text>
