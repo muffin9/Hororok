@@ -1,9 +1,29 @@
+import { apiSearchUrl } from "@/app/constants";
 import axios, { AxiosInstance } from "axios";
 
 const axiosInstance: AxiosInstance = axios.create();
 
 const isLoginRequiredForURL = (url: string) => {
-  return url.startsWith(`${process.env.NEXT_PUBLIC_SERVER_API}/reviews`);
+  const targetURLs = [
+    `${apiSearchUrl}/reviews`,
+    `${apiSearchUrl}/bookmark/folders`,
+    `${apiSearchUrl}/bookmark/folder/save`,
+    new RegExp(`${apiSearchUrl}/bookmark/folder/(\\d+)`),
+    `${apiSearchUrl}/bookmark/folder/update`,
+    new RegExp(`${apiSearchUrl}/bookmark/folder/(\\d+)/delete`),
+    new RegExp(`${apiSearchUrl}/bookmark/folder/(\\d+)/update/visible`),
+    `${apiSearchUrl}/bookmark/save`,
+    `${apiSearchUrl}/bookmark/delete/(\\d+)`,
+  ];
+
+  return targetURLs.some((targetURL) => {
+    if (typeof targetURL === "string") {
+      return url.startsWith(targetURL);
+    } else if (targetURL instanceof RegExp) {
+      return targetURL.test(url);
+    }
+    return false;
+  });
 };
 
 axiosInstance.interceptors.request.use((config: any) => {
