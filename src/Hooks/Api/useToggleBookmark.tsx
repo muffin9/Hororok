@@ -9,6 +9,7 @@ const useToggleBookmark = (cafeId: number) => {
   const { data: folderList } = useQuery({
     queryKey: ["FolderList", cafeId],
     queryFn: () => getFolderList(cafeId),
+    enabled: !!cafeId,
   });
 
   const toggleBookmark = (folderId: number) => {

@@ -57,7 +57,7 @@ const GNB = () => {
         <div
           className="flex flex-col items-center cursor-pointer"
           onClick={() => {
-            userInfo?.email
+            localStorage.getItem("accessToken")
               ? setIsBottomSheet(!isBottomSheet)
               : router.push("/login");
           }}
@@ -70,12 +70,14 @@ const GNB = () => {
         <div
           className="flex flex-col items-center cursor-pointer"
           onClick={() => {
-            userInfo?.email ? router.push("/mypage") : router.push("/login");
+            localStorage.getItem("accessToken")
+              ? router.push("/mypage")
+              : router.push("/login");
           }}
         >
           <Icon type="account" size="medium" alt="로그인" />
           <Text size="extraSmall" className="text-black">
-            {userInfo?.email ? "마이페이지" : "로그인"}
+            {localStorage.getItem("accessToken") ? "마이페이지" : "로그인"}
           </Text>
         </div>
       </footer>

@@ -12,7 +12,6 @@ import { CafeDetailInfoType, CafeKeyWordType } from "@/interfaces/Cafe";
 import ShareButton from "../common/ShareButton";
 import useModal from "@/Hooks/useModal";
 import Modal from "../common/Modal";
-import useUserInfoStore from "@/store/useUserInfo";
 
 interface DetailInfoProps {
   cafeId: string;
@@ -21,7 +20,6 @@ interface DetailInfoProps {
 const DetailInfo = ({ cafeId }: DetailInfoProps) => {
   const { data }: { data: CafeDetailInfoType } = useGetCafeDetailInfo(cafeId);
   const { showModal, openModal, closeModal } = useModal();
-  const { userInfo } = useUserInfoStore();
   const router = useRouter();
 
   return (
@@ -58,7 +56,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
               size="small"
               className="flex gap-2 bg-white border-[1px] border-solid border-silver"
               onClick={() => {
-                if (!userInfo.email) {
+                if (!localStorage.getItem("accessToken")) {
                   openModal();
                 } else {
                   router.push(
