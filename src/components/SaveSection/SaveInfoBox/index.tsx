@@ -1,11 +1,11 @@
 import Text from "@/components/common/Text";
-import { SaveDataType } from "@/interfaces/Save";
+import { FolderType } from "@/interfaces/Save";
 
 interface SaveInfoBoxProps {
-  saveData: SaveDataType;
+  folderData: FolderType;
 }
 
-const SaveInfoBox = ({ saveData }: SaveInfoBoxProps) => {
+const SaveInfoBox = ({ folderData }: SaveInfoBoxProps) => {
   return (
     <div className="flex items-center">
       <div className="flex gap-3">
@@ -16,9 +16,9 @@ const SaveInfoBox = ({ saveData }: SaveInfoBoxProps) => {
           }}
         />
         <div className="flex flex-col">
-          <Text size="medium">{saveData.folderName}</Text>
+          <Text size="medium">{folderData.name}</Text>
           <Text size="extraSmall" className="text-gray-600">
-            개수 {saveData.count}/99
+            개수 {folderData.favoriteCount}/99
           </Text>
         </div>
       </div>

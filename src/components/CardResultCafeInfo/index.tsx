@@ -6,6 +6,9 @@ import Text from "../common/Text";
 import Icon from "../common/Icon";
 import { CafeInfoType } from "@/interfaces/Cafe";
 import ShareButton from "../common/ShareButton";
+import useHandleBookmark from "@/Hooks/useHandleBookmark";
+import useHandleBottomSheet from "@/Hooks/useHandleBottomSheet";
+import SaveSection from "../SaveSection";
 
 interface CardResultCafeInfoProps {
   cafeDatas: CafeType[] | CafeInfoType[];
@@ -13,47 +16,64 @@ interface CardResultCafeInfoProps {
 
 const CardResultCafeInfo = ({ cafeDatas }: CardResultCafeInfoProps) => {
   const router = useRouter();
+  const { currentSelectCafeId, handleClickBookmark } = useHandleBookmark();
+  const { isBottomSheet, setIsBottomSheet } = useHandleBottomSheet();
+
   return (
     cafeDatas &&
     cafeDatas.map((cafeData: CafeType | CafeInfoType) => {
       return (
-        <div
-          key={cafeData.id}
-          className="flex gap-3 my-4 cursor-pointer"
-          onClick={() => router.push(`/cafelist/${cafeData.id}`)}
-        >
+        <>
           <div
-            className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
-            style={{ backgroundImage: `url(http:${cafeData.imageUrl})` }}
-          />
-          <div className="w-full flex flex-col py-2 gap-3">
-            <header className="flex justify-between">
-              <Text size="large" className="text-black">
-                {cafeData.name}
-              </Text>
-              <div className="flex gap-4">
-                <ShareButton cafeId={cafeData.id}>
-                  <Icon type="share" size="small" alt="공유하기" />
-                </ShareButton>
-                <Icon type="bookmark" size="small" alt="북마크" />
-              </div>
-            </header>
-            <div className="flex flex-col gap-1">
-              <div className="flex items-center gap-1">
-                <Icon type="star" size="xSmall" alt="star" />
-                <Text size="small" className="text-black">
-                  {cafeData.starRating}
+            key={cafeData.id}
+            className="flex gap-3 px-4 my-4 cursor-pointer"
+            onClick={() => router.push(`/cafelist/${cafeData.id}`)}
+          >
+            <div
+              className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
+              style={{ backgroundImage: `url(http:${cafeData.imageUrl})` }}
+            />
+            <div className="w-full flex flex-col py-2 gap-3">
+              <header className="flex justify-between">
+                <Text size="large" className="text-black">
+                  {cafeData.name}
                 </Text>
+                <div className="flex gap-4">
+                  <ShareButton cafeId={cafeData.id}>
+                    <Icon type="share" size="small" alt="공유하기" />
+                  </ShareButton>
+                  <button
+                    onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+                      handleClickBookmark(e, cafeData.id);
+                      setIsBottomSheet(true);
+                    }}
+                  >
+                    <Icon type="bookmark" size="small" alt="북마크" />
+                  </button>
+                </div>
+              </header>
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-1">
+                  <Icon type="star" size="xSmall" alt="star" />
+                  <Text size="small" className="text-black">
+                    {cafeData.starRating}
+                  </Text>
+                  <Text size="extraSmall" className="text-gray-700">
+                    ({cafeData.reviewCount})
+                  </Text>
+                </div>
                 <Text size="extraSmall" className="text-gray-700">
-                  ({cafeData.reviewCount})
+                  {cafeData.roadAddress}
                 </Text>
               </div>
-              <Text size="extraSmall" className="text-gray-700">
-                {cafeData.roadAddress}
-              </Text>
             </div>
           </div>
-        </div>
+          {isBottomSheet && (
+            <div className="fixed bottom-0">
+              <SaveSection currentSelectCafeId={currentSelectCafeId} />
+            </div>
+          )}
+        </>
       );
     })
   );

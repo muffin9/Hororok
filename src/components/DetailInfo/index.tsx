@@ -7,7 +7,7 @@ import Icon from "../common/Icon";
 import Text from "../common/Text";
 import ContentInfo from "./ContentInfo";
 import Star from "../common/Star";
-import useCafeDetailInfo from "@/Hooks/Cafe/useCafeDetailInfo";
+import useGetCafeDetailInfo from "@/Hooks/Api/useGetCafeDetailInfo";
 import { CafeDetailInfoType, CafeKeyWordType } from "@/interfaces/Cafe";
 import ShareButton from "../common/ShareButton";
 import useModal from "@/Hooks/useModal";
@@ -19,7 +19,7 @@ interface DetailInfoProps {
 }
 
 const DetailInfo = ({ cafeId }: DetailInfoProps) => {
-  const { data }: { data: CafeDetailInfoType } = useCafeDetailInfo(cafeId);
+  const { data }: { data: CafeDetailInfoType } = useGetCafeDetailInfo(cafeId);
   const { showModal, openModal, closeModal } = useModal();
   const { userInfo } = useUserInfoStore();
   const router = useRouter();

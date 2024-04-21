@@ -36,11 +36,9 @@ const ResultList = () => {
             </div>
           )}
         </header>
-        <div className="px-4">
-          {searchResultList && (
-            <CardResultCafeInfo cafeDatas={searchResultList} />
-          )}
-        </div>
+        {searchResultList && (
+          <CardResultCafeInfo cafeDatas={searchResultList} />
+        )}
       </div>
     </section>
   );

@@ -9,7 +9,18 @@ const meta: Meta<typeof SaveInfoBox> = {
 export default meta;
 
 const PrimitiveSaveInfoBox = () => {
-  return <SaveInfoBox saveData={{ id: 1, folderName: "test", count: 9 }} />;
+  return (
+    <SaveInfoBox
+      folderData={{
+        folderId: 1,
+        name: "test",
+        color: "#FE8282",
+        favoriteCount: 9,
+        visible: false,
+        defaultFolder: false,
+      }}
+    />
+  );
 };
 
 export const Default = {

@@ -4,19 +4,27 @@ import Icon from "../common/Icon";
 import Button from "../common/Button";
 import { useRouter } from "next/navigation";
 import SaveInfoBox from "./SaveInfoBox";
-import { SaveDataType } from "@/interfaces/Save";
-import { dummySaveData } from "@/app/constants";
-import ToggleButton from "../common/ToggleButton";
+import { FolderType } from "@/interfaces/Save";
 import ToastMessage from "../common/ToastMessage";
-import useToastStore from "@/store/useToastStore";
+import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
+import ToggleButton from "../common/ToggleButton";
+import useToggleBookmark from "@/Hooks/Api/useToggleBookmark";
 
-const SaveSection = () => {
+const SaveSection = ({
+  currentSelectCafeId,
+}: {
+  currentSelectCafeId?: number;
+}) => {
+  const { bookMarks } = useBookMarkFolderMutation();
+  const { toggleBookmark } = useToggleBookmark(currentSelectCafeId!);
+
   const router = useRouter();
   const saveRef = useRef<HTMLDivElement>(null);
-  const { showMessage } = useToastStore();
 
-  const handleClickFolder = () => {
-    showMessage("기본 폴더'에 카페를 저장했어요!");
+  const handleClickFolder = (folderId: number) => {
+    if (currentSelectCafeId) {
+      toggleBookmark(folderId);
+    } else router.push(`/save/folderEdit/${folderId}`);
   };
 
   return (
@@ -31,7 +39,7 @@ const SaveSection = () => {
               폴더
             </Text>
             <Text size="small" className="text-primary-300">
-              4
+              {bookMarks?.folderCount}
             </Text>
           </div>
           <button
@@ -52,18 +60,23 @@ const SaveSection = () => {
           할 수 있어요
         </div>
         <div className="flex flex-col gap-4 p-4 px-2">
-          {dummySaveData.map((data: SaveDataType) => {
-            return (
-              <div
-                key={data.id}
-                className="flex justify-between cursor-pointer"
-                onClick={handleClickFolder}
-              >
-                <SaveInfoBox saveData={data} />
-                <ToggleButton saveId={data.id} isShow={false} />
-              </div>
-            );
-          })}
+          {bookMarks &&
+            bookMarks.folders.map((folder: FolderType) => {
+              return (
+                <div
+                  key={folder.folderId}
+                  className="flex justify-between cursor-pointer"
+                  onClick={() => handleClickFolder(folder.folderId)}
+                >
+                  <SaveInfoBox folderData={folder} />
+                  <ToggleButton
+                    folderId={folder.folderId}
+                    isVisible={false}
+                    callbackFunc={toggleBookmark}
+                  />
+                </div>
+              );
+            })}
         </div>
         <Button
           size="full"
