@@ -88,11 +88,7 @@ const SaveCreateEdit = ({ paramId }: SaveCreateEditProps) => {
             지도 위에 표시할 폴더는 최대 10개 선택할 수 있어요.
           </Text>
         </div>
-        <ToggleButton
-          folderId={paramId}
-          isVisible={isVisible}
-          callbackFunc={() => setIsVisible(!isVisible)}
-        />
+        <ToggleButton folderId={paramId} isVisible={isVisible} />
       </div>
       <div className="w-[358px] fixed bottom-12">
         <Button
