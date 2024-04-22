@@ -30,7 +30,7 @@ const FolderList = () => {
   ) => {
     e.stopPropagation();
     router.push(
-      `/save/createEdit/folderId=${folderInfo.folderId}&folderName=${folderInfo.folderName}&color=${folderInfo.color}&isVisible=${folderInfo.isVisible}`
+      `/save/createEdit/id=${folderInfo.folderId}?folderName=${folderInfo.folderName}&color=${folderInfo.color}&isVisible=${folderInfo.isVisible}`
     );
   };
 

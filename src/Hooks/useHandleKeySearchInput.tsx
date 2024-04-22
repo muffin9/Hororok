@@ -41,7 +41,6 @@ const useHandleKeySearchInput = () => {
   };
 
   const searchAddressToCoordinate = (address: string) => {
-    console.log(address);
     if (window.kakao) {
       const kakaoSearchService = new window.kakao.maps.services.Places();
       kakaoSearchService.keywordSearch(address, placesSearchCallBack, {

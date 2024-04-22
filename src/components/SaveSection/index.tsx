@@ -72,7 +72,10 @@ const SaveSection = ({
                   <ToggleButton
                     folderId={folder.folderId}
                     isVisible={false}
-                    callbackFunc={toggleBookmark}
+                    callbackFunc={() => {
+                      if (currentSelectCafeId)
+                        toggleBookmark(currentSelectCafeId, folder.folderId);
+                    }}
                   />
                 </div>
               );
