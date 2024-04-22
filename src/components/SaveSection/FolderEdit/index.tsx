@@ -10,7 +10,7 @@ const FolderEdit = ({ folderList }: FolderEditProps) => {
   return (
     <div>
       <div className="flex gap-1 justify-center">
-        <Text size="large">폴더이름</Text>
+        <Text size="large">{folderList.folderName}</Text>
         <Icon type="edit" alt="edit" />
       </div>
       <div className="flex p-4 gap-1">

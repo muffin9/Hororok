@@ -46,7 +46,7 @@ const useBookMarkFolderMutation = () => {
 
   const { mutateAsync: patchBookmarkFolder } = useMutation({
     mutationFn: async (folderInfo: patchFolderType) => {
-      return axiosInstance.patch(`${apiSearchUrl}/bookmark/folder/update`, {
+      return axiosInstance.put(`${apiSearchUrl}/bookmark/folder/update`, {
         folderInfo,
       });
     },

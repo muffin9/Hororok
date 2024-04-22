@@ -18,7 +18,8 @@ const useBookMarkMutation = () => {
         folderId,
       });
     },
-    onSuccess: () => {
+    onSuccess: ({ data }) => {
+      console.log(data);
       showMessage(`카페를 저장했어요!`);
     },
   });
@@ -34,7 +35,18 @@ const useBookMarkMutation = () => {
     },
   });
 
-  return { postBookmark, deleteBookmark };
+  const { mutateAsync: toggleVisible } = useMutation({
+    mutationFn: async (folderId: number) => {
+      return axiosInstance.patch(
+        `${apiSearchUrl}/bookmark/folder/${folderId}/update/visible`
+      );
+    },
+    onSuccess: () => {
+      showMessage(`변경되었습니다.`);
+    },
+  });
+
+  return { postBookmark, deleteBookmark, toggleVisible };
 };
 
 export default useBookMarkMutation;

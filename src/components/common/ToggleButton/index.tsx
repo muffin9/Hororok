@@ -1,17 +1,15 @@
+import useBookMarkMutation from "@/Hooks/Api/useBookMarkMutation";
+
 interface ToggleButtonProps {
   folderId?: number;
   isVisible: boolean;
-  callbackFunc: any;
 }
 
-const ToggleButton = ({
-  folderId,
-  isVisible,
-  callbackFunc,
-}: ToggleButtonProps) => {
+const ToggleButton = ({ folderId, isVisible }: ToggleButtonProps) => {
+  const { toggleVisible } = useBookMarkMutation();
   const handleToggle = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    callbackFunc();
+    if (folderId) toggleVisible(folderId);
   };
 
   return (
