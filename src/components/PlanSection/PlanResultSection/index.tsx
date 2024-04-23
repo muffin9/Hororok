@@ -12,6 +12,7 @@ const PlanResultSection = () => {
   const router = useRouter();
 
   const { resultPlanInfos } = usePlanMatchStore();
+
   const [isMatchCafeButton, setIsMatchCafeButton] = useState(true);
 
   const calculatedResultInfoList = () => {
@@ -28,12 +29,13 @@ const PlanResultSection = () => {
   };
 
   return (
-    <section className="w-[390px] h-1/2 flex flex-col justify-between z-[1000] px-4 py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-x-hidden overflow-y-scroll">
+    <section className="w-[390px] h-1/2 flex flex-col justify-between z-[1000] py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-x-hidden overflow-y-scroll">
       {resultPlanInfos && (
         <>
           <PlanResultHeader />
           <CardResultCafeInfo cafeDatas={calculatedResultInfoList()} />
           {resultPlanInfos.matchType === "MATCH" &&
+            resultPlanInfos.similarCafes.length > 0 &&
             (isMatchCafeButton ? (
               <Button
                 size="small"
@@ -47,13 +49,15 @@ const PlanResultSection = () => {
             ) : (
               <CardResultCafeInfo cafeDatas={resultPlanInfos.similarCafes} />
             ))}
-          <Button
-            size="small"
-            onClick={() => router.push("/")}
-            className="w-[358px] h-[50px] fixed bottom-0"
-          >
-            홈으로 돌아가기
-          </Button>
+          <div className="px-4">
+            <Button
+              size="small"
+              onClick={() => router.push("/")}
+              className="w-[358px] h-[50px] fixed bottom-0"
+            >
+              홈으로 돌아가기
+            </Button>
+          </div>
         </>
       )}
     </section>
