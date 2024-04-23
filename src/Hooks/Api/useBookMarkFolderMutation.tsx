@@ -3,7 +3,7 @@ import { getBookmark } from "@/apis/save";
 import { apiSearchUrl } from "@/app/constants";
 import { BookMarksType } from "@/interfaces/Save";
 import useToastStore from "@/store/useToastStore";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 interface postFolderType {
@@ -22,6 +22,7 @@ interface patchFolderType {
 const useBookMarkFolderMutation = () => {
   const router = useRouter();
   const { showMessage } = useToastStore();
+  const queryClient = useQueryClient();
 
   const { data: bookMarks } = useQuery({
     queryKey: ["getBookmark"],
@@ -46,9 +47,10 @@ const useBookMarkFolderMutation = () => {
 
   const { mutateAsync: patchBookmarkFolder } = useMutation({
     mutationFn: async (folderInfo: patchFolderType) => {
-      return axiosInstance.put(`${apiSearchUrl}/bookmark/folder/update`, {
-        folderInfo,
-      });
+      return axiosInstance.put(
+        `${apiSearchUrl}/bookmark/folder/update`,
+        folderInfo
+      );
     },
     onSuccess: ({ data }: { data: BookMarksType }) => {
       try {
@@ -71,8 +73,10 @@ const useBookMarkFolderMutation = () => {
       );
     },
     onSuccess: ({ data }) => {
-      console.log(data);
       showMessage(`폴더를 삭제했어요`);
+      // foderId 받아와서 체킹.
+      router.refresh();
+      // queryClient.invalidateQueries({ queryKey: ["FolderList"] });
     },
   });
 
