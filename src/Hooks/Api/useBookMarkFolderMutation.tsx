@@ -70,6 +70,7 @@ const useBookMarkFolderMutation = () => {
       );
     },
     onSuccess: (data) => {
+      console.log(data, data.status, data.data);
       try {
         if (data.status === 200) {
           const folderId = data.data?.folderId;
