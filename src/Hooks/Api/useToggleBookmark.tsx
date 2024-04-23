@@ -7,7 +7,7 @@ const useToggleBookmark = (cafeId: number) => {
 
   const toggleBookmark = async (folderId: number) => {
     const { data: folderList } = await getFolderList(folderId);
-    const findFolder: FolderType = folderList.folders.find(
+    const findFolder: FolderType = folderList.bookmarks.find(
       (folder: FolderType) => {
         return folder.folderId === folderId;
       }
