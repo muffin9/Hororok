@@ -9,14 +9,12 @@ const useToggleBookmark = () => {
     const data = await getFolderList(folderId);
 
     if (data && data.bookmarks.length > 0) {
-      const findFolder: FolderType = data.bookmarks.find(
-        (folder: BookmarkType) => {
-          return folder.cafeId === cafeId;
-        }
-      );
+      const findFolder = data.bookmarks.find((folder: BookmarkType) => {
+        return folder.cafeId === cafeId;
+      });
 
       if (findFolder) {
-        await deleteBookmark(findFolder.folderId);
+        await deleteBookmark(findFolder.cafeId);
       } else {
         await postBookmark({ cafeId, folderId });
       }
