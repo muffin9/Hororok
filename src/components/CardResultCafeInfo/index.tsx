@@ -45,7 +45,7 @@ const CardResultCafeInfo = ({ cafeDatas }: CardResultCafeInfoProps) => {
                   <button
                     onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
                       handleClickBookmark(e, cafeData.id);
-                      setIsBottomSheet(true);
+                      setIsBottomSheet(!isBottomSheet);
                     }}
                   >
                     <Icon type="bookmark" size="small" alt="북마크" />
