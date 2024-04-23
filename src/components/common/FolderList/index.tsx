@@ -62,15 +62,17 @@ const FolderList = () => {
                   수정
                 </Button>
 
-                <Button
-                  size="small"
-                  bgColor="bg-gray-400"
-                  onClick={(e: React.SyntheticEvent<HTMLButtonElement>) =>
-                    handleClickDelete(e, data.folderId)
-                  }
-                >
-                  삭제
-                </Button>
+                {!data.defaultFolder && (
+                  <Button
+                    size="small"
+                    bgColor="bg-gray-400"
+                    onClick={(e: React.SyntheticEvent<HTMLButtonElement>) =>
+                      handleClickDelete(e, data.folderId)
+                    }
+                  >
+                    삭제
+                  </Button>
+                )}
               </div>
             </div>
           );
