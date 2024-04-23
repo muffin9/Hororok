@@ -71,11 +71,16 @@ const useBookMarkFolderMutation = () => {
       );
     },
     onSuccess: ({ data }) => {
-      console.log(data);
-
-      showMessage(`폴더를 삭제했어요`);
-      // foderId 받아와서 체킹.
-      // queryClient.invalidateQueries({ queryKey: ["FolderList", folderId] });
+      try {
+        if (data) {
+          showMessage(`폴더를 삭제했어요`);
+          queryClient.invalidateQueries({
+            queryKey: ["FolderList", data.folderId],
+          });
+        }
+      } catch (e) {
+        console.error(e);
+      }
     },
   });
 
