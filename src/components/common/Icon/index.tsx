@@ -38,7 +38,7 @@ const iconUrls = {
   naver: "/assets/Icon/naver.svg",
   re_plan: "/assets/Icon/re-plan.svg",
   info: "/assets/Icon/ic_info.svg",
-  defaultCup: "/assets/Icon/default_cup.svg",
+  coffee: "/assets/Icon/ic_coffee.svg",
 };
 
 interface IconProps {
@@ -80,7 +80,7 @@ interface IconProps {
     | "apple"
     | "re_plan"
     | "info"
-    | "defaultCup";
+    | "coffee";
 
   size?: "xSmall" | "small" | "medium" | "large" | "xLarge";
   alt: string;

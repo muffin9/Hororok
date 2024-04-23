@@ -10,7 +10,7 @@ const FolderEdit = ({ folderList }: FolderEditProps) => {
   return (
     <div>
       <div className="flex gap-1 justify-center">
-        <Text size="large">폴더이름</Text>
+        <Text size="large">{folderList?.folderName || ""}</Text>
         <Icon type="edit" alt="edit" />
       </div>
       <div className="flex p-4 gap-1">
@@ -28,7 +28,11 @@ const FolderEdit = ({ folderList }: FolderEditProps) => {
                 className="flex justify-between py-3 border-solid border-b-[1px] border-gray-200"
               >
                 <div className="flex gap-3 px-4">
-                  <Icon type="defaultCup" alt="cup" />
+                  <div
+                    className={`flex justify-center items-center w-[40px] h-[40px] rounded bg-[${folderList.color}]`}
+                  >
+                    <Icon size="small" type="coffee" alt="coffee Image" />
+                  </div>
                   <div className="flex flex-col">
                     <Text size="medium" className={`text-${folderList.color}`}>
                       {bookmark.cafeName}

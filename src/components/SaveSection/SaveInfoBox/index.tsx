@@ -1,3 +1,4 @@
+import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import { FolderType } from "@/interfaces/Save";
 
@@ -10,11 +11,10 @@ const SaveInfoBox = ({ folderData }: SaveInfoBoxProps) => {
     <div className="flex items-center">
       <div className="flex gap-3">
         <div
-          className="w-[40px] h-[40px] border-solid border-[1px] border-gray-200 rounded"
-          style={{
-            backgroundImage: `url(https://picsum.photos/id/237/200/300)`,
-          }}
-        />
+          className={`flex justify-center items-center w-[40px] h-[40px] rounded bg-[${folderData.color}]`}
+        >
+          <Icon size="small" type="coffee" alt="coffee Image" />
+        </div>
         <div className="flex flex-col">
           <Text size="medium">{folderData.name}</Text>
           <Text size="extraSmall" className="text-gray-600">

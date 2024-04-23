@@ -7,6 +7,7 @@ import ToastMessage from "@/components/common/ToastMessage";
 import ToggleButton from "@/components/common/ToggleButton";
 import { useState } from "react";
 import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
+import { useSearchParams } from "next/navigation";
 
 interface SaveCreateEditProps {
   paramId?: number;
@@ -15,12 +16,13 @@ interface SaveCreateEditProps {
   paramIsVisible?: boolean | null;
 }
 
-const SaveCreateEdit = ({
-  paramId,
-  paramFolderName,
-  paramColor,
-  paramIsVisible,
-}: SaveCreateEditProps) => {
+const SaveCreateEdit = ({ paramId }: SaveCreateEditProps) => {
+  const searchParams = useSearchParams();
+
+  const paramFolderName = searchParams.get("folderName");
+  const paramColor = searchParams.get("color");
+  const paramIsVisible = Boolean(searchParams.get("isVisible"));
+
   const { postBookmarkFolder, patchBookmarkFolder } =
     useBookMarkFolderMutation();
   const possibleColors = [
@@ -33,9 +35,9 @@ const SaveCreateEdit = ({
     "#F498E3",
   ];
 
-  const [name, setName] = useState(paramFolderName || "");
-  const [color, setColor] = useState(paramColor || "");
-  const [isVisible, setIsVisible] = useState(paramIsVisible || false);
+  const [name, setName] = useState<string>(paramFolderName || "");
+  const [color, setColor] = useState<string>(`#${paramColor}` || "");
+  const [isVisible, setIsVisible] = useState<boolean>(paramIsVisible || false);
 
   const handleChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -91,9 +93,8 @@ const SaveCreateEdit = ({
           </Text>
         </div>
         <ToggleButton
-          folderId={paramId}
-          isVisible={isVisible}
-          callbackFunc={() => setIsVisible(!isVisible)}
+          isToggle={isVisible}
+          setIsToggle={() => setIsVisible(!isVisible)}
         />
       </div>
       <div className="w-[358px] fixed bottom-12">

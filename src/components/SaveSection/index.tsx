@@ -7,7 +7,7 @@ import SaveInfoBox from "./SaveInfoBox";
 import { FolderType } from "@/interfaces/Save";
 import ToastMessage from "../common/ToastMessage";
 import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
-import ToggleButton from "../common/ToggleButton";
+import ToggleButton from "./ToggleButton";
 import useToggleBookmark from "@/Hooks/Api/useToggleBookmark";
 
 const SaveSection = ({
