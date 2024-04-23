@@ -1,6 +1,6 @@
 import axiosInstance from "@/apis/apiClient";
 import { apiSearchUrl } from "@/app/constants";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useToastStore from "@/store/useToastStore";
 
 interface postBookmarkType {
@@ -10,6 +10,7 @@ interface postBookmarkType {
 
 const useBookMarkMutation = () => {
   const { showMessage } = useToastStore();
+  const queryClient = useQueryClient();
 
   const { mutateAsync: postBookmark } = useMutation({
     mutationFn: async ({ cafeId, folderId }: postBookmarkType) => {
@@ -42,6 +43,7 @@ const useBookMarkMutation = () => {
     },
     onSuccess: () => {
       showMessage(`변경되었습니다.`);
+      queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
     },
   });
 
