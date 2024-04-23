@@ -7,16 +7,20 @@ const useToggleBookmark = (cafeId: number) => {
 
   const toggleBookmark = async (folderId: number) => {
     const { data: folderList } = await getFolderList(folderId);
-    const findFolder: FolderType = folderList.bookmarks.find(
-      (folder: FolderType) => {
-        return folder.folderId === folderId;
+    if (folderList.bookmarks.length > 0) {
+      const findFolder: FolderType = folderList.bookmarks.find(
+        (folder: FolderType) => {
+          return folder.folderId === folderId;
+        }
+      );
+      console.log(findFolder);
+      if (findFolder) {
+        await deleteBookmark(findFolder.folderId);
+      } else {
+        await postBookmark({ cafeId, folderId });
       }
-    );
-    console.log(findFolder);
-    if (findFolder) {
-      await deleteBookmark(findFolder.folderId);
     } else {
-      await postBookmark({ cafeId, folderId });
+      postBookmark({ cafeId, folderId });
     }
   };
 
