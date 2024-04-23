@@ -14,7 +14,7 @@ const PrimitiveFolderEdit = () => {
       folderList={{
         folderId: 1,
         folderName: "test",
-        color: "#FE8282",
+        folderColor: "#FE8282",
         bookmarks: [],
       }}
     />

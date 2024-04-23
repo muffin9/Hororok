@@ -2,7 +2,7 @@ export interface FolderType {
   folderId: number;
   name: string;
   color: string;
-  favoriteCount: number;
+  bookmarkCount: number;
   visible: boolean;
   defaultFolder: boolean;
 }
@@ -23,7 +23,7 @@ export interface BookmarkType {
 export interface FolderListType {
   folderId: number;
   folderName: string;
-  color: string;
+  folderColor: string;
   bookmarks: BookmarkType[];
 }
 
