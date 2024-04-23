@@ -69,11 +69,7 @@ const SaveSection = ({
                   onClick={() => handleClickFolder(folder.folderId)}
                 >
                   <SaveInfoBox folderData={folder} />
-                  <ToggleButton
-                    folderId={folder.folderId}
-                    isVisible={false}
-                    callbackFunc={toggleBookmark}
-                  />
+                  <ToggleButton folderId={folder.folderId} isVisible={false} />
                 </div>
               );
             })}
