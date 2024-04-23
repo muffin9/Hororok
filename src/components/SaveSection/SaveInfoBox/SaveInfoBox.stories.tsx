@@ -15,7 +15,7 @@ const PrimitiveSaveInfoBox = () => {
         folderId: 1,
         name: "test",
         color: "#FE8282",
-        favoriteCount: 9,
+        bookmarkCount: 9,
         visible: false,
         defaultFolder: false,
       }}
