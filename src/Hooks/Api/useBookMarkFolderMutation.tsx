@@ -72,9 +72,6 @@ const useBookMarkFolderMutation = () => {
     },
     onSuccess: () => {
       showMessage(`폴더를 삭제했어요`);
-      setTimeout(() => {
-        router.push("/");
-      }, 1000);
     },
   });
 
