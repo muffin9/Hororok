@@ -1,25 +1,22 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useEffect, Suspense } from "react";
 import Splash from "../common/Splash";
 import KakaoStaticMap from "../KakaoStaticMap";
 import HomeSection from "./HomeSection";
 import Loading from "@/app/loading";
+import useSplashState from "@/store/useSplash";
 
 const Home = () => {
-  const [showSplash, setShowSplash] = useState(true);
+  const { showSplash, setShowSplash } = useSplashState();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 500);
-
-    return () => clearTimeout(timer);
+    setShowSplash(true);
   }, []);
 
   return (
     <>
-      {showSplash ? (
+      {!showSplash ? (
         <main className="w-full h-full px-4 flex flex-col items-center justify-center bg-primary-300">
           <Splash />
         </main>
