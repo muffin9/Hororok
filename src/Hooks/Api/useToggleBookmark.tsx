@@ -12,11 +12,11 @@ const useToggleBookmark = (cafeId: number) => {
         return folder.folderId === folderId;
       }
     );
-
+    console.log(findFolder);
     if (findFolder) {
-      deleteBookmark(findFolder.folderId);
+      await deleteBookmark(findFolder.folderId);
     } else {
-      postBookmark({ cafeId, folderId });
+      await postBookmark({ cafeId, folderId });
     }
   };
 
