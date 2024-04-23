@@ -52,14 +52,12 @@ const useBookMarkFolderMutation = () => {
         folderInfo
       );
     },
-    onSuccess: ({ data }: { data: BookMarksType }) => {
+    onSuccess: () => {
       try {
-        if (data) {
-          showMessage(`폴더를 수정했어요`);
-          setTimeout(() => {
-            router.push("/");
-          }, 1000);
-        }
+        showMessage(`폴더를 수정했어요`);
+        setTimeout(() => {
+          router.push("/");
+        }, 1000);
       } catch (e) {
         console.error(e);
       }
@@ -73,10 +71,11 @@ const useBookMarkFolderMutation = () => {
       );
     },
     onSuccess: ({ data }) => {
+      console.log(data);
+
       showMessage(`폴더를 삭제했어요`);
       // foderId 받아와서 체킹.
-      router.refresh();
-      // queryClient.invalidateQueries({ queryKey: ["FolderList"] });
+      // queryClient.invalidateQueries({ queryKey: ["FolderList", folderId] });
     },
   });
 

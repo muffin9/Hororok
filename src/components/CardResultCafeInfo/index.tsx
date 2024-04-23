@@ -9,6 +9,8 @@ import ShareButton from "../common/ShareButton";
 import useHandleBookmark from "@/Hooks/useHandleBookmark";
 import useHandleBottomSheet from "@/Hooks/useHandleBottomSheet";
 import SaveSection from "../SaveSection";
+import useOutsideClick from "@/Hooks/useOutsideClick";
+import { useRef } from "react";
 
 interface CardResultCafeInfoProps {
   cafeDatas: CafeType[] | CafeInfoType[];
@@ -16,8 +18,11 @@ interface CardResultCafeInfoProps {
 
 const CardResultCafeInfo = ({ cafeDatas }: CardResultCafeInfoProps) => {
   const router = useRouter();
+  const overlayRef = useRef(null);
   const { currentSelectCafeId, handleClickBookmark } = useHandleBookmark();
   const { isBottomSheet, setIsBottomSheet } = useHandleBottomSheet();
+
+  useOutsideClick(overlayRef, () => setIsBottomSheet(false));
 
   return (
     cafeDatas &&
@@ -69,9 +74,12 @@ const CardResultCafeInfo = ({ cafeDatas }: CardResultCafeInfoProps) => {
             </div>
           </div>
           {isBottomSheet && (
-            <div className="fixed bottom-0">
-              <SaveSection currentSelectCafeId={currentSelectCafeId} />
-            </div>
+            <>
+              <div className="absolute top-0 left-0 w-screen h-screen bg-gray-200" />
+              <div ref={overlayRef} className="fixed bottom-0 z-[1000]">
+                <SaveSection currentSelectCafeId={currentSelectCafeId} />
+              </div>
+            </>
           )}
         </>
       );

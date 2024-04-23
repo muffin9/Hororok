@@ -6,9 +6,11 @@ import usePlanStore from "@/store/usePlanStore";
 import useUserInfoStore from "@/store/useUserInfo";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import useOutsideClick from "@/Hooks/useOutsideClick";
 
 const GNB = () => {
+  const overlayRef = useRef(null);
   const router = useRouter();
   const { userInfo } = useUserInfoStore();
   const { isBottomSheet, setIsBottomSheet } = useHandleBottomSheet();
@@ -31,6 +33,8 @@ const GNB = () => {
   useEffect(() => {
     setIsWrting(false);
   }, []);
+
+  useOutsideClick(overlayRef, () => setIsBottomSheet(false));
 
   return (
     <>
@@ -82,7 +86,7 @@ const GNB = () => {
         </div>
       </footer>
       {isBottomSheet && (
-        <div className="fixed bottom-16">
+        <div ref={overlayRef} className="fixed bottom-16">
           <SaveSection />
         </div>
       )}
