@@ -19,7 +19,7 @@ const SaveInfoBox = ({ folderData }: SaveInfoBoxProps) => {
         <div className="flex flex-col">
           <Text size="medium">{folderData.name}</Text>
           <Text size="extraSmall" className="text-gray-600">
-            개수 {folderData.favoriteCount || 0}/99
+            개수 {folderData.bookmarkCount || 0}/99
           </Text>
         </div>
       </div>

@@ -30,12 +30,15 @@ const FolderEdit = ({ folderList }: FolderEditProps) => {
                 <div className="flex gap-3 px-4">
                   <div
                     className={`flex justify-center items-center w-[40px] h-[40px] rounded`}
-                    style={{ backgroundColor: `${folderList.color}` }}
+                    style={{ backgroundColor: `${folderList.folderColor}` }}
                   >
                     <Icon size="small" type="coffee" alt="coffee Image" />
                   </div>
                   <div className="flex flex-col">
-                    <Text size="medium" className={`text-${folderList.color}`}>
+                    <Text
+                      size="medium"
+                      className={`text-${folderList.folderColor}`}
+                    >
                       {bookmark.cafeName}
                     </Text>
                     <Text size="small" className="text-gray-700">
