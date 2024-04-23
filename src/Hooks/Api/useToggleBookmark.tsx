@@ -6,10 +6,10 @@ const useToggleBookmark = (cafeId: number) => {
   const { postBookmark, deleteBookmark } = useBookMarkMutation();
 
   const toggleBookmark = async (folderId: number) => {
-    const { data: folderList } = await getFolderList(folderId);
-    console.log(folderList);
-    if (folderList && folderList.bookmarks.length > 0) {
-      const findFolder: FolderType = folderList.bookmarks.find(
+    const data = await getFolderList(folderId);
+    console.log(data);
+    if (data && data.bookmarks.length > 0) {
+      const findFolder: FolderType = data.bookmarks.find(
         (folder: FolderType) => {
           return folder.folderId === folderId;
         }
