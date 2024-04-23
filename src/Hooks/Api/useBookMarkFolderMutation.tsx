@@ -70,14 +70,14 @@ const useBookMarkFolderMutation = () => {
         `${apiSearchUrl}/bookmark/folder/${folderId}/delete`
       );
     },
-    onSuccess: ({ data }) => {
+    onSuccess: (data) => {
+      console.log(data);
       try {
-        if (data) {
-          showMessage(`폴더를 삭제했어요`);
-          queryClient.invalidateQueries({
-            queryKey: ["FolderList", data.folderId],
-          });
-        }
+        showMessage(`폴더를 삭제했어요`);
+        router.refresh();
+        // queryClient.invalidateQueries({
+        //   queryKey: ["FolderList", data.folderId],
+        // });
       } catch (e) {
         console.error(e);
       }
