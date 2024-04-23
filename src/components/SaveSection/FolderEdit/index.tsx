@@ -29,7 +29,8 @@ const FolderEdit = ({ folderList }: FolderEditProps) => {
               >
                 <div className="flex gap-3 px-4">
                   <div
-                    className={`flex justify-center items-center w-[40px] h-[40px] rounded bg-[${folderList.color}]`}
+                    className={`flex justify-center items-center w-[40px] h-[40px] rounded`}
+                    style={{ backgroundColor: `bg-${folderList.color}` }}
                   >
                     <Icon size="small" type="coffee" alt="coffee Image" />
                   </div>

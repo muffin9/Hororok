@@ -47,31 +47,32 @@ const FolderList = () => {
             >
               <SaveInfoBox folderData={data} />
               <div className="flex gap-1">
-                <Button
-                  size="small"
-                  onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
-                    const folderInfo = {
-                      folderId: data.folderId,
-                      name: data.name,
-                      color: data.color,
-                      isVisible: data.visible,
-                    };
-                    handleClickUpdate(e, folderInfo);
-                  }}
-                >
-                  수정
-                </Button>
-
                 {!data.defaultFolder && (
-                  <Button
-                    size="small"
-                    bgColor="bg-gray-400"
-                    onClick={(e: React.SyntheticEvent<HTMLButtonElement>) =>
-                      handleClickDelete(e, data.folderId)
-                    }
-                  >
-                    삭제
-                  </Button>
+                  <>
+                    <Button
+                      size="small"
+                      onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+                        const folderInfo = {
+                          folderId: data.folderId,
+                          name: data.name,
+                          color: data.color,
+                          isVisible: data.visible,
+                        };
+                        handleClickUpdate(e, folderInfo);
+                      }}
+                    >
+                      수정
+                    </Button>
+                    <Button
+                      size="small"
+                      bgColor="bg-gray-400"
+                      onClick={(e: React.SyntheticEvent<HTMLButtonElement>) =>
+                        handleClickDelete(e, data.folderId)
+                      }
+                    >
+                      삭제
+                    </Button>
+                  </>
                 )}
               </div>
             </div>
