@@ -4,8 +4,7 @@ import SaveInfoBox from "@/components/SaveSection/SaveInfoBox";
 import Button from "@/components/common/Button";
 import { useRouter } from "next/navigation";
 import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
-import { BookMarksType, FolderType } from "@/interfaces/Save";
-import Link from "next/link";
+import { BookMarksType, FolderType, paramFolderType } from "@/interfaces/Save";
 
 const FolderList = () => {
   const {
@@ -17,6 +16,16 @@ const FolderList = () => {
   } = useBookMarkFolderMutation();
 
   const router = useRouter();
+
+  const handleClickUpdate = (
+    e: React.SyntheticEvent<HTMLButtonElement>,
+    folderInfo: paramFolderType
+  ) => {
+    e.stopPropagation();
+    router.push(
+      `/save/createEdit/${folderInfo.folderId}?folderName=${folderInfo.name}&color=${folderInfo.color.slice(1)}&isVisible=${folderInfo.isVisible}`
+    );
+  };
 
   const handleClickDelete = (
     e: React.SyntheticEvent<HTMLButtonElement>,
@@ -38,18 +47,21 @@ const FolderList = () => {
             >
               <SaveInfoBox folderData={data} />
               <div className="flex gap-1">
-                <Link
-                  href={{
-                    pathname: `/save/createEdit?folderId=${data.folderId}`,
-                    query: {
-                      folderName: data.name,
+                <Button
+                  size="small"
+                  onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+                    const folderInfo = {
+                      folderId: data.folderId,
+                      name: data.name,
                       color: data.color,
                       isVisible: data.visible,
-                    },
+                    };
+                    handleClickUpdate(e, folderInfo);
                   }}
                 >
-                  <Button size="small">수정</Button>
-                </Link>
+                  수정
+                </Button>
+
                 <Button
                   size="small"
                   bgColor="bg-gray-400"
