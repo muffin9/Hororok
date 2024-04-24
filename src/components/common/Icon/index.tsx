@@ -39,6 +39,8 @@ const iconUrls = {
   re_plan: "/assets/Icon/re-plan.svg",
   info: "/assets/Icon/ic_info.svg",
   coffee: "/assets/Icon/ic_coffee.svg",
+  map: "/assets/Icon/ic_map.svg",
+  trash: "/assets/Icon/ic_trash.svg",
 };
 
 interface IconProps {
@@ -80,7 +82,9 @@ interface IconProps {
     | "apple"
     | "re_plan"
     | "info"
-    | "coffee";
+    | "coffee"
+    | "map"
+    | "trash";
 
   size?: "xSmall" | "small" | "medium" | "large" | "xLarge";
   alt: string;
