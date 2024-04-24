@@ -34,6 +34,8 @@ const FolderList = () => {
   ) => {
     e.stopPropagation();
     deleteBookmarkFolder(folderId);
+    router.push(window.location.href);
+    router.refresh();
   };
 
   return (
