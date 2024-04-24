@@ -8,6 +8,7 @@ import { BookmarkType } from "@/interfaces/Save";
 import { useRouter } from "next/navigation";
 import useGetFolderList from "@/Hooks/Api/useGetFolderList";
 import Loading from "@/app/loading";
+import ToastMessage from "@/components/common/ToastMessage";
 
 const FolderEdit = ({ folderId }: { folderId: number }) => {
   const router = useRouter();
@@ -25,7 +26,12 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
         <button onClick={() => router.push(`/save/folderEdit/${folderId}/map`)}>
           <Icon size="small" type="map" alt="map" />
         </button>
-        <button onClick={() => deleteBookmarkFolder(folderId)}>
+        <button
+          onClick={() => {
+            deleteBookmarkFolder(folderId);
+            router.push("/");
+          }}
+        >
           <Icon size="small" type="trash" alt="trash" />
         </button>
       </div>
@@ -77,6 +83,7 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
             );
           })}
       </div>
+      <ToastMessage />
     </div>
   );
 };
