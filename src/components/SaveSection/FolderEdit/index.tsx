@@ -1,17 +1,34 @@
+"use client";
+
+import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
 import useBookMarkMutation from "@/Hooks/Api/useBookMarkMutation";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
-import { BookmarkType, FolderListType } from "@/interfaces/Save";
+import { BookmarkType } from "@/interfaces/Save";
+import { useRouter } from "next/navigation";
+import useGetFolderList from "@/Hooks/Api/useGetFolderList";
+import Loading from "@/app/loading";
 
-interface FolderEditProps {
-  folderList: FolderListType;
-}
-
-const FolderEdit = ({ folderList }: FolderEditProps) => {
+const FolderEdit = ({ folderId }: { folderId: number }) => {
+  const router = useRouter();
+  const { folderList, folderListLoading } = useGetFolderList(folderId);
   const { deleteBookmark } = useBookMarkMutation();
+  const { deleteBookmarkFolder } = useBookMarkFolderMutation();
+
+  if (folderListLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>
+      <div className="flex gap-3 justify-end px-4 cursor-pointer">
+        <button onClick={() => router.push(`/save/folderEdit/${folderId}/map`)}>
+          <Icon size="small" type="map" alt="map" />
+        </button>
+        <button onClick={() => deleteBookmarkFolder(folderId)}>
+          <Icon size="small" type="trash" alt="trash" />
+        </button>
+      </div>
       <div className="flex gap-1 justify-center">
         <Text size="large">{folderList?.folderName || ""}</Text>
         <Icon type="edit" alt="edit" />
