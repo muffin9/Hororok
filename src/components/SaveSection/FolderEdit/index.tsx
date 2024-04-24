@@ -1,3 +1,4 @@
+import useBookMarkMutation from "@/Hooks/Api/useBookMarkMutation";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import { BookmarkType, FolderListType } from "@/interfaces/Save";
@@ -7,6 +8,8 @@ interface FolderEditProps {
 }
 
 const FolderEdit = ({ folderList }: FolderEditProps) => {
+  const { deleteBookmark } = useBookMarkMutation();
+
   return (
     <div>
       <div className="flex gap-1 justify-center">
@@ -46,9 +49,13 @@ const FolderEdit = ({ folderList }: FolderEditProps) => {
                     </Text>
                   </div>
                 </div>
-                <div className="px-4 cursor-pointer">
+
+                <button
+                  className="px-4 cursor-pointer"
+                  onClick={() => deleteBookmark(bookmark.cafeId)}
+                >
                   <Icon type="close" alt="close" />
-                </div>
+                </button>
               </div>
             );
           })}
