@@ -5,6 +5,7 @@ import Button from "@/components/common/Button";
 import { useRouter } from "next/navigation";
 import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
 import { BookMarksType, FolderType, paramFolderType } from "@/interfaces/Save";
+import ToastMessage from "../ToastMessage";
 
 const FolderList = () => {
   const {
@@ -78,6 +79,7 @@ const FolderList = () => {
             </div>
           );
         })}
+      <ToastMessage />
     </div>
   );
 };

@@ -73,11 +73,10 @@ const useBookMarkFolderMutation = () => {
       try {
         if (data.status === 200) {
           const folderId = data.data?.folderId;
-          console.log(folderId);
           showMessage(`폴더를 삭제했어요`);
-          // queryClient.invalidateQueries({
-          //   queryKey: ["FolderList", folderId],
-          // });
+          queryClient.invalidateQueries({
+            queryKey: ["FolderList", folderId],
+          });
         }
       } catch (e) {
         console.error(e);
