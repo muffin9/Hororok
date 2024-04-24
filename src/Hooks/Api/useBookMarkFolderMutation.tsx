@@ -21,7 +21,7 @@ interface patchFolderType {
 const useBookMarkFolderMutation = () => {
   const router = useRouter();
   const { showMessage } = useToastStore();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   const { data: bookMarks } = useQuery({
     queryKey: ["getBookmark"],
@@ -72,11 +72,11 @@ const useBookMarkFolderMutation = () => {
     onSuccess: (data) => {
       try {
         if (data.status === 200) {
-          const folderId = data.data?.folderId;
+          // const folderId = data.data?.folderId;
           showMessage(`폴더를 삭제했어요`);
-          queryClient.invalidateQueries({
-            queryKey: [`FolderList_${folderId}`],
-          });
+          // queryClient.invalidateQueries({
+          //   queryKey: [`FolderList_${folderId}`],
+          // });
         }
       } catch (e) {
         console.error(e);
