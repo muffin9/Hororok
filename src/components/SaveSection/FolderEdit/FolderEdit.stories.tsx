@@ -9,16 +9,7 @@ const meta: Meta<typeof FolderEdit> = {
 export default meta;
 
 const PrimitiveFolderEdit = () => {
-  return (
-    <FolderEdit
-      folderList={{
-        folderId: 1,
-        folderName: "test",
-        folderColor: "#FE8282",
-        bookmarks: [],
-      }}
-    />
-  );
+  return <FolderEdit folderId={1} />;
 };
 
 export const Default = {
