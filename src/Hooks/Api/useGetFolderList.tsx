@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useGetFolderList = (folderId: number) => {
   const { data: folderList, isLoading: folderListLoading } = useQuery({
-    queryKey: ["FolderList", folderId],
+    queryKey: [`FolderList_${folderId}`],
     queryFn: () => getFolderList(folderId),
   });
 
