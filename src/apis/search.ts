@@ -5,7 +5,7 @@ import axiosInstance from "./apiClient";
 export const getSearchList = async (latitude: number, longitude: number) => {
   try {
     const response = await axiosInstance(
-      `${apiSearchUrl}/cafe/find/bar?latitude=${latitude}&longitude=${longitude}`
+      `${apiSearchUrl}/cafe/find/keyword?latitude=${latitude}&longitude=${longitude}`
     );
 
     return response.data.cafes;
@@ -19,9 +19,21 @@ export const getSearchListByKeywords = async (
   longitude: number,
   categoryKeywords: CategoryKeywordsType
 ) => {
+  const keywords: string[] = Object.values(categoryKeywords).reduce(
+    (accumulator: string[], currentValue: string[]) => {
+      return accumulator.concat(currentValue);
+    },
+    []
+  );
+
   try {
-    const response = await axiosInstance(
-      `${apiSearchUrl}/cafe/find/bar?latitude=${latitude}&longitude=${longitude}&keywords=${Object.entries(categoryKeywords).join(",")}`
+    const response = await axiosInstance.post(
+      `${apiSearchUrl}/cafe/find/keyword`,
+      {
+        latitude,
+        longitude,
+        keywords,
+      }
     );
 
     return response.data.cafes;
