@@ -12,6 +12,7 @@ const PrimitiveSimilarHeader = () => {
   return (
     <SimilarHeader
       resultPlanInfos={{
+        planId: 0,
         matchType: "",
         locationName: "",
         minutes: 10,

@@ -33,7 +33,10 @@ const PlanResultSection = () => {
       {resultPlanInfos && (
         <>
           <PlanResultHeader />
-          <CardResultCafeInfo cafeDatas={calculatedResultInfoList()} />
+          <CardResultCafeInfo
+            cafeDatas={calculatedResultInfoList()}
+            planId={resultPlanInfos.planId}
+          />
           {resultPlanInfos.matchType === "MATCH" &&
             resultPlanInfos.similarCafes.length > 0 &&
             (isMatchCafeButton ? (

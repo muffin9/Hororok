@@ -89,6 +89,7 @@ export interface CafeType {
 }
 
 export interface PlanMatchType {
+  planId: number;
   matchType: string;
   locationName: string;
   minutes: number;

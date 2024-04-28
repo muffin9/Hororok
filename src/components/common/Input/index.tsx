@@ -19,6 +19,7 @@ interface InputProps {
   placeholder?: string;
   disabled?: boolean;
   className?: string;
+  maxlength?: number;
   onClick?: (e: MouseEvent<HTMLInputElement>) => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;

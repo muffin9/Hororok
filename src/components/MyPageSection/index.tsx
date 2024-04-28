@@ -4,7 +4,7 @@ import { useState } from "react";
 import TabMenu from "../common/TabMenu";
 import Profile from "./Profile";
 import FolderList from "../common/FolderList";
-import PlanSave from "./PlanSave";
+import MyPlanList from "./MyPlanList";
 import MyReview from "./MyReview";
 import MyUnionCafe from "./MyUnionCafe";
 
@@ -30,7 +30,7 @@ const MyPageSection = () => {
       case "save":
         return <FolderList />;
       case "plan":
-        return <PlanSave />;
+        return <MyPlanList />;
       case "review":
         return <MyReview />;
       case "myUnion":

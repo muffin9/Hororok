@@ -8,6 +8,7 @@ export interface PlanMatchState {
 }
 
 const initialPlanMatch = {
+  planId: 0,
   matchType: "SIMILAR",
   locationName: "",
   minutes: 0,

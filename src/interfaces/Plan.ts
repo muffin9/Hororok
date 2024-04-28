@@ -1,5 +1,3 @@
-import { CategoryKeywordsType } from "./Cafe";
-
 export interface FormPostDataType {
   longitude: number;
   latitude: number;
@@ -7,6 +5,6 @@ export interface FormPostDataType {
   date: string;
   startTime: string;
   endTime: string;
-  categoryKeywords: CategoryKeywordsType;
+  categoryKeywords: string[];
   locationName: string;
 }
