@@ -14,9 +14,10 @@ import { useRef } from "react";
 
 interface CardResultCafeInfoProps {
   cafeDatas: CafeType[] | CafeInfoType[];
+  planId?: number;
 }
 
-const CardResultCafeInfo = ({ cafeDatas }: CardResultCafeInfoProps) => {
+const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
   const router = useRouter();
   const overlayRef = useRef(null);
   const { currentSelectCafeId, handleClickBookmark } = useHandleBookmark();
@@ -49,7 +50,9 @@ const CardResultCafeInfo = ({ cafeDatas }: CardResultCafeInfoProps) => {
                   </ShareButton>
                   <button
                     onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
-                      handleClickBookmark(e, cafeData.id);
+                      if (planId) handleClickBookmark(e, cafeData.id, planId);
+                      else handleClickBookmark(e, cafeData.id);
+                      
                       setIsBottomSheet(!isBottomSheet);
                     }}
                   >

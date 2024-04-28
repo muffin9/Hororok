@@ -31,6 +31,13 @@ const Step4 = () => {
   const { setMatchPlan } = usePlanMatchStore();
 
   const onSubmit = async () => {
+    const keywords: string[] = Object.values(categoryKeywords).reduce(
+      (accumulator: string[], currentValue: string[]) => {
+        return accumulator.concat(currentValue);
+      },
+      []
+    );
+
     const convertPlanData = {
       startTime: `${formData.startTime.hour}:${formData.startTime.minute}`,
       endTime: `${formData.endTime.hour}:${formData.endTime.minute}`,
@@ -39,7 +46,7 @@ const Step4 = () => {
       minutes: formData.minutes,
       date: formData.date,
       locationName: searchInputValue,
-      categoryKeywords: categoryKeywords,
+      categoryKeywords: keywords,
     };
 
     const planResultInfo = await postSearchListToPlan(convertPlanData);
