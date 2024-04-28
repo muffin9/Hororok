@@ -68,6 +68,7 @@ const SaveCreateEdit = ({ paramId }: SaveCreateEditProps) => {
         placeholder="폴더명을 입력해 주세요."
         onChange={handleChangeInputValue}
         className="w-full bg-gray-200 p-3 rounded"
+        maxlength={20}
       />
       <div className="flex gap-4 pt-4">
         {possibleColors.map((c: string) => {
