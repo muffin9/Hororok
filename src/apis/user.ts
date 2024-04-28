@@ -19,18 +19,7 @@ export const getUserPlanData = async (
 ) => {
   try {
     const response = await axiosInstance.get(
-      `${apiSearchUrl}/mypage/${status}/plan?sortBy=${sort}&page=${page}&size=${size}`
-    );
-    return response.data;
-  } catch (error) {
-    console.error("There was a problem with the fetch operation:", error);
-  }
-};
-
-export const getUserSharePlan = async (sort: SortType) => {
-  try {
-    const response = await axiosInstance.get(
-      `${apiSearchUrl}/mypage/shared/plan?sortBy=${sort}`
+      `${apiSearchUrl}/mypage/${status}/plans?sortBy=${sort}&page=${page}&size=${size}`
     );
     return response.data;
   } catch (error) {

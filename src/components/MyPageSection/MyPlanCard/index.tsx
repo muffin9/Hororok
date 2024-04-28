@@ -1,4 +1,6 @@
+import useMoreData from "@/Hooks/useMoreData";
 import Icon from "@/components/common/Icon";
+import MoreButton from "@/components/common/MoreButton";
 import Text from "@/components/common/Text";
 import { PlanDataType, SortType, PlanStatusType } from "@/interfaces/user";
 import { UseMutateAsyncFunction } from "@tanstack/react-query";
@@ -18,7 +20,6 @@ interface MyPlanCardProps {
     },
     unknown
   >;
-  handleReceiveAllData?: () => void;
 }
 
 const MyPlanCard = ({
@@ -27,8 +28,8 @@ const MyPlanCard = ({
   sort,
   setSort,
   deleteFunc,
-  handleReceiveAllData,
 }: MyPlanCardProps) => {
+  const { showMore, handleClickMoreButton } = useMoreData();
   return (
     <div>
       <header>
@@ -36,10 +37,6 @@ const MyPlanCard = ({
           <Text size="large" weight="bold">
             {dataType === "saved" ? "저장한 여정" : "공유한 여정"}
           </Text>
-
-          <button onClick={handleReceiveAllData}>
-            <Icon size="xSmall" type="arrow_right" alt="arrow_right" />
-          </button>
         </div>
         <div className="flex gap-2 ml-2">
           <button
@@ -80,6 +77,14 @@ const MyPlanCard = ({
             );
           })}
       </article>
+      {planData && planData.length >= 3 && !showMore && (
+        <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[38px]">
+          <MoreButton
+            text={"전체보기"}
+            handleClickMoreButton={handleClickMoreButton}
+          />
+        </div>
+      )}
     </div>
   );
 };
