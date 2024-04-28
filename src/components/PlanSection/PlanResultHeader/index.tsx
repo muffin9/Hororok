@@ -28,12 +28,19 @@ const PlanResultHeader = () => {
                 {resultPlanInfos.visitDateTime}
               </Text>
               <div className="flex gap-4 cursor-pointer">
-                <ShareButton cafeId={resultPlanInfos.matchCafes[0].id}>
+                <ShareButton
+                  cafeId={resultPlanInfos.matchCafes[0].id}
+                  planId={resultPlanInfos.planId}
+                >
                   <Icon type="share" size="small" alt="공유하기" />
                 </ShareButton>
                 <button
                   onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
-                    handleClickBookmark(e, resultPlanInfos.matchCafes[0].id);
+                    handleClickBookmark(
+                      e,
+                      resultPlanInfos.matchCafes[0].id,
+                      resultPlanInfos.planId
+                    );
                     setIsBottomSheet(!isBottomSheet);
                   }}
                 >

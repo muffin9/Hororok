@@ -36,7 +36,10 @@ const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
               {resultPlanInfos.visitDateTime}
             </Text>
             <div className="flex gap-4 cursor-pointer">
-              <ShareButton cafeId={resultPlanInfos.similarCafes[0]?.id}>
+              <ShareButton
+                cafeId={resultPlanInfos.similarCafes[0]?.id}
+                planId={resultPlanInfos.planId}
+              >
                 <Icon type="share" size="small" alt="공유하기" />
               </ShareButton>
               <Icon type="bookmark" size="small" alt="북마크" />
