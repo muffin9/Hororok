@@ -5,6 +5,6 @@ export interface FormPostDataType {
   date: string;
   startTime: string;
   endTime: string;
-  categoryKeywords: string[];
+  keywords: string[];
   locationName: string;
 }

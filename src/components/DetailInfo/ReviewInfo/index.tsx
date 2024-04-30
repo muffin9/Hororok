@@ -51,7 +51,7 @@ const ReviewInfo = ({
         </header>
         {cafeReviewInfo.length === 0 ? (
           <div className="h-full flex flex-col justify-center items-center">
-            <Icon type="review" size="xLarge" alt="camera" />
+            <Icon type="review" size="xLarge" alt="review" />
             <Text size="small" weight="bold" className="text-gray-600">
               아직 등록된 리뷰가 없어요
             </Text>
