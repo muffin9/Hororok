@@ -46,7 +46,7 @@ const Step4 = () => {
       minutes: formData.minutes,
       date: formData.date,
       locationName: searchInputValue,
-      categoryKeywords: keywords,
+      keywords,
     };
 
     const planResultInfo = await postSearchListToPlan(convertPlanData);

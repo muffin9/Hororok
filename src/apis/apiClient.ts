@@ -14,6 +14,14 @@ const isLoginRequiredForURL = (url: string) => {
     new RegExp(`${apiSearchUrl}/bookmark/folder/(\\d+)/update/visible`),
     `${apiSearchUrl}/bookmark/save`,
     new RegExp(`${apiSearchUrl}/bookmark/delete/(\\d+)`),
+    `${apiSearchUrl}/mypage/profile`,
+    `${apiSearchUrl}/mypage/saved/plans`,
+    `${apiSearchUrl}/mypage/shared/plans`,
+    `${apiSearchUrl}/mypage/plan/(\\d+)`,
+    `${apiSearchUrl}/mypage/reviews`,
+    `${apiSearchUrl}/review/(\\d+)`,
+    `${apiSearchUrl}/review/(\\d+)/delete`,
+    `${apiSearchUrl}/review/(\\d+)/edit`,
   ];
 
   return targetURLs.some((targetURL) => {

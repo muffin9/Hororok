@@ -4,7 +4,7 @@ export interface ReviewInfoType {
   cafeId: string;
   content: string;
   specialNote: string;
-  categoryKeywords: CategoryKeywordsType;
+  keywords: CategoryKeywordsType;
   starRating: string;
   files: File[];
 }
