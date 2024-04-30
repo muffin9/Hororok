@@ -5,7 +5,7 @@ import axiosInstance from "./apiClient";
 export const getSearchList = async (latitude: number, longitude: number) => {
   try {
     const response = await axiosInstance(
-      `${apiSearchUrl}/cafe/find/keyword?latitude=${latitude}&longitude=${longitude}`
+      `${apiSearchUrl}/cafe/find/bar?latitude=${latitude}&longitude=${longitude}`
     );
 
     return response.data.cafes;
