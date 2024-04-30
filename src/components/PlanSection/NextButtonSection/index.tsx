@@ -16,7 +16,21 @@ const NextButtonSection = ({
   const router = useRouter();
 
   return (
-    <div className="w-[358px] fixed bottom-0 flex flex-col gap-2 bg-white">
+    <div className="w-[358px] fixed bottom-0 flex flex-col gap-4 bg-white">
+      {nextStep === "2" && (
+        <div
+          className="flex flex-col items-center cursor-pointer"
+          onClick={() => {
+            localStorage.getItem("accessToken")
+              ? router.push("/mypage")
+              : router.push("/login");
+          }}
+        >
+          <Text size="small" className="text-gray-700">
+            저장한 여정 보러가기
+          </Text>
+        </div>
+      )}
       <Button
         size="full"
         onClick={() => {

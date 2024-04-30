@@ -45,7 +45,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
       cafeId,
       content,
       specialNote,
-      categoryKeywords: selectedItems,
+      keywords: selectedItems,
       starRating: starRating.toString(),
       files,
     });

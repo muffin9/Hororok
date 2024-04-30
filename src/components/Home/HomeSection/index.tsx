@@ -17,8 +17,7 @@ export type CategoryIdType =
 
 const HomeSection = () => {
   const router = useRouter();
-  const { isFilter, onClickCategory } =
-    useHandleFilterSection();
+  const { isFilter, onClickCategory } = useHandleFilterSection();
 
   return (
     <section className="w-full absolute top-8 z-[999]">
@@ -27,7 +26,7 @@ const HomeSection = () => {
           type="text"
           placeholder="어디 근처 카페 찾으세요?"
           onClick={() => router.push("/search")}
-          className="w-full h-[50px] p-4 rounded-lg focus:outline-none shadow-default"
+          className="w-[358px] h-[50px] p-4 rounded-lg focus:outline-none shadow-default"
         />
       </div>
 

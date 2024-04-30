@@ -12,7 +12,7 @@ const SaveInfoBox = ({ folderData }: SaveInfoBoxProps) => {
       <div className="flex gap-3">
         <div
           className={`flex justify-center items-center w-[40px] h-[40px] rounded`}
-          style={{ backgroundColor: `${folderData.color}` }}
+          style={{ backgroundColor: `${folderData.color || "#FE8282"}` }}
         >
           <Icon size="small" type="coffee" alt="coffee Image" />
         </div>
