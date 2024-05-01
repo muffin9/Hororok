@@ -57,9 +57,7 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
                   <div
                     className={`flex justify-center items-center w-[40px] h-[40px] rounded`}
                     style={{
-                      backgroundColor: folderList.folderColor
-                        ? folderList.folderColor || "#FE8282"
-                        : "#FE8282",
+                      backgroundColor: `${folderList.folderColor === "기본 색상" ? "#FE8282" : folderList.folderColor}`,
                     }}
                   >
                     <Icon size="small" type="coffee" alt="coffee Image" />
