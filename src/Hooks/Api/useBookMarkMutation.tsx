@@ -27,7 +27,7 @@ const useBookMarkMutation = () => {
   const { mutateAsync: deleteBookmark } = useMutation({
     mutationFn: async (bookmarkId: number) => {
       return axiosInstance.delete(
-        `${apiSearchUrl}/bookmark/delete/${bookmarkId}`
+        `${apiSearchUrl}/bookmark/${bookmarkId}/delete`
       );
     },
     onSuccess: () => {
