@@ -1,3 +1,73 @@
+export interface CafeTopInfoType {
+  cafeId: number;
+  cafeName: string;
+  roadAddress: string;
+  latitude: number;
+  longitude: number;
+  starRating: number;
+  reviewCount: number;
+  imageUrl: string;
+  keywords: [
+    {
+      id: number;
+      category: string;
+      name: string;
+    },
+  ];
+}
+
+export interface CafeBasicInfoType {
+  roadAddress: string;
+  openStatus: string;
+  businessHours: string[];
+  closedDay: string[];
+  phoneNumber: string;
+  menus: {
+    name: string;
+    price: string;
+    imageUrl: string;
+  }[];
+  imageUrls: string[];
+  userChoiceKeywords: {
+    name: string;
+    count: number;
+  }[];
+
+  reviews: ReviewType[];
+}
+
+export interface CafeMenuInfoType {
+  name: string;
+  price: string;
+  imageUrl: string;
+}
+
+export interface CafePhotoInfoType {
+  imageUrls: string[];
+  cursor: number;
+  hasNextPage: boolean;
+}
+
+export interface CafeReviewType {
+  userChoiceKeywords: {
+    name: string;
+    count: number;
+  }[];
+  reviews: ReviewType[];
+}
+
+export interface ReviewType {
+  id: number;
+  content: string;
+  starRating: number;
+  specialNote: string;
+  createDate: string;
+  picture: string;
+  nickname: string;
+  imageUrls: string[];
+  recommendMenus: string[];
+}
+
 export interface CafeInfoType {
   id: number;
   latitude: number;
@@ -31,28 +101,6 @@ export interface CafeKeyWordType {
   id: number;
   name: string;
   count?: number;
-}
-
-export interface CafeDetailInfoType {
-  businessHours: string[];
-  cafeImageUrls: string[];
-  cafeKeywords: CafeKeyWordType[];
-  cafeName: string;
-  cafes: CafeInfoType[];
-  closedDay: string[];
-  exist: boolean;
-  id: number;
-  keywordsByCategory: { category: string; keywords: string[] }[];
-  longitude: number;
-  latitude: number;
-  menus: CafeMenuType[];
-  openStatus: string;
-  phoneNumber: string;
-  reviewCount: number;
-  reviewImageUrls: string[];
-  reviews: ReviewType[];
-  roadAddress: string;
-  starRating: string;
 }
 
 export interface CafeDefaultInfoType {

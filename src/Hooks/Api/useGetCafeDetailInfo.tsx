@@ -1,13 +1,23 @@
-import { getCafeDetailInfo } from "@/apis/cafe";
+import { getCafeBasicInfo, getCafeMenuInfo, getCafeTopInfo } from "@/apis/cafe";
 import { useQuery } from "@tanstack/react-query";
 
 const useGetCafeDetailInfo = (cafeId: string) => {
-  const { data } = useQuery({
-    queryKey: ["getCafeDetailInfo", cafeId],
-    queryFn: () => getCafeDetailInfo(cafeId),
+  const { data: topInfo } = useQuery({
+    queryKey: ["getCafeTopInfo", cafeId],
+    queryFn: () => getCafeTopInfo(cafeId),
   });
 
-  return { data };
+  const { data: basicInfo } = useQuery({
+    queryKey: ["getCafeDefaultInfo", cafeId],
+    queryFn: () => getCafeBasicInfo(cafeId),
+  });
+
+  const { data: menuInfo } = useQuery({
+    queryKey: ["getMenuInfo", cafeId],
+    queryFn: () => getCafeMenuInfo(cafeId),
+  });
+
+  return { topInfo, basicInfo, menuInfo };
 };
 
 export default useGetCafeDetailInfo;
