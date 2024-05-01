@@ -15,10 +15,9 @@ export const postSearchListToPlan = async (formData: FormPostDataType) => {
 
 export const patchSavePlan = async (planId: number) => {
   try {
-    const response = await axiosInstance.patch(
-      `${apiSearchUrl}/plan/save`,
-      planId
-    );
+    const response = await axiosInstance.patch(`${apiSearchUrl}/plan/save`, {
+      planId: planId,
+    });
 
     return response.data;
   } catch (error) {
@@ -28,10 +27,9 @@ export const patchSavePlan = async (planId: number) => {
 
 export const patchSharePlan = async (planId: number) => {
   try {
-    const response = await axiosInstance.patch(
-      `${apiSearchUrl}/plan/share`,
-      planId
-    );
+    const response = await axiosInstance.patch(`${apiSearchUrl}/plan/share`, {
+      planId: planId,
+    });
 
     return response.data;
   } catch (error) {

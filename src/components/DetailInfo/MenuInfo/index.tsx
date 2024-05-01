@@ -1,18 +1,20 @@
+import useGetCafeDetailInfo from "@/Hooks/Api/useGetCafeDetailInfo";
 import useMoreData from "@/Hooks/useMoreData";
 import MoreButton from "@/components/common/MoreButton";
 import Text from "@/components/common/Text";
-import { CafeMenuType } from "@/interfaces/Cafe";
+import { CafeMenuInfoType, CafeMenuType } from "@/interfaces/Cafe";
 
 interface MenuInfoProps {
-  moreButton?: boolean;
-  cafeMenuInfo: CafeMenuType[];
+  cafeId: string;
 }
 
-const MenuInfo = ({ moreButton, cafeMenuInfo }: MenuInfoProps) => {
+const MenuInfo = ({ cafeId }: MenuInfoProps) => {
+  const { menuInfo }: { menuInfo: CafeMenuInfoType[] } =
+    useGetCafeDetailInfo(cafeId);
+
   const { showMore, handleClickMoreButton } = useMoreData();
 
-  const visibleMenuData =
-    !showMore && moreButton ? cafeMenuInfo.slice(0, 2) : cafeMenuInfo;
+  const visibleMenuData = !showMore ? menuInfo.slice(0, 2) : menuInfo;
 
   return (
     <div className="h-full py-6 bg-white">
@@ -42,7 +44,7 @@ const MenuInfo = ({ moreButton, cafeMenuInfo }: MenuInfoProps) => {
         })}
       </div>
 
-      {moreButton && cafeMenuInfo.length >= 3 && !showMore && (
+      {menuInfo.length >= 3 && !showMore && (
         <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[38px]">
           <MoreButton
             text={"메뉴 더보기"}

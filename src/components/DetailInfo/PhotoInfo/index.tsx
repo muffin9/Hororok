@@ -1,18 +1,25 @@
+import useGetPhotoInfo from "@/Hooks/Api/useGetPhotoInfo";
 import useMoreData from "@/Hooks/useMoreData";
 import Icon from "@/components/common/Icon";
 import MoreButton from "@/components/common/MoreButton";
 import Text from "@/components/common/Text";
+import { CafePhotoInfoType } from "@/interfaces/Cafe";
 
 interface PhotoInfoProps {
-  moreButton?: boolean;
-  cafePhotoInfo: string[];
+  cafeId: string;
+  page?: string;
 }
 
-const PhotoInfo = ({ moreButton, cafePhotoInfo }: PhotoInfoProps) => {
+const PhotoInfo = ({ cafeId, page = "" }: PhotoInfoProps) => {
+  const { photoInfo }: { photoInfo: CafePhotoInfoType[] } = useGetPhotoInfo(
+    cafeId,
+    1,
+    page
+  );
+
   const { showMore, handleClickMoreButton } = useMoreData();
 
-  const visiblePhotoData =
-    !showMore && moreButton ? cafePhotoInfo.slice(0, 4) : cafePhotoInfo;
+  const visiblePhotoData = !showMore ? photoInfo.slice(0, 4) : photoInfo;
 
   return (
     <div className="h-full flex flex-col py-6 bg-white">
@@ -21,7 +28,7 @@ const PhotoInfo = ({ moreButton, cafePhotoInfo }: PhotoInfoProps) => {
           사진
         </Text>
       </header>
-      {cafePhotoInfo.length === 0 ? (
+      {photoInfo.length === 0 ? (
         <div className="h-full flex flex-col justify-center items-center">
           <Icon type="camera" size="xLarge" alt="camera" />
           <Text size="small" weight="bold" className="text-gray-600">
@@ -30,16 +37,18 @@ const PhotoInfo = ({ moreButton, cafePhotoInfo }: PhotoInfoProps) => {
         </div>
       ) : (
         <div className="flex flex-wrap justify-center gap-1 mt-4">
-          {visiblePhotoData.map((photoUrl: string) => {
-            return (
-              <div
-                key={photoUrl}
-                style={{ backgroundImage: `url(http:${photoUrl})` }}
-                className={"w-[176px] h-[176px] rounded-lg"}
-              />
-            );
+          {visiblePhotoData.map((photoUrl: CafePhotoInfoType) => {
+            return photoUrl.imageUrls.map((imageUrl) => {
+              return (
+                <div
+                  key={imageUrl}
+                  style={{ backgroundImage: `url(http:${imageUrl})` }}
+                  className={"w-[176px] h-[176px] rounded-lg"}
+                />
+              );
+            });
           })}
-          {moreButton && cafePhotoInfo.length >= 5 && !showMore && (
+          {photoInfo.length >= 5 && !showMore && (
             <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[20px]">
               <MoreButton
                 text={"사진 더보기"}

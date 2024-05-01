@@ -9,7 +9,7 @@ const meta: Meta<typeof MenuInfo> = {
 export default meta;
 
 const PrimitiveMenuInfo = () => {
-  return <MenuInfo cafeMenuInfo={[]} />;
+  return <MenuInfo cafeId="1" />;
 };
 
 export const Default = {

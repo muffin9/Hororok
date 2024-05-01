@@ -1,6 +1,6 @@
-import { CafeDefaultInfoType, CafeDetailInfoType } from "@/interfaces/Cafe";
+import { CafeDefaultInfoType } from "@/interfaces/Cafe";
 
-export const fakeCafeDetailInfo: CafeDetailInfoType = {
+export const fakeCafeDetailInfo = {
   businessHours: ["9:00 AM - 6:00 PM"],
   cafeImageUrls: [],
   cafeKeywords: [
