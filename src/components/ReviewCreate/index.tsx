@@ -50,7 +50,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
       files,
     });
     // TODO: 정확한 응답값에 따라 redirect 필요.
-    if (reviewResultInfo) router.push(`/cafelist/${cafeId}`);
+    if (reviewResultInfo) router.push(`/cafe/${cafeId}`);
   };
 
   const checkDisabledSubmit = () => {
@@ -177,7 +177,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
           okButtonText="이어서 리뷰남기기"
           cancelButtonText="나가기"
           okCallbackFunc={closeModal}
-          cancelCallbackFunc={() => router.push(`/cafelist/${cafeId}`)}
+          cancelCallbackFunc={() => router.push(`/cafe/${cafeId}`)}
         />
       )}
     </>
