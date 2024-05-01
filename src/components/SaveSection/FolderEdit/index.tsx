@@ -57,7 +57,9 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
                   <div
                     className={`flex justify-center items-center w-[40px] h-[40px] rounded`}
                     style={{
-                      backgroundColor: `${folderList.folderColor || "#FE8282"}`,
+                      backgroundColor: folderData
+                        ? folderData.color || "#FE8282"
+                        : "#FE8282",
                     }}
                   >
                     <Icon size="small" type="coffee" alt="coffee Image" />
