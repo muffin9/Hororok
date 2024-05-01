@@ -33,7 +33,7 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
           <div
             key={cafeData.id}
             className="flex gap-3 px-4 my-4 cursor-pointer"
-            onClick={() => router.push(`/cafelist/${cafeData.id}`)}
+            onClick={() => router.push(`/cafe/${cafeData.id}`)}
           >
             <div
               className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
@@ -52,7 +52,7 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
                     onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
                       if (planId) handleClickBookmark(e, cafeData.id, planId);
                       else handleClickBookmark(e, cafeData.id);
-                      
+
                       setIsBottomSheet(!isBottomSheet);
                     }}
                   >
