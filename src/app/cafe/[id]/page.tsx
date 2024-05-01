@@ -1,12 +1,12 @@
 import DetailInfo from "@/components/DetailInfo";
 
-type CafeListProps = {
+type CafeProps = {
   params: {
     id: string;
   };
 };
 
-export default async function CafeListPage({ params }: CafeListProps) {
+export default async function CafePage({ params }: CafeProps) {
   return (
     <main>
       <DetailInfo cafeId={params.id} />
