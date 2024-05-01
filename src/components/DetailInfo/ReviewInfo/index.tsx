@@ -1,26 +1,29 @@
+import useGetReviewInfo from "@/Hooks/Api/useGetReviewInfo";
 import useMoreData from "@/Hooks/useMoreData";
 import Icon from "@/components/common/Icon";
 import MoreButton from "@/components/common/MoreButton";
 import Star from "@/components/common/Star";
 import Text from "@/components/common/Text";
-import { CafeKeyWordType, ReviewType } from "@/interfaces/Cafe";
+import { CafeReviewType, ReviewType } from "@/interfaces/Cafe";
 import Image from "next/image";
 
 interface ReviewInfoProps {
-  moreButton?: boolean;
-  cafeReviewInfo: ReviewType[];
-  cafeKeywords: CafeKeyWordType[];
+  cafeId: string;
+  page?: string;
 }
 
-const ReviewInfo = ({
-  moreButton,
-  cafeReviewInfo,
-  cafeKeywords,
-}: ReviewInfoProps) => {
+const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
+  const { reviewInfo }: { reviewInfo: CafeReviewType } = useGetReviewInfo(
+    cafeId,
+    1,
+    page
+  );
+
   const { showMore, handleClickMoreButton } = useMoreData();
 
-  const visibleReviewData =
-    !showMore && moreButton ? cafeReviewInfo.slice(0, 2) : cafeReviewInfo;
+  const visibleReviewData = !showMore
+    ? reviewInfo.reviews.slice(0, 2)
+    : reviewInfo.reviews;
 
   return (
     <section>
@@ -29,10 +32,13 @@ const ReviewInfo = ({
           유저들이 뽑은 키워드
         </Text>
         <div className="flex justify-between flex-wrap gap-5">
-          {cafeKeywords &&
-            cafeKeywords.map((cafeKeyword, idx) => {
+          {reviewInfo.userChoiceKeywords &&
+            reviewInfo.userChoiceKeywords.map((cafeKeyword, idx) => {
               return (
-                <div className="w-[137px] flex gap-[2px]" key={cafeKeyword.id}>
+                <div
+                  className="w-[137px] flex gap-[2px]"
+                  key={cafeKeyword.name}
+                >
                   <Text size="small">{idx + 1}</Text>
                   <Text size="small">{cafeKeyword.name}</Text>
                   <Text size="small" className="text-gray-700">
@@ -49,7 +55,7 @@ const ReviewInfo = ({
             리뷰
           </Text>
         </header>
-        {cafeReviewInfo.length === 0 ? (
+        {reviewInfo.reviews.length === 0 ? (
           <div className="h-full flex flex-col justify-center items-center">
             <Icon type="review" size="xLarge" alt="review" />
             <Text size="small" weight="bold" className="text-gray-600">
@@ -112,13 +118,13 @@ const ReviewInfo = ({
                     </Text>
                     <div className="text-gray-800 mb-[-1px]">|</div>
                     <div className="flex gap-1.5"></div>
-                    {review.keywords.slice(0, 2).map((keyword) => {
+                    {review.recommendMenus.slice(0, 2).map((keyword) => {
                       return (
                         <button
-                          key={keyword.id}
+                          key={keyword}
                           className="h-[31px] px-3 rounded-3xl border-[1px] border-solid border-silver"
                         >
-                          <Text size="small">{keyword.name}</Text>
+                          <Text size="small">{keyword}</Text>
                         </button>
                       );
                     })}
@@ -129,7 +135,7 @@ const ReviewInfo = ({
           })
         )}
 
-        {moreButton && cafeReviewInfo.length >= 3 && !showMore && (
+        {visibleReviewData.length >= 3 && !showMore && (
           <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[38px]">
             <MoreButton
               text={"리뷰 더보기"}

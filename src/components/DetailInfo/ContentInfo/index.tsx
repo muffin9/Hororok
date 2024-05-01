@@ -6,13 +6,8 @@ import DefaultInfo from "../DefaultInfo";
 import MenuInfo from "../MenuInfo";
 import PhotoInfo from "../PhotoInfo";
 import ReviewInfo from "../ReviewInfo";
-import { CafeDetailInfoType } from "@/interfaces/Cafe";
 
-interface ContentInfoProps {
-  cafeDetailInfo: CafeDetailInfoType;
-}
-
-const ContentInfo = ({ cafeDetailInfo }: ContentInfoProps) => {
+const ContentInfo = ({ cafeId }: { cafeId: string }) => {
   const [menuInfo, setMenuInfo] = useState([
     { id: "default", name: "기본정보", isClicked: true },
     { id: "menu", name: "메뉴", isClicked: false },
@@ -28,65 +23,27 @@ const ContentInfo = ({ cafeDetailInfo }: ContentInfoProps) => {
     setMenuInfo(updatedMenuInfo);
   };
 
-  const calculatedDefaultInfo = () => {
-    return {
-      roadAddress: cafeDetailInfo.roadAddress,
-      openStatus: cafeDetailInfo.openStatus,
-      businessHours: cafeDetailInfo.businessHours,
-      closedDay: cafeDetailInfo.closedDay,
-      phoneNumber: cafeDetailInfo.phoneNumber,
-    };
-  };
-
-  const calculatedMenuInfo = () => {
-    return cafeDetailInfo.menus;
-  };
-
-  const calculatedPhotoInfo = () => {
-    return cafeDetailInfo.reviewImageUrls;
-  };
-
-  const calculatedReviewInfo = () => {
-    return cafeDetailInfo.reviews;
-  };
-
-  const calculatedCafeKeywordsInfo = () => {
-    return cafeDetailInfo.cafeKeywords;
-  };
-
   const renderMenuContent = () => {
     const clickedMenu = menuInfo.find((item) => item.isClicked);
     switch (clickedMenu?.id) {
       case "default":
         return (
           <div className="flex flex-col">
-            <DefaultInfo cafeDefaultInfo={calculatedDefaultInfo()} />
+            <DefaultInfo cafeId={cafeId} />
             <div className="mt-[10px]" />
-            <MenuInfo moreButton={true} cafeMenuInfo={calculatedMenuInfo()} />
+            <MenuInfo cafeId={cafeId} />
             <div className="mt-[10px]" />
-            <PhotoInfo
-              moreButton={true}
-              cafePhotoInfo={calculatedPhotoInfo()}
-            />
+            <PhotoInfo cafeId={cafeId} />
             <div className="mt-[10px]" />
-            <ReviewInfo
-              moreButton={true}
-              cafeReviewInfo={calculatedReviewInfo()}
-              cafeKeywords={calculatedCafeKeywordsInfo()}
-            />
+            <ReviewInfo cafeId={cafeId} />
           </div>
         );
       case "menu":
-        return <MenuInfo cafeMenuInfo={calculatedMenuInfo()} />;
+        return <MenuInfo cafeId={cafeId} />;
       case "photo":
-        return <PhotoInfo cafePhotoInfo={calculatedPhotoInfo()} />;
+        return <PhotoInfo cafeId={cafeId} page="all" />;
       case "review":
-        return (
-          <ReviewInfo
-            cafeReviewInfo={calculatedReviewInfo()}
-            cafeKeywords={calculatedCafeKeywordsInfo()}
-          />
-        );
+        return <ReviewInfo cafeId={cafeId} page="all" />;
       default:
         return null;
     }

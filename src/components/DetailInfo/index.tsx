@@ -3,12 +3,11 @@
 import { useRouter } from "next/navigation";
 import Button from "../common/Button";
 import Icon from "../common/Icon";
-
 import Text from "../common/Text";
 import ContentInfo from "./ContentInfo";
 import Star from "../common/Star";
 import useGetCafeDetailInfo from "@/Hooks/Api/useGetCafeDetailInfo";
-import { CafeDetailInfoType, CafeKeyWordType } from "@/interfaces/Cafe";
+import { CafeTopInfoType, CafeKeyWordType } from "@/interfaces/Cafe";
 import ShareButton from "../common/ShareButton";
 import useModal from "@/Hooks/useModal";
 import Modal from "../common/Modal";
@@ -18,13 +17,15 @@ interface DetailInfoProps {
 }
 
 const DetailInfo = ({ cafeId }: DetailInfoProps) => {
-  const { data }: { data: CafeDetailInfoType } = useGetCafeDetailInfo(cafeId);
+  const { topInfo }: { topInfo: CafeTopInfoType } =
+    useGetCafeDetailInfo(cafeId);
+
   const { showModal, openModal, closeModal } = useModal();
   const router = useRouter();
 
   return (
-    data && (
-      <section className="h-screen overflow-y-scroll" key={data.id}>
+    topInfo && (
+      <section className="h-screen overflow-y-scroll" key={topInfo.cafeId}>
         <div
           className={`bg-sampleImage bg-cover bg-center w-[390px] h-[228px]`}
         >
@@ -50,7 +51,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
         <div className="px-4 flex flex-col py-6 bg-white">
           <header className="flex justify-between items-center">
             <Text size="large" weight="bold">
-              {data.cafeName}
+              {topInfo.cafeName}
             </Text>
             <Button
               size="small"
@@ -60,7 +61,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
                   openModal();
                 } else {
                   router.push(
-                    `/review/create/${cafeId}?cafeName=${data.cafeName}`
+                    `/review/create/${cafeId}?cafeName=${topInfo.cafeName}`
                   );
                 }
               }}
@@ -73,36 +74,38 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
           </header>
           <div className="flex flex-col mt-2">
             <Text size="medium" className="text-gray-700">
-              {data.roadAddress}
+              {topInfo.roadAddress}
             </Text>
             <div className="flex items-center gap-[2px]">
-              <Star starSize="xSmall" starScore={Math.ceil(+data.starRating)} />
+              <Star
+                starSize="xSmall"
+                starScore={Math.ceil(+topInfo.starRating)}
+              />
               <Text size="small" weight="bold">
-                {data.reviewCount.toFixed(1)}
+                {topInfo.reviewCount.toFixed(1)}
               </Text>
               <Text size="extraSmall" className="text-gray-700">
-                ({data.reviewCount})
+                ({topInfo.reviewCount})
               </Text>
             </div>
             <div className="flex mt-2 gap-2">
-              {data.cafeKeywords
-                .slice(0, 3)
-                .map((cafeKeyword: CafeKeyWordType) => {
-                  return (
-                    <button
-                      key={cafeKeyword.id}
-                      className="h-[31px] px-3 rounded-2xl border-[1px] border-solid border-primary-300"
-                    >
-                      <Text size="small" className="text-primary-300">
-                        {cafeKeyword.name}
-                      </Text>
-                    </button>
-                  );
-                })}
+              {topInfo.keywords.slice(0, 3).map((keyword: CafeKeyWordType) => {
+                return (
+                  <button
+                    key={keyword.id}
+                    className="h-[31px] px-3 rounded-2xl border-[1px] border-solid border-primary-300"
+                  >
+                    <Text size="small" className="text-primary-300">
+                      {keyword.name}
+                    </Text>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
-        <ContentInfo cafeDetailInfo={data} />
+
+        <ContentInfo cafeId={cafeId} />
         {showModal && (
           <Modal
             title={`로그인을 하면 리뷰를 남길 수 있어요.\n소중한 의견을 공유해주세요.`}
