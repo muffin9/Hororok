@@ -18,7 +18,7 @@ const ShareButton = ({ cafeId, planId, children }: ShareButtonProps) => {
     const { Kakao } = window;
 
     Kakao.Share.sendScrap({
-      requestUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafelist/${cafeId}`,
+      requestUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${cafeId}`,
     });
     if (planId) patchSharePlan(planId);
   }, []);
