@@ -1,46 +1,19 @@
+import useReviewMutation from "@/Hooks/Api/mypage/useReviewMutation";
 import Button from "@/components/common/Button";
 import Icon from "@/components/common/Icon";
 import Star from "@/components/common/Star";
 import Text from "@/components/common/Text";
 import { CafeKeyWordType } from "@/interfaces/Cafe";
+import { MyReviewType } from "@/interfaces/user";
+import { useRouter } from "next/navigation";
 
 const MyReview = () => {
-  const myReview = [
-    {
-      id: 1,
-      content: "이 카페는 이런점이 좋았어요 이 카페는 이런점이 좋았어요",
-      specialNote: "콘센트가 없는 자리가 많아요",
-      images: [{ id: 1, imageUrl: "/assets/Images/profile.png" }],
-      keywords: [{ id: 1, name: "키워드추천", count: 1 }],
-      starRating: 5,
-      cafeName: "스타벅스",
-      createdDate: "2024.03.12",
-    },
-    {
-      id: 2,
-      content: "이 카페는 이런점이 좋았어요 이 카페는 이런점이 좋았어요",
-      specialNote: "콘센트가 없는 자리가 많아요",
-      images: [{ id: 1, imageUrl: "/assets/Images/profile.png" }],
-      keywords: [{ id: 1, name: "키워드추천", count: 1 }],
-      starRating: 4,
-      cafeName: "투썸",
-      createdDate: "2024.04.28",
-    },
-    {
-      id: 3,
-      content: "이 카페는 이런점이 좋았어요 이 카페는 이런점이 좋았어요",
-      specialNote: "콘센트가 없는 자리가 많아요",
-      images: [{ id: 1, imageUrl: "/assets/Images/profile.png" }],
-      keywords: [{ id: 1, name: "키워드추천", count: 1 }],
-      starRating: 4,
-      cafeName: "할리스",
-      createdDate: "2024.04.29",
-    },
-  ];
+  const router = useRouter();
+  const { myReviewInfo, deleteReview } = useReviewMutation();
 
   return (
     <section className="h-screen overflow-y-scroll">
-      {!myReview ? (
+      {!myReviewInfo.reviews ? (
         <div className="h-full flex flex-col justify-center items-center">
           <Icon type="review" size="xLarge" alt="review" />
           <Text size="small" weight="bold" className="text-gray-600">
@@ -48,18 +21,29 @@ const MyReview = () => {
           </Text>
         </div>
       ) : (
-        myReview.map((myReview: any) => {
+        myReviewInfo.reviews.map((myReview: MyReviewType) => {
           return (
             <article
-              key={myReview.id}
+              key={myReview.cafeId}
               className="px-4 py-6 border-gray-200 border-b-[1px] pb-6"
             >
               <header className="flex flex-col">
                 <div className="w-full flex items-center justify-between">
                   <Text size="small">{myReview.cafeName}</Text>
                   <div className="flex gap-2">
-                    <Button size="small">수정</Button>
-                    <Button size="small" bgColor="bg-gray-400">
+                    <Button
+                      size="small"
+                      onClick={() =>
+                        router.push(`/review/edit/${myReview.reviewId}`)
+                      }
+                    >
+                      수정
+                    </Button>
+                    <Button
+                      size="small"
+                      bgColor="bg-gray-400"
+                      onClick={() => deleteReview(myReview.reviewId)}
+                    >
                       삭제
                     </Button>
                   </div>
@@ -85,7 +69,7 @@ const MyReview = () => {
                 </div>
                 <div className="flex gap-1.5 overflow-scroll">
                   {myReview.images.map(
-                    (image: { id: number; imageUrl: string }) => {
+                    (image: { id: number | null; imageUrl: string }) => {
                       return (
                         <div
                           key={image.id}
