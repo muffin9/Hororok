@@ -26,6 +26,7 @@ const useBookMarkFolderMutation = () => {
   const { data: bookMarks } = useQuery({
     queryKey: ["getBookmark"],
     queryFn: () => getBookmark(),
+    staleTime: 600000,
   });
 
   const { mutateAsync: postBookmarkFolder } = useMutation({
