@@ -4,6 +4,7 @@ import Icon from "@/components/common/Icon";
 import MoreButton from "@/components/common/MoreButton";
 import Text from "@/components/common/Text";
 import { CafePhotoInfoType } from "@/interfaces/Cafe";
+import { useMemo } from "react";
 
 interface PhotoInfoProps {
   cafeId: string;
@@ -11,7 +12,7 @@ interface PhotoInfoProps {
 }
 
 const PhotoInfo = ({ cafeId, page = "" }: PhotoInfoProps) => {
-  const { photoInfo }: { photoInfo: CafePhotoInfoType[] } = useGetPhotoInfo(
+  const { photoInfo }: { photoInfo: CafePhotoInfoType } = useGetPhotoInfo(
     cafeId,
     1,
     page
@@ -19,7 +20,15 @@ const PhotoInfo = ({ cafeId, page = "" }: PhotoInfoProps) => {
 
   const { showMore, handleClickMoreButton } = useMoreData();
 
-  const visiblePhotoData = !showMore ? photoInfo.slice(0, 4) : photoInfo;
+  const photoInfoImageUrlsLen = useMemo(
+    () => photoInfo?.imageUrls.length,
+    [photoInfo]
+  );
+
+  const visiblePhotoData =
+    !showMore && page !== "all"
+      ? photoInfo?.imageUrls.slice(0, 4)
+      : photoInfo?.imageUrls;
 
   return (
     <div className="h-full flex flex-col py-6 bg-white">
@@ -28,7 +37,7 @@ const PhotoInfo = ({ cafeId, page = "" }: PhotoInfoProps) => {
           사진
         </Text>
       </header>
-      {photoInfo.length === 0 ? (
+      {photoInfoImageUrlsLen === 0 ? (
         <div className="h-full flex flex-col justify-center items-center">
           <Icon type="camera" size="xLarge" alt="camera" />
           <Text size="small" weight="bold" className="text-gray-600">
@@ -37,18 +46,16 @@ const PhotoInfo = ({ cafeId, page = "" }: PhotoInfoProps) => {
         </div>
       ) : (
         <div className="flex flex-wrap justify-center gap-1 mt-4">
-          {visiblePhotoData.map((photoUrl: CafePhotoInfoType) => {
-            return photoUrl.imageUrls.map((imageUrl) => {
-              return (
-                <div
-                  key={imageUrl}
-                  style={{ backgroundImage: `url(http:${imageUrl})` }}
-                  className={"w-[176px] h-[176px] rounded-lg"}
-                />
-              );
-            });
+          {visiblePhotoData?.map((imageUrl: string) => {
+            return (
+              <div
+                key={imageUrl}
+                style={{ backgroundImage: `url(http:${imageUrl})` }}
+                className={"w-[176px] h-[176px] rounded-lg"}
+              />
+            );
           })}
-          {photoInfo.length >= 5 && !showMore && (
+          {photoInfoImageUrlsLen >= 5 && !showMore && page !== "all" && (
             <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[20px]">
               <MoreButton
                 text={"사진 더보기"}

@@ -5,6 +5,7 @@ const useGetPhotoInfo = (cafeId: string, cursor: number, page: string) => {
   const { data: photoInfo } = useQuery({
     queryKey: ["getPhotoInfo", cafeId],
     queryFn: () => getCafePhotoInfo(cafeId, cursor, page),
+    staleTime: 600000,
   });
 
   return { photoInfo };
