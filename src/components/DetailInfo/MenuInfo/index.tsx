@@ -9,15 +9,14 @@ interface MenuInfoProps {
   page?: string;
 }
 
-const MenuInfo = ({ cafeId,page }: MenuInfoProps) => {
+const MenuInfo = ({ cafeId, page }: MenuInfoProps) => {
   const { menuInfo }: { menuInfo: CafeMenuInfoType } =
     useGetCafeDetailInfo(cafeId);
 
   const { showMore, handleClickMoreButton } = useMoreData();
 
-  const visibleMenuData = !showMore && page !== 'all'
-    ? menuInfo.menus.slice(0, 2)
-    : menuInfo.menus;
+  const visibleMenuData =
+    !showMore && page !== "all" ? menuInfo?.menus.slice(0, 2) : menuInfo?.menus;
 
   return (
     <div className="h-full py-6 bg-white">
@@ -47,7 +46,7 @@ const MenuInfo = ({ cafeId,page }: MenuInfoProps) => {
         })}
       </div>
 
-      {menuInfo.menus.length >= 3 && !showMore && page !== 'all' && (
+      {menuInfo.menus.length >= 3 && !showMore && page !== "all" && (
         <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[38px]">
           <MoreButton
             text={"메뉴 더보기"}
