@@ -1,3 +1,4 @@
+import useGetMyReviewInfo from "@/Hooks/Api/mypage/useGetMyReviewInfo";
 import useReviewMutation from "@/Hooks/Api/mypage/useReviewMutation";
 import Button from "@/components/common/Button";
 import Icon from "@/components/common/Icon";
@@ -9,7 +10,8 @@ import { useRouter } from "next/navigation";
 
 const MyReview = () => {
   const router = useRouter();
-  const { myReviewInfo, deleteReview } = useReviewMutation();
+  const { deleteReview } = useReviewMutation();
+  const { myReviewInfo } = useGetMyReviewInfo();
 
   return (
     <section className="h-screen overflow-y-scroll">

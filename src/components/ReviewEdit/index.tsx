@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { reviewFilterDatas } from "@/app/constants";
 import useReviewMutation from "@/Hooks/Api/mypage/useReviewMutation";
 import { ReviewInfoType } from "@/interfaces/Review";
+import { convertRequestKeywords } from "@/utils";
 
 interface ReviewEditProps {
   reviewId: string;
@@ -52,7 +53,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
         reviewData: {
           content,
           specialNote,
-          keywords: selectedItems,
+          keywords: convertRequestKeywords(selectedItems),
           starRating: starRating.toString(),
           deletedImageIds,
           files,

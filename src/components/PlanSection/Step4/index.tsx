@@ -13,6 +13,7 @@ import { filterDatas } from "@/app/constants";
 import SubmitButton from "@/components/FilterSection/SubmitButton";
 import RefreshButton from "@/components/common/RefreshButton";
 import useGeolocation from "@/Hooks/useGeolocation";
+import { convertRequestKeywords } from "@/utils";
 
 const Step4 = () => {
   const router = useRouter();
@@ -31,13 +32,6 @@ const Step4 = () => {
   const { setMatchPlan } = usePlanMatchStore();
 
   const onSubmit = async () => {
-    const keywords: string[] = Object.values(categoryKeywords).reduce(
-      (accumulator: string[], currentValue: string[]) => {
-        return accumulator.concat(currentValue);
-      },
-      []
-    );
-
     const convertPlanData = {
       startTime: `${formData.startTime.hour}:${formData.startTime.minute}`,
       endTime: `${formData.endTime.hour}:${formData.endTime.minute}`,
@@ -46,7 +40,7 @@ const Step4 = () => {
       minutes: formData.minutes,
       date: formData.date,
       locationName: searchInputValue,
-      keywords,
+      keywords: convertRequestKeywords(categoryKeywords),
     };
 
     const planResultInfo = await postSearchListToPlan(convertPlanData);

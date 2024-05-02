@@ -11,12 +11,6 @@ const useReviewMutation = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
 
-  const { data: myReviewInfo } = useQuery({
-    queryKey: ["getUserReviews"],
-    queryFn: () => getUserReview(),
-    staleTime: 600000,
-  });
-
   const { mutateAsync: postReview } = useMutation({
     mutationFn: async (reviewData: ReviewPostInfoType) => {
       return axiosInstance.post(`${apiSearchUrl}/review/create`, reviewData);
@@ -62,7 +56,7 @@ const useReviewMutation = () => {
     },
   });
 
-  return { myReviewInfo, postReview, patchReview, deleteReview };
+  return { postReview, patchReview, deleteReview };
 };
 
 export default useReviewMutation;
