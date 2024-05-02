@@ -10,32 +10,35 @@ import { useRouter } from "next/navigation";
 import Modal from "../common/Modal";
 import useKeyword from "@/Hooks/Keyword/useKeyword";
 import useModal from "@/Hooks/useModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { reviewFilterDatas } from "@/app/constants";
 import useReviewMutation from "@/Hooks/Api/mypage/useReviewMutation";
+import { ReviewInfoType } from "@/interfaces/Review";
 
-interface ReviewCreateProps {
-  cafeId: string;
-  cafeName: string | null;
+interface ReviewEditProps {
+  reviewId: string;
+  reviewData: ReviewInfoType;
 }
 
-const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
+const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
   const router = useRouter();
-  const [starRating, setStarRating] = useState(0);
-  const [content, setContent] = useState("");
-  const [specialNote, setSpecialNote] = useState("");
+  const [starRating, setStarRating] = useState(reviewData.starRating);
+  const [content, setContent] = useState(reviewData.content);
+  const [specialNote, setSpecialNote] = useState(reviewData.specialNote);
   const [files, setFiles] = useState<File[]>([]);
+  const [deletedImageIds, setDeletedImageIds] = useState<number[]>([]);
 
   const { showModal, openModal, closeModal } = useModal();
 
   const {
     selectedItems,
+    setSelectedItems,
     handleReviewItemClick,
     checkSelected,
     checkKeywordDisabledSubmit,
   } = useKeyword();
 
-  const { postReview } = useReviewMutation();
+  const { patchReview } = useReviewMutation();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(event.target.files as FileList);
@@ -43,14 +46,17 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
   };
 
   const onReviewSubmit = async () => {
-    if (cafeId) {
-      await postReview({
-        cafeId,
-        content,
-        specialNote,
-        keywords: selectedItems,
-        starRating: starRating.toString(),
-        files,
+    if (reviewId) {
+      patchReview({
+        reviewId: +reviewId,
+        reviewData: {
+          content,
+          specialNote,
+          keywords: selectedItems,
+          starRating: starRating.toString(),
+          deletedImageIds,
+          files,
+        },
       });
     }
   };
@@ -59,6 +65,12 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
     if (!starRating || checkKeywordDisabledSubmit()) return true;
     return false;
   };
+
+  useEffect(() => {
+    if (reviewData) {
+      setSelectedItems(reviewData.categoryKeywords);
+    }
+  }, [reviewData, setSelectedItems]);
 
   return (
     <>
@@ -78,7 +90,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
         </header>
         <div className="flex flex-col items-center gap-4 py-6">
           <Text size="xLarge" weight="bold">
-            {cafeName} 방문은 어땠나요?
+            {reviewData.cafeName} 방문은 어땠나요?
           </Text>
           <div className="flex gap-[2px]">
             {Array.from({ length: 5 }).map((_, index) => (
@@ -110,16 +122,36 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
                 onChange={handleFileChange}
               />
             </label>
-            {files.map((file, index) => (
-              <div key={index}>
-                <Image
-                  src={URL.createObjectURL(file)}
-                  alt={`Uploaded image ${index}`}
-                  width={100}
-                  height={100}
-                />
-              </div>
-            ))}
+            <div className="flex gap-2">
+              {files.map((file, index) => (
+                <div key={index}>
+                  <Image
+                    src={URL.createObjectURL(file)}
+                    alt={`Uploaded image ${index}`}
+                    width={100}
+                    height={100}
+                  />
+                </div>
+              ))}
+              {reviewData.images.map((image, index) => (
+                <div key={index} className="relative">
+                  <button
+                    className="absolute top-2 right-2"
+                    onClick={() =>
+                      setDeletedImageIds([...deletedImageIds, image.id])
+                    }
+                  >
+                    <Icon size="xSmall" type="close" alt="close" />
+                  </button>
+                  <Image
+                    src={`${image.imageUrl}`}
+                    alt={`Uploaded image ${index}`}
+                    width={100}
+                    height={100}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
           <Text size="small" className="text-gray-800">
             최대 5장 첨부할 수 있어요
@@ -168,22 +200,22 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
               }
               disabled={checkDisabledSubmit()}
             >
-              등록하기
+              수정하기
             </Button>
           </div>
         </div>
       </div>
       {showModal && (
         <Modal
-          title={`작성하던 리뷰는 저장되지 않아요.\n의견을 남기지 않고 나가시겠어요?`}
-          okButtonText="이어서 리뷰남기기"
+          title={`작성하던 리뷰는 수정되지 않아요.\n의견을 수정하지 않고 나가시겠어요?`}
+          okButtonText="이어서 리뷰 수정하기"
           cancelButtonText="나가기"
           okCallbackFunc={closeModal}
-          cancelCallbackFunc={() => router.push(`/cafe/${cafeId}`)}
+          cancelCallbackFunc={() => router.back()}
         />
       )}
     </>
   );
 };
 
-export default ReviewCreate;
+export default ReviewEdit;

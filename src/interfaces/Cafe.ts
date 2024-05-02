@@ -1,3 +1,9 @@
+export interface KeywordsType {
+  id: number;
+  category: string;
+  name: string;
+}
+
 export interface CafeTopInfoType {
   cafeId: number;
   cafeName: string;
@@ -7,13 +13,7 @@ export interface CafeTopInfoType {
   starRating: number;
   reviewCount: number;
   imageUrl: string;
-  keywords: [
-    {
-      id: number;
-      category: string;
-      name: string;
-    },
-  ];
+  keywords: KeywordsType[];
 }
 
 export interface CafeBasicInfoType {

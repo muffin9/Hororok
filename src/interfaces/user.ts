@@ -1,3 +1,5 @@
+import { KeywordsType } from "./Cafe";
+
 export interface ProfileType {
   nickname: string;
   picture: string;
@@ -12,4 +14,23 @@ export interface PlanDataType {
   keyword: { id: number; category: string; name: string };
   location: string;
   visitDateTime: string;
+}
+
+export interface MyReviewType {
+  cafeId: number;
+  cafeName: string;
+  reviewId: number;
+  starRating: number;
+  content: string;
+  specialNote: string;
+  createdDate: string;
+  images: {
+    id: number | null;
+    imageUrl: string;
+  }[];
+  keywords: KeywordsType[];
+}
+
+export interface ReviewDataType {
+  reviews: MyReviewType[];
 }
