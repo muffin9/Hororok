@@ -1,6 +1,7 @@
 import { apiSearchUrl } from "@/app/constants";
 import { CategoryKeywordsType } from "@/interfaces/Cafe";
 import axiosInstance from "./apiClient";
+import { convertRequestKeywords } from "@/utils";
 
 export const getSearchList = async (latitude: number, longitude: number) => {
   try {
@@ -19,20 +20,13 @@ export const getSearchListByKeywords = async (
   longitude: number,
   categoryKeywords: CategoryKeywordsType
 ) => {
-  const keywords: string[] = Object.values(categoryKeywords).reduce(
-    (accumulator: string[], currentValue: string[]) => {
-      return accumulator.concat(currentValue);
-    },
-    []
-  );
-
   try {
     const response = await axiosInstance.post(
       `${apiSearchUrl}/cafe/find/keyword`,
       {
         latitude,
         longitude,
-        keywords,
+        keywords: convertRequestKeywords(categoryKeywords),
       }
     );
 

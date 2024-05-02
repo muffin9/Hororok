@@ -18,7 +18,7 @@ export interface ReviewPostInfoType {
   cafeId: string;
   content: string;
   specialNote: string;
-  keywords: CategoryKeywordsType;
+  keywords: string[];
   starRating: string;
   files: File[];
 }
@@ -27,7 +27,7 @@ export interface ReviewPatchInfoType {
   content: string;
   specialNote: string;
   starRating: string;
-  keywords: CategoryKeywordsType;
+  keywords: string[];
   deletedImageIds: number[];
   files: File[];
 }

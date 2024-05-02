@@ -13,6 +13,7 @@ import useModal from "@/Hooks/useModal";
 import { useState } from "react";
 import { reviewFilterDatas } from "@/app/constants";
 import useReviewMutation from "@/Hooks/Api/mypage/useReviewMutation";
+import { convertRequestKeywords } from "@/utils";
 
 interface ReviewCreateProps {
   cafeId: string;
@@ -48,7 +49,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
         cafeId,
         content,
         specialNote,
-        keywords: selectedItems,
+        keywords: convertRequestKeywords(selectedItems),
         starRating: starRating.toString(),
         files,
       });
