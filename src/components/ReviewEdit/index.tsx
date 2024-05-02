@@ -54,7 +54,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
           content,
           specialNote,
           keywords: convertRequestKeywords(selectedItems),
-          starRating: starRating.toString(),
+          starRating: starRating,
           deletedImageIds,
           files,
         },
