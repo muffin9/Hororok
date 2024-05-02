@@ -37,9 +37,10 @@ export const getCafePhotoInfo = async (
   cursor: number,
   page: string
 ) => {
-  const cafeImageUrl = page
-    ? `${apiSearchUrl}/cafe/${cafeId}/images/all`
-    : `${apiSearchUrl}/cafe/${cafeId}/images?cursor=${cursor}`;
+  const cafeImageUrl =
+    page === "all"
+      ? `${apiSearchUrl}/cafe/${cafeId}/images/all`
+      : `${apiSearchUrl}/cafe/${cafeId}/images?cursor=${cursor}`;
   try {
     const response = await axiosInstance(cafeImageUrl);
     return response.data;

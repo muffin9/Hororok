@@ -36,16 +36,20 @@ export interface CafeBasicInfoType {
   reviews: ReviewType[];
 }
 
-export interface CafeMenuInfoType {
+export interface MenuType {
   name: string;
   price: string;
   imageUrl: string;
 }
 
+export interface CafeMenuInfoType {
+  menus: MenuType[];
+}
+
 export interface CafePhotoInfoType {
   imageUrls: string[];
-  cursor: number;
-  hasNextPage: boolean;
+  cursor?: number;
+  hasNextPage?: boolean;
 }
 
 export interface CafeReviewType {

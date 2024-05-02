@@ -39,7 +39,7 @@ const ContentInfo = ({ cafeId }: { cafeId: string }) => {
           </div>
         );
       case "menu":
-        return <MenuInfo cafeId={cafeId} />;
+        return <MenuInfo cafeId={cafeId} page="all" />;
       case "photo":
         return <PhotoInfo cafeId={cafeId} page="all" />;
       case "review":
