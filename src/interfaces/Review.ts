@@ -15,18 +15,18 @@ export interface ReviewInfoType {
 }
 
 export interface ReviewPostInfoType {
-  cafeId: string;
+  cafeId: number;
   content: string;
   specialNote: string;
   keywords: string[];
-  starRating: string;
+  starRating: number;
   files: File[];
 }
 
 export interface ReviewPatchInfoType {
   content: string;
   specialNote: string;
-  starRating: string;
+  starRating: number;
   keywords: string[];
   deletedImageIds: number[];
   files: File[];

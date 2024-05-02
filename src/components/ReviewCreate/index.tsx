@@ -46,11 +46,11 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
   const onReviewSubmit = async () => {
     if (cafeId) {
       await postReview({
-        cafeId,
+        cafeId: +cafeId,
         content,
         specialNote,
         keywords: convertRequestKeywords(selectedItems),
-        starRating: starRating.toString(),
+        starRating,
         files,
       });
     }
