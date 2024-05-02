@@ -26,3 +26,12 @@ export const getUserPlanData = async (
     console.error("There was a problem with the fetch operation:", error);
   }
 };
+
+export const getUserReview = async () => {
+  try {
+    const response = await axiosInstance.get(`${apiSearchUrl}/mypage/reviews`);
+    return response.data;
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+  }
+};
