@@ -19,6 +19,7 @@ const isLoginRequiredForURL = (url: string) => {
     `${apiSearchUrl}/mypage/shared/plans`,
     `${apiSearchUrl}/mypage/plan/(\\d+)`,
     `${apiSearchUrl}/mypage/reviews`,
+    `${apiSearchUrl}/review/create`,
     `${apiSearchUrl}/review/(\\d+)`,
     `${apiSearchUrl}/review/(\\d+)/delete`,
     `${apiSearchUrl}/review/(\\d+)/edit`,
