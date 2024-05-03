@@ -15,7 +15,7 @@ const MyReview = () => {
 
   return (
     <section className="h-screen overflow-y-scroll">
-      {!myReviewInfo.reviews ? (
+      {!myReviewInfo ? (
         <div className="h-full flex flex-col justify-center items-center">
           <Icon type="review" size="xLarge" alt="review" />
           <Text size="small" weight="bold" className="text-gray-600">

@@ -21,7 +21,7 @@ export const getUserPlanData = async (
     const response = await axiosInstance.get(
       `${apiSearchUrl}/myPage/${status}/plans?sortBy=${sort}&page=${page}&size=${size}`
     );
-    return response.data;
+    return response.data.plans;
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
   }
