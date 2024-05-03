@@ -21,7 +21,7 @@ const useReviewMutation = () => {
     onSuccess: (data) => {
       if (data) {
         showMessage(`리뷰가 등록되었습니다.`);
-        router.push(`/cafe/${data.data.reviewId}`);
+        router.push(`/`);
       }
     },
   });

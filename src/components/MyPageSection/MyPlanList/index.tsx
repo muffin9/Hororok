@@ -1,4 +1,4 @@
-import useUserPlanMutation from "@/Hooks/Api/mypage/useUserPlanMutation";
+import useUserPlanMutation from "@/Hooks/Api/myPage/useUserPlanMutation";
 import MyPlanCard from "../MyPlanCard";
 import { SortType } from "@/interfaces/user";
 import { useState } from "react";
