@@ -45,14 +45,28 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
 
   const onReviewSubmit = async () => {
     if (cafeId) {
-      await postReview({
+      const formData = new FormData();
+
+      files.forEach((file) => {
+        formData.append(`files`, file);
+      });
+
+      const requestData = {
         cafeId: +cafeId,
         content,
         specialNote,
         keywords: convertRequestKeywords(selectedItems),
         starRating,
-        files,
-      });
+      };
+
+      formData.append(
+        "request",
+        new Blob([JSON.stringify(requestData)], {
+          type: "application/json",
+        })
+      );
+
+      await postReview(formData);
     }
   };
 

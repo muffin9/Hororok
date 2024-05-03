@@ -20,7 +20,6 @@ export interface ReviewPostInfoType {
   specialNote: string;
   keywords: string[];
   starRating: number;
-  files: File[];
 }
 
 export interface ReviewPatchInfoType {
