@@ -23,6 +23,7 @@ const MyReview = () => {
           </Text>
         </div>
       ) : (
+        myReviewInfo &&
         myReviewInfo.reviews.map((myReview: MyReviewType) => {
           return (
             <article

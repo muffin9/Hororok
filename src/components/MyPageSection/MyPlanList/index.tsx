@@ -25,20 +25,24 @@ const MyPlanList = () => {
         </div>
       ) : (
         <>
-          <MyPlanCard
-            dataType="saved"
-            planData={userSaveData}
-            sort={saveSort}
-            setSort={setSaveSort}
-            deleteFunc={deleteSavePlan}
-          />
-          <MyPlanCard
-            dataType="shared"
-            planData={userShareData}
-            sort={shareSort}
-            setSort={setShareSort}
-            deleteFunc={deleteSharePlan}
-          />
+          {userSaveData && (
+            <MyPlanCard
+              dataType="saved"
+              planData={userSaveData}
+              sort={saveSort}
+              setSort={setSaveSort}
+              deleteFunc={deleteSavePlan}
+            />
+          )}
+          {userShareData && (
+            <MyPlanCard
+              dataType="shared"
+              planData={userShareData}
+              sort={shareSort}
+              setSort={setShareSort}
+              deleteFunc={deleteSharePlan}
+            />
+          )}
         </>
       )}
     </div>
