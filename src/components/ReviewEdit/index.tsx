@@ -48,16 +48,29 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
 
   const onReviewSubmit = async () => {
     if (reviewId) {
-      patchReview({
+      const formData = new FormData();
+      files.forEach((file) => {
+        formData.append(`files`, file);
+      });
+
+      const requestData = {
+        content,
+        specialNote,
+        keywords: convertRequestKeywords(selectedItems),
+        starRating,
+        deletedImageIds,
+      };
+
+      formData.append(
+        "request",
+        new Blob([JSON.stringify(requestData)], {
+          type: "application/json",
+        })
+      );
+
+      await patchReview({
         reviewId: +reviewId,
-        reviewData: {
-          content,
-          specialNote,
-          keywords: convertRequestKeywords(selectedItems),
-          starRating: starRating,
-          deletedImageIds,
-          files,
-        },
+        formData,
       });
     }
   };

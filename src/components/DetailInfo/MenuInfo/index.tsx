@@ -19,42 +19,48 @@ const MenuInfo = ({ cafeId, page }: MenuInfoProps) => {
     !showMore && page !== "all" ? menuInfo?.menus.slice(0, 2) : menuInfo?.menus;
 
   return (
-    <div className="h-full py-6 bg-white">
-      <header className="px-4">
-        <Text size="large" weight="bold">
-          메뉴
-        </Text>
-      </header>
-      <div className="flex flex-col gap-3 px-4 mt-4">
-        {visibleMenuData.map((menuData: CafeMenuType) => {
-          return (
-            <div className="flex gap-4" key={menuData.name}>
-              <div
-                className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
-                style={{ backgroundImage: `url(http:${menuData.imageUrl})` }}
-              ></div>
-              <div className="flex flex-col">
-                <Text size="medium" weight="bold" className="text-gray-650">
-                  {menuData.name}
-                </Text>
-                <Text size="medium" weight="bold" className="text-primary-300">
-                  {menuData.price}
-                </Text>
+    visibleMenuData && (
+      <div className="h-full py-6 bg-white">
+        <header className="px-4">
+          <Text size="large" weight="bold">
+            메뉴
+          </Text>
+        </header>
+        <div className="flex flex-col gap-3 px-4 mt-4">
+          {visibleMenuData.map((menuData: CafeMenuType) => {
+            return (
+              <div className="flex gap-4" key={menuData.name}>
+                <div
+                  className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
+                  style={{ backgroundImage: `url(http:${menuData.imageUrl})` }}
+                ></div>
+                <div className="flex flex-col">
+                  <Text size="medium" weight="bold" className="text-gray-650">
+                    {menuData.name}
+                  </Text>
+                  <Text
+                    size="medium"
+                    weight="bold"
+                    className="text-primary-300"
+                  >
+                    {menuData.price}
+                  </Text>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {menuInfo.menus.length >= 3 && !showMore && page !== "all" && (
-        <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[38px]">
-          <MoreButton
-            text={"메뉴 더보기"}
-            handleClickMoreButton={handleClickMoreButton}
-          />
+            );
+          })}
         </div>
-      )}
-    </div>
+
+        {menuInfo.menus.length >= 3 && !showMore && page !== "all" && (
+          <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[38px]">
+            <MoreButton
+              text={"메뉴 더보기"}
+              handleClickMoreButton={handleClickMoreButton}
+            />
+          </div>
+        )}
+      </div>
+    )
   );
 };
 

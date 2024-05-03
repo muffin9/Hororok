@@ -1,9 +1,8 @@
 import axiosInstance from "@/apis/apiClient";
-import { getUserReview } from "@/apis/user";
 import { apiSearchUrl } from "@/app/constants";
 import { ReviewPatchInfoType, ReviewPostInfoType } from "@/interfaces/Review";
 import useToastStore from "@/store/useToastStore";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 const useReviewMutation = () => {
@@ -12,8 +11,12 @@ const useReviewMutation = () => {
   const router = useRouter();
 
   const { mutateAsync: postReview } = useMutation({
-    mutationFn: async (reviewData: ReviewPostInfoType) => {
-      return axiosInstance.post(`${apiSearchUrl}/review/create`, reviewData);
+    mutationFn: async (formData: FormData) => {
+      return axiosInstance.post(`${apiSearchUrl}/review/create`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
     },
     onSuccess: (data) => {
       if (data) {
@@ -38,14 +41,14 @@ const useReviewMutation = () => {
   const { mutateAsync: patchReview } = useMutation({
     mutationFn: async ({
       reviewId,
-      reviewData,
+      formData,
     }: {
       reviewId: number;
-      reviewData: ReviewPatchInfoType;
+      formData: FormData;
     }) => {
       return axiosInstance.patch(
         `${apiSearchUrl}/review/${reviewId}/edit`,
-        reviewData
+        formData
       );
     },
     onSuccess: (data) => {
