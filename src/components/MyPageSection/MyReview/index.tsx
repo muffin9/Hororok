@@ -37,7 +37,7 @@ const MyReview = () => {
                     <Button
                       size="small"
                       onClick={() =>
-                        router.push(`/review/${myReview.reviewId}/edit`)
+                        router.push(`/review/edit/${myReview.reviewId}`)
                       }
                     >
                       수정
