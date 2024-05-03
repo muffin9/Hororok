@@ -18,11 +18,13 @@ export default function ReviewEditPage({ params }: { params: { id: string } }) {
   }, [params.id]);
 
   return (
-    <section>
-      <ReviewEdit
-        reviewId={params.id}
-        reviewData={reviewData as ReviewInfoType}
-      />
-    </section>
+    reviewData && (
+      <section>
+        <ReviewEdit
+          reviewId={params.id}
+          reviewData={reviewData as ReviewInfoType}
+        />
+      </section>
+    )
   );
 }
