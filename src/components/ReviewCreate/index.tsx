@@ -12,7 +12,7 @@ import useKeyword from "@/Hooks/Keyword/useKeyword";
 import useModal from "@/Hooks/useModal";
 import { useState } from "react";
 import { reviewFilterDatas } from "@/app/constants";
-import useReviewMutation from "@/Hooks/Api/mypage/useReviewMutation";
+import useReviewMutation from "@/Hooks/Api/myPage/useReviewMutation";
 import { convertRequestKeywords } from "@/utils";
 
 interface ReviewCreateProps {

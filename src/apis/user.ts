@@ -4,7 +4,7 @@ import { SortType, PlanStatusType } from "@/interfaces/user";
 
 export const getProfile = async () => {
   try {
-    const response = await axiosInstance.get(`${apiSearchUrl}/mypage/profile`);
+    const response = await axiosInstance.get(`${apiSearchUrl}/myPage/profile`);
     return response.data;
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
@@ -19,7 +19,7 @@ export const getUserPlanData = async (
 ) => {
   try {
     const response = await axiosInstance.get(
-      `${apiSearchUrl}/mypage/${status}/plans?sortBy=${sort}&page=${page}&size=${size}`
+      `${apiSearchUrl}/myPage/${status}/plans?sortBy=${sort}&page=${page}&size=${size}`
     );
     return response.data;
   } catch (error) {
@@ -29,7 +29,7 @@ export const getUserPlanData = async (
 
 export const getUserReview = async () => {
   try {
-    const response = await axiosInstance.get(`${apiSearchUrl}/mypage/reviews`);
+    const response = await axiosInstance.get(`${apiSearchUrl}/myPage/reviews`);
     return response.data;
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);

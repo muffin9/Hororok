@@ -1,5 +1,5 @@
-import useGetMyReviewInfo from "@/Hooks/Api/mypage/useGetMyReviewInfo";
-import useReviewMutation from "@/Hooks/Api/mypage/useReviewMutation";
+import useGetMyReviewInfo from "@/Hooks/Api/myPage/useGetMyReviewInfo";
+import useReviewMutation from "@/Hooks/Api/myPage/useReviewMutation";
 import Button from "@/components/common/Button";
 import Icon from "@/components/common/Icon";
 import Star from "@/components/common/Star";

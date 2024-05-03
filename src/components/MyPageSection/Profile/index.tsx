@@ -1,4 +1,4 @@
-import useProfileMutation from "@/Hooks/Api/mypage/useProfileMutation";
+import useProfileMutation from "@/Hooks/Api/myPage/useProfileMutation";
 import Loading from "@/app/loading";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
@@ -41,7 +41,7 @@ const Profile = () => {
         </div>
         <button
           className="flex gap-1 items-center"
-          onClick={() => router.push("/mypage/edit")}
+          onClick={() => router.push("/myPage/edit")}
         >
           <Text size="small" className="text-gray-700">
             프로필 수정
