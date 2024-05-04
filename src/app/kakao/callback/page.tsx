@@ -26,7 +26,14 @@ export default function KakaoCallback() {
         .get(`https://api.hororok.o-r.kr/api/auth/login?code=${code}`)
         .then(({ data }: { data: LoginType }) => {
           const { accessToken, refreshToken } = data;
+          const currentTime = new Date().getTime();
+          const expirationTime = currentTime + 6 * 60 * 60 * 1000;
           localStorage.setItem("accessToken", accessToken);
+          localStorage.setItem(
+            "accessTokenExpiration",
+            expirationTime.toString()
+          );
+          localStorage.setItem("refreshToken", refreshToken);
 
           router.push("/");
         })
