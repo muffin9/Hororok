@@ -1,4 +1,4 @@
-import { BookmarkType, FolderType } from "@/interfaces/Save";
+import { BookmarkType } from "@/interfaces/Save";
 import useBookMarkMutation from "./useBookMarkMutation";
 import { getFolderList } from "@/apis/save";
 
