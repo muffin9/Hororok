@@ -41,6 +41,7 @@ const iconUrls = {
   coffee: "/assets/Icon/ic_coffee.svg",
   map: "/assets/Icon/ic_map.svg",
   trash: "/assets/Icon/ic_trash.svg",
+  defaultProfile: "/assets/Icon/default_profile.svg",
 };
 
 interface IconProps {
@@ -84,7 +85,8 @@ interface IconProps {
     | "info"
     | "coffee"
     | "map"
-    | "trash";
+    | "trash"
+    | "defaultProfile";
 
   size?: "xSmall" | "small" | "medium" | "large" | "xLarge";
   alt: string;

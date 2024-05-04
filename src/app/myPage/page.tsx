@@ -1,11 +1,11 @@
-import EditProfile from "@/components/MyPageSection/EditProfile";
+import MyPageSection from "@/components/MyPageSection";
 import TopNavigation from "@/components/common/TopNavigation";
 
-export default function MyPageEdit() {
+export default function MyPage() {
   return (
     <section className="h-full bg-white">
       <TopNavigation title="" />
-      <EditProfile />
+      <MyPageSection />
     </section>
   );
 }

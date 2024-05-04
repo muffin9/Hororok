@@ -96,12 +96,6 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
         mapRef.current = new window.kakao.maps.Map(mapContainer, options);
 
         if (window.kakao) {
-          const zoomControl = new window.kakao.maps.ZoomControl();
-          mapRef.current?.addControl(
-            zoomControl,
-            window.kakao.maps.ControlPosition.RIGHT
-          );
-
           window.kakao.maps.event.addListener(
             mapRef.current,
             "dragend",

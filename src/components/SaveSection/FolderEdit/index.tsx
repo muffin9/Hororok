@@ -26,14 +26,17 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
         <button onClick={() => router.push(`/save/folderEdit/${folderId}/map`)}>
           <Icon size="small" type="map" alt="map" />
         </button>
-        <button
-          onClick={() => {
-            deleteBookmarkFolder(folderId);
-            router.push("/");
-          }}
-        >
-          <Icon size="small" type="trash" alt="trash" />
-        </button>
+
+        {folderList?.folderName !== "기본 폴더" && (
+          <button
+            onClick={() => {
+              deleteBookmarkFolder(folderId);
+              router.push("/");
+            }}
+          >
+            <Icon size="small" type="trash" alt="trash" />
+          </button>
+        )}
       </div>
       <div className="flex gap-1 justify-center">
         <Text size="large">{folderList?.folderName || ""}</Text>

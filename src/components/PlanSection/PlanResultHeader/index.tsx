@@ -95,7 +95,7 @@ const PlanResultHeader = () => {
       </header>
       {isBottomSheet && (
         <>
-          <div className="absolute top-0 left-0 w-screen h-screen bg-gray-200" />
+          <div className="absolute top-0 left-0 w-screen h-screen" />
           <div ref={overlayRef} className="fixed bottom-0 z-[1000]">
             <SaveSection />
           </div>
