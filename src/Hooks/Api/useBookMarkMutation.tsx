@@ -23,6 +23,7 @@ const useBookMarkMutation = () => {
       try {
         if (data.status === 200) {
           showMessage(`카페를 저장했어요!`);
+          queryClient.refetchQueries({ queryKey: ["getBookmark"] });
         }
       } catch (e) {
         console.error(e);
@@ -40,6 +41,7 @@ const useBookMarkMutation = () => {
       try {
         if (data.status === 200) {
           showMessage(`카페를 삭제했어요!`);
+          queryClient.refetchQueries({ queryKey: ["getBookmark"] });
         }
       } catch (e) {
         console.error(e);

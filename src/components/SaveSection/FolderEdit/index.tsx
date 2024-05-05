@@ -80,7 +80,7 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
 
                 <button
                   className="px-4 cursor-pointer"
-                  onClick={() => deleteBookmark(bookmark.cafeId)}
+                  onClick={() => deleteBookmark(bookmark.bookmarkId)}
                 >
                   <Icon type="close" alt="close" />
                 </button>
