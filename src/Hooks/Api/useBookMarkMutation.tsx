@@ -57,7 +57,6 @@ const useBookMarkMutation = () => {
       try {
         if (data.status === 204) {
           showMessage(`변경되었습니다.`);
-          queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
           queryClient.refetchQueries({ queryKey: ["getBookmark"] });
         }
       } catch (e) {
