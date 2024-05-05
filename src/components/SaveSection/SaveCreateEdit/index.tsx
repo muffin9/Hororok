@@ -8,6 +8,7 @@ import ToggleButton from "@/components/common/ToggleButton";
 import { useState } from "react";
 import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
 import { useSearchParams } from "next/navigation";
+import useDebounce from "@/Hooks/useDebounce";
 
 interface SaveCreateEditProps {
   paramId?: number;
@@ -48,7 +49,7 @@ const SaveCreateEdit = ({ paramId }: SaveCreateEditProps) => {
     return false;
   };
 
-  const completeSubmit = () => {
+  const completeSubmit = useDebounce(() => {
     // paramId has -> patch axios, id no has -> post axios
     if (paramId)
       patchBookmarkFolder({ folderId: paramId, name, color, isVisible });
@@ -58,7 +59,7 @@ const SaveCreateEdit = ({ paramId }: SaveCreateEditProps) => {
         color,
         isVisible,
       });
-  };
+  }, 500);
 
   return (
     <div className="p-4">

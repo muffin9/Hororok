@@ -1,4 +1,5 @@
 import useBookMarkMutation from "@/Hooks/Api/useBookMarkMutation";
+import useDebounce from "@/Hooks/useDebounce";
 
 interface ToggleButtonProps {
   folderId?: number;
@@ -8,10 +9,13 @@ interface ToggleButtonProps {
 const ToggleButton = ({ folderId, isVisible }: ToggleButtonProps) => {
   const { toggleVisible } = useBookMarkMutation();
 
-  const handleToggle = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    if (folderId) toggleVisible(folderId);
-  };
+  const handleToggle = useDebounce(
+    (e: React.SyntheticEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      if (folderId) toggleVisible(folderId);
+    },
+    500
+  );
 
   return (
     <button

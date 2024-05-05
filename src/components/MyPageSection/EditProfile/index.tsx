@@ -9,7 +9,7 @@ const EditProfile = () => {
   const { myProfile, postProfile } = useProfileMutation();
   const [nickname, setNickname] = useState("");
   const [file, setFile] = useState<File>();
-  const [imageUrl, setImageUrl] = useState("/assets/Ion/default_profile.svg");
+  const [imageUrl, setImageUrl] = useState("/assets/Icon/default_profile.svg");
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files;
@@ -18,6 +18,10 @@ const EditProfile = () => {
       const file = selectedFile[0];
       setFile(file);
     }
+  };
+
+  const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNickname(e.target.value);
   };
 
   useEffect(() => {
@@ -64,6 +68,7 @@ const EditProfile = () => {
           id="nickname"
           placeholder="닉네임"
           value={nickname}
+          onChange={handleNicknameChange}
           className="h-[50px] p-4 border-solid border-[1px] border-gray-400 rounded-lg"
         />
       </div>
