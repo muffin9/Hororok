@@ -44,6 +44,7 @@ const useBookMarkMutation = () => {
     onSuccess: () => {
       showMessage(`변경되었습니다.`);
       queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
+      queryClient.refetchQueries({ queryKey: ["getBookmark"] });
     },
   });
 
