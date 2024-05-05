@@ -23,10 +23,8 @@ const useToggleBookmark = () => {
     } else {
       postBookmark({ cafeId, folderId });
     }
-    queryClient.invalidateQueries({
-      queryKey: [`FolderList_${folderId}`],
-    });
-    queryClient.refetchQueries({ queryKey: [`FolderList_${folderId}`] });
+    queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
+    queryClient.refetchQueries({ queryKey: ["getBookmark"] });
   };
 
   return { toggleBookmark };
