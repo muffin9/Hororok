@@ -5,6 +5,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 const useToggleBookmark = () => {
   const { postBookmark, deleteBookmark } = useBookMarkMutation();
+
   const queryClient = useQueryClient();
 
   const toggleBookmark = async (cafeId: number, folderId: number) => {
@@ -16,7 +17,7 @@ const useToggleBookmark = () => {
       });
 
       if (findFolder) {
-        await deleteBookmark(findFolder.cafeId);
+        await deleteBookmark(findFolder.bookmarkId);
       } else {
         await postBookmark({ cafeId, folderId });
       }
