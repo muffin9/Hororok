@@ -19,8 +19,14 @@ const useBookMarkMutation = () => {
         folderId,
       });
     },
-    onSuccess: () => {
-      showMessage(`카페를 저장했어요!`);
+    onSuccess: (data) => {
+      try {
+        if (data.status === 200) {
+          showMessage(`카페를 저장했어요!`);
+        }
+      } catch (e) {
+        console.error(e);
+      }
     },
   });
 
@@ -30,8 +36,14 @@ const useBookMarkMutation = () => {
         `${apiSearchUrl}/bookmark/${bookmarkId}/delete`
       );
     },
-    onSuccess: () => {
-      showMessage(`카페를 삭제했어요!`);
+    onSuccess: (data) => {
+      try {
+        if (data.status === 200) {
+          showMessage(`카페를 삭제했어요!`);
+        }
+      } catch (e) {
+        console.error(e);
+      }
     },
   });
 
@@ -43,7 +55,7 @@ const useBookMarkMutation = () => {
     },
     onSuccess: (data) => {
       try {
-        if (data.status === 200) {
+        if (data.status === 204) {
           showMessage(`변경되었습니다.`);
           queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
           queryClient.refetchQueries({ queryKey: ["getBookmark"] });

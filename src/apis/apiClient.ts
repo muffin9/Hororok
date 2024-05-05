@@ -26,6 +26,7 @@ const isLoginRequiredForURL = (url: string) => {
     `${apiSearchUrl}/plan/save`,
     `${apiSearchUrl}/plan/share`,
     new RegExp(`${apiSearchUrl}/plan/(\\d+)/delete`),
+    `${apiSearchUrl}/cafe/find/bar`,
   ];
 
   return targetURLs.some((targetURL) => {
