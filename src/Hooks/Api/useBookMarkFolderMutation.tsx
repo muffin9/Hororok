@@ -78,6 +78,7 @@ const useBookMarkFolderMutation = () => {
           queryClient.invalidateQueries({
             queryKey: [`FolderList_${folderId}`],
           });
+          queryClient.refetchQueries({ queryKey: [`FolderList_${folderId}`] });
         }
       } catch (e) {
         console.error(e);
