@@ -39,7 +39,7 @@ const useBookMarkFolderMutation = () => {
     },
     onSuccess: (data) => {
       try {
-        if (data.status === 200) {
+        if (data.status === 204) {
           showMessage("새 폴더를 추가했어요");
           queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
           queryClient.refetchQueries({ queryKey: ["getBookmark"] });
@@ -62,7 +62,7 @@ const useBookMarkFolderMutation = () => {
     },
     onSuccess: (data) => {
       try {
-        if (data.status === 200) {
+        if (data.status === 204) {
           showMessage(`폴더를 수정했어요`);
           queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
           queryClient.refetchQueries({ queryKey: ["getBookmark"] });
@@ -85,14 +85,9 @@ const useBookMarkFolderMutation = () => {
     onSuccess: (data) => {
       try {
         if (data.status === 200) {
-          const folderId = data.data?.folderId;
           showMessage(`폴더를 삭제했어요`);
           queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
-          queryClient.invalidateQueries({
-            queryKey: [`FolderList_${folderId}`],
-          });
           queryClient.refetchQueries({ queryKey: ["getBookmark"] });
-          queryClient.refetchQueries({ queryKey: [`FolderList_${folderId}`] });
         }
       } catch (e) {
         console.error(e);
