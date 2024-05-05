@@ -37,13 +37,19 @@ const useBookMarkFolderMutation = () => {
         isVisible: folderInfo.isVisible,
       });
     },
-    onSuccess: () => {
-      showMessage("새 폴더를 추가했어요");
-      setTimeout(() => {
-        queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
-        queryClient.refetchQueries({ queryKey: ["getBookmark"] });
-        router.push("/");
-      }, 1000);
+    onSuccess: (data) => {
+      try {
+        if (data.status === 200) {
+          showMessage("새 폴더를 추가했어요");
+          queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
+          queryClient.refetchQueries({ queryKey: ["getBookmark"] });
+          setTimeout(() => {
+            router.push("/");
+          }, 1000);
+        }
+      } catch (e) {
+        console.error(e);
+      }
     },
   });
 
@@ -54,12 +60,16 @@ const useBookMarkFolderMutation = () => {
         folderInfo
       );
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       try {
-        showMessage(`폴더를 수정했어요`);
-        setTimeout(() => {
-          router.push("/");
-        }, 1000);
+        if (data.status === 200) {
+          showMessage(`폴더를 수정했어요`);
+          queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
+          queryClient.refetchQueries({ queryKey: ["getBookmark"] });
+          setTimeout(() => {
+            router.push("/");
+          }, 1000);
+        }
       } catch (e) {
         console.error(e);
       }

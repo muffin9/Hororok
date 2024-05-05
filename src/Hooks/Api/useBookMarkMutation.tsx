@@ -41,10 +41,16 @@ const useBookMarkMutation = () => {
         `${apiSearchUrl}/bookmark/folder/${folderId}/update/visible`
       );
     },
-    onSuccess: () => {
-      showMessage(`변경되었습니다.`);
-      queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
-      queryClient.refetchQueries({ queryKey: ["getBookmark"] });
+    onSuccess: (data) => {
+      try {
+        if (data.status === 200) {
+          showMessage(`변경되었습니다.`);
+          queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
+          queryClient.refetchQueries({ queryKey: ["getBookmark"] });
+        }
+      } catch (e) {
+        console.error(e);
+      }
     },
   });
 
