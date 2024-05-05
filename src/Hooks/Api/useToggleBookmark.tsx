@@ -1,9 +1,11 @@
 import { BookmarkType } from "@/interfaces/Save";
 import useBookMarkMutation from "./useBookMarkMutation";
 import { getFolderList } from "@/apis/save";
+import { useQueryClient } from "@tanstack/react-query";
 
 const useToggleBookmark = () => {
   const { postBookmark, deleteBookmark } = useBookMarkMutation();
+  const queryClient = useQueryClient();
 
   const toggleBookmark = async (cafeId: number, folderId: number) => {
     const data = await getFolderList(folderId);
@@ -21,6 +23,10 @@ const useToggleBookmark = () => {
     } else {
       postBookmark({ cafeId, folderId });
     }
+    queryClient.invalidateQueries({
+      queryKey: [`FolderList_${folderId}`],
+    });
+    queryClient.refetchQueries({ queryKey: [`FolderList_${folderId}`] });
   };
 
   return { toggleBookmark };
