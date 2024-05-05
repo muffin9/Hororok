@@ -1,3 +1,4 @@
+import useDebounce from "@/Hooks/useDebounce";
 import Button from "@/components/common/Button";
 
 interface SubmitButtonProps {
@@ -15,7 +16,7 @@ const SubmitButton = ({
     <Button
       size="large"
       className={`w-full ${className}`}
-      onClick={onSubmit}
+      onClick={useDebounce(onSubmit, 500)}
       disabled={isDisabled()}
     >
       결과보기

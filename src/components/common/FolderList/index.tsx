@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
 import { BookMarksType, FolderType, paramFolderType } from "@/interfaces/Save";
 import ToastMessage from "../ToastMessage";
+import useDebounce from "@/Hooks/useDebounce";
+import { useCallback } from "react";
 
 const FolderList = () => {
   const {
@@ -18,25 +20,27 @@ const FolderList = () => {
 
   const router = useRouter();
 
-  const handleClickUpdate = (
-    e: React.SyntheticEvent<HTMLButtonElement>,
-    folderInfo: paramFolderType
-  ) => {
-    e.stopPropagation();
-    router.push(
-      `/save/createEdit/${folderInfo.folderId}?folderName=${folderInfo.name}&color=${folderInfo.color.slice(1)}&isVisible=${folderInfo.isVisible}`
-    );
-  };
+  const handleClickUpdate = useDebounce(
+    useCallback(
+      (folderInfo: paramFolderType) => {
+        router.push(
+          `/save/createEdit/${folderInfo.folderId}?folderName=${folderInfo.name}&color=${folderInfo.color.slice(1)}&isVisible=${folderInfo.isVisible}`
+        );
+      },
+      [router]
+    ),
+    500
+  );
 
-  const handleClickDelete = (
-    e: React.SyntheticEvent<HTMLButtonElement>,
-    folderId: number
-  ) => {
-    e.stopPropagation();
-    deleteBookmarkFolder(folderId);
-    router.push(window.location.href);
-    router.refresh();
-  };
+  const handleClickDelete = useDebounce(
+    useCallback(
+      (folderId: number) => {
+        deleteBookmarkFolder(folderId);
+      },
+      [deleteBookmarkFolder]
+    ),
+    500
+  );
 
   return (
     <div className="flex flex-col gap-4">
@@ -55,13 +59,14 @@ const FolderList = () => {
                     <Button
                       size="small"
                       onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+                        e.stopPropagation();
                         const folderInfo = {
                           folderId: data.folderId,
                           name: data.name,
                           color: data.color,
                           isVisible: data.visible,
                         };
-                        handleClickUpdate(e, folderInfo);
+                        handleClickUpdate(folderInfo);
                       }}
                     >
                       수정
@@ -69,9 +74,10 @@ const FolderList = () => {
                     <Button
                       size="small"
                       bgColor="bg-gray-400"
-                      onClick={(e: React.SyntheticEvent<HTMLButtonElement>) =>
-                        handleClickDelete(e, data.folderId)
-                      }
+                      onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+                        e.stopPropagation();
+                        handleClickDelete(data.folderId);
+                      }}
                     >
                       삭제
                     </Button>
