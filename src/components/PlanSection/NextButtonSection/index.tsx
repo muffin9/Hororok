@@ -22,7 +22,7 @@ const NextButtonSection = ({
           className="flex flex-col items-center cursor-pointer"
           onClick={() => {
             localStorage.getItem("accessToken")
-              ? router.push("/mypage")
+              ? router.push("/myPage")
               : router.push("/login");
           }}
         >
