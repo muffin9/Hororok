@@ -4,12 +4,15 @@ import useProfileMutation from "@/Hooks/Api/myPage/useProfileMutation";
 import Button from "@/components/common/Button";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import useDebounce from "@/Hooks/useDebounce";
 
 const EditProfile = () => {
   const { myProfile, postProfile } = useProfileMutation();
   const [nickname, setNickname] = useState("");
   const [file, setFile] = useState<File>();
-  const [imageUrl, setImageUrl] = useState("/assets/Icon/default_profile.svg");
+  const [imageUrl, setImageUrl] = useState(
+    `${process.env.NEXT_PUBLIC_CLIENT_URL}/assets/Icon/default_profile.svg`
+  );
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files;
@@ -31,12 +34,13 @@ const EditProfile = () => {
     }
   }, []);
 
-  const onProfileSubmit = async () => {
+  const onProfileSubmit = useDebounce(async () => {
     const formData = new FormData();
     if (file) formData.append("file", file);
     await postProfile({ formData, nickname });
-  };
+  }, 500);
 
+  console.log(file);
   return (
     <section className="px-4">
       <div className="flex justify-center">
