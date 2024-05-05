@@ -9,18 +9,17 @@ interface ToggleButtonProps {
 const ToggleButton = ({ folderId, isVisible }: ToggleButtonProps) => {
   const { toggleVisible } = useBookMarkMutation();
 
-  const handleToggle = useDebounce(
-    (e: React.SyntheticEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      if (folderId) toggleVisible(folderId);
-    },
-    500
-  );
+  const handleToggle = useDebounce(() => {
+    if (folderId) toggleVisible(folderId);
+  }, 500);
 
   return (
     <button
       id={`${folderId}`}
-      onClick={handleToggle}
+      onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        handleToggle();
+      }}
       className={`w-[40px] h-[24px] rounded-2xl px-[2px] ${
         isVisible ? "bg-primary-300" : "bg-bluegray"
       }`}
