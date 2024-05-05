@@ -40,6 +40,8 @@ const useBookMarkFolderMutation = () => {
     onSuccess: () => {
       showMessage("새 폴더를 추가했어요");
       setTimeout(() => {
+        queryClient.invalidateQueries({ queryKey: ["getBookmark"] });
+        queryClient.refetchQueries({ queryKey: ["getBookmark"] });
         router.push("/");
       }, 1000);
     },
