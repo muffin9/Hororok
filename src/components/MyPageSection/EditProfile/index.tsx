@@ -40,7 +40,8 @@ const EditProfile = () => {
     await postProfile({ formData, nickname });
   }, 500);
 
-  console.log(file);
+  console.log(file && URL.createObjectURL(file));
+
   return (
     <section className="px-4">
       <div className="flex justify-center">
