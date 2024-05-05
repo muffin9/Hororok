@@ -53,7 +53,7 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
           folderList.bookmarks.map((bookmark: BookmarkType) => {
             return (
               <div
-                key={bookmark.cafeId}
+                key={bookmark.bookmarkId}
                 className="flex justify-between py-3 border-solid border-b-[1px] border-gray-200"
               >
                 <div className="flex gap-3 px-4">

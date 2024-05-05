@@ -13,6 +13,7 @@ export interface BookMarksType {
 }
 
 export interface BookmarkType {
+  bookmarkId: number;
   cafeId: number;
   cafeName: string;
   roadAddress: string;
