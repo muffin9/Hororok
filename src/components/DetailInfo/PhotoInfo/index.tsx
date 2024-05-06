@@ -4,6 +4,7 @@ import Icon from "@/components/common/Icon";
 import MoreButton from "@/components/common/MoreButton";
 import Text from "@/components/common/Text";
 import { CafePhotoInfoType } from "@/interfaces/Cafe";
+import Image from "next/image";
 import { useMemo } from "react";
 
 interface PhotoInfoProps {
@@ -48,10 +49,14 @@ const PhotoInfo = ({ cafeId, page = "" }: PhotoInfoProps) => {
         <div className="flex flex-wrap justify-center gap-1 mt-4">
           {visiblePhotoData?.map((imageUrl: string) => {
             return (
-              <div
+              <Image
                 key={imageUrl}
-                style={{ backgroundImage: `url(http:${imageUrl})` }}
-                className={"w-[176px] h-[176px] rounded-lg"}
+                className={`rounded-lg`}
+                width={176}
+                height={176}
+                src={`http:${imageUrl}`}
+                alt="photo image"
+                layout="fixed"
               />
             );
           })}
