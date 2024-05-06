@@ -48,7 +48,12 @@ const useReviewMutation = () => {
     }) => {
       return axiosInstance.patch(
         `${apiSearchUrl}/review/${reviewId}/edit`,
-        formData
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
     },
     onSuccess: (data) => {

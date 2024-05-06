@@ -23,7 +23,7 @@ const useProfileMutation = () => {
       nickname: string;
     }) => {
       return axiosInstance.post(
-        `${apiSearchUrl}/myPage/edit?nickname=${nickname}`,
+        `${apiSearchUrl}/myPage/profile/edit?nickname=${nickname}`,
         formData,
         {
           headers: {
