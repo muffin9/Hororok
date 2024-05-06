@@ -109,12 +109,14 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
                     <div className="flex gap-1.5 overflow-scroll">
                       {review.images.map((image) => {
                         return (
-                          <div
+                          <Image
                             key={image.id}
-                            style={{
-                              backgroundImage: `url(http:${image.imageUrl})`,
-                            }}
-                            className="w-[100px] h-[100px] rounded-lg"
+                            width={100}
+                            height={100}
+                            src={`http:${image.imageUrl}`}
+                            className="rounded-lg"
+                            alt="review image"
+                            layout="fixed"
                           />
                         );
                       })}
