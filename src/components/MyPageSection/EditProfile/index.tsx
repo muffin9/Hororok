@@ -11,7 +11,7 @@ const EditProfile = () => {
   const [nickname, setNickname] = useState("");
   const [file, setFile] = useState<File>();
   const [imageUrl, setImageUrl] = useState(
-    `${process.env.NEXT_PUBLIC_CLIENT_URL}/assets/Icon/default_profile.svg`
+    `${process.env.NEXT_PUBLIC_CLIENT_URL}assets/Icon/default_profile.svg`
   );
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -14,6 +14,10 @@ const nextConfig = {
     ...env.development,
     ...(process.env.NODE_ENV === "production" ? env.production : {}),
   },
+
+  images: {
+    domains: ["hororok-bucket.kr.object.ncloudstorage.com"],
+  },
 };
 
 export default nextConfig;
