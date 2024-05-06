@@ -20,6 +20,8 @@ const EditProfile = () => {
     if (selectedFile && selectedFile.length > 0) {
       const file = selectedFile[0];
       setFile(file);
+
+      setImageUrl(URL.createObjectURL(file));
     }
   };
 
@@ -40,8 +42,6 @@ const EditProfile = () => {
     await postProfile({ formData, nickname });
   }, 500);
 
-  console.log(file && URL.createObjectURL(file));
-
   return (
     <section className="px-4">
       <div className="flex justify-center">
@@ -50,10 +50,11 @@ const EditProfile = () => {
           className="min-w-[100px] h-[100px] flex justify-center items-center cursor-pointer"
         >
           <Image
-            src={imageUrl || URL.createObjectURL(file!)}
+            src={imageUrl}
             width={90}
             height={90}
             alt="profile_image"
+            layout="fixed"
           />
           <input
             type="file"

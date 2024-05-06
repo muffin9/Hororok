@@ -39,6 +39,11 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
   const { postReview } = useReviewMutation();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (files.length > 5) {
+      alert("더이상 사진을 첨부할 수 없습니다.");
+      return;
+    }
+    
     const selectedFiles = Array.from(event.target.files as FileList);
     setFiles((prevFiles: File[]) => [...prevFiles, ...selectedFiles]);
   };
