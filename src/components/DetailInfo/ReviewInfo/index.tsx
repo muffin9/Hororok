@@ -114,7 +114,7 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
                             style={{
                               backgroundImage: `url(http:${image.imageUrl})`,
                             }}
-                            className="w-[100px] h-[100px] rounded-lg"
+                            className="bg-cover bg-center w-[100px] h-[100px] rounded-lg"
                           />
                         );
                       })}
