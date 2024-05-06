@@ -21,13 +21,18 @@ interface ReviewEditProps {
   reviewData: ReviewInfoType;
 }
 
+type reviewImageType = {
+  id: number;
+  imageUrl: string;
+};
+
 const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
   const router = useRouter();
   const [starRating, setStarRating] = useState(reviewData.starRating);
   const [content, setContent] = useState(reviewData.content);
   const [specialNote, setSpecialNote] = useState(reviewData.specialNote);
   const [files, setFiles] = useState<File[]>([]);
-  const [deletedImageIds, setDeletedImageIds] = useState<number[]>([]);
+  const [reviewImages, setReviewImages] = useState<reviewImageType[]>([]);
 
   const { showModal, openModal, closeModal } = useModal();
 
@@ -42,6 +47,10 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
   const { patchReview } = useReviewMutation();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (reviewImages.length + files.length > 5) {
+      alert("더이상 사진을 첨부할 수 없습니다.");
+      return;
+    }
     const selectedFiles = Array.from(event.target.files as FileList);
     setFiles((prevFiles: File[]) => [...prevFiles, ...selectedFiles]);
   };
@@ -58,7 +67,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
         specialNote,
         keywords: convertRequestKeywords(selectedItems),
         starRating,
-        deletedImageIds,
+        deletedImageIds: reviewImages.map((image: reviewImageType) => image.id),
       };
 
       formData.append(
@@ -80,9 +89,16 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
     return false;
   };
 
+  const handleRemoveImage = (removeId: number) => {
+    const updatedImages = reviewImages.filter((image) => image.id !== removeId);
+
+    setReviewImages(updatedImages);
+  };
+
   useEffect(() => {
     if (reviewData) {
       setSelectedItems(reviewData.categoryKeywords);
+      setReviewImages(reviewData.images);
     }
   }, [reviewData, setSelectedItems]);
 
@@ -147,18 +163,17 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
                   />
                 </div>
               ))}
-              {reviewData.images.map((image, index) => (
+              {reviewImages.map((image, index) => (
                 <div key={index} className="relative">
                   <button
                     className="absolute top-2 right-2"
-                    onClick={() =>
-                      setDeletedImageIds([...deletedImageIds, image.id])
-                    }
+                    onClick={() => handleRemoveImage(image.id)}
                   >
                     <Icon size="xSmall" type="close" alt="close" />
                   </button>
                   <Image
-                    src={`${image.imageUrl}`}
+                    id={`${image.id}`}
+                    src={`https:${image.imageUrl}`}
                     alt={`Uploaded image ${index}`}
                     width={100}
                     height={100}
