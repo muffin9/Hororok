@@ -9,7 +9,7 @@ export interface ReviewInfoType {
   specialNote: string;
   images: {
     id: number;
-    imageUrl: string[];
+    imageUrl: string;
   }[];
   categoryKeywords: CategoryKeywordsType;
 }
