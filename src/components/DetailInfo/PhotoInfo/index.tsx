@@ -51,7 +51,7 @@ const PhotoInfo = ({ cafeId, page = "" }: PhotoInfoProps) => {
               <div
                 key={imageUrl}
                 style={{ backgroundImage: `url(http:${imageUrl})` }}
-                className={"w-[176px] h-[176px] rounded-lg"}
+                className={"bg-cover bg-center w-[176px] h-[176px] rounded-lg"}
               />
             );
           })}
