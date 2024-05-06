@@ -173,7 +173,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
                   </button>
                   <Image
                     id={`${image.id}`}
-                    src={`https:${image.imageUrl}`}
+                    src={`http:${image.imageUrl}`}
                     alt={`Uploaded image ${index}`}
                     width={100}
                     height={100}
