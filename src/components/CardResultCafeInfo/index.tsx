@@ -11,7 +11,6 @@ import useHandleBottomSheet from "@/Hooks/useHandleBottomSheet";
 import SaveSection from "../SaveSection";
 import useOutsideClick from "@/Hooks/useOutsideClick";
 import { useRef } from "react";
-import Image from "next/image";
 
 interface CardResultCafeInfoProps {
   cafeDatas: CafeType[] | CafeInfoType[];
@@ -36,13 +35,9 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
             className="flex gap-3 px-4 my-4 cursor-pointer"
             onClick={() => router.push(`/cafe/${cafeData.id}`)}
           >
-            <Image
-              className={`bg-cover bg-center rounded-lg`}
-              width={100}
-              height={100}
-              src={`http:${cafeData.imageUrl}`}
-              alt="cafe image"
-              layout="fixed"
+            <div
+              className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
+              style={{ backgroundImage: `url(http:${cafeData.imageUrl})` }}
             />
             <div className="w-full flex flex-col py-2 gap-3">
               <header className="flex justify-between">
