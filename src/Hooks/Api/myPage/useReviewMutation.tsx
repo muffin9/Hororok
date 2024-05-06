@@ -54,7 +54,7 @@ const useReviewMutation = () => {
     onSuccess: (data) => {
       if (data) {
         showMessage(`리뷰가 수정되었습니다.`);
-        router.push(`/mypage`);
+        router.push(`/myPage`);
       }
     },
   });

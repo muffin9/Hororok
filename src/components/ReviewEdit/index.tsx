@@ -47,7 +47,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
   const { patchReview } = useReviewMutation();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (reviewImages.length + files.length > 5) {
+    if (reviewImages.length + files.length >= 5) {
       alert("더이상 사진을 첨부할 수 없습니다.");
       return;
     }
@@ -154,7 +154,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
             </label>
             <div className="flex gap-2">
               {files.map((file, index) => (
-                <div key={index}>
+                <div key={index} className="min-w-[100px]">
                   <Image
                     src={URL.createObjectURL(file)}
                     alt={`Uploaded image ${index}`}

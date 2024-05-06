@@ -3,6 +3,7 @@ import Loading from "@/app/loading";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import { ProfileType } from "@/interfaces/user";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const Profile = () => {
@@ -19,11 +20,13 @@ const Profile = () => {
     myProfile && (
       <div className="flex justify-between px-4">
         <div className="flex gap-3">
-          <div
-            className="w-[44px] h-[44px] rounded-full"
-            style={{
-              backgroundImage: `url(${myProfile.picture})`,
-            }}
+          <Image
+            width={44}
+            height={44}
+            className="rounded-full"
+            src={`${myProfile.picture}`}
+            alt="profile_image"
+            layout="fixed"
           />
           <div className="flex flex-col">
             <Text size="medium" weight="bold">
