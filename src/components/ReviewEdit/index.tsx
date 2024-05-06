@@ -32,6 +32,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
   const [content, setContent] = useState(reviewData.content);
   const [specialNote, setSpecialNote] = useState(reviewData.specialNote);
   const [files, setFiles] = useState<File[]>([]);
+  const [deletedImageIds, setDeletedImageIds] = useState<number[]>([]);
   const [reviewImages, setReviewImages] = useState<reviewImageType[]>([]);
 
   const { showModal, openModal, closeModal } = useModal();
@@ -67,7 +68,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
         specialNote,
         keywords: convertRequestKeywords(selectedItems),
         starRating,
-        deletedImageIds: reviewImages.map((image: reviewImageType) => image.id),
+        deletedImageIds,
       };
 
       formData.append(
@@ -90,9 +91,8 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
   };
 
   const handleRemoveImage = (removeId: number) => {
-    const updatedImages = reviewImages.filter((image) => image.id !== removeId);
-
-    setReviewImages(updatedImages);
+    setReviewImages(reviewImages.filter((image) => image.id !== removeId));
+    setDeletedImageIds([...deletedImageIds, removeId]);
   };
 
   useEffect(() => {
