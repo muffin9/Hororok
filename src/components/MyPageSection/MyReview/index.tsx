@@ -6,7 +6,6 @@ import Star from "@/components/common/Star";
 import Text from "@/components/common/Text";
 import { CafeKeyWordType } from "@/interfaces/Cafe";
 import { MyReviewType } from "@/interfaces/user";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const MyReview = () => {
@@ -75,14 +74,12 @@ const MyReview = () => {
                     {myReview.images.map(
                       (image: { id: number | null; imageUrl: string }) => {
                         return (
-                          <Image
+                          <div
                             key={image.id}
-                            width={100}
-                            height={100}
-                            src={`http:${image.imageUrl}`}
-                            className="rounded-lg"
-                            alt="imageUrl"
-                            layout="fixed"
+                            style={{
+                              backgroundImage: `url(http:${image.imageUrl})`,
+                            }}
+                            className="w-[100px] h-[100px] rounded-lg"
                           />
                         );
                       }

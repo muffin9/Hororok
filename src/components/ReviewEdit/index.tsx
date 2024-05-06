@@ -171,12 +171,12 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
                   >
                     <Icon size="xSmall" type="close" alt="close" />
                   </button>
-                  <Image
-                    id={`${image.id}`}
-                    src={`http:${image.imageUrl}`}
-                    alt={`Uploaded image ${index}`}
-                    width={100}
-                    height={100}
+                  <div
+                    key={image.id}
+                    style={{
+                      backgroundImage: `url(http:${image.imageUrl})`,
+                    }}
+                    className="w-[100px] h-[100px] rounded-lg"
                   />
                 </div>
               ))}

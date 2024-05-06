@@ -3,7 +3,6 @@ import useMoreData from "@/Hooks/useMoreData";
 import MoreButton from "@/components/common/MoreButton";
 import Text from "@/components/common/Text";
 import { CafeMenuInfoType, CafeMenuType } from "@/interfaces/Cafe";
-import Image from "next/image";
 
 interface MenuInfoProps {
   cafeId: string;
@@ -31,14 +30,10 @@ const MenuInfo = ({ cafeId, page }: MenuInfoProps) => {
           {visibleMenuData.map((menuData: CafeMenuType) => {
             return (
               <div className="flex gap-4" key={menuData.name}>
-                <Image
-                  className={`bg-cover bg-center rounded-lg`}
-                  width={100}
-                  height={100}
-                  src={`http:${menuData.imageUrl}`}
-                  alt="cafe image"
-                  layout="fixed"
-                />
+                <div
+                  className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
+                  style={{ backgroundImage: `url(http:${menuData.imageUrl})` }}
+                ></div>
                 <div className="flex flex-col">
                   <Text size="medium" weight="bold" className="text-gray-650">
                     {menuData.name}
