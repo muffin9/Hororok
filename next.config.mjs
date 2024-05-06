@@ -17,7 +17,7 @@ const nextConfig = {
 
   images: {
     domains: [
-      "hororok-bucket.kr.object.ncloudstorage.com",
+      "//hororok-bucket.kr.object.ncloudstorage.com",
       "kr.object.ncloudstorage.com",
     ],
   },
