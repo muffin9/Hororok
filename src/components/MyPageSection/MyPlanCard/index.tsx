@@ -61,7 +61,7 @@ const MyPlanCard = ({
               <div key={data.id} className="flex justify-between">
                 <div className="flex gap-2">
                   <button className="flex justify-center items-center px-3 py-[7px] border-[1px] border-solid border-gray-300">
-                    {data.keyword.name}
+                    {data.keywordName}
                   </button>
                   <div>
                     <Text size="medium" weight="bold">

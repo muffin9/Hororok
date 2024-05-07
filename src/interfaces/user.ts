@@ -11,7 +11,7 @@ export type PlanStatusType = "saved" | "shared";
 
 export interface PlanDataType {
   id: number;
-  keyword: { id: number; category: string; name: string };
+  keywordName: string;
   location: string;
   visitDateTime: string;
 }

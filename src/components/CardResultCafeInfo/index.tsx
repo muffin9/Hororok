@@ -25,78 +25,84 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
 
   useOutsideClick(overlayRef, () => setIsBottomSheet(false));
 
-  return cafeDatas.length > 0 ? (
-    (isBottomSheet && (
-      <>
-        <div className="absolute top-0 left-0 w-screen h-screen bg-gray-200" />
-        <div ref={overlayRef} className="fixed bottom-0 z-[1000]">
-          <SaveSection currentSelectCafeId={currentSelectCafeId} />
-        </div>
-      </>
-    ),
-    cafeDatas.map((cafeData: CafeType | CafeInfoType) => {
-      const isBookmark = cafeData.bookmarks?.length > 0;
-      return (
-        <>
-          <div
-            key={cafeData.id}
-            className="flex gap-3 px-4 my-4 cursor-pointer"
-            onClick={() => router.push(`/cafe/${cafeData.id}`)}
-          >
-            <div
-              className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
-              style={{ backgroundImage: `url(http:${cafeData.imageUrl})` }}
-            />
-            <div className="w-full flex flex-col py-2 gap-3">
-              <header className="flex justify-between">
-                <Text size="large" className="text-black">
-                  {cafeData.name}
-                </Text>
-                <div className="flex gap-4">
-                  <ShareButton cafeId={cafeData.id}>
-                    <Icon type="share" size="small" alt="공유하기" />
-                  </ShareButton>
-                  <button
-                    onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
-                      if (planId) handleClickBookmark(e, cafeData.id, planId);
-                      else handleClickBookmark(e, cafeData.id);
+  if (cafeDatas.length === 0) {
+    return (
+      <div className="flex justify-center items-center">
+        <Text size="medium" className="text-gray-800">
+          검색 결과가 존재하지 않습니다.
+        </Text>
+      </div>
+    );
+  }
 
-                      setIsBottomSheet(!isBottomSheet);
-                    }}
-                  >
-                    <Icon
-                      type={isBookmark ? "bookmark_check" : "bookmark"}
-                      size="small"
-                      alt="북마크"
-                    />
-                  </button>
-                </div>
-              </header>
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-1">
-                  <Icon type="star" size="xSmall" alt="star" />
-                  <Text size="small" className="text-black">
-                    {cafeData.starRating}
-                  </Text>
-                  <Text size="extraSmall" className="text-gray-700">
-                    ({cafeData.reviewCount})
-                  </Text>
-                </div>
-                <Text size="extraSmall" className="text-gray-700">
-                  {cafeData.roadAddress}
-                </Text>
-              </div>
-            </div>
+  return (
+    <>
+      {isBottomSheet && (
+        <>
+          <div className="absolute top-0 left-0 w-screen h-screen bg-gray-200" />
+          <div ref={overlayRef} className="fixed bottom-0 z-[1000]">
+            <SaveSection currentSelectCafeId={currentSelectCafeId} />
           </div>
         </>
-      );
-    }))
-  ) : (
-    <div className="flex justify-center items-center">
-      <Text size="medium" className="text-gray-800">
-        검색 결과가 존재하지 않습니다.
-      </Text>
-    </div>
+      )}
+      {cafeDatas.map((cafeData: CafeType | CafeInfoType) => {
+        const isBookmark = cafeData.bookmarks?.length > 0;
+        return (
+          <>
+            <div
+              key={cafeData.id}
+              className="flex gap-3 px-4 my-4 cursor-pointer"
+              onClick={() => router.push(`/cafe/${cafeData.id}`)}
+            >
+              <div
+                className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
+                style={{ backgroundImage: `url(http:${cafeData.imageUrl})` }}
+              />
+              <div className="w-full flex flex-col py-2 gap-3">
+                <header className="flex justify-between">
+                  <Text size="large" className="text-black">
+                    {cafeData.name}
+                  </Text>
+                  <div className="flex gap-4">
+                    <ShareButton cafeId={cafeData.id}>
+                      <Icon type="share" size="small" alt="공유하기" />
+                    </ShareButton>
+                    <button
+                      onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+                        if (planId) handleClickBookmark(e, cafeData.id, planId);
+                        else handleClickBookmark(e, cafeData.id);
+
+                        setIsBottomSheet(!isBottomSheet);
+                      }}
+                    >
+                      <Icon
+                        type={isBookmark ? "bookmark_check" : "bookmark"}
+                        size="small"
+                        alt="북마크"
+                      />
+                    </button>
+                  </div>
+                </header>
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-1">
+                    <Icon type="star" size="xSmall" alt="star" />
+                    <Text size="small" className="text-black">
+                      {cafeData.starRating}
+                    </Text>
+                    <Text size="extraSmall" className="text-gray-700">
+                      ({cafeData.reviewCount})
+                    </Text>
+                  </div>
+                  <Text size="extraSmall" className="text-gray-700">
+                    {cafeData.roadAddress}
+                  </Text>
+                </div>
+              </div>
+            </div>
+          </>
+        );
+      })}
+    </>
   );
 };
 
