@@ -17,7 +17,7 @@ export type CategoryIdType =
 
 const HomeSection = () => {
   const router = useRouter();
-  const { isFilter, onClickCategory } = useHandleFilterSection();
+  const { isFilter, setIsFilter, onClickCategory } = useHandleFilterSection();
 
   return (
     <section className="w-full absolute top-8 z-[999]">
@@ -31,7 +31,7 @@ const HomeSection = () => {
       </div>
 
       {isFilter ? (
-        <FilterSection />
+        <FilterSection setIsFilter={setIsFilter} />
       ) : (
         <>
           <div className="px-4 mt-4">

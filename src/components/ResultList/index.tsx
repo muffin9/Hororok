@@ -22,14 +22,8 @@ const ResultList = () => {
     >
       <div className="flex flex-col gap-6">
         <header className="w-screen flex items-center gap-[2px]">
-          {/* <button className="flex gap-1 w-[51px] h-[32px] items-center text-gray-800 text-sm rounded-lg border-solid border-[1px] border-gray-400 px-2">
-            <Icon type="filter" size="small" alt="filter" />
-            <Text size="small" className="text-black">
-              0
-            </Text>
-          </button> */}
           {isFilter ? (
-            <FilterSection />
+            <FilterSection setIsFilter={setIsFilter} />
           ) : (
             <div className="px-4">
               <CategoryList onClickCategory={onClickCategory} />

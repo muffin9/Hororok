@@ -12,14 +12,18 @@ import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
 import { filterDatas } from "@/app/constants";
 import RefreshButton from "../common/RefreshButton";
 
-const FilterSection = () => {
+interface FilterSectionProps {
+  setIsFilter: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
   const router = useRouter();
   const filterRef = useRef<HTMLDivElement>(null);
 
   const params = useSearchParams();
   const location = useGeolocation();
 
-  const { categoryId, setIsFilter } = useHandleFilterSection();
+  const { categoryId } = useHandleFilterSection();
   const { categoryKeywords } = useCategoryKeywordStore();
   const { setSearchResultList } = useSearcResultListStorehPlace();
 
