@@ -52,7 +52,7 @@ axiosInstance.interceptors.request.use(async (config: any) => {
       parseFloat(accessTokenExpiration) < currentTime
     ) {
       try {
-        const response = await axios.post(`${apiSearchUrl}/refresh_token`, {
+        const response = await axios.post(`${apiSearchUrl}/auth/refresh`, {
           refreshToken,
         });
 
