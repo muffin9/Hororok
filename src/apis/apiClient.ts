@@ -45,7 +45,7 @@ axiosInstance.interceptors.request.use(async (config: any) => {
   const refreshToken = localStorage.getItem("refreshToken");
 
   if (isLoginRequired && accessToken) {
-    const currentTime = new Date().getTime() / 1000;
+    const currentTime = new Date().getTime();
     const accessTokenExpiration = localStorage.getItem("accessTokenExpiration");
     if (
       accessTokenExpiration &&

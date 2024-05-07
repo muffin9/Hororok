@@ -74,6 +74,7 @@ export interface ReviewType {
 
 export interface CafeInfoType {
   id: number;
+  bookmarks: { bookmarkId: number; folderId: number }[];
   latitude: number;
   longitude: number;
   imageUrl: string;
@@ -130,6 +131,7 @@ export interface CafeType {
   createdDate: string;
   lastModifiedDate: string;
   id: number;
+  bookmarks: { bookmarkId: number; folderId: number }[];
   name: string;
   phoneNumber: string;
   roadAddress: string;

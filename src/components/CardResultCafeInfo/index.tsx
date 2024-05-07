@@ -28,6 +28,7 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
   return (
     cafeDatas &&
     cafeDatas.map((cafeData: CafeType | CafeInfoType) => {
+      const isBookmark = cafeData.bookmarks?.length > 0;
       return (
         <>
           <div
@@ -56,7 +57,11 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
                       setIsBottomSheet(!isBottomSheet);
                     }}
                   >
-                    <Icon type="bookmark" size="small" alt="북마크" />
+                    <Icon
+                      type={isBookmark ? "bookmark_check" : "bookmark"}
+                      size="small"
+                      alt="북마크"
+                    />
                   </button>
                 </div>
               </header>
