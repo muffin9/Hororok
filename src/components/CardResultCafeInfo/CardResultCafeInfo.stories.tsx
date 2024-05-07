@@ -11,6 +11,7 @@ export default meta;
 const PrimitiveCardResultCafeInfo = () => {
   const dummyCafeData = [
     {
+      bookmarks: [],
       createdDate: "",
       lastModifiedDate: "",
       id: 1,
