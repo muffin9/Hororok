@@ -13,7 +13,7 @@ import useOutsideClick from "@/Hooks/useOutsideClick";
 const PlanResultHeader = () => {
   const overlayRef = useRef(null);
   const { resultPlanInfos } = usePlanMatchStore();
-  const { handleClickBookmark } = useHandleBookmark();
+  const { currentSelectCafeId, handleClickBookmark } = useHandleBookmark();
   const { isBottomSheet, setIsBottomSheet } = useHandleBottomSheet();
 
   useOutsideClick(overlayRef, () => setIsBottomSheet(false));
@@ -97,7 +97,7 @@ const PlanResultHeader = () => {
         <>
           <div className="absolute top-0 left-0 w-screen h-screen" />
           <div ref={overlayRef} className="fixed bottom-0 z-[1000]">
-            <SaveSection />
+            <SaveSection currentSelectCafeId={currentSelectCafeId} />
           </div>
         </>
       )}

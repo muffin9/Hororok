@@ -25,8 +25,15 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
 
   useOutsideClick(overlayRef, () => setIsBottomSheet(false));
 
-  return (
-    cafeDatas &&
+  return cafeDatas.length > 0 ? (
+    (isBottomSheet && (
+      <>
+        <div className="absolute top-0 left-0 w-screen h-screen bg-gray-200" />
+        <div ref={overlayRef} className="fixed bottom-0 z-[1000]">
+          <SaveSection currentSelectCafeId={currentSelectCafeId} />
+        </div>
+      </>
+    ),
     cafeDatas.map((cafeData: CafeType | CafeInfoType) => {
       const isBookmark = cafeData.bookmarks?.length > 0;
       return (
@@ -81,17 +88,15 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
               </div>
             </div>
           </div>
-          {isBottomSheet && (
-            <>
-              <div className="absolute top-0 left-0 w-screen h-screen bg-gray-200" />
-              <div ref={overlayRef} className="fixed bottom-0 z-[1000]">
-                <SaveSection currentSelectCafeId={currentSelectCafeId} />
-              </div>
-            </>
-          )}
         </>
       );
-    })
+    }))
+  ) : (
+    <div className="flex justify-center items-center">
+      <Text size="medium" className="text-gray-800">
+        검색 결과가 존재하지 않습니다.
+      </Text>
+    </div>
   );
 };
 
