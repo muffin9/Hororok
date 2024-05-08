@@ -10,14 +10,14 @@ const MyPlanList = () => {
   const [isAllData, setIsAllData] = useState(false);
 
   const {
-    userPlanData: userSaveData,
+    userSaveData,
     deletePlan: deleteSavePlan,
-    refetch: refetchSaveData,
+    refetchSaveData,
   } = useUserPlanMutation(saveSort, "saved");
   const {
-    userPlanData: userShareData,
+    userShareData,
     deletePlan: deleteSharePlan,
-    refetch: refetchShareData,
+    refetchShareData,
   } = useUserPlanMutation(shareSort, "shared");
 
   useEffect(() => {

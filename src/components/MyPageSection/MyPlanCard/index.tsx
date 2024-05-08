@@ -58,8 +58,8 @@ const MyPlanCard = ({
         {planData &&
           planData.map((data) => {
             return (
-              <div key={data.id} className="flex justify-between">
-                <div className="flex items-center gap-2 mb-4">
+              <div key={data.id} className="flex justify-between mb-4">
+                <div className="flex items-center gap-2">
                   <button className="flex justify-center items-center px-3 py-[7px] border-[1px] border-solid border-gray-300 rounded-2xl">
                     <Text size="small">{data.keywordName}</Text>
                   </button>
