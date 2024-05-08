@@ -5,9 +5,10 @@ import { SortType, PlanStatusType } from "@/interfaces/user";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 const useUserPlanMutation = (sort: SortType, status: PlanStatusType) => {
-  const { data: userPlanData } = useQuery({
+  const { data: userPlanData, refetch } = useQuery({
     queryKey: ["getUserPlanData"],
     queryFn: () => getUserPlanData(sort, status, 1, 3),
+    staleTime: 600000,
   });
 
   const { mutateAsync: deletePlan } = useMutation({
@@ -27,7 +28,7 @@ const useUserPlanMutation = (sort: SortType, status: PlanStatusType) => {
     },
   });
 
-  return { userPlanData, deletePlan };
+  return { userPlanData, deletePlan, refetch };
 };
 
 export default useUserPlanMutation;

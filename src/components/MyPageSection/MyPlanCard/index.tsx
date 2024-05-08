@@ -32,7 +32,7 @@ const MyPlanCard = ({
   const { showMore, handleClickMoreButton } = useMoreData();
   return (
     <div>
-      <header>
+      <header className="mb-6 px-4">
         <div className="flex gap-1">
           <Text size="large" weight="bold">
             {dataType === "saved" ? "저장한 여정" : "공유한 여정"}
@@ -54,23 +54,27 @@ const MyPlanCard = ({
           </button>
         </div>
       </header>
-      <article>
+      <article className="px-4">
         {planData &&
           planData.map((data) => {
             return (
               <div key={data.id} className="flex justify-between">
-                <div className="flex gap-2">
-                  <button className="flex justify-center items-center px-3 py-[7px] border-[1px] border-solid border-gray-300">
-                    {data.keywordName}
+                <div className="flex items-center gap-2 mb-4">
+                  <button className="flex justify-center items-center px-3 py-[7px] border-[1px] border-solid border-gray-300 rounded-2xl">
+                    <Text size="small">{data.keywordName}</Text>
                   </button>
                   <div>
                     <Text size="medium" weight="bold">
-                      {data.location}
+                      {data.location} &nbsp;
                     </Text>
                     <Text size="medium">{data.visitDateTime}</Text>
                   </div>
                 </div>
-                <button onClick={() => deleteFunc}>
+                <button
+                  onClick={() =>
+                    deleteFunc({ planId: data.id, planStatus: dataType })
+                  }
+                >
                   <Icon size="small" type="close" alt="delete plan" />
                 </button>
               </div>
