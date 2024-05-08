@@ -6,14 +6,14 @@ import Profile from "./Profile";
 import FolderList from "../common/FolderList";
 import MyPlanList from "./MyPlanList";
 import MyReview from "./MyReview";
-import MyUnionCafe from "./MyUnionCafe";
+import MyCombination from "./MyCombination";
 
 const MyPageSection = () => {
   const [menuInfo, setMenuInfo] = useState([
     { id: "save", name: "저장", isClicked: true },
     { id: "plan", name: "계획", isClicked: false },
     { id: "review", name: "리뷰", isClicked: false },
-    { id: "myUnion", name: "내 조합", isClicked: false },
+    { id: "myCombination", name: "내 조합", isClicked: false },
   ]);
 
   const handleOnMenuClick = (clickedId: string) => {
@@ -33,8 +33,8 @@ const MyPageSection = () => {
         return <MyPlanList />;
       case "review":
         return <MyReview />;
-      case "myUnion":
-        return <MyUnionCafe />;
+      case "myCombination":
+        return <MyCombination />;
       default:
         return null;
     }
