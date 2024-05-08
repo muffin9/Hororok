@@ -35,3 +35,14 @@ export const getUserReview = async () => {
     console.error("There was a problem with the fetch operation:", error);
   }
 };
+
+export const getUserCombination = async () => {
+  try {
+    const response = await axiosInstance.get(
+      `${apiSearchUrl}/myPage/combination`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+  }
+};
