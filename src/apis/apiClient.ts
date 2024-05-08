@@ -1,7 +1,10 @@
 import { apiSearchUrl } from "@/app/constants";
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 const axiosInstance: AxiosInstance = axios.create();
+
+let isRefreshing = false;
+let failedQueue: { resolve: any; reject: any }[] = [];
 
 const isLoginRequiredForURL = (url: string) => {
   const targetURLs = [
@@ -42,25 +45,26 @@ const isLoginRequiredForURL = (url: string) => {
 axiosInstance.interceptors.request.use(async (config: any) => {
   const isLoginRequired = isLoginRequiredForURL(config.url);
   const accessToken = localStorage.getItem("accessToken");
-  const refreshToken = localStorage.getItem("refreshToken");
+  const accessTokenExpiration = localStorage.getItem("accessTokenExpiration");
 
   if (isLoginRequired && accessToken) {
     const currentTime = new Date().getTime();
-    const accessTokenExpiration = localStorage.getItem("accessTokenExpiration");
     if (
       accessTokenExpiration &&
       parseFloat(accessTokenExpiration) < currentTime
     ) {
       try {
-        const response = await axios.post(`${apiSearchUrl}/auth/refresh`, {
-          refreshToken,
-        });
+        const refreshToken = localStorage.getItem("refreshToken");
+        const response: AxiosResponse<any> = await axios.post(
+          `${apiSearchUrl}/auth/refresh`,
+          {
+            refreshToken,
+          }
+        );
 
         const newAccessToken = response.data.accessToken;
         const expirationTime = currentTime + 6 * 60 * 60 * 1000;
-
         localStorage.setItem("accessToken", newAccessToken);
-
         localStorage.setItem(
           "accessTokenExpiration",
           expirationTime.toString()
@@ -73,6 +77,52 @@ axiosInstance.interceptors.request.use(async (config: any) => {
     config.headers.Authorization = `Bearer ${accessToken}`;
   }
   return config;
+});
+
+axiosInstance.interceptors.response.use(undefined, async (error: any) => {
+  const originalRequest = error.config;
+
+  if (error.response.status === 401 && !originalRequest._retry) {
+    if (isRefreshing) {
+      try {
+        const response: AxiosResponse<any> = await new Promise(
+          (resolve, reject) => {
+            failedQueue.push({ resolve, reject });
+          }
+        );
+        originalRequest.headers.Authorization = `Bearer ${response.data.accessToken}`;
+        return axiosInstance(originalRequest);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+
+    originalRequest._retry = true;
+    isRefreshing = true;
+
+    try {
+      const refreshToken = localStorage.getItem("refreshToken");
+      const response: AxiosResponse<any> = await axios.post(
+        `${apiSearchUrl}/auth/refresh`,
+        {
+          refreshToken,
+        }
+      );
+
+      const newAccessToken = response.data.accessToken;
+      localStorage.setItem("accessToken", newAccessToken);
+      originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+
+      return axiosInstance(originalRequest);
+    } catch (error) {
+      console.error("Failed to refresh accessToken:", error);
+      return Promise.reject(error);
+    } finally {
+      isRefreshing = false;
+    }
+  }
+
+  return Promise.reject(error);
 });
 
 export default axiosInstance;
