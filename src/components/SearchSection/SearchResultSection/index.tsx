@@ -49,7 +49,7 @@ const SearchResultSection = () => {
   };
 
   return (
-    <section className="py-8 bg-white">
+    <section className="h-full py-8 bg-white">
       <SearchInput handleKeyUpSearchInput={handleKeyUpSearchInput} />
       {resultSearchInfo.map((data) => {
         return (
