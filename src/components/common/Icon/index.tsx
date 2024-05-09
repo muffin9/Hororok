@@ -22,7 +22,6 @@ const iconUrls = {
   person: "/assets/Icon/person.svg",
   check: "/assets/Icon/ic_check.svg",
   close: "/assets/Icon/ic_close.svg",
-  heart: "/assets/Icon/ic_herat.svg",
   edit: "/assets/Icon/edit.svg",
   thumb: "/assets/Icon/icon_thumb.svg",
   calendar: "/assets/Icon/icon_calendar.svg",
@@ -43,52 +42,69 @@ const iconUrls = {
   map: "/assets/Icon/ic_map.svg",
   trash: "/assets/Icon/ic_trash.svg",
   defaultProfile: "/assets/Icon/default_profile.svg",
+  plus: "/assets/Icon/ic_plus.svg",
+  notebook: "/assets/Icon/ic_notebook.svg",
+  bakery: "/assets/Icon/ic_bakery.svg",
+  book: "/assets/Icon/ic_book.svg",
+  heart: "/assets/Icon/ic_heart.svg",
+  seat: "/assets/Icon/ic_seat.svg",
+  coffee2: "/assets/Icon/ic_coffee2.svg",
+  glass: "/assets/Icon/ic_glass.svg",
 };
 
-interface IconProps {
-  type:
-    | "logo"
-    | "recommend"
-    | "login"
-    | "marker"
-    | "photo"
-    | "star"
-    | "starEmpty"
-    | "arrow_left"
-    | "arrow_left_white"
-    | "arrow_right"
-    | "arrow_under"
-    | "arrow_under_hover"
-    | "arrow_up"
-    | "bookmark"
-    | "bookmark_white" 
-    | "bookmark_check"
-    | "share"
-    | "share_white"
-    | "person"
-    | "check"
-    | "close"
-    | "heart"
-    | "edit"
-    | "thumb"
-    | "calendar"
-    | "account"
-    | "call"
-    | "clock"
-    | "refresh"
-    | "filter"
-    | "camera"
-    | "review"
-    | "kakao"
-    | "naver"
-    | "google"
-    | "apple"
-    | "re_plan"
-    | "info"
-    | "coffee"
-    | "map"
-    | "trash"
-    | "defaultProfile";
+export type IconType =
+  | "logo"
+  | "recommend"
+  | "login"
+  | "marker"
+  | "photo"
+  | "star"
+  | "starEmpty"
+  | "arrow_left"
+  | "arrow_left_white"
+  | "arrow_right"
+  | "arrow_under"
+  | "arrow_under_hover"
+  | "arrow_up"
+  | "bookmark"
+  | "bookmark_white"
+  | "bookmark_check"
+  | "share"
+  | "share_white"
+  | "person"
+  | "check"
+  | "close"
+  | "edit"
+  | "thumb"
+  | "calendar"
+  | "account"
+  | "call"
+  | "clock"
+  | "refresh"
+  | "filter"
+  | "camera"
+  | "review"
+  | "kakao"
+  | "naver"
+  | "google"
+  | "apple"
+  | "re_plan"
+  | "info"
+  | "coffee"
+  | "map"
+  | "trash"
+  | "defaultProfile"
+  | "plus"
+  | "notebook"
+  | "bakery"
+  | "book"
+  | "heart"
+  | "seat"
+  | "coffee2"
+  | "glass";
+
+export interface IconProps {
+  type: IconType;
 
   size?: "xSmall" | "small" | "medium" | "large" | "xLarge";
   alt: string;
