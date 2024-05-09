@@ -1,15 +1,31 @@
 "use client";
 
+import { getCombination } from "@/apis/combination";
+import CombinationEdit from "@/components/CombinationEdit";
 import TopNavigation from "@/components/common/TopNavigation";
+import { CombinationGetType } from "@/interfaces/Combination";
+import { useEffect, useState } from "react";
 
-type CombinationIdIdProps = {
+export default function CombinationEditPage({
+  params,
+}: {
   params: { id: string };
-};
+}) {
+  const [combinationData, setCombinationData] = useState<CombinationGetType>();
 
-export default function CombinationEditPage({ params }: CombinationIdIdProps) {
+  useEffect(() => {
+    async function fetchReviewData() {
+      const data = await getCombination(params.id);
+      setCombinationData(data);
+    }
+
+    fetchReviewData();
+  }, [params.id]);
+
   return (
     <main className="h-full flex flex-col bg-white">
-      <TopNavigation title="조합 추가" />
+      <TopNavigation title="" />
+      {combinationData && <CombinationEdit combinationData={combinationData} />}
     </main>
   );
 }
