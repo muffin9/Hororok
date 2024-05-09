@@ -7,6 +7,7 @@ import Input from "@/components/common/Input";
 import { useRouter } from "next/navigation";
 import CategoryList from "@/components/common/CategoryList";
 import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
+import CombinationSection from "@/components/CombinationSection";
 
 export type CategoryIdType =
   | "purpose"
@@ -29,7 +30,9 @@ const HomeSection = () => {
           className="w-[358px] h-[50px] p-4 rounded-lg focus:outline-none shadow-default"
         />
       </div>
-
+      <div className="absolute right-4 top-28">
+        <CombinationSection />
+      </div>
       {isFilter ? (
         <FilterSection setIsFilter={setIsFilter} />
       ) : (

@@ -358,3 +358,12 @@ export const planCafeHeader = {
       "방문 지역, 날짜, 시간은 동일해요.\n조금 더 걷거나 조건이 다를 수 있어요.",
   },
 };
+
+export const combinationIcons = [
+  { id: "combination_notebook", type: "notebook" },
+  { id: "combination_seat", type: "seat" },
+  { id: "combination_coffee2", type: "coffee2" },
+  { id: "combination_heart", type: "heart" },
+  { id: "combination_book", type: "book" },
+  { id: "combination_bakery", type: "bakery" },
+];
