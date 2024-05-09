@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import Input from "../common/Input";
 import Text from "../common/Text";
