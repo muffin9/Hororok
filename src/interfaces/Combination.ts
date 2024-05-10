@@ -7,6 +7,12 @@ export interface CombinationType {
   icon: IconType;
 }
 
+export interface PatchCombinationType {
+  name: string;
+  icon: IconType;
+  keywords: string[];
+}
+
 export interface CombinationGetType extends CombinationType {
   categoryKeywords: CategoryKeywordsType;
 }
