@@ -49,7 +49,7 @@ export const getUserCombination = async () => {
 
 export const logoutUser = async () => {
   try {
-    const response = await axiosInstance.get(`${apiSearchUrl}/auth/logout`);
+    const response = await axiosInstance.post(`${apiSearchUrl}/auth/logout`);
     if (response.data.status === 204) {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
