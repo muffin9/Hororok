@@ -50,6 +50,7 @@ const iconUrls = {
   seat: "/assets/Icon/ic_seat.svg",
   coffee2: "/assets/Icon/ic_coffee2.svg",
   glass: "/assets/Icon/ic_glass.svg",
+  setting: "/assets/Icon/ic_setting.svg",
 };
 
 export type IconType =
@@ -101,7 +102,8 @@ export type IconType =
   | "heart"
   | "seat"
   | "coffee2"
-  | "glass";
+  | "glass"
+  | "setting";
 
 export interface IconProps {
   type: IconType;

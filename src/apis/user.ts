@@ -46,3 +46,15 @@ export const getUserCombination = async () => {
     console.error("There was a problem with the fetch operation:", error);
   }
 };
+
+export const logoutUser = async () => {
+  try {
+    const response = await axiosInstance.get(`${apiSearchUrl}/auth/logout`);
+    if (response.data.status === 204) {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+    }
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+  }
+};
