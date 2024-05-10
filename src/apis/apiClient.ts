@@ -22,6 +22,7 @@ const isLoginRequiredForURL = (url: string) => {
     `${apiSearchUrl}/myPage/shared/plans`,
     new RegExp(`${apiSearchUrl}/myPage/plan/(\\d+)`),
     `${apiSearchUrl}/myPage/reviews`,
+    `${apiSearchUrl}/myPage/combination`,
     `${apiSearchUrl}/review/create`,
     new RegExp(`${apiSearchUrl}/review/(\\d+)`),
     new RegExp(`${apiSearchUrl}/review/(\\d+)/delete`),
