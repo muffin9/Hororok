@@ -70,7 +70,11 @@ const CombinationEdit = ({ combination }: CombinationEditProps) => {
               className={`w-[40px] h-[40px] flex justify-center items-center ${icon === combi.type ? "bg-primary-300" : "bg-bluegray"} rounded-full`}
               onClick={() => setIcon(combi.type as IconType)}
             >
-              <Icon size="small" type={icon as IconType} alt={combi.type} />
+              <Icon
+                size="small"
+                type={combi.type as IconType}
+                alt={combi.type}
+              />
             </button>
           );
         })}
@@ -84,7 +88,7 @@ const CombinationEdit = ({ combination }: CombinationEditProps) => {
         filterDatas={filterDatas}
         maxSelectCount={5}
       />
-      <div className="flex p-[-16px] h-[50px] border-t-[1px] border-silver">
+      <div className="flex pb-4 h-[50px] border-t-[1px] border-silver">
         <RefreshButton onClickRefresh={onClickRefresh} />
         <SubmitButton
           onSubmit={onCombinationSubmit}
