@@ -1,9 +1,13 @@
+"use client";
+
 import useGetMyCombination from "@/Hooks/Api/myPage/useGetMyCombination";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import { CombinationType } from "@/interfaces/Combination";
+import { useRouter } from "next/navigation";
 
 const MyCombinationCafe = () => {
+  const router = useRouter();
   const { myCombination } = useGetMyCombination();
   return (
     <div className="py-6 px-4">
@@ -25,6 +29,9 @@ const MyCombinationCafe = () => {
             <button
               id={`${combination.id}`}
               className="flex gap-2 justify-between p-3 border-solid border-[1px] border-gray-400 rounded-2xl"
+              onClick={() =>
+                router.push(`/combination/createEdit/${combination.id}`)
+              }
             >
               <Text size="large">{combination.icon}</Text>
               <Text size="small">{combination.name}</Text>
