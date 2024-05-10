@@ -25,15 +25,18 @@ const CombinationSection = () => {
       {myCombination ? (
         <div className="flex flex-col gap-3">
           {myCombination.combinations?.map((combination: CombinationType) => {
-            <button
-              id={`${combination.id}`}
-              className="w-[40px] h-[40px] flex justify-center items-center bg-white rounded-full"
-              onClick={() =>
-                router.push(`/combination/createEdit/${combination.id}`)
-              }
-            >
-              <Text size="large">{combination.icon}</Text>
-            </button>;
+            return (
+              <button
+                key={combination.id}
+                id={`${combination.id}`}
+                className="w-[40px] h-[40px] flex justify-center items-center bg-white rounded-full"
+                onClick={() =>
+                  router.push(`/combination/createEdit/${combination.id}`)
+                }
+              >
+                <Text size="large">{combination.icon}</Text>
+              </button>
+            );
           })}
         </div>
       ) : (
