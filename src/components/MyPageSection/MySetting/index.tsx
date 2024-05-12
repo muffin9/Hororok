@@ -14,7 +14,7 @@ const MySetting = () => {
   return (
     <section>
       <div className="bg-white p-4">
-        <button>
+        <button onClick={() => router.push("/privacy")}>
           <Text size="medium">개인정보 처리방침</Text>
         </button>
       </div>
