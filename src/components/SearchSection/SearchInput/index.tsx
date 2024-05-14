@@ -2,6 +2,7 @@ import Input from "@/components/common/Input";
 import Icon from "@/components/common/Icon";
 import BackButton from "@/components/common/BackButton";
 import useSearchInput from "@/store/searchInput";
+import RollingInput from "@/components/common/RollingInput";
 
 declare global {
   interface Window {
@@ -29,14 +30,18 @@ const SearchInput = ({ handleKeyUpSearchInput }: SearchInputProps) => {
       <div className="h-6 absolute top-1/2 transform -translate-y-1/2">
         <BackButton />
       </div>
-      <Input
+      <RollingInput
         type="text"
         value={searchInputValue}
-        placeholder="어디 근처 카페 찾으세요?"
+        placeholderTexts={[
+          "어디 근처 카페 찾으세요?",
+          "어떤 카페 정보가 궁금하세요?",
+        ]}
         onChange={handleChange}
         onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) =>
           handleKeyUpSearchInput(e)
         }
+        autofocus={true}
       />
       {searchInputValue && (
         <button

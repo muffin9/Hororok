@@ -11,6 +11,7 @@ import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
 import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
 import { filterDatas } from "@/app/constants";
 import RefreshButton from "../common/RefreshButton";
+import Icon from "../common/Icon";
 
 interface FilterSectionProps {
   setIsFilter: React.Dispatch<React.SetStateAction<boolean>>;
@@ -59,6 +60,12 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
       className="w-[390px] h-1/2 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-scroll"
     >
       <div className="px-4">
+        <button
+          onClick={() => setIsFilter(false)}
+          className="absolute top-4 right-4"
+        >
+          <Icon size="small" type="close" alt="close" />
+        </button>
         <Condition
           categoryId={categoryId}
           handleItemClick={handleItemClick}

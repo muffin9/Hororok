@@ -1,5 +1,4 @@
 import { SearchPlaceType } from "@/interfaces/SearchPlace";
-import useSearchHistory from "@/store/searchHistory";
 import useSearchInput from "@/store/searchInput";
 import useSearchPlace from "@/store/searchPlace";
 import useGeolocation from "./useGeolocation";
@@ -16,7 +15,6 @@ const useHandleKeySearchInput = () => {
   const router = useRouter();
   const { setResultSearchInfo } = useSearchPlace();
   const { searchInputValue, setSearchInputValue } = useSearchInput();
-  const { addSearch } = useSearchHistory();
 
   const placesSearchCallBack = (data: SearchPlaceType[], status: string) => {
     if (status === window.kakao.maps.services.Status.OK) {
@@ -65,7 +63,7 @@ const useHandleKeySearchInput = () => {
 
     if (key === "Enter" && target instanceof HTMLInputElement) {
       setSearchInputValue(target.value);
-      addSearch(target.value);
+
       (document.activeElement as HTMLElement).blur();
       handleSubmit();
     }

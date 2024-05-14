@@ -1,6 +1,7 @@
 "use client";
 
 import Text from "@/components/common/Text";
+import useSearchHistory from "@/store/searchHistory";
 import useSearchPlace from "@/store/searchPlace";
 import { useRouter } from "next/navigation";
 import SearchInput from "../SearchInput";
@@ -15,6 +16,7 @@ const SearchResultSection = () => {
   const router = useRouter();
   const { handleKeyUpSearchInput } = useHandleKeySearchInput();
   const { formData, isWriting, setFormData } = usePlanStore();
+  const { addSearch } = useSearchHistory();
 
   const { setSearchResultList } = useSearcResultListStorehPlace();
 
@@ -31,6 +33,7 @@ const SearchResultSection = () => {
       const { latitude, longitude } = findPlace;
       const cafeSearchList = await getSearchList(latitude, longitude);
 
+      addSearch(findPlace.place_name);
       setSearchResultList(cafeSearchList);
 
       if (isWriting) {
