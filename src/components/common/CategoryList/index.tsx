@@ -7,7 +7,7 @@ interface CategoryListProps {
 
 type CategoryType = {
   id: CategoryIdType;
-  name: "목적" | "시설" | "분위기" | "메뉴" | "주제";
+  name: "목적" | "시설" | "분위기" | "메뉴" | "테마";
 };
 
 const CategoryList = ({ onClickCategory }: CategoryListProps) => {
@@ -16,7 +16,7 @@ const CategoryList = ({ onClickCategory }: CategoryListProps) => {
     { id: "facility", name: "시설" },
     { id: "atmosphere", name: "분위기" },
     { id: "menu", name: "메뉴" },
-    { id: "theme", name: "주제" },
+    { id: "theme", name: "테마" },
   ] as CategoryType[];
 
   return (

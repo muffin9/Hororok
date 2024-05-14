@@ -29,7 +29,7 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
     return (
       <div className="flex justify-center items-center">
         <Text size="medium" className="text-gray-800">
-          검색 결과가 존재하지 않습니다.
+          아쉽지만 찾는 카페가 없어요.
         </Text>
       </div>
     );

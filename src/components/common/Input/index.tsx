@@ -10,7 +10,7 @@ type TextInputTypes =
   | "date"
   | "url";
 
-interface InputProps {
+export interface InputProps {
   id?: string;
   name?: string;
   type?: TextInputTypes;
@@ -20,6 +20,7 @@ interface InputProps {
   disabled?: boolean;
   className?: string;
   maxlength?: number;
+  autofocus?: boolean;
   onClick?: (e: MouseEvent<HTMLInputElement>) => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
@@ -31,6 +32,7 @@ const Input = (props: InputProps) => {
   return (
     <input
       className={`w-full h-[50px] pl-10 bg-white focus:outline-none disabled:border-gray text-black ${props.className}`}
+      autoFocus={props.autofocus}
       {...props}
     />
   );
