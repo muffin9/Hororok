@@ -9,7 +9,7 @@ const meta: Meta<typeof Indicator> = {
 export default meta;
 
 const PrimitiveIndicator = () => {
-  return <Indicator />;
+  return <Indicator count={4} currentIdx={0} />;
 };
 
 export const Default = {
