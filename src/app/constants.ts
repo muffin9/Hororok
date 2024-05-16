@@ -367,3 +367,34 @@ export const combinationIcons = [
   { id: "combination_book", type: "book" },
   { id: "combination_bakery", type: "bakery" },
 ];
+
+export const onBoardingTexts = [
+  {
+    step: 0,
+    title: "키워드로 검색",
+    description:
+      "어떤 카페를 찾고 있나요? 내 취향에 맞는 카페를 키워드로 찾아보세요.",
+    imageUrl: "/assets/Images/onboarding1.png",
+  },
+  {
+    step: 1,
+    title: "카페 방문 계획하기",
+    description:
+      "어느 동네를 방문할 예정인가요? 내 일정, 도보 거리, 취향에 맞춰 찾아줄게요.",
+    imageUrl: "/assets/Images/onboarding2.png",
+  },
+  {
+    step: 2,
+    title: "내 취향 맞춤 카페 저장",
+    description:
+      "찾았다 내 취향 카페 ! 저장한 모든 것은 마이페이지에서 모아봐요.",
+    imageUrl: "/assets/Images/onboarding3.png",
+  },
+  {
+    step: 3,
+    title: "카페콕 시작하기",
+    description:
+      "친구와 만날 때 카페 고민은 그만! 일정과 취향에 맞춰 간편하게 후보를 찾아보세요.",
+    imageUrl: "/assets/Images/onboarding4.png",
+  },
+];
