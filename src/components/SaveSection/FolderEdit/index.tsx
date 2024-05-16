@@ -31,7 +31,7 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
           <button
             onClick={() => {
               deleteBookmarkFolder(folderId);
-              router.push("/");
+              router.push("/map");
             }}
           >
             <Icon size="small" type="trash" alt="trash" />

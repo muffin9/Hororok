@@ -20,7 +20,7 @@ const MoveInput = () => {
       />
       <button
         className="absolute right-4 top-0 transform translate-y-1/2 cursor-pointer"
-        onClick={() => router.push("/")} 
+        onClick={() => router.push("/map")} 
       >
         <Icon type="close" size="small" alt="close" />
       </button>

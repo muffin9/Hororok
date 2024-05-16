@@ -1,6 +1,5 @@
 import Button from "@/components/common/Button";
 import usePlanStore from "@/store/usePlanStore";
-import Link from "next/link";
 import Text from "@/components/common/Text";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -18,6 +17,7 @@ const LoginComponent = () => {
   useEffect(() => {
     setIsWrting(false);
   }, []);
+
   return (
     <div className="w-[358px] flex fixed bottom-16 flex-col gap-2">
       <Button
@@ -75,13 +75,16 @@ const LoginComponent = () => {
         </Text>
       </Button>
     </Link> */}
-      <Link href="/">
-        <Button size="full" className="enabled:active:bg-white">
-          <Text size="small" className="text-white underline">
-            로그인하지 않고 둘러보기
-          </Text>
-        </Button>
-      </Link>
+
+      <Button
+        size="full"
+        className="enabled:active:bg-white"
+        onClick={() => router.push("/map")}
+      >
+        <Text size="small" className="text-white underline">
+          로그인하지 않고 둘러보기
+        </Text>
+      </Button>
     </div>
   );
 };

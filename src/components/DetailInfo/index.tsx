@@ -82,7 +82,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
                 starScore={Math.ceil(+topInfo.starRating)}
               />
               <Text size="small" weight="bold">
-                {topInfo.reviewCount.toFixed(1)}
+                {topInfo.starRating.toFixed(1)}
               </Text>
               <Text size="extraSmall" className="text-gray-700">
                 ({topInfo.reviewCount})
