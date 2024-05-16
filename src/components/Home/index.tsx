@@ -2,10 +2,9 @@
 
 import { useEffect, Suspense } from "react";
 import Splash from "../common/Splash";
-import KakaoStaticMap from "../KakaoStaticMap";
-import HomeSection from "./HomeSection";
 import Loading from "@/app/loading";
 import useSplashState from "@/store/useSplash";
+import LoginComponent from "../common/LoginComponent";
 
 const Home = () => {
   const { showSplash, setShowSplash } = useSplashState();
@@ -22,9 +21,10 @@ const Home = () => {
         </main>
       ) : (
         <Suspense fallback={<Loading />}>
-          <KakaoStaticMap height="h-screen">
-            <HomeSection />
-          </KakaoStaticMap>
+          <main className="w-full h-full px-4 flex flex-col items-center justify-center bg-primary-300">
+            <Splash />
+            <LoginComponent />
+          </main>
         </Suspense>
       )}
     </>

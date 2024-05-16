@@ -70,7 +70,7 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
           cancelCallbackFunc={() => {
             setIsWrting(false);
             resetPlanStore();
-            router.push("/");
+            router.push("/map");
           }}
         />
       )}

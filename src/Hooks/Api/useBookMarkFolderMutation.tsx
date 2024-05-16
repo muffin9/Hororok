@@ -43,7 +43,7 @@ const useBookMarkFolderMutation = () => {
           showMessage("새 폴더를 추가했어요");
           queryClient.refetchQueries({ queryKey: ["getBookmark"] });
           setTimeout(() => {
-            router.push("/");
+            router.push("/map");
           }, 1000);
         }
       } catch (e) {
@@ -65,7 +65,7 @@ const useBookMarkFolderMutation = () => {
           showMessage(`폴더를 수정했어요`);
           queryClient.refetchQueries({ queryKey: ["getBookmark"] });
           setTimeout(() => {
-            router.push("/");
+            router.push("/map");
           }, 1000);
         }
       } catch (e) {

@@ -35,7 +35,7 @@ export default function KakaoCallback() {
           );
           localStorage.setItem("refreshToken", refreshToken);
 
-          router.push("/");
+          router.push("/map");
         })
         .catch((error) => {
           console.error(error);
