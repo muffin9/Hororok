@@ -81,7 +81,7 @@ const GNB = () => {
         >
           <Icon type="account" size="medium" alt="로그인" />
           <Text size="extraSmall" className="text-black">
-            {localStorage.getItem("accessToken") ? "마이페이지" : "로그인"}
+            마이페이지
           </Text>
         </div>
       </footer>

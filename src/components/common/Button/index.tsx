@@ -1,7 +1,7 @@
 import { MouseEventHandler, ReactNode } from "react";
 
 interface ButtonProps {
-  size: "small" | "medium" | "large" | "full";
+  size: "small" | "medium" | "large" | "half" | "full";
   children: ReactNode;
   className?: string;
   disabled?: boolean;
@@ -14,6 +14,7 @@ const ButtonSize = {
   small: "h-8",
   medium: "h-16",
   large: "h-50",
+  half: "w-6/12",
   full: "w-full h-12",
 };
 

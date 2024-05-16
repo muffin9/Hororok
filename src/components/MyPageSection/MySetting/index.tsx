@@ -8,7 +8,7 @@ const MySetting = () => {
   const router = useRouter();
   const handleLogout = async () => {
     await logoutUser();
-    router.push("/");
+    router.push("/map");
   };
 
   return (
