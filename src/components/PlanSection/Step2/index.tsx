@@ -26,7 +26,6 @@ const Step2 = () => {
       <KakaoPlaceStaticMap height="h-[190px]" />
       <div className="mt-[37px]">
         <Text size="xLarge" weight="bold">
-          선택하신 곳에서 주변 카페까지 <br />
           얼마나 걸어도 괜찮은가요?
         </Text>
       </div>

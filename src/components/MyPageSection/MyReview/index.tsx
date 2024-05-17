@@ -15,7 +15,7 @@ const MyReview = () => {
 
   return (
     myReviewInfo && (
-      <section className="h-screen overflow-y-scroll">
+      <section>
         {myReviewInfo.reviews.length === 0 ? (
           <div className="h-full flex flex-col justify-center items-center">
             <Icon type="review" size="xLarge" alt="review" />
@@ -85,25 +85,27 @@ const MyReview = () => {
                       }
                     )}
                   </div>
-                  <div className="flex items-center gap-[6px]">
-                    <Text size="small" className="text-gray-800">
-                      추천메뉴
-                    </Text>
-                    <div className="text-gray-800 mb-[-1px]">|</div>
-                    <div className="flex gap-1.5"></div>
-                    {myReview.keywords
-                      .slice(0, 2)
-                      .map((keyword: CafeKeyWordType) => {
-                        return (
-                          <button
-                            key={keyword.id}
-                            className="h-[31px] px-3 rounded-3xl border-[1px] border-solid border-silver"
-                          >
-                            <Text size="small">{keyword.name}</Text>
-                          </button>
-                        );
-                      })}
-                  </div>
+                  {myReview.keywords.length > 0 && (
+                    <div className="flex items-center gap-[6px]">
+                      <Text size="small" className="text-gray-800">
+                        추천메뉴
+                      </Text>
+                      <div className="text-gray-800 mb-[-1px]">|</div>
+                      <div className="flex gap-1.5"></div>
+                      {myReview.keywords
+                        .slice(0, 2)
+                        .map((keyword: CafeKeyWordType) => {
+                          return (
+                            <button
+                              key={keyword.id}
+                              className="h-[31px] px-3 rounded-3xl border-[1px] border-solid border-silver"
+                            >
+                              <Text size="small">{keyword.name}</Text>
+                            </button>
+                          );
+                        })}
+                    </div>
+                  )}
                 </div>
               </article>
             );

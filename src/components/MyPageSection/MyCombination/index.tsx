@@ -11,12 +11,12 @@ const MyCombinationCafe = () => {
   const { myCombination } = useGetMyCombination();
   return (
     <div className="py-6 px-4">
-      <header>
+      <header className="mb-2">
         <Text size="medium" weight="bold">
           자주 찾는 조합
         </Text>
       </header>
-      <div className="flex">
+      <div className="flex gap-1">
         <Icon size="xSmall" type="info" alt="mycombination-info" />
         <Text size="extraSmall" className="text-gray-700">
           나만의 조합에 맞춘 카페를 홈화면에서 빠르게 찾을 수 있어요. 최대 2개

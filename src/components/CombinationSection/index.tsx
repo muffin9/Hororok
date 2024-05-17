@@ -34,7 +34,7 @@ const CombinationSection = () => {
                   router.push(`/combination/createEdit/${combination.id}`)
                 }
               >
-                <Text size="large">{combination.icon}</Text>
+                <Icon type={combination.icon} alt={combination.icon} />
               </button>
             );
           })}
