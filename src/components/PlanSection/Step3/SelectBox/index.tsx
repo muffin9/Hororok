@@ -42,7 +42,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
         )}
       </div>
       {isOpen && (
-        <div className="absolute top-8 flex flex-col text-center cursor-pointer bg-white">
+        <div className="absolute top-8 p-3 flex flex-col text-center cursor-pointer bg-white rounded shadow-sm">
           {options.map((option) => (
             <div key={option.value} onClick={() => handleOptionSelect(option)}>
               <Text size="small">{option.label}</Text>

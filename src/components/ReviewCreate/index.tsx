@@ -22,7 +22,7 @@ interface ReviewCreateProps {
 
 const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
   const router = useRouter();
-  const [starRating, setStarRating] = useState(0);
+  const [starRating, setStarRating] = useState(5);
   const [content, setContent] = useState("");
   const [specialNote, setSpecialNote] = useState("");
   const [files, setFiles] = useState<File[]>([]);
@@ -72,6 +72,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
       );
 
       await postReview(formData);
+      router.push(`/cafe/${cafeId}`);
     }
   };
 
@@ -131,7 +132,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
               />
             </label>
             {files.map((file, index) => (
-              <div key={index}>
+              <div key={index} className="min-w-[100px]">
                 <Image
                   src={URL.createObjectURL(file)}
                   alt={`Uploaded image ${index}`}
@@ -199,7 +200,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
           okButtonText="이어서 리뷰남기기"
           cancelButtonText="나가기"
           okCallbackFunc={closeModal}
-          cancelCallbackFunc={() => router.push(`/cafe/${cafeId}`)}
+          cancelCallbackFunc={() => router.back()}
         />
       )}
     </>

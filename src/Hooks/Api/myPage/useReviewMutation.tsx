@@ -19,9 +19,8 @@ const useReviewMutation = () => {
       });
     },
     onSuccess: (data) => {
-      if (data) {
+      if (data.status === 200) {
         showMessage(`리뷰가 등록되었습니다.`);
-        router.push(`/`);
       }
     },
   });
