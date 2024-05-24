@@ -23,7 +23,8 @@ interface ReviewEditProps {
 
 type reviewImageType = {
   id: number;
-  imageUrl: string;
+  origin: string;
+  thumbnail: string;
 };
 
 const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
@@ -174,7 +175,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
                   <div
                     key={image.id}
                     style={{
-                      backgroundImage: `url(http:${image.imageUrl})`,
+                      backgroundImage: `url(http:${image.thumbnail})`,
                     }}
                     className="bg-cover bg-center w-[100px] h-[100px] rounded-lg"
                   />

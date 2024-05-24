@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Button from "@/components/common/Button";
 import Text from "@/components/common/Text";
