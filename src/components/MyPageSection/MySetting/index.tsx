@@ -13,10 +13,16 @@ const MySetting = () => {
 
   return (
     <section>
-      <div className="bg-white p-4">
-        <button onClick={() => router.push("/privacy")}>
-          <Text size="medium">개인정보 처리방침</Text>
-        </button>
+      <div className="bg-white">
+        <div>
+          <button className="p-4" onClick={() => router.push("/improvement")}>
+            <Text size="medium">개선의견 남기기</Text>
+          </button>
+          <div className="h-[1px] bg-silver" />
+          <button onClick={() => router.push("/privacy")} className="p-4">
+            <Text size="medium">개인정보 처리방침</Text>
+          </button>
+        </div>
       </div>
       <div className="h-[10px] bg-gray-200" />
       <div className="p-4">
@@ -28,7 +34,7 @@ const MySetting = () => {
       </div>
       <div className="h-[1px] bg-silver" />
       <div className="p-4">
-        <button>
+        <button onClick={() => router.push("/myPage/secession")}>
           <Text size="medium" className="text-gray-800">
             회원탈퇴
           </Text>

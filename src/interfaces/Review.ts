@@ -9,7 +9,8 @@ export interface ReviewInfoType {
   specialNote: string;
   images: {
     id: number;
-    imageUrl: string;
+    origin: string;
+    thumbnail: string;
   }[];
   categoryKeywords: CategoryKeywordsType;
 }

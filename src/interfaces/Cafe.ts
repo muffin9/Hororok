@@ -12,7 +12,8 @@ export interface CafeTopInfoType {
   longitude: number;
   starRating: number;
   reviewCount: number;
-  imageUrl: string;
+  originUrl: string;
+  thumbnailUrl: string;
   keywords: KeywordsType[];
 }
 
@@ -22,32 +23,28 @@ export interface CafeBasicInfoType {
   businessHours: string[];
   closedDay: string[];
   phoneNumber: string;
-  menus: {
-    name: string;
-    price: string;
-    imageUrl: string;
+  menus: CafeMenuType[];
+  imageUrls: {
+    originUrl: string;
+    thumbnailUrl: string;
   }[];
-  imageUrls: string[];
   userChoiceKeywords: {
     name: string;
     count: number;
   }[];
-
   reviews: ReviewType[];
 }
 
-export interface MenuType {
-  name: string;
-  price: string;
-  imageUrl: string;
-}
-
 export interface CafeMenuInfoType {
-  menus: MenuType[];
+  menus: CafeMenuType[];
 }
 
 export interface CafePhotoInfoType {
-  imageUrls: string[];
+  imageUrls: {
+    originUrl: string;
+    thumbnailUrl: string;
+  }[];
+
   cursor?: number;
   hasNextPage?: boolean;
 }
@@ -68,7 +65,10 @@ export interface ReviewType {
   createDate: string;
   picture: string;
   nickname: string;
-  imageUrls: string[];
+  imageUrls: {
+    originUrl: string;
+    thumbnailUrl: string;
+  }[];
   recommendMenus: string[];
 }
 
@@ -88,14 +88,15 @@ export interface CafeInfoType {
 export interface CafeMenuType {
   name: string;
   price: string;
-  imageUrl: string;
+  originUrl: string;
+  thumbnailUrl: string;
 }
 
 export interface ReviewType {
   id: number;
   content: string;
   specialNote: string;
-  images: { id: number; imageUrl: string }[];
+  images: { id: number; origin: string; thumbnail: string }[];
   keywords: CafeKeyWordType[];
   starRating: number;
   userNickname: string;
