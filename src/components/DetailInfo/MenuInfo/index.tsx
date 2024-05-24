@@ -32,7 +32,9 @@ const MenuInfo = ({ cafeId, page }: MenuInfoProps) => {
               <div className="flex gap-4" key={menuData.name}>
                 <div
                   className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
-                  style={{ backgroundImage: `url(http:${menuData.imageUrl})` }}
+                  style={{
+                    backgroundImage: `url(http:${menuData.thumbnailUrl})`,
+                  }}
                 ></div>
                 <div className="flex flex-col">
                   <Text size="medium" weight="bold" className="text-gray-650">

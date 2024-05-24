@@ -37,10 +37,7 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
             {reviewInfo.userChoiceKeywords &&
               reviewInfo.userChoiceKeywords.map((cafeKeyword, idx) => {
                 return (
-                  <div
-                    className="w-[137px] flex gap-[2px]"
-                    key={cafeKeyword.name}
-                  >
+                  <div className="w-[137px] flex gap-1" key={cafeKeyword.name}>
                     <Text size="small">{idx + 1}</Text>
                     <Text size="small">{cafeKeyword.name}</Text>
                     <Text size="small" className="text-gray-700">
@@ -97,22 +94,26 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
                   </header>
                   <div className="flex flex-col gap-3.5">
                     <div className="flex flex-col gap-4 mt-7">
-                      <div className="flex items-center gap-3">
-                        <Icon size="small" type="review" alt="review" />
-                        <Text size="small">{review.content}</Text>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Icon size="small" type="star" alt="star" />
-                        <Text size="small">{review.specialNote}</Text>
-                      </div>
+                      {review.content && (
+                        <div className="flex items-center gap-3">
+                          <Icon size="small" type="review" alt="review" />
+                          <Text size="small">{review.content}</Text>
+                        </div>
+                      )}
+                      {review.specialNote && (
+                        <div className="flex items-center gap-3">
+                          <Icon size="small" type="star" alt="star" />
+                          <Text size="small">{review.specialNote}</Text>
+                        </div>
+                      )}
                     </div>
                     <div className="flex gap-1.5 overflow-scroll">
-                      {review.images.map((image) => {
+                      {review.imageUrls.map((image) => {
                         return (
                           <div
-                            key={image.id}
+                            key={image.thumbnailUrl}
                             style={{
-                              backgroundImage: `url(http:${image.imageUrl})`,
+                              backgroundImage: `url(http:${image.thumbnailUrl})`,
                             }}
                             className="bg-cover bg-center w-[100px] h-[100px] rounded-lg"
                           />

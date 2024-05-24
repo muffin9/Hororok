@@ -46,15 +46,21 @@ const PhotoInfo = ({ cafeId, page = "" }: PhotoInfoProps) => {
         </div>
       ) : (
         <div className="flex flex-wrap justify-center gap-1 mt-4">
-          {visiblePhotoData?.map((imageUrl: string) => {
-            return (
-              <div
-                key={imageUrl}
-                style={{ backgroundImage: `url(http:${imageUrl})` }}
-                className={"bg-cover bg-center w-[176px] h-[176px] rounded-lg"}
-              />
-            );
-          })}
+          {visiblePhotoData?.map(
+            (imageUrl: { originUrl: string; thumbnailUrl: string }) => {
+              return (
+                <div
+                  key={imageUrl.originUrl}
+                  style={{
+                    backgroundImage: `url(http:${imageUrl.thumbnailUrl})`,
+                  }}
+                  className={
+                    "bg-cover bg-center w-[176px] h-[176px] rounded-lg"
+                  }
+                />
+              );
+            }
+          )}
           {photoInfoImageUrlsLen >= 5 && !showMore && page !== "all" && (
             <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[20px]">
               <MoreButton
