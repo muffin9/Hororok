@@ -15,7 +15,7 @@ const MyReview = () => {
 
   return (
     myReviewInfo && (
-      <section>
+      <section className="bg-white">
         {myReviewInfo.reviews.length === 0 ? (
           <div className="h-full flex flex-col justify-center items-center">
             <Icon type="review" size="xLarge" alt="review" />
@@ -32,7 +32,18 @@ const MyReview = () => {
               >
                 <header className="flex flex-col">
                   <div className="w-full flex items-center justify-between">
-                    <Text size="small">{myReview.cafeName}</Text>
+                    <div className="flex gap-1">
+                      <Text size="small">{myReview.cafeName}</Text>
+                      <button
+                        onClick={() => router.push(`/cafe/${myReview.cafeId}`)}
+                      >
+                        <Icon
+                          size="small"
+                          type="arrow_right"
+                          alt="arrow_right"
+                        />
+                      </button>
+                    </div>
                     <div className="flex gap-2">
                       <Button
                         size="small"
@@ -61,14 +72,18 @@ const MyReview = () => {
                 </header>
                 <div className="flex flex-col gap-3.5">
                   <div className="flex flex-col gap-4 mt-7">
-                    <div className="flex items-center gap-3">
-                      <Icon size="small" type="review" alt="myReview" />
-                      <Text size="small">{myReview.content}</Text>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Icon size="small" type="star" alt="star" />
-                      <Text size="small">{myReview.specialNote}</Text>
-                    </div>
+                    {myReview.content && (
+                      <div className="flex items-center gap-3">
+                        <Icon size="small" type="review" alt="myReview" />
+                        <Text size="small">{myReview.content}</Text>
+                      </div>
+                    )}
+                    {myReview.specialNote && (
+                      <div className="flex items-center gap-3">
+                        <Icon size="small" type="star" alt="star" />
+                        <Text size="small">{myReview.specialNote}</Text>
+                      </div>
+                    )}
                   </div>
                   <div className="flex gap-1.5 overflow-scroll">
                     {myReview.images.map(

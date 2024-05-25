@@ -32,7 +32,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
           <header className="flex justify-between px-4 pt-4">
             <button
               type="button"
-              onClick={() => router.back()}
+              onClick={() => router.push(`/cafe/${topInfo.cafeId}`)}
               aria-label="back button"
               className="shadow-xl"
             >
