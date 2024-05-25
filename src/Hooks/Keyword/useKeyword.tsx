@@ -86,14 +86,13 @@ const useKeyword = () => {
 
   const checkKeywordDisabledSubmit = () => {
     const targetValues = [
-      "개인작업/노트북",
+      "친목/모임",
       "데이트",
-      "단체회식",
-      "애견동반",
-      "가족모임",
+      "개인작업/노트북",
+      "독서/휴식",
       "비즈니스미팅",
-      "기념일",
-      "친목/나들이",
+      "가족모임",
+      "애견동반",
     ];
 
     return !selectedItems.purpose.some((item) => targetValues.includes(item));

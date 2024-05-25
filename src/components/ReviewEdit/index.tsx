@@ -199,7 +199,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
           <div className="flex flex-col gap-2 mt-5">
             <Text size="medium">리뷰</Text>
             <TextArea
-              placeholder="가게에 대한 소감을 30자 이상 적어주세요"
+              placeholder="가게에 대한 소감을 자유롭게 적어주세요."
               value={content}
               onChange={(e) => setContent(e.target.value)}
               className="h-[290px]"
