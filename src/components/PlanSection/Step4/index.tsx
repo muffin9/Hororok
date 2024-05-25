@@ -63,9 +63,6 @@ const Step4 = () => {
           <Text size="x2Large" weight="bold">
             원하는 조건을 선택해주세요.
           </Text>
-          <Text size="medium" className="text-gray-700">
-            복수 선택이 가능해요
-          </Text>
         </header>
         <Condition
           handleItemClick={handleItemClick}
