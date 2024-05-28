@@ -23,7 +23,7 @@ export default function KakaoCallback() {
   useEffect(() => {
     if (code) {
       axios
-        .get(`https://api.hororok.o-r.kr/api/auth/login?code=${code}`)
+        .get(`${process.env.NEXT_PUBLIC_SERVER_API}/auth/login?code=${code}`)
         .then(({ data }: { data: LoginType }) => {
           const { accessToken, refreshToken } = data;
           const currentTime = new Date().getTime();
