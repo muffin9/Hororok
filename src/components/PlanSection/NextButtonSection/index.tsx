@@ -16,7 +16,7 @@ const NextButtonSection = ({
   const router = useRouter();
 
   return (
-    <div className="w-[358px] fixed bottom-0 flex flex-col gap-4 bg-white">
+    <div className="w-[358px] fixed bottom-4 flex flex-col gap-4 bg-white">
       {nextStep === "2" && (
         <div
           className="flex flex-col items-center cursor-pointer"
@@ -31,15 +31,17 @@ const NextButtonSection = ({
           </Text>
         </div>
       )}
-      <Button
-        size="full"
-        onClick={() => {
-          if (onClickContinueFunc) onClickContinueFunc();
-          router.push(`/plan/${nextStep}`);
-        }}
-      >
-        계속하기
-      </Button>
+      {nextStep !== "2" && (
+        <Button
+          size="full"
+          onClick={() => {
+            if (onClickContinueFunc) onClickContinueFunc();
+            router.push(`/plan/${nextStep}`);
+          }}
+        >
+          계속하기
+        </Button>
+      )}
       <Button
         size="full"
         className="bg-white"

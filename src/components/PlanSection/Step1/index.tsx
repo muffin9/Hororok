@@ -3,6 +3,7 @@
 import Input from "@/components/common/Input";
 import Text from "@/components/common/Text";
 import { useRouter } from "next/navigation";
+import NextButtonSection from "../NextButtonSection";
 
 const Step1 = () => {
   const router = useRouter();
@@ -18,6 +19,7 @@ const Step1 = () => {
         onClick={() => router.push("/search")}
         className="w-full h-[50px] p-4 bg-white border-[1px] border-gray-400 rounded-lg focus:outline-none shadow-xl"
       />
+      <NextButtonSection nextStep={"2"} />
     </div>
   );
 };
