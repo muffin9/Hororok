@@ -54,16 +54,19 @@ const TimeSelector = ({ selectId, setSelectId }: TimeSelectorProps) => {
         />
       </div>
       <div className="w-full relative items-center pl-2">
-        <Text size="small" className="text-bluegray absolute left-0 top-0">
+        <Text size="small" className={`text-primary-300 absolute left-0 top-0`}>
           0분
         </Text>
         <Text
           size="small"
-          className="text-bluegray absolute left-1/2 transform -translate-x-1/2"
+          className={`${selectId >= 3 ? "text-primary-300" : "text-bluegray"} absolute left-1/2 transform -translate-x-1/2`}
         >
           15분
         </Text>
-        <Text size="small" className="text-bluegray absolute right-0">
+        <Text
+          size="small"
+          className={`${selectId === 6 ? "text-primary-300" : "text-bluegray"} absolute right-0`}
+        >
           30분
         </Text>
       </div>

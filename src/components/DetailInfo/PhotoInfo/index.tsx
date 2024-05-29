@@ -8,10 +8,15 @@ import { useMemo } from "react";
 
 interface PhotoInfoProps {
   cafeId: string;
+  handleOnMenuClick?: (clickedId: string) => void;
   page?: string;
 }
 
-const PhotoInfo = ({ cafeId, page = "" }: PhotoInfoProps) => {
+const PhotoInfo = ({
+  cafeId,
+  handleOnMenuClick,
+  page = "",
+}: PhotoInfoProps) => {
   const { photoInfo }: { photoInfo: CafePhotoInfoType } = useGetPhotoInfo(
     cafeId,
     1,
@@ -65,7 +70,12 @@ const PhotoInfo = ({ cafeId, page = "" }: PhotoInfoProps) => {
             <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[20px]">
               <MoreButton
                 text={"사진 더보기"}
-                handleClickMoreButton={handleClickMoreButton}
+                handleClickMoreButton={() => {
+                  if (handleOnMenuClick) {
+                    handleClickMoreButton();
+                    handleOnMenuClick("photo");
+                  }
+                }}
               />
             </div>
           )}
