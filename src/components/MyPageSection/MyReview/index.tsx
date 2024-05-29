@@ -86,13 +86,13 @@ const MyReview = () => {
                     )}
                   </div>
                   <div className="flex gap-1.5 overflow-scroll">
-                    {myReview.images.map(
-                      (image: { id: number | null; imageUrl: string }) => {
+                    {myReview.imageUrls.map(
+                      (image: { originUrl: string; thumbnailUrl: string }) => {
                         return (
                           <div
-                            key={image.id}
+                            key={image.originUrl}
                             style={{
-                              backgroundImage: `url(http:${image.imageUrl})`,
+                              backgroundImage: `url(http:${image.thumbnailUrl})`,
                             }}
                             className="bg-cover bg-center w-[100px] h-[100px] rounded-lg"
                           />

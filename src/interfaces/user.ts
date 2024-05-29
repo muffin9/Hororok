@@ -24,9 +24,9 @@ export interface MyReviewType {
   content: string;
   specialNote: string;
   createdDate: string;
-  images: {
-    id: number | null;
-    imageUrl: string;
+  imageUrls: {
+    originUrl: string;
+    thumbnailUrl: string;
   }[];
   keywords: KeywordsType[];
 }
