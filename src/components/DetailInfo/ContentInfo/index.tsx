@@ -31,9 +31,9 @@ const ContentInfo = ({ cafeId }: { cafeId: string }) => {
           <div className="flex flex-col">
             <DefaultInfo cafeId={cafeId} />
             <div className="mt-[10px]" />
-            <MenuInfo cafeId={cafeId} />
+            <MenuInfo cafeId={cafeId} handleOnMenuClick={handleOnMenuClick} />
             <div className="mt-[10px]" />
-            <PhotoInfo cafeId={cafeId} />
+            <PhotoInfo cafeId={cafeId} handleOnMenuClick={handleOnMenuClick} />
             <div className="mt-[10px]" />
             <ReviewInfo cafeId={cafeId} />
           </div>

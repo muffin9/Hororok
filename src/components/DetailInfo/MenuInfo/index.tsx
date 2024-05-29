@@ -6,10 +6,11 @@ import { CafeMenuInfoType, CafeMenuType } from "@/interfaces/Cafe";
 
 interface MenuInfoProps {
   cafeId: string;
+  handleOnMenuClick?: (clickedId: string) => void;
   page?: string;
 }
 
-const MenuInfo = ({ cafeId, page }: MenuInfoProps) => {
+const MenuInfo = ({ cafeId, handleOnMenuClick, page }: MenuInfoProps) => {
   const { menuInfo }: { menuInfo: CafeMenuInfoType } =
     useGetCafeDetailInfo(cafeId);
 
@@ -57,7 +58,12 @@ const MenuInfo = ({ cafeId, page }: MenuInfoProps) => {
           <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[38px]">
             <MoreButton
               text={"메뉴 더보기"}
-              handleClickMoreButton={handleClickMoreButton}
+              handleClickMoreButton={() => {
+                if (handleOnMenuClick) {
+                  handleClickMoreButton();
+                  handleOnMenuClick("menu");
+                }
+              }}
             />
           </div>
         )}
