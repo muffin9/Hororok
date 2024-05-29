@@ -32,7 +32,7 @@ const MyReview = () => {
               >
                 <header className="flex flex-col">
                   <div className="w-full flex items-center justify-between">
-                    <div className="flex gap-1">
+                    <div className="flex items-center gap-1">
                       <Text size="small">{myReview.cafeName}</Text>
                       <button
                         onClick={() => router.push(`/cafe/${myReview.cafeId}`)}
