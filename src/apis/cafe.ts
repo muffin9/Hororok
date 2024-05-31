@@ -54,9 +54,9 @@ export const getCafeReviewInfo = async (
   cursor: number,
   page: string
 ) => {
-  const cafeReviewUrl = page
+  const cafeReviewUrl = cursor
     ? `${apiSearchUrl}/cafe/${cafeId}/reviews?cursor=${cursor}`
-    : `${apiSearchUrl}/cafe/${cafeId}/reviews?cursor=${cursor}`;
+    : `${apiSearchUrl}/cafe/${cafeId}/reviews`;
   try {
     const response = await axiosInstance(cafeReviewUrl);
     return response.data;

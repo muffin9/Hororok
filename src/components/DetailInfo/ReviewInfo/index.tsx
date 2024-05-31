@@ -15,7 +15,7 @@ interface ReviewInfoProps {
 const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
   const { reviewInfo }: { reviewInfo: CafeReviewType } = useGetReviewInfo(
     cafeId,
-    1,
+    0,
     page
   );
 
