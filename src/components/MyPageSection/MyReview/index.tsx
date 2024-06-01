@@ -17,7 +17,7 @@ const MyReview = () => {
     myReviewInfo && (
       <section className="bg-white">
         {myReviewInfo.reviews.length === 0 ? (
-          <div className="h-full flex flex-col justify-center items-center">
+          <div className="h-screen flex flex-col justify-center items-center">
             <Icon type="review" size="xLarge" alt="review" />
             <Text size="small" weight="bold" className="text-gray-600">
               첫 리뷰를 남겨주세요

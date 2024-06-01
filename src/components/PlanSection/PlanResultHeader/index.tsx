@@ -9,8 +9,10 @@ import useHandleBottomSheet from "@/Hooks/useHandleBottomSheet";
 import { useRef } from "react";
 import SaveSection from "@/components/SaveSection";
 import useOutsideClick from "@/Hooks/useOutsideClick";
+import useIsLoggedIn from "@/Hooks/useLoggedIn";
 
 const PlanResultHeader = () => {
+  const isLoggedIn = useIsLoggedIn();
   const overlayRef = useRef(null);
   const { resultPlanInfos } = usePlanMatchStore();
   const { currentSelectCafeId, handleClickBookmark } = useHandleBookmark();
@@ -36,6 +38,11 @@ const PlanResultHeader = () => {
                 </ShareButton>
                 <button
                   onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+                    if (!isLoggedIn) {
+                      alert("로그인이 필요합니다.");
+                      return;
+                    }
+
                     handleClickBookmark(
                       e,
                       resultPlanInfos.matchCafes[0].id,
