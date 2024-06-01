@@ -1,5 +1,7 @@
 import { patchSharePlan } from "@/apis/plans";
 import { useCallback } from "react";
+import useIsLoggedIn from "@/Hooks/useLoggedIn";
+import { Router } from "next/router";
 
 declare global {
   interface Window {
@@ -14,6 +16,8 @@ interface ShareButtonProps {
 }
 
 const ShareButton = ({ cafeId, planId, children }: ShareButtonProps) => {
+  const isLoggedIn = useIsLoggedIn();
+
   const handleShareToKakao = useCallback(() => {
     const { Kakao } = window;
 
@@ -25,7 +29,10 @@ const ShareButton = ({ cafeId, planId, children }: ShareButtonProps) => {
 
   const onClickShareButton = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    handleShareToKakao();
+    if (isLoggedIn) handleShareToKakao();
+    else {
+      alert("로그인이 필요합니다.");
+    }
   };
 
   return <button onClick={onClickShareButton}>{children}</button>;

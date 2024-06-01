@@ -1,6 +1,5 @@
 import useGetMyCombination from "@/Hooks/Api/myPage/useGetMyCombination";
 import { CombinationType } from "@/interfaces/Combination";
-import Text from "../common/Text";
 import Icon from "../common/Icon";
 import { useRouter } from "next/navigation";
 import CombinationTooltip from "./Tooltip";
@@ -22,9 +21,9 @@ const CombinationSection = () => {
 
   return (
     <section>
-      {myCombination ? (
+      {myCombination?.combinations.length > 0 ? (
         <div className="flex flex-col gap-3">
-          {myCombination.combinations?.map((combination: CombinationType) => {
+          {myCombination.combinations.map((combination: CombinationType) => {
             return (
               <button
                 key={combination.id}

@@ -11,6 +11,7 @@ import useHandleBottomSheet from "@/Hooks/useHandleBottomSheet";
 import SaveSection from "../SaveSection";
 import useOutsideClick from "@/Hooks/useOutsideClick";
 import { useRef } from "react";
+import useIsLoggedIn from "@/Hooks/useLoggedIn";
 
 interface CardResultCafeInfoProps {
   cafeDatas: CafeType[] | CafeInfoType[];
@@ -18,6 +19,7 @@ interface CardResultCafeInfoProps {
 }
 
 const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
+  const isLoggedIn = useIsLoggedIn();
   const router = useRouter();
   const overlayRef = useRef(null);
   const { currentSelectCafeId, handleClickBookmark } = useHandleBookmark();
@@ -69,6 +71,11 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
                     </ShareButton>
                     <button
                       onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+                        if (!isLoggedIn) {
+                          alert("로그인이 필요합니다.");
+                          return;
+                        }
+
                         if (planId) handleClickBookmark(e, cafeData.id, planId);
                         else handleClickBookmark(e, cafeData.id);
 

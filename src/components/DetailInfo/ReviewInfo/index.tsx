@@ -107,7 +107,7 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
                         </div>
                       )}
                     </div>
-                    <div className="flex gap-1.5 overflow-scroll">
+                    <div className="flex gap-1.5 overflow-scroll bg-white">
                       {review.imageUrls.map((image) => {
                         return (
                           <div
@@ -120,23 +120,25 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
                         );
                       })}
                     </div>
-                    <div className="flex items-center gap-[6px]">
-                      <Text size="small" className="text-gray-800">
-                        추천메뉴
-                      </Text>
-                      <div className="text-gray-800 mb-[-1px]">|</div>
-                      <div className="flex gap-1.5"></div>
-                      {review.recommendMenus.slice(0, 2).map((keyword) => {
-                        return (
-                          <button
-                            key={keyword}
-                            className="h-[31px] px-3 rounded-3xl border-[1px] border-solid border-silver"
-                          >
-                            <Text size="small">{keyword}</Text>
-                          </button>
-                        );
-                      })}
-                    </div>
+                    {review.recommendMenus.length > 0 && (
+                      <div className="flex items-center gap-[6px]">
+                        <Text size="small" className="text-gray-800">
+                          추천메뉴
+                        </Text>
+                        <div className="text-gray-800 mb-[-1px]">|</div>
+                        <div className="flex gap-1.5"></div>
+                        {review.recommendMenus.slice(0, 2).map((keyword) => {
+                          return (
+                            <button
+                              key={keyword}
+                              className="h-[31px] px-3 rounded-3xl border-[1px] border-solid border-silver"
+                            >
+                              <Text size="small">{keyword}</Text>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 </article>
               );

@@ -45,7 +45,10 @@ const NextButtonSection = ({
       <Button
         size="full"
         className="bg-white"
-        onClick={() => router.push(`/plan/${nextStep}`)}
+        onClick={() => {
+          if (nextStep === "2") router.push(`/plan/3`);
+          else router.push(`/plan/${nextStep}`);
+        }}
       >
         <Text size="small" className="text-gray-700">
           SKIP
