@@ -1,6 +1,4 @@
-import Input from "@/components/common/Input";
 import Icon from "@/components/common/Icon";
-import BackButton from "@/components/common/BackButton";
 import useSearchInput from "@/store/searchInput";
 import RollingInput from "@/components/common/RollingInput";
 
@@ -27,9 +25,6 @@ const SearchInput = ({ handleKeyUpSearchInput }: SearchInputProps) => {
 
   return (
     <div className="w-full h-[50px] px-4 flex relative">
-      <div className="h-6 absolute top-1/2 transform -translate-y-1/2">
-        <BackButton />
-      </div>
       <RollingInput
         type="text"
         value={searchInputValue}

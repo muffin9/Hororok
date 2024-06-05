@@ -27,17 +27,13 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
     topInfo && (
       <section className="h-screen overflow-y-scroll" key={topInfo.cafeId}>
         <div
-          className={`bg-sampleImage bg-cover bg-center w-[390px] h-[228px]`}
+          className={`bg-cover bg-center w-[390px] h-[228px]`}
+          style={{
+            backgroundImage: `url(http:${topInfo.originUrl})`,
+          }}
         >
           <header className="flex justify-between px-4 pt-4">
-            <button
-              type="button"
-              onClick={() => router.push(`/map`)}
-              aria-label="back button"
-              className="shadow-xl"
-            >
-              <Icon type="arrow_left_white" size="small" alt="뒤로 가기" />
-            </button>
+            <div />
             <div className="flex gap-4">
               <ShareButton cafeId={+cafeId}>
                 <Icon type="share_white" alt="공유하기" />
