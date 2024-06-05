@@ -1,6 +1,5 @@
 "use client";
 
-import BackButton from "@/components/common/BackButton";
 import Icon from "@/components/common/Icon";
 import ProgressBar from "@/components/common/ProgressBar";
 import Step1 from "./Step1";
@@ -45,7 +44,7 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
       <section className="h-full bg-white overflow-y-scroll">
         <header className="flex flex-col px-4 gap-4 pt-12">
           <div className="flex justify-between">
-            {planId === "1" ? <div /> : <BackButton />}
+            <div />
             <button onClick={openModal}>
               <Icon type="close" size="small" alt="close" />
             </button>
