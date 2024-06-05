@@ -3,9 +3,6 @@ import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 const axiosInstance: AxiosInstance = axios.create();
 
-let isRefreshing = false;
-let failedQueue: { resolve: any; reject: any }[] = [];
-
 const isLoginRequiredForURL = (url: string) => {
   const targetURLs = [
     `${apiSearchUrl}/reviews`,
@@ -35,6 +32,7 @@ const isLoginRequiredForURL = (url: string) => {
     new RegExp(`${apiSearchUrl}/combination/create`),
     new RegExp(`${apiSearchUrl}/combination/(\\d+)`),
     new RegExp(`${apiSearchUrl}/combination/(\\d+)/edit`),
+    `${apiSearchUrl}/auth/logout`,
   ];
 
   return targetURLs.some((targetURL) => {

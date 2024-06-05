@@ -1,6 +1,5 @@
 "use client";
 
-import BackButton from "@/components/common/BackButton";
 import Icon from "@/components/common/Icon";
 import ProgressBar from "@/components/common/ProgressBar";
 import Step1 from "./Step1";
