@@ -123,9 +123,10 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
   }, [currentCoordinates.latitude, currentCoordinates.longitude, params]);
 
   const onClickReBound = () => {
-    const latitude = params.get("latitude");
-    const longitude = params.get("longitude");
-    const moveLatLon = new window.kakao.maps.LatLng(latitude, longitude);
+    const moveLatLon = new window.kakao.maps.LatLng(
+      location.latitude,
+      location.longitude
+    );
     mapRef.current.panTo(moveLatLon);
   };
 

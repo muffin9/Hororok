@@ -25,10 +25,11 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
   const location = useGeolocation();
 
   const { categoryId } = useHandleFilterSection();
-  const { categoryKeywords } = useCategoryKeywordStore();
+  const { categoryKeywords, setCategoryKeywords } = useCategoryKeywordStore();
   const { setSearchResultList } = useSearcResultListStorehPlace();
 
   const {
+    selectedItems,
     handleItemClick,
     checkSelected,
     onClickRefresh,
@@ -46,6 +47,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
     );
 
     setSearchResultList(cafeSearchList);
+    setCategoryKeywords(selectedItems);
 
     const path = `/search_map?latitude=${latitude}&longitude=${longitude}`;
     router.push(path);
@@ -72,6 +74,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
           checkSelected={checkSelected}
           filterDatas={filterDatas}
           maxSelectCount={5}
+          
         />
       </div>
       <div className="flex h-[50px] border-t-[1px] border-silver">
