@@ -71,15 +71,13 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
                   <header className="flex justify-between">
                     <div className="flex gap-3">
                       <Image
-                        src={"/assets/Images/profile.png"}
+                        src={review.picture || "/assets/Images/profile.png"}
                         width={44}
                         height={44}
                         alt="profile image"
                       />
                       <div className="flex flex-col gap-[6px]">
-                        <Text size="small">
-                          {review.userNickname || "익명"}
-                        </Text>
+                        <Text size="small">{review.nickname || "익명"}</Text>
                         <div className="flex">
                           <Star
                             starSize="xSmall"
