@@ -49,12 +49,10 @@ export const getUserCombination = async () => {
 
 export const logoutUser = async () => {
   try {
-    const response = await axiosInstance.post(`${apiSearchUrl}/auth/logout`);
-    if (response.data.status === 204) {
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      localStorage.removeItem("accessTokenExpiration");
-    }
+    await axiosInstance.post(`${apiSearchUrl}/auth/logout`);
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("accessTokenExpiration");
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
   }
