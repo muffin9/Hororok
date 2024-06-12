@@ -14,7 +14,6 @@ import SubmitButton from "@/components/FilterSection/SubmitButton";
 import RefreshButton from "@/components/common/RefreshButton";
 import useGeolocation from "@/Hooks/useGeolocation";
 import { convertRequestKeywords } from "@/utils";
-import { useEffect } from "react";
 
 const Step4 = () => {
   const router = useRouter();
@@ -52,10 +51,6 @@ const Step4 = () => {
       `/plan/result?latitude=${convertPlanData.latitude}&longitude=${convertPlanData.longitude}`
     );
   };
-
-  useEffect(() => {
-    resetKeywords();
-  }, []);
 
   return (
     <div>

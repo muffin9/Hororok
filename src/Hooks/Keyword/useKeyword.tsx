@@ -11,10 +11,9 @@ const initKeywords = {
 };
 
 const useKeyword = () => {
-  const { categoryKeywords } = useCategoryKeywordStore();
   const [selectedItems, setSelectedItems] =
-    useState<CategoryKeywordsType>(categoryKeywords); 
-    
+    useState<CategoryKeywordsType>(initKeywords);
+
   const updatedKeywords = (category: string, name: string) => {
     const updatedItems = { ...selectedItems };
 

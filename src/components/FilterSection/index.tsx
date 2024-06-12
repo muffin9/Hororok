@@ -43,11 +43,11 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
     const cafeSearchList = await getSearchListByKeywords(
       +latitude,
       +longitude,
-      categoryKeywords
+      selectedItems
     );
 
     setSearchResultList(cafeSearchList);
-    setCategoryKeywords(selectedItems);
+    // setCategoryKeywords(selectedItems);
 
     const path = `/search_map?latitude=${latitude}&longitude=${longitude}`;
     router.push(path);
@@ -74,7 +74,6 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
           checkSelected={checkSelected}
           filterDatas={filterDatas}
           maxSelectCount={5}
-          
         />
       </div>
       <div className="flex h-[50px] border-t-[1px] border-silver">
