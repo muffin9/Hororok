@@ -25,7 +25,8 @@ const useReviewMutation = () => {
         queryClient.invalidateQueries({
           queryKey: ["getReviewInfo", cafeId],
         });
-      }
+        return true;
+      } else return false;
     },
   });
 
