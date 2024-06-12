@@ -19,6 +19,7 @@ const useReviewMutation = () => {
     },
     onSuccess: (data) => {
       if (data.status === 200) {
+        console.log(data);
         const cafeId = data.data.cafeId;
         showMessage(`리뷰가 등록되었습니다.`);
         queryClient.invalidateQueries({

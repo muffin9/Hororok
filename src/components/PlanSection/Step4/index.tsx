@@ -55,7 +55,7 @@ const Step4 = () => {
 
   useEffect(() => {
     resetKeywords();
-  }, [resetKeywords]);
+  }, []);
 
   return (
     <div>
