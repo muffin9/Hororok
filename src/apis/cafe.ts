@@ -40,7 +40,7 @@ export const getCafePhotoInfo = async (
   const cafeImageUrl =
     page === "all"
       ? `${apiSearchUrl}/cafe/${cafeId}/images/all`
-      : `${apiSearchUrl}/cafe/${cafeId}/images?cursor=${cursor}`;
+      : `${apiSearchUrl}/cafe/${cafeId}/images`;
   try {
     const response = await axiosInstance(cafeImageUrl);
     return response.data;
