@@ -1,6 +1,5 @@
 import axiosInstance from "@/apis/apiClient";
 import { apiSearchUrl } from "@/app/constants";
-import { ReviewPatchInfoType, ReviewPostInfoType } from "@/interfaces/Review";
 import useToastStore from "@/store/useToastStore";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -20,7 +19,11 @@ const useReviewMutation = () => {
     },
     onSuccess: (data) => {
       if (data.status === 200) {
+        const cafeId = data.data.cafeId;
         showMessage(`리뷰가 등록되었습니다.`);
+        queryClient.invalidateQueries({
+          queryKey: ["getReviewInfo", cafeId],
+        });
       }
     },
   });

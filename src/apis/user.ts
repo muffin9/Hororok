@@ -53,6 +53,7 @@ export const logoutUser = async () => {
     if (response.data.status === 204) {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
+      localStorage.removeItem("accessTokenExpiration");
     }
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
