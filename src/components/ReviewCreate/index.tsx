@@ -71,8 +71,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
         })
       );
 
-      const responseOk = await postReview(formData);
-      if (responseOk) router.push(`/cafe/${cafeId}`);
+      await postReview(formData);
     }
   };
 
