@@ -47,7 +47,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
     );
 
     setSearchResultList(cafeSearchList);
-    // setCategoryKeywords(selectedItems);
+    setCategoryKeywords(selectedItems);
 
     const path = `/search_map?latitude=${latitude}&longitude=${longitude}`;
     router.push(path);
