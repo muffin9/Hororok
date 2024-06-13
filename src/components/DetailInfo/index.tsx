@@ -11,14 +11,18 @@ import { CafeTopInfoType, CafeKeyWordType } from "@/interfaces/Cafe";
 import ShareButton from "../common/ShareButton";
 import useModal from "@/Hooks/useModal";
 import Modal from "../common/Modal";
+import useIsLoggedIn from "@/Hooks/useLoggedIn";
+import useHandleBookmark from "@/Hooks/useHandleBookmark";
 
 interface DetailInfoProps {
   cafeId: string;
 }
 
 const DetailInfo = ({ cafeId }: DetailInfoProps) => {
+  const isLoggedIn = useIsLoggedIn();
   const { topInfo }: { topInfo: CafeTopInfoType } =
     useGetCafeDetailInfo(cafeId);
+  const { handleClickBookmark } = useHandleBookmark();
 
   const { showModal, openModal, closeModal } = useModal();
   const router = useRouter();
@@ -38,7 +42,18 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
               <ShareButton cafeId={+cafeId}>
                 <Icon type="share_white" alt="공유하기" />
               </ShareButton>
-              <button className="cursor">
+              <button
+                className="cursor"
+                onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!isLoggedIn) {
+                    alert("로그인이 필요합니다.");
+                    return;
+                  }
+
+                  handleClickBookmark(e, +cafeId);
+                }}
+              >
                 <Icon type="bookmark_white" alt="저장하기" />
               </button>
             </div>
