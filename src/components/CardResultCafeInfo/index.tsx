@@ -53,16 +53,19 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
           <>
             <div
               key={cafeData.id}
-              className="flex gap-3 px-4 my-4 cursor-pointer"
+              className="w-full flex gap-3 px-4 my-4 cursor-pointer"
               onClick={() => router.push(`/cafe/${cafeData.id}`)}
             >
               <div
                 className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
                 style={{ backgroundImage: `url(http:${cafeData.imageUrl})` }}
               />
-              <div className="w-full flex flex-col py-2 gap-3">
+              <div className="min-w-[245px] flex flex-col py-2 gap-3">
                 <header className="flex justify-between">
-                  <Text size="large" className="text-black">
+                  <Text
+                    size="large"
+                    className="text-black truncate overflow-hidden whitespace-nowrap"
+                  >
                     {cafeData.name}
                   </Text>
                   <div className="flex gap-4">
@@ -71,6 +74,7 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
                     </ShareButton>
                     <button
                       onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
+                        e.preventDefault();
                         if (!isLoggedIn) {
                           alert("로그인이 필요합니다.");
                           return;
@@ -100,7 +104,10 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
                       ({cafeData.reviewCount})
                     </Text>
                   </div>
-                  <Text size="extraSmall" className="text-gray-700">
+                  <Text
+                    size="extraSmall"
+                    className="text-gray-700 overflow-hidden whitespace-nowrap"
+                  >
                     {cafeData.roadAddress}
                   </Text>
                 </div>
