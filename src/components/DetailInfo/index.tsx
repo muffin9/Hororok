@@ -45,7 +45,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
               <button
                 className="cursor"
                 onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
+                  e.stopPropagation();
                   if (!isLoggedIn) {
                     alert("로그인이 필요합니다.");
                     return;
