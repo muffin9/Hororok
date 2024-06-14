@@ -24,7 +24,7 @@ const Profile = () => {
             width={44}
             height={44}
             className="rounded-full"
-            src={`${myProfile.picture}`}
+            src={`${myProfile.picture} || "/assets/Images/default_profile.png"`}
             alt="profile_image"
             layout="fixed"
           />
