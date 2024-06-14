@@ -19,7 +19,7 @@ const nextConfig = {
     domains: [
       "//hororok-bucket.kr.object.ncloudstorage.com",
       "kr.object.ncloudstorage.com",
-      "//d2jel1wui0sscy.cloudfront.net",
+      "d2jel1wui0sscy.cloudfront.net",
     ],
   },
 };
