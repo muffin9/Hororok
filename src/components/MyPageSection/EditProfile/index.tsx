@@ -10,9 +10,7 @@ const EditProfile = () => {
   const { myProfile, postProfile } = useProfileMutation();
   const [nickname, setNickname] = useState("");
   const [file, setFile] = useState<File>();
-  const [imageUrl, setImageUrl] = useState(
-    `${process.env.NEXT_PUBLIC_CLIENT_URL}assets/Icon/default_profile.svg`
-  );
+  const [imageUrl, setImageUrl] = useState("");
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files;
@@ -32,7 +30,10 @@ const EditProfile = () => {
   useEffect(() => {
     if (myProfile) {
       setNickname(myProfile.nickname);
-      setImageUrl(myProfile.picture);
+      setImageUrl(
+        myProfile.picture ||
+          `${process.env.NEXT_PUBLIC_CLIENT_URL}assets/Images/default_profile.png`
+      );
     }
   }, []);
 
