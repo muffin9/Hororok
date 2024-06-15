@@ -22,7 +22,7 @@ const CombinationSection = () => {
   return (
     <section>
       {myCombination?.combinations.length > 0 ? (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 items-end">
           {myCombination.combinations.map((combination: CombinationType) => {
             return (
               <button
@@ -37,7 +37,15 @@ const CombinationSection = () => {
               </button>
             );
           })}
-          <CombinationTooltip />
+          <div className="flex items-center gap-3">
+            <CombinationTooltip />
+            <button
+              className="w-[40px] h-[40px] flex justify-center items-center bg-white rounded-full"
+              onClick={handleAddButton}
+            >
+              <Icon size="small" type="plus" alt="plus" />
+            </button>
+          </div>
         </div>
       ) : (
         <div className="flex items-center gap-3">

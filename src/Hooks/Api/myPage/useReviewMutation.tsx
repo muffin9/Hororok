@@ -21,7 +21,7 @@ const useReviewMutation = () => {
       if (data.status === 200) {
         const cafeId = data.data.cafeId;
         showMessage(`리뷰가 등록되었습니다.`);
-        queryClient.invalidateQueries({
+        queryClient.refetchQueries({
           queryKey: ["getReviewInfo", cafeId],
         });
         router.push(`/cafe/${cafeId}`);

@@ -20,7 +20,7 @@ const useCombinationMutation = () => {
     onSuccess: (data) => {
       if (data) {
         queryClient.refetchQueries({
-          queryKey: ["useGetCombination", data.data.combinationId],
+          queryKey: ["getUserCombination"],
         });
         showMessage(`조합이 생성되었습니다.`);
         router.push("/map");
@@ -44,7 +44,7 @@ const useCombinationMutation = () => {
     onSuccess: (data) => {
       if (data) {
         queryClient.refetchQueries({
-          queryKey: ["useGetCombination", data.data.combinationId],
+          queryKey: ["getUserCombination"],
         });
         showMessage(`조합이 수정되었습니다.`);
         router.push("/map");
