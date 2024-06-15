@@ -37,6 +37,7 @@ const CombinationSection = () => {
               </button>
             );
           })}
+          <CombinationTooltip />
         </div>
       ) : (
         <div className="flex items-center gap-3">
