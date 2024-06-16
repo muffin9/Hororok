@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 const useGetMyCombination = () => {
   const isLoggedIn = useIsLoggedIn();
 
-  const { data: myCombination } = useQuery({
+  const { data: myCombination, isLoading: myCombinationLoading } = useQuery({
     queryKey: ["getUserCombination"],
     queryFn: () => {
       if (isLoggedIn) {
@@ -18,7 +18,7 @@ const useGetMyCombination = () => {
     staleTime: 600000,
   });
 
-  return { myCombination };
+  return { myCombination, myCombinationLoading };
 };
 
 export default useGetMyCombination;
