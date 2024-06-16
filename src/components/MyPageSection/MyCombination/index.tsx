@@ -27,14 +27,14 @@ const MyCombinationCafe = () => {
           등록할 수 있으며 선택한 아이콘으로 홈에서 표시돼요.
         </Text>
       </div>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-col gap-4 mt-4">
         {myCombination?.combinations.length > 0 &&
           myCombination.combinations.map((combination: CombinationType) => {
             return (
               <button
                 key={combination.icon}
                 id={`${combination.id}`}
-                className="flex gap-2 justify-between p-3 border-solid border-[1px] border-gray-400 rounded-2xl"
+                className="flex gap-2 justify-between items-center p-3 border-solid border-[1px] border-gray-400 rounded-2xl"
                 onClick={() =>
                   router.push(`/combination/createEdit/${combination.id}`)
                 }
