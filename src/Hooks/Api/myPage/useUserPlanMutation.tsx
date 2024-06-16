@@ -26,7 +26,7 @@ const useUserPlanMutation = (sort: SortType, status: PlanStatusType) => {
       planStatus: PlanStatusType;
     }) => {
       return axiosInstance.delete(
-        `${apiSearchUrl}/plan/${planId}/delete?status=${planStatus}`
+        `${apiSearchUrl}/plan/${planId}/delete?status=${planStatus.toUpperCase()}`
       );
     },
     onSuccess: (data) => {

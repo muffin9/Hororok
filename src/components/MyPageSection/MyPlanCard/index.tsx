@@ -35,7 +35,7 @@ const MyPlanCard = ({
       <header className="mb-6 px-4">
         <div className="flex gap-1">
           <Text size="large" weight="bold">
-            {dataType === "SAVED" ? "저장한 여정" : "공유한 여정"}
+            {dataType === "saved" ? "저장한 여정" : "공유한 여정"}
           </Text>
         </div>
         <div className="flex gap-2 ml-2">

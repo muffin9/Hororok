@@ -13,12 +13,12 @@ const MyPlanList = () => {
     userSaveData,
     deletePlan: deleteSavePlan,
     refetchSaveData,
-  } = useUserPlanMutation(saveSort, "SAVED");
+  } = useUserPlanMutation(saveSort, "saved");
   const {
     userShareData,
     deletePlan: deleteSharePlan,
     refetchShareData,
-  } = useUserPlanMutation(shareSort, "SHARED");
+  } = useUserPlanMutation(shareSort, "shared");
 
   useEffect(() => {
     refetchSaveData();
@@ -41,7 +41,7 @@ const MyPlanList = () => {
         <>
           {userSaveData && (
             <MyPlanCard
-              dataType="SAVED"
+              dataType="saved"
               planData={userSaveData}
               sort={saveSort}
               setSort={setSaveSort}
@@ -50,7 +50,7 @@ const MyPlanList = () => {
           )}
           {userShareData && (
             <MyPlanCard
-              dataType="SHARED"
+              dataType="shared"
               planData={userShareData}
               sort={shareSort}
               setSort={setShareSort}

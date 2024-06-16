@@ -7,7 +7,7 @@ export interface ProfileType {
 }
 
 export type SortType = "RECENT" | "UPCOMING";
-export type PlanStatusType = "SAVED" | "SHARED";
+export type PlanStatusType = "saved" | "shared";
 
 export interface PlanDataType {
   id: number;
