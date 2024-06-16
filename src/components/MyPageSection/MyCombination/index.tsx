@@ -28,7 +28,7 @@ const MyCombinationCafe = () => {
         </Text>
       </div>
       <div className="flex flex-wrap gap-3">
-        {myCombination.combinations.map((combination: CombinationType) => {
+        {myCombination.combinations?.map((combination: CombinationType) => {
           <button
             id={`${combination.id}`}
             className="flex gap-2 justify-between p-3 border-solid border-[1px] border-gray-400 rounded-2xl"
