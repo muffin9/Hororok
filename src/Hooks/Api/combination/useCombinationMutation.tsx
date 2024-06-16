@@ -43,9 +43,8 @@ const useCombinationMutation = () => {
     },
     onSuccess: (data) => {
       if (data) {
-        const combinationId = data.data.combinationId;
         queryClient.refetchQueries({
-          queryKey: ["useGetCombination", combinationId],
+          queryKey: ["getUserCombination"],
         });
         showMessage(`조합이 수정되었습니다.`);
         router.push("/myPage");
