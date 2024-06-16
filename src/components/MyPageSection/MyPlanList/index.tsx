@@ -13,20 +13,20 @@ const MyPlanList = () => {
     userSaveData,
     deletePlan: deleteSavePlan,
     refetchSaveData,
-  } = useUserPlanMutation(saveSort, "saved");
+  } = useUserPlanMutation(saveSort, "SAVED");
   const {
     userShareData,
     deletePlan: deleteSharePlan,
     refetchShareData,
-  } = useUserPlanMutation(shareSort, "shared");
+  } = useUserPlanMutation(shareSort, "SHARED");
 
   useEffect(() => {
     refetchSaveData();
-  }, [saveSort]);
+  }, [refetchSaveData, saveSort]);
 
   useEffect(() => {
     refetchShareData();
-  }, [shareSort]);
+  }, [refetchShareData, shareSort]);
 
   return (
     <div className="flex flex-col gap-6 py-6">
@@ -41,7 +41,7 @@ const MyPlanList = () => {
         <>
           {userSaveData && (
             <MyPlanCard
-              dataType="saved"
+              dataType="SAVED"
               planData={userSaveData}
               sort={saveSort}
               setSort={setSaveSort}
@@ -50,7 +50,7 @@ const MyPlanList = () => {
           )}
           {userShareData && (
             <MyPlanCard
-              dataType="shared"
+              dataType="SHARED"
               planData={userShareData}
               sort={shareSort}
               setSort={setShareSort}
