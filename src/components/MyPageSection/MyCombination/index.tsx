@@ -30,19 +30,22 @@ const MyCombinationCafe = () => {
       <div className="flex flex-wrap gap-3">
         {myCombination?.combinations.length > 0 &&
           myCombination.combinations.map((combination: CombinationType) => {
-            <button
-              id={`${combination.id}`}
-              className="flex gap-2 justify-between p-3 border-solid border-[1px] border-gray-400 rounded-2xl"
-              onClick={() =>
-                router.push(`/combination/createEdit/${combination.id}`)
-              }
-            >
-              <Text size="large">{combination.icon}</Text>
-              <Text size="small">{combination.name}</Text>
-              <Text size="extraSmall" className="text-gray-700">
-                수정하기
-              </Text>
-            </button>;
+            return (
+              <button
+                key={combination.icon}
+                id={`${combination.id}`}
+                className="flex gap-2 justify-between p-3 border-solid border-[1px] border-gray-400 rounded-2xl"
+                onClick={() =>
+                  router.push(`/combination/createEdit/${combination.id}`)
+                }
+              >
+                <Icon type={combination.icon} alt={combination.icon} />
+                <Text size="small">{combination.name}</Text>
+                <Text size="extraSmall" className="text-gray-700">
+                  수정하기
+                </Text>
+              </button>
+            );
           })}
       </div>
     </div>
