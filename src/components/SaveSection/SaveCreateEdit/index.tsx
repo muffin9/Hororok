@@ -39,18 +39,20 @@ const SaveCreateEdit = ({ paramId }: SaveCreateEditProps) => {
   const [name, setName] = useState<string>(paramFolderName || "");
   const [color, setColor] = useState<string>(`#${paramColor}` || "");
   const [isVisible, setIsVisible] = useState<boolean>(paramIsVisible || false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const handleChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
   const checkDisabledSubmit = () => {
-    if (name === "" || color === "") return true;
+    if (name === "" || color === "" || isSubmitting) return true;
     return false;
   };
 
   const completeSubmit = useDebounce(() => {
     // paramId has -> patch axios, id no has -> post axios
+    setIsSubmitting(true);
     if (paramId)
       patchBookmarkFolder({ folderId: paramId, name, color, isVisible });
     else
@@ -59,6 +61,7 @@ const SaveCreateEdit = ({ paramId }: SaveCreateEditProps) => {
         color,
         isVisible,
       });
+    setIsSubmitting(false);
   }, 500);
 
   return (
@@ -105,7 +108,7 @@ const SaveCreateEdit = ({ paramId }: SaveCreateEditProps) => {
           onClick={completeSubmit}
           disabled={checkDisabledSubmit()}
         >
-          완료
+          {isSubmitting ? "생성중..." : "완료"}
         </Button>
       </div>
       <ToastMessage />
