@@ -47,7 +47,7 @@ const useCombinationMutation = () => {
           queryKey: ["getUserCombination"],
         });
         showMessage(`조합이 수정되었습니다.`);
-        router.push("/map");
+        router.push("/mypage");
       }
     },
   });
