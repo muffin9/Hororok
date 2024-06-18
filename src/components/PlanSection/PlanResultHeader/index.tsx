@@ -5,20 +5,13 @@ import Text from "@/components/common/Text";
 import usePlanMatchStore from "@/store/usePlanMatchStore";
 import SimilarHeader from "./SimilarHeader";
 import useHandleBookmark from "@/Hooks/useHandleBookmark";
-import useHandleBottomSheet from "@/Hooks/useHandleBottomSheet";
-import { useRef } from "react";
-import SaveSection from "@/components/SaveSection";
-import useOutsideClick from "@/Hooks/useOutsideClick";
 import useIsLoggedIn from "@/Hooks/useLoggedIn";
 
 const PlanResultHeader = () => {
   const isLoggedIn = useIsLoggedIn();
-  const overlayRef = useRef(null);
-  const { resultPlanInfos } = usePlanMatchStore();
-  const { currentSelectCafeId, handleClickBookmark } = useHandleBookmark();
-  const { isBottomSheet, setIsBottomSheet } = useHandleBottomSheet();
 
-  useOutsideClick(overlayRef, () => setIsBottomSheet(false));
+  const { resultPlanInfos } = usePlanMatchStore();
+  const { handleClickBookmark } = useHandleBookmark();
 
   return (
     <>
@@ -48,7 +41,6 @@ const PlanResultHeader = () => {
                       resultPlanInfos.matchCafes[0].id,
                       resultPlanInfos.planId
                     );
-                    setIsBottomSheet(!isBottomSheet);
                   }}
                 >
                   <Icon type="bookmark" size="small" alt="북마크" />
@@ -100,14 +92,6 @@ const PlanResultHeader = () => {
           </div>
         )}
       </header>
-      {isBottomSheet && (
-        <>
-          <div className="absolute top-0 left-0 w-screen h-screen" />
-          <div ref={overlayRef} className="fixed bottom-0 z-[1000]">
-            <SaveSection currentSelectCafeId={currentSelectCafeId} />
-          </div>
-        </>
-      )}
     </>
   );
 };
