@@ -71,7 +71,11 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
                   <header className="flex justify-between">
                     <div className="flex gap-3">
                       <Image
-                        src={review.picture || "/assets/Images/profile.png"}
+                        src={
+                          review.picture
+                            ? `http:${review.picture}`
+                            : "/assets/Images/profile.png"
+                        }
                         width={44}
                         height={44}
                         alt="profile image"

@@ -14,12 +14,13 @@ const GNB = () => {
   const router = useRouter();
   const { userInfo } = useUserInfoStore();
   const { isBottomSheet, setIsBottomSheet } = useHandleBottomSheet();
+
   // const searchParams = useSearchParams();
   // const show = searchParams.get("show");
 
   // const currentStep = usePlanStore((state) => state.currentStep);
   // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
-  const { setIsWrting } = usePlanStore();
+  const { resetPlanStore, setIsWrting } = usePlanStore();
 
   const checkCurrentStep = () => {
     // if (currentStep !== "1") {
@@ -27,6 +28,7 @@ const GNB = () => {
     // } else {
     //   router.push("/plan/1");
     // }
+    resetPlanStore();
     router.push("/plan/1");
   };
 
