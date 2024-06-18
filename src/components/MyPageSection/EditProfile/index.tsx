@@ -44,7 +44,7 @@ const EditProfile = () => {
 
   return (
     <section className="px-4">
-      <div className="flex justify-center rounded-full">
+      <div className="flex justify-center">
         <label
           id="fileInput"
           className="min-w-[100px] h-[100px] flex justify-center items-center cursor-pointer"
@@ -55,6 +55,7 @@ const EditProfile = () => {
             height={90}
             alt="profile_image"
             layout="fixed"
+            className="rounded-full"
           />
           <input
             type="file"
