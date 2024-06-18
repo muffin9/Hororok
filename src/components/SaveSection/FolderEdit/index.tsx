@@ -30,8 +30,10 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
         {folderList?.folderName !== "기본 폴더" && (
           <button
             onClick={() => {
-              deleteBookmarkFolder(folderId);
-              router.push("/map");
+              if (window.confirm("정말로 이 폴더를 삭제하시겠습니까?")) {
+                deleteBookmarkFolder(folderId);
+                router.push("/map");
+              }
             }}
           >
             <Icon size="small" type="trash" alt="trash" />
