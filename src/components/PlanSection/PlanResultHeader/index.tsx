@@ -6,12 +6,14 @@ import usePlanMatchStore from "@/store/usePlanMatchStore";
 import SimilarHeader from "./SimilarHeader";
 import useHandleBookmark from "@/Hooks/useHandleBookmark";
 import useIsLoggedIn from "@/Hooks/useLoggedIn";
+import useToastStore from "@/store/useToastStore";
 
 const PlanResultHeader = () => {
   const isLoggedIn = useIsLoggedIn();
 
   const { resultPlanInfos } = usePlanMatchStore();
   const { handleClickBookmark } = useHandleBookmark();
+  const { showMessage } = useToastStore();
 
   return (
     <>
@@ -40,6 +42,9 @@ const PlanResultHeader = () => {
                       e,
                       resultPlanInfos.matchCafes[0].id,
                       resultPlanInfos.planId
+                    );
+                    showMessage(
+                      `${resultPlanInfos.locationName}을 내 계획에 추가했어요`
                     );
                   }}
                 >
