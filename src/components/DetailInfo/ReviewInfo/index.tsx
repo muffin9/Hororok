@@ -79,6 +79,7 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
                         width={44}
                         height={44}
                         alt="profile image"
+                        className="rounded-full"
                       />
                       <div className="flex flex-col gap-[6px]">
                         <Text size="small">{review.nickname || "익명"}</Text>
