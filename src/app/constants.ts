@@ -396,3 +396,6 @@ export const onBoardingTexts = [
     imageUrl: "/assets/Images/onboarding4.png",
   },
 ];
+
+export const sampleMenuImageUrl =
+  "http://d2jel1wui0sscy.cloudfront.net/resized/menu-thumbnail/e9c91ff8-e4a1-4040-8bdd-e7b405b79679.png";

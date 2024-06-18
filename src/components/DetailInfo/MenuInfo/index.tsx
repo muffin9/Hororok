@@ -1,5 +1,6 @@
 import useGetCafeDetailInfo from "@/Hooks/Api/useGetCafeDetailInfo";
 import useMoreData from "@/Hooks/useMoreData";
+import { sampleMenuImageUrl } from "@/app/constants";
 import MoreButton from "@/components/common/MoreButton";
 import Text from "@/components/common/Text";
 import { CafeMenuInfoType, CafeMenuType } from "@/interfaces/Cafe";
@@ -34,7 +35,9 @@ const MenuInfo = ({ cafeId, handleOnMenuClick, page }: MenuInfoProps) => {
                 <div
                   className={`bg-cover bg-center w-[100px] h-[100px] rounded-lg`}
                   style={{
-                    backgroundImage: `url(http:${menuData.thumbnailUrl})`,
+                    backgroundImage: menuData.thumbnailUrl
+                      ? `url(http:${menuData.thumbnailUrl})`
+                      : `url(${sampleMenuImageUrl})`,
                   }}
                 ></div>
                 <div className="flex flex-col">
