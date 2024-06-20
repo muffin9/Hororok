@@ -70,6 +70,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
                     }
 
                     handleClickBookmark(e, +cafeId);
+                    setIsBottomSheet(!isBottomSheet);
                   }}
                 >
                   <Icon type="bookmark_white" alt="저장하기" />
