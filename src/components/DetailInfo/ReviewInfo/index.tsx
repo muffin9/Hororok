@@ -15,8 +15,7 @@ interface ReviewInfoProps {
 const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
   const { reviewInfo }: { reviewInfo: CafeReviewType } = useGetReviewInfo(
     cafeId,
-    0,
-    page
+    0
   );
 
   const { showMore, handleClickMoreButton } = useMoreData();

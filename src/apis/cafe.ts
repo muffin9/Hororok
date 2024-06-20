@@ -49,11 +49,7 @@ export const getCafePhotoInfo = async (
   }
 };
 
-export const getCafeReviewInfo = async (
-  cafeId: string,
-  cursor: number,
-  page: string
-) => {
+export const getCafeReviewInfo = async (cafeId: string, cursor: number) => {
   const cafeReviewUrl = cursor
     ? `${apiSearchUrl}/cafe/${cafeId}/reviews?cursor=${cursor}`
     : `${apiSearchUrl}/cafe/${cafeId}/reviews`;

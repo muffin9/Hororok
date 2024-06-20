@@ -1,10 +1,10 @@
 import { getCafeReviewInfo } from "@/apis/cafe";
 import { useQuery } from "@tanstack/react-query";
 
-const useGetReviewInfo = (cafeId: string, cursor: number, page: string) => {
+const useGetReviewInfo = (cafeId: string, cursor: number) => {
   const { data: reviewInfo } = useQuery({
-    queryKey: ["getReviewInfo", cafeId],
-    queryFn: () => getCafeReviewInfo(cafeId, cursor, page),
+    queryKey: [`getReviewInfo_${cafeId}`],
+    queryFn: () => getCafeReviewInfo(cafeId, cursor),
     staleTime: 600000,
   });
 
