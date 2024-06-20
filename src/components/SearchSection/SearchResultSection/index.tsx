@@ -10,6 +10,7 @@ import useHandleKeySearchInput from "@/Hooks/useHandleKeySearchInput";
 import usePlanStore from "@/store/usePlanStore";
 import { getSearchList } from "@/apis/search";
 import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
+import useCoordinatesStore from "@/store/useCoordinatesStore";
 
 const SearchResultSection = () => {
   const { resultSearchInfo } = useSearchPlace();
@@ -19,6 +20,7 @@ const SearchResultSection = () => {
   const { addSearch } = useSearchHistory();
 
   const { setSearchResultList } = useSearcResultListStorehPlace();
+  const { setCoordinates } = useCoordinatesStore();
 
   const onClickPlace = async (place_id: number) => {
     // SearchResultSection 컴포넌트 에게 해당 아이템 onclick시 지도 업데이트 되는 로직 보내줘야한다.
@@ -31,6 +33,7 @@ const SearchResultSection = () => {
 
     if (findPlace) {
       const { latitude, longitude } = findPlace;
+      setCoordinates(latitude, longitude);
       const cafeSearchList = await getSearchList(latitude, longitude);
 
       addSearch(findPlace.place_name);

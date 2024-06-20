@@ -9,6 +9,9 @@ import ToastMessage from "../common/ToastMessage";
 import useBookMarkFolderMutation from "@/Hooks/Api/useBookMarkFolderMutation";
 import ToggleButton from "./ToggleButton";
 import useToggleBookmark from "@/Hooks/Api/useToggleBookmark";
+import useCoordinatesStore from "@/store/useCoordinatesStore";
+import { getSearchList } from "@/apis/search";
+import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 
 const SaveSection = ({
   currentSelectCafeId,
@@ -17,13 +20,20 @@ const SaveSection = ({
 }) => {
   const { bookMarks } = useBookMarkFolderMutation();
   const { toggleBookmark } = useToggleBookmark();
+  const { coordinates } = useCoordinatesStore();
+  const { setSearchResultList } = useSearcResultListStorehPlace();
 
   const router = useRouter();
   const saveRef = useRef<HTMLDivElement>(null);
 
-  const handleClickFolder = (folderId: number) => {
+  const handleClickFolder = async (folderId: number) => {
     if (currentSelectCafeId) {
       toggleBookmark(currentSelectCafeId, folderId);
+      const cafeSearchList = await getSearchList(
+        coordinates.latitude,
+        coordinates.longitude
+      );
+      setSearchResultList(cafeSearchList);
     } else router.push(`/save/folderEdit/${folderId}`);
   };
 
