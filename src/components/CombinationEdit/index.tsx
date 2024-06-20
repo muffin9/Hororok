@@ -53,16 +53,16 @@ const CombinationEdit = ({ combination }: CombinationEditProps) => {
   }, [combination, setSelectedItems]);
 
   return (
-    <section className="flex flex-col gap-4 px-4 overflow-y-scroll">
+    <section className="flex flex-col gap-4 overflow-y-scroll">
       <Input
         type="text"
         value={name}
         placeholder="폴더명을 입력해 주세요."
         onChange={handleChangeInputValue}
-        className="w-full bg-gray-200 p-3 rounded"
+        className="w-full mx-4 bg-gray-200 p-3 rounded"
         maxlength={20}
       />
-      <div className="flex gap-4">
+      <div className="flex gap-4 px-4">
         {combinationIcons.map((combi) => {
           return (
             <button
@@ -79,16 +79,18 @@ const CombinationEdit = ({ combination }: CombinationEditProps) => {
           );
         })}
       </div>
-      <Text size="xLarge" weight="bold">
-        자주 찾는 조합을 선택해주세요.
-      </Text>
-      <Condition
-        handleItemClick={handleItemClick}
-        checkSelected={checkSelected}
-        filterDatas={filterDatas}
-        maxSelectCount={5}
-      />
-      <div className="flex pb-4 h-[50px] border-t-[1px] border-silver">
+      <div className="px-4">
+        <Text size="xLarge" weight="bold">
+          자주 찾는 조합을 선택해주세요.
+        </Text>
+        <Condition
+          handleItemClick={handleItemClick}
+          checkSelected={checkSelected}
+          filterDatas={filterDatas}
+          maxSelectCount={5}
+        />
+      </div>
+      <div className="flex">
         <RefreshButton onClickRefresh={onClickRefresh} />
         <SubmitButton
           onSubmit={onCombinationSubmit}
