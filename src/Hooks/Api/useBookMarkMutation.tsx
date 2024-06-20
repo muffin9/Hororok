@@ -22,10 +22,12 @@ const useBookMarkMutation = () => {
     onSuccess: (data) => {
       try {
         if (data.status === 200) {
-          const folderId = data.data.folderId;
+          const bookmarkId = data.data.bookmarkId;
           showMessage(`카페를 저장했어요!`);
           queryClient.refetchQueries({ queryKey: ["getBookmark"] });
-          queryClient.refetchQueries({ queryKey: [`FolderList_${folderId}`] });
+          queryClient.refetchQueries({
+            queryKey: [`FolderList_${bookmarkId}`],
+          });
         }
       } catch (e) {
         console.error(e);
@@ -42,10 +44,12 @@ const useBookMarkMutation = () => {
     onSuccess: (data) => {
       try {
         if (data.status === 200) {
-          const folderId = data.data.folderId;
+          const bookmarkId = data.data.bookmarkId;
           showMessage(`카페를 삭제했어요!`);
           queryClient.refetchQueries({ queryKey: ["getBookmark"] });
-          queryClient.refetchQueries({ queryKey: [`FolderList_${folderId}`] });
+          queryClient.refetchQueries({
+            queryKey: [`FolderList_${bookmarkId}`],
+          });
         }
       } catch (e) {
         console.error(e);
