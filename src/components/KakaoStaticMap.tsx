@@ -2,6 +2,7 @@
 
 import useGeolocation from "@/Hooks/useGeolocation";
 import { useEffect, useRef } from "react";
+import ReBoundButton from "./common/ReBoundButton";
 
 declare global {
   interface Window {
@@ -16,7 +17,7 @@ interface KakaoStaticMapProps {
 
 const KakaoStaticMap = ({ children, height }: KakaoStaticMapProps) => {
   const location = useGeolocation();
-  const kakaoMapRef = useRef<HTMLElement | null>(null);
+  const kakaoMapRef = useRef<HTMLElement | null | any>(null);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -61,9 +62,26 @@ const KakaoStaticMap = ({ children, height }: KakaoStaticMapProps) => {
     };
   }, [location.latitude, location.longitude]);
 
+  const onClickReBound = () => {
+    const moveLatLon = new window.kakao.maps.LatLng(
+      location.latitude,
+      location.longitude
+    );
+    kakaoMapRef.current.panTo(moveLatLon);
+  };
+
   return (
-    <div className={`w-full ${height} rounded-lg`} id="static_map">
+    <div className={`relative w-full ${height} rounded-lg`} id="static_map">
       {children}
+      <ReBoundButton
+        onClickReBound={onClickReBound}
+        position={{
+          top: "",
+          right: "right-[10px]",
+          bottom: "bottom-[80px]",
+          left: "",
+        }}
+      />
     </div>
   );
 };

@@ -3,12 +3,19 @@ import { reboundButtonImage } from "@/app/constants";
 
 interface ReBoundButtonProps {
   onClickReBound: () => void;
+  position: {
+    top: string;
+    right: string;
+    bottom: string;
+    left: string;
+  };
 }
 
-const ReBoundButton = ({ onClickReBound }: ReBoundButtonProps) => {
+const ReBoundButton = ({ onClickReBound, position }: ReBoundButtonProps) => {
+  const { top, right, bottom, left } = position;
   return (
     <button
-      className="absolute right-[10px] bottom-[10px] z-[1000]"
+      className={`absolute ${right} ${top} ${bottom} ${left} z-[1000]`}
       onClick={onClickReBound}
     >
       <Image
