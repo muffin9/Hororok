@@ -28,7 +28,7 @@ const SaveSection = ({
 
   const handleClickFolder = async (folderId: number) => {
     if (currentSelectCafeId) {
-      toggleBookmark(currentSelectCafeId, folderId);
+      await toggleBookmark(currentSelectCafeId, folderId);
       const cafeSearchList = await getSearchList(
         coordinates.latitude,
         coordinates.longitude
