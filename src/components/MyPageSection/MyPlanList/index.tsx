@@ -7,13 +7,13 @@ import Text from "@/components/common/Text";
 const MyPlanList = () => {
   const [saveSort, setSaveSort] = useState<SortType>("RECENT");
   const [shareSort, setShareSort] = useState<SortType>("RECENT");
-  const [isAllData, setIsAllData] = useState(false);
 
   const {
     userSaveData,
     deletePlan: deleteSavePlan,
     refetchSaveData,
   } = useUserPlanMutation(saveSort, "saved");
+
   const {
     userShareData,
     deletePlan: deleteSharePlan,
@@ -22,11 +22,8 @@ const MyPlanList = () => {
 
   useEffect(() => {
     refetchSaveData();
-  }, [refetchSaveData, saveSort]);
-
-  useEffect(() => {
     refetchShareData();
-  }, [refetchShareData, shareSort]);
+  }, []);
 
   return (
     <div className="flex flex-col gap-6 py-6">
