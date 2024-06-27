@@ -35,7 +35,7 @@ const useUserPlanMutation = (sort: SortType, status: PlanStatusType) => {
     onSuccess: (data) => {
       // const planId = data.data.planId;
       queryClient.refetchQueries({
-        queryKey: [queryKey],
+        queryKey: queryKey,
       });
     },
   });
