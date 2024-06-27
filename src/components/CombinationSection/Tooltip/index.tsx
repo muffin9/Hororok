@@ -1,10 +1,14 @@
-import Icon from "@/components/common/Icon";
+import Image from "next/image";
 
 const CombinationTooltip = () => {
   return (
-    <div className="w-[196px] h-[28px] flex gap-2 items-center bg-gray-800 px-3 rounded-xl">
-      <Icon size="small" type="glass" alt="glass" />
-    </div>
+    <Image
+      src={"/assets/Icon/ic_glass.svg"}
+      className="w-[196px] h-[28px]"
+      width={196}
+      height={28}
+      alt="Combination Tooltip"
+    />
   );
 };
 

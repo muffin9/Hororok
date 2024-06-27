@@ -55,7 +55,7 @@ const GNB = () => {
           className="flex flex-col items-center cursor-pointer"
           onClick={checkCurrentStep}
         >
-          <Icon type="logo" size="medium" alt="계획하기" />
+          <Icon type="plan" size="medium" alt="계획하기" />
           <Text size="extraSmall" className="text-black">
             계획하기
           </Text>
