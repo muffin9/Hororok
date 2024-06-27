@@ -36,6 +36,7 @@ const iconUrls = {
   apple: "/assets/Icon/apple.svg",
   google: "/assets/Icon/google.svg",
   naver: "/assets/Icon/naver.svg",
+  plan: "/assets/Icon/plan.svg",
   re_plan: "/assets/Icon/re-plan.svg",
   info: "/assets/Icon/ic_info.svg",
   coffee: "/assets/Icon/ic_coffee.svg",
@@ -89,6 +90,7 @@ export type IconType =
   | "naver"
   | "google"
   | "apple"
+  | "plan"
   | "re_plan"
   | "info"
   | "coffee"
