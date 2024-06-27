@@ -23,9 +23,9 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
   return (
     <div>
       <div className="flex gap-3 justify-end px-4 cursor-pointer">
-        <button onClick={() => router.push(`/save/folderEdit/${folderId}/map`)}>
+        {/* <button onClick={() => router.push(`/save/folderEdit/${folderId}/map`)}>
           <Icon size="small" type="map" alt="map" />
-        </button>
+        </button> */}
 
         {folderList?.folderName !== "기본 폴더" && (
           <button
