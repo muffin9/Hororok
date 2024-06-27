@@ -2,9 +2,10 @@ import axiosInstance from "@/apis/apiClient";
 import { getUserPlanData } from "@/apis/user";
 import { apiSearchUrl } from "@/app/constants";
 import { SortType, PlanStatusType } from "@/interfaces/user";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const useUserPlanMutation = (sort: SortType, status: PlanStatusType) => {
+  const queryClient = useQueryClient();
   const queryKey = ["getUserPlanData", status, sort];
 
   const { data: userSaveData, refetch: refetchSaveData } = useQuery({
@@ -32,7 +33,10 @@ const useUserPlanMutation = (sort: SortType, status: PlanStatusType) => {
       );
     },
     onSuccess: (data) => {
-      console.log(data);
+      // const planId = data.data.planId;
+      queryClient.refetchQueries({
+        queryKey: [queryKey],
+      });
     },
   });
 
