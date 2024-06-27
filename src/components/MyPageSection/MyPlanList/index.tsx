@@ -22,8 +22,11 @@ const MyPlanList = () => {
 
   useEffect(() => {
     refetchSaveData();
+  }, [refetchSaveData, saveSort]);
+
+  useEffect(() => {
     refetchShareData();
-  }, []);
+  }, [refetchShareData, shareSort]);
 
   return (
     <div className="flex flex-col gap-6 py-6">
