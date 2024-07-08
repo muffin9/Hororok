@@ -5,8 +5,24 @@ import QueryProvider from "@/Hooks/useReactQuery";
 import KakaoScript from "@/Hooks/KakaoScript";
 
 export const metadata: Metadata = {
-  title: "Hororok",
-  description: "Hororok",
+  title: "카페콕 | Cafe",
+  description: "카페콕 | Cafe",
+  icons: {
+    icon: "/assets/Images/logo.png",
+  },
+  openGraph: {
+    title: "",
+    description: "",
+    images: [
+      {
+        url: "/assets/Images/logo.png",
+        width: 1200,
+        height: 627,
+        alt: "Hororok Image",
+      },
+    ],
+  },
+  keywords: [],
 };
 
 export default function RootLayout({
