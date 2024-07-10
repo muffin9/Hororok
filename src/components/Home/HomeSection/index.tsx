@@ -30,9 +30,9 @@ const HomeSection = () => {
           className="w-[358px] h-[50px] p-4 rounded-lg focus:outline-none shadow-default"
         />
       </div>
-      <div className="absolute right-4 top-28">
+      {/* <div className="absolute right-4 top-28">
         <CombinationSection />
-      </div>
+      </div> */}
       {isFilter ? (
         <FilterSection setIsFilter={setIsFilter} />
       ) : (
