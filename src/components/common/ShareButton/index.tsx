@@ -46,11 +46,12 @@ const ShareButton = ({ cafeId, planId }: ShareButtonProps) => {
   };
 
   return (
-    <button
-      onClick={onClickShareButton}
-      className={isClicked ? "bg-kakao" : "bg-white"}
-    >
-      <Icon type="share" size="small" alt="공유하기" />
+    <button onClick={onClickShareButton}>
+      <Icon
+        type={isClicked ? "share" : "share_hover"}
+        size="small"
+        alt="공유하기"
+      />
     </button>
   );
 };
