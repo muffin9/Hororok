@@ -18,6 +18,7 @@ const iconUrls = {
   bookmark_white: "/assets/Icon/bookmark_white.svg",
   bookmark_check: "/assets/Icon/bookmark_check.svg",
   share: "/assets/Icon/share.svg",
+  share_hover: "/assets/Icon/share.svg",
   share_white: "/assets/Icon/share_white.svg",
   person: "/assets/Icon/person.svg",
   check: "/assets/Icon/ic_check.svg",
@@ -72,6 +73,7 @@ export type IconType =
   | "bookmark_white"
   | "bookmark_check"
   | "share"
+  | "share_hover"
   | "share_white"
   | "person"
   | "check"
