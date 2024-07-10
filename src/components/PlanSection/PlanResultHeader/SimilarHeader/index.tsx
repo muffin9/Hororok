@@ -39,9 +39,7 @@ const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
               <ShareButton
                 cafeId={resultPlanInfos.similarCafes[0]?.id}
                 planId={resultPlanInfos.planId}
-              >
-                <Icon type="share" size="small" alt="공유하기" />
-              </ShareButton>
+              />
               {/* <Icon type="bookmark" size="small" alt="북마크" /> */}
             </div>
           </div>

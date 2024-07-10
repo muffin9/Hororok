@@ -1,7 +1,7 @@
 import { patchSharePlan } from "@/apis/plans";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import useIsLoggedIn from "@/Hooks/useLoggedIn";
-import { Router } from "next/router";
+import Icon from "../Icon";
 
 declare global {
   interface Window {
@@ -12,11 +12,11 @@ declare global {
 interface ShareButtonProps {
   cafeId: number;
   planId?: number;
-  children: React.ReactNode;
 }
 
-const ShareButton = ({ cafeId, planId, children }: ShareButtonProps) => {
+const ShareButton = ({ cafeId, planId }: ShareButtonProps) => {
   const isLoggedIn = useIsLoggedIn();
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleShareToKakao = useCallback(() => {
     const { Kakao } = window;
@@ -29,13 +29,25 @@ const ShareButton = ({ cafeId, planId, children }: ShareButtonProps) => {
 
   const onClickShareButton = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    if (isLoggedIn) handleShareToKakao();
-    else {
+    if (isLoggedIn) {
+      setIsClicked(true);
+      handleShareToKakao();
+      setTimeout(() => {
+        setIsClicked(false);
+      }, 200);
+    } else {
       alert("로그인이 필요합니다.");
     }
   };
 
-  return <button onClick={onClickShareButton}>{children}</button>;
+  return (
+    <button
+      onClick={onClickShareButton}
+      className={isClicked ? "bg-kakao" : "bg-white"}
+    >
+      <Icon type="share" size="small" alt="공유하기" />
+    </button>
+  );
 };
 
 export default ShareButton;
