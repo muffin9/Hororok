@@ -57,9 +57,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
             <header className="flex justify-between px-4 pt-4">
               <div />
               <div className="flex gap-4">
-                <ShareButton cafeId={+cafeId}>
-                  <Icon type="share_white" alt="공유하기" />
-                </ShareButton>
+                <ShareButton cafeId={+cafeId} />
                 <button
                   className="cursor"
                   onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {

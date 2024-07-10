@@ -70,9 +70,7 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
                       {cafeData.name}
                     </Text>
                     <div className="flex gap-4">
-                      <ShareButton cafeId={cafeData.id}>
-                        <Icon type="share" size="small" alt="공유하기" />
-                      </ShareButton>
+                      <ShareButton cafeId={cafeData.id} />
                       <button
                         onClick={(
                           e: React.SyntheticEvent<HTMLButtonElement>

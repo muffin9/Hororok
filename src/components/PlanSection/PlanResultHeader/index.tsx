@@ -28,9 +28,7 @@ const PlanResultHeader = () => {
                 <ShareButton
                   cafeId={resultPlanInfos.matchCafes[0].id}
                   planId={resultPlanInfos.planId}
-                >
-                  <Icon type="share" size="small" alt="공유하기" />
-                </ShareButton>
+                />
                 <button
                   onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
                     if (!isLoggedIn) {
