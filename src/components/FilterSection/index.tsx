@@ -6,12 +6,12 @@ import useOutsideClick from "@/Hooks/useOutsideClick";
 import { getSearchListByKeywords } from "@/apis/search";
 import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 import useGeolocation from "@/Hooks/useGeolocation";
-import useKeyword from "@/Hooks/Keyword/useKeyword";
-import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
+import useCategoryFilterKeywordStore from "@/store/useCategoryFilterKeywordStore";
 import useHandleFilterSection from "@/Hooks/useHandleFilterSection";
 import { filterDatas } from "@/app/constants";
 import RefreshButton from "../common/RefreshButton";
 import Icon from "../common/Icon";
+import useFilterKeyword from "@/Hooks/Keyword/useFilterKeyword";
 
 interface FilterSectionProps {
   setIsFilter: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,7 +25,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
   const location = useGeolocation();
 
   const { categoryId } = useHandleFilterSection();
-  const { categoryKeywords, setCategoryKeywords } = useCategoryKeywordStore();
+  const { setCategoryFilterKeywords } = useCategoryFilterKeywordStore();
   const { setSearchResultList } = useSearcResultListStorehPlace();
 
   const {
@@ -34,7 +34,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
     checkSelected,
     onClickRefresh,
     checkKeywordDisabledSubmit,
-  } = useKeyword();
+  } = useFilterKeyword();
 
   const onSubmit = async () => {
     let latitude = params.get("latitude") || location.latitude;
@@ -47,7 +47,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
     );
 
     setSearchResultList(cafeSearchList);
-    setCategoryKeywords(selectedItems);
+    setCategoryFilterKeywords(selectedItems);
 
     const path = `/search_map?latitude=${latitude}&longitude=${longitude}`;
     router.push(path);
