@@ -8,12 +8,15 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 import useOutsideClick from "@/Hooks/useOutsideClick";
+import useModal from "@/Hooks/useModal";
+import Modal from "../Modal";
 
 const GNB = () => {
   const overlayRef = useRef(null);
   const router = useRouter();
   const { userInfo } = useUserInfoStore();
   const { isBottomSheet, setIsBottomSheet } = useHandleBottomSheet();
+  const { showModal, openModal, closeModal } = useModal();
 
   // const searchParams = useSearchParams();
   // const show = searchParams.get("show");
@@ -62,10 +65,13 @@ const GNB = () => {
         </div>
         <div
           className="flex flex-col items-center cursor-pointer"
+          // onClick={() => {
+          //   localStorage.getItem("accessToken")
+          //     ? setIsBottomSheet(!isBottomSheet)
+          //     : router.push("/login");
+          // }}
           onClick={() => {
-            localStorage.getItem("accessToken")
-              ? setIsBottomSheet(!isBottomSheet)
-              : router.push("/login");
+            openModal();
           }}
         >
           <Icon type="bookmark" size="medium" alt="저장" />
@@ -75,10 +81,13 @@ const GNB = () => {
         </div>
         <div
           className="flex flex-col items-center cursor-pointer"
+          // onClick={() => {
+          //   localStorage.getItem("accessToken")
+          //     ? router.push("/myPage")
+          //     : router.push("/login");
+          // }}
           onClick={() => {
-            localStorage.getItem("accessToken")
-              ? router.push("/myPage")
-              : router.push("/login");
+            openModal();
           }}
         >
           <Icon type="account" size="medium" alt="로그인" />
@@ -91,6 +100,15 @@ const GNB = () => {
         <div ref={overlayRef} className="fixed bottom-16">
           <SaveSection />
         </div>
+      )}
+      {showModal && (
+        <Modal
+          title={`서비스 준비중입니다!`}
+          okButtonText="확인"
+          okCallbackFunc={() => {
+            closeModal();
+          }}
+        />
       )}
       {/* {show && (
         <Modal
