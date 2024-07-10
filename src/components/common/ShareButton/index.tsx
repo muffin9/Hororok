@@ -38,7 +38,7 @@ const ShareButton = ({ cafeId, planId }: ShareButtonProps) => {
       handleShareToKakao();
       setTimeout(() => {
         setIsClicked(false);
-      }, 200);
+      }, 500);
     } else {
       alert("로그인이 필요합니다.");
       router.push("/");
