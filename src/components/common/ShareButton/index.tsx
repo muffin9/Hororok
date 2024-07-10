@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { patchSharePlan } from "@/apis/plans";
 import { useCallback, useState } from "react";
 import useIsLoggedIn from "@/Hooks/useLoggedIn";
@@ -16,6 +19,7 @@ interface ShareButtonProps {
 
 const ShareButton = ({ cafeId, planId }: ShareButtonProps) => {
   const isLoggedIn = useIsLoggedIn();
+  const router = useRouter();
   const [isClicked, setIsClicked] = useState(false);
 
   const handleShareToKakao = useCallback(() => {
@@ -37,6 +41,7 @@ const ShareButton = ({ cafeId, planId }: ShareButtonProps) => {
       }, 200);
     } else {
       alert("로그인이 필요합니다.");
+      router.push("/");
     }
   };
 
