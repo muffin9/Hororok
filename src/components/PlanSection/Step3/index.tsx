@@ -32,8 +32,8 @@ const Step3 = () => {
   // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
   const { formData, setFormData } = usePlanStore();
 
-  const checkSelectDay = (day: number | null) => {
-    return selectDay === day;
+  const checkSelectDay = (month: number | null, day: number | null) => {
+    return currentMonth === month && selectDay === day;
   };
 
   const onClickday = (day: number | null) => {

@@ -3,53 +3,30 @@ import Text from "@/components/common/Text";
 import * as React from "react";
 
 interface Option {
-  value: string;
+  value: number;
   label: string;
 }
 
 interface SelectBoxProps {
-  options: Option[];
   selectedOption: Option;
-  onSelectOption: (option: Option) => void;
+  handleSelectOption: (type: "left" | "right") => void;
 }
 
 const SelectBox: React.FC<SelectBoxProps> = ({
-  options,
   selectedOption,
-  onSelectOption,
+  handleSelectOption,
 }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const handleOptionSelect = (option: Option) => {
-    onSelectOption(option);
-    setIsOpen(!isOpen);
-  };
-
-  const toggleSelectBox = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <div>
-      <div
-        className="flex items-center gap-1 cursor-pointer"
-        onClick={toggleSelectBox}
-      >
+      <div className="flex relative justify-center items-center gap-4 cursor-pointer">
+        <button onClick={() => handleSelectOption("left")}>
+          <Icon size="xSmall" type="arrow_left" alt="arrow_left" />
+        </button>
         <Text size="small">{selectedOption.label}</Text>
-        {isOpen ? (
-          <Icon type="arrow_up" size="xSmall" alt="arrow_up" />
-        ) : (
-          <Icon type="arrow_under" size="xSmall" alt="arrow_down" />
-        )}
+        <button onClick={() => handleSelectOption("right")}>
+          <Icon size="xSmall" type="arrow_right" alt="arrow_right" />
+        </button>
       </div>
-      {isOpen && (
-        <div className="absolute top-8 p-3 flex flex-col text-center cursor-pointer bg-white rounded shadow-sm">
-          {options.map((option) => (
-            <div key={option.value} onClick={() => handleOptionSelect(option)}>
-              <Text size="small">{option.label}</Text>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };
