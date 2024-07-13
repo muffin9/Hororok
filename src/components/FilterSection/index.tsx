@@ -76,7 +76,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
           maxSelectCount={5}
         />
       </div>
-      <div className="flex h-[50px] border-t-[1px] border-silver">
+      <div className="sticky bottom-0 flex h-[50px] border-t-[1px] border-silver">
         <RefreshButton onClickRefresh={onClickRefresh} />
         <SubmitButton
           onSubmit={onSubmit}

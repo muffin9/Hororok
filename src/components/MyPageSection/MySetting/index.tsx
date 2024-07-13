@@ -20,13 +20,14 @@ const MySetting = () => {
             <Text size="medium">개선의견 남기기</Text>
           </button>
           <div className="h-[1px] bg-silver" />
-          <Link
-            href="https://www.notion.so/poten-tim-hororok/9e46487a97fa44be83cac811f05414e3?pvs=4"
-            target="_blank"
-            className="p-4"
-          >
-            <Text size="medium">개인정보 처리방침</Text>
-          </Link>
+          <div className="p-4">
+            <Link
+              href="https://www.notion.so/poten-tim-hororok/9e46487a97fa44be83cac811f05414e3?pvs=4"
+              target="_blank"
+            >
+              <Text size="medium">개인정보 처리방침</Text>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="h-[10px] bg-gray-200" />

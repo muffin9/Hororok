@@ -10,8 +10,10 @@ import { useEffect, useRef } from "react";
 import useOutsideClick from "@/Hooks/useOutsideClick";
 import useModal from "@/Hooks/useModal";
 import Modal from "../Modal";
+import useIsLoggedIn from "@/Hooks/useLoggedIn";
 
 const GNB = () => {
+  const isLoggedIn = useIsLoggedIn();
   const overlayRef = useRef(null);
   const router = useRouter();
   const { userInfo } = useUserInfoStore();
@@ -45,7 +47,7 @@ const GNB = () => {
     <>
       <footer className="w-[390px] h-16 fixed bottom-0 flex justify-between items-center px-20 bg-white z-[999]">
         {!isBottomSheet && (
-          <div className="absolute top-[-43px] left-[70px]">
+          <div className="absolute top-[-43px] left-[70px] z-[1002]">
             <Image
               src={"/assets/Icon/tooltip.svg"}
               alt="tooltip"
@@ -65,36 +67,41 @@ const GNB = () => {
         </div>
         <div
           className="flex flex-col items-center cursor-pointer"
-          // onClick={() => {
-          //   localStorage.getItem("accessToken")
-          //     ? setIsBottomSheet(!isBottomSheet)
-          //     : router.push("/login");
-          // }}
           onClick={() => {
-            openModal();
+            isLoggedIn ? router.push("/myPage/setting") : openModal();
+          }}
+        >
+          <Icon type="setting" size="medium" alt="설정" />
+          <Text size="extraSmall" className="text-black">
+            설정
+          </Text>
+        </div>
+        {/* <div
+          className="flex flex-col items-center cursor-pointer"
+          onClick={() => {
+            localStorage.getItem("accessToken")
+              ? setIsBottomSheet(!isBottomSheet)
+              : router.push("/login");
           }}
         >
           <Icon type="bookmark" size="medium" alt="저장" />
           <Text size="extraSmall" className="text-black">
             저장
           </Text>
-        </div>
-        <div
+        </div> */}
+        {/* <div
           className="flex flex-col items-center cursor-pointer"
-          // onClick={() => {
-          //   localStorage.getItem("accessToken")
-          //     ? router.push("/myPage")
-          //     : router.push("/login");
-          // }}
           onClick={() => {
-            openModal();
+            localStorage.getItem("accessToken")
+              ? router.push("/myPage")
+              : router.push("/login");
           }}
         >
           <Icon type="account" size="medium" alt="로그인" />
           <Text size="extraSmall" className="text-black">
             마이페이지
           </Text>
-        </div>
+        </div> */}
       </footer>
       {isBottomSheet && (
         <div ref={overlayRef} className="fixed bottom-16">
@@ -103,9 +110,13 @@ const GNB = () => {
       )}
       {showModal && (
         <Modal
-          title={`서비스 준비중입니다!`}
-          okButtonText="확인"
+          title={`로그인을 해주세요.`}
+          okButtonText="로그인"
+          cancelButtonText="취소"
           okCallbackFunc={() => {
+            router.push("/login");
+          }}
+          cancelCallbackFunc={() => {
             closeModal();
           }}
         />

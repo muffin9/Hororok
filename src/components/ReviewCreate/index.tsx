@@ -14,6 +14,7 @@ import { useState } from "react";
 import { reviewFilterDatas } from "@/app/constants";
 import useReviewMutation from "@/Hooks/Api/myPage/useReviewMutation";
 import { convertRequestKeywords } from "@/utils";
+import useDebounce from "@/Hooks/useDebounce";
 
 interface ReviewCreateProps {
   cafeId: string;
@@ -48,7 +49,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
     setFiles((prevFiles: File[]) => [...prevFiles, ...selectedFiles]);
   };
 
-  const onReviewSubmit = async () => {
+  const onReviewSubmit = useDebounce(async () => {
     if (cafeId) {
       const formData = new FormData();
 
@@ -73,7 +74,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
 
       await postReview(formData);
     }
-  };
+  }, 500);
 
   const checkDisabledSubmit = () => {
     if (!starRating || checkKeywordDisabledSubmit()) return true;
