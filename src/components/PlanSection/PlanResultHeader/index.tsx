@@ -86,7 +86,7 @@ const PlanResultHeader = () => {
           <SimilarHeader resultPlanInfos={resultPlanInfos} />
         )}
         {resultPlanInfos.matchType === "MISMATCH" && (
-          <div className="flex flex-col gap-2 whitespace-pre-wrap">
+          <div className="flex flex-col gap-2 whitespace-pre-wrap mb-2">
             <Text size="large">{planCafeHeader.recommendCafes.title}</Text>
             <Text size="small" className="text-gray-700">
               {resultPlanInfos.locationName}
