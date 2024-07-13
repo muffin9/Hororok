@@ -50,24 +50,26 @@ const PhotoInfo = ({
           </Text>
         </div>
       ) : (
-        <div className="grid grid-cols-2 px-4 gap-1 mt-4">
-          {visiblePhotoData?.map(
-            (imageUrl: { originUrl: string; thumbnailUrl: string }) => {
-              return (
-                <div
-                  key={imageUrl.originUrl}
-                  style={{
-                    backgroundImage: `url(http:${imageUrl.thumbnailUrl})`,
-                  }}
-                  className={
-                    "bg-cover bg-center w-[176px] h-[176px] rounded-lg"
-                  }
-                />
-              );
-            }
-          )}
+        <>
+          <div className="grid grid-cols-2 px-4 gap-1 mt-4">
+            {visiblePhotoData?.map(
+              (imageUrl: { originUrl: string; thumbnailUrl: string }) => {
+                return (
+                  <div
+                    key={imageUrl.originUrl}
+                    style={{
+                      backgroundImage: `url(http:${imageUrl.thumbnailUrl})`,
+                    }}
+                    className={
+                      "bg-cover bg-center w-[176px] h-[176px] rounded-lg"
+                    }
+                  />
+                );
+              }
+            )}
+          </div>
           {photoInfoImageUrlsLen >= 5 && !showMore && page !== "all" && (
-            <div className="w-[calc(100%)] h-[1px] relative bg-gray-200 mt-[33px] mb-[20px]">
+            <div className="w-full h-[1px] relative bg-gray-200 mt-[33px] mb-[20px]">
               <MoreButton
                 text={"사진 더보기"}
                 handleClickMoreButton={() => {
@@ -79,7 +81,7 @@ const PhotoInfo = ({
               />
             </div>
           )}
-        </div>
+        </>
       )}
     </div>
   );
