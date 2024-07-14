@@ -16,12 +16,21 @@ const Step3 = () => {
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
   const handleItemClick = (timeId: number) => {
-    const maxSelectedId = Math.max(...selectedIds);
-
-    if (timeId === maxSelectedId + 1) {
-      setSelectedIds([...selectedIds, timeId]);
-    } else {
+    if (selectedIds.length === 0) {
       setSelectedIds([timeId]);
+    } else {
+      const maxSelectedId = Math.max(...selectedIds);
+      const minSelectedId = Math.min(...selectedIds);
+
+      if (timeId >= maxSelectedId) {
+        const newSelectedIds = [];
+        for (let id = minSelectedId; id <= timeId; id++) {
+          newSelectedIds.push(id);
+        }
+        setSelectedIds(newSelectedIds);
+      } else {
+        setSelectedIds([timeId]);
+      }
     }
   };
 
