@@ -33,9 +33,10 @@ const HomeSection = () => {
       {/* <div className="absolute right-4 top-28">
         <CombinationSection />
       </div> */}
-      {isFilter ? (
-        <FilterSection setIsFilter={setIsFilter} />
-      ) : (
+      {isFilter && (
+        <FilterSection  setIsFilter={setIsFilter} />
+      )}
+      {!isFilter && (
         <>
           <div className="px-4 mt-4">
             <CategoryList onClickCategory={onClickCategory} />

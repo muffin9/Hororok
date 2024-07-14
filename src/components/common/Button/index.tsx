@@ -28,7 +28,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`${ButtonSize[size]} p-2 flex items-center justify-center text-white ${bgColor ? bgColor : "bg-primary-300"} text-base sm:text-sm rounded-md enabled:active:bg-primary-300 disabled:bg-gray-200 disabled:text-gray-500 ${className}`}
+      className={`${ButtonSize[size]} p-2 flex items-center justify-center text-white ${bgColor ? bgColor : "bg-primary-300"} text-base sm:text-sm rounded-md enabled:active:bg-primary-300 disabled:bg-gray-400 disabled:text-gray-500 ${className}`}
       {...props}
     ></button>
   );

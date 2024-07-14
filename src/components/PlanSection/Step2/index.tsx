@@ -13,7 +13,7 @@ const Step2 = () => {
   const saveMinuteData = () => {
     setFormData({
       ...usePlanStore.getState().formData,
-      minutes: (selectId - 1) * 5,
+      minutes: selectId * 5,
     });
   };
 
