@@ -35,7 +35,11 @@ const OnBoarding = () => {
       <div className="flex flex-col">
         {onBoardingTexts[onStep].description.map((descriptionText: string) => {
           return (
-            <Text size="medium" className="text-center text-gray-800">
+            <Text
+              key={descriptionText}
+              size="medium"
+              className="text-center text-gray-800"
+            >
               {descriptionText}
             </Text>
           );
