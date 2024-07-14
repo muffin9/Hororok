@@ -34,6 +34,7 @@ export default function KakaoCallback() {
             expirationTime.toString()
           );
           localStorage.setItem("refreshToken", refreshToken);
+          localStorage.setItem("loginHistory", "loginHistory");
 
           router.push("/map");
         })

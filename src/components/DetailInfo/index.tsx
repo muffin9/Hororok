@@ -58,7 +58,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
               <div />
               <div className="flex gap-4">
                 <ShareButton cafeId={+cafeId} />
-                <button
+                {/* <button
                   className="cursor"
                   onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
                     e.stopPropagation();
@@ -72,7 +72,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
                   }}
                 >
                   <Icon type="bookmark_white" alt="저장하기" />
-                </button>
+                </button> */}
               </div>
             </header>
           </div>

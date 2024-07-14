@@ -67,7 +67,7 @@ const Step4 = () => {
           maxSelectCount={5}
         />
       </div>
-      <div className="flex p-[-16px] h-[50px] border-t-[1px] border-silver">
+      <div className="sticky bottom-0 flex p-[-16px] h-[50px] border-t-[1px] border-silver">
         <RefreshButton onClickRefresh={onClickRefresh} />
         <SubmitButton
           onSubmit={onSubmit}

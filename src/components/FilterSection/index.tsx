@@ -59,7 +59,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
   return (
     <section
       ref={filterRef}
-      className="w-[390px] h-1/2 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-scroll"
+      className={`animate-slide-up w-[390px] h-1/2 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-scroll`}
     >
       <div className="px-4">
         <button
