@@ -89,15 +89,7 @@ const useFilterKeyword = () => {
   };
 
   const checkKeywordDisabledSubmit = () => {
-    const targetValues = [
-      "친목/모임",
-      "데이트",
-      "개인작업/노트북",
-      "독서/휴식",
-      "비즈니스미팅",
-      "가족모임",
-      "애견동반",
-    ];
+    const targetValues = ["데이트/모임", "노트북작업", "독서/휴식"];
 
     return !selectedItems.purpose.some((item) => targetValues.includes(item));
   };
