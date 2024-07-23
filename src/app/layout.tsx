@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import QueryProvider from "@/Hooks/useReactQuery";
 import KakaoScript from "@/Hooks/KakaoScript";
+import Introduce from "@/components/Introduce";
 
 export const metadata: Metadata = {
   title: "카페콕 | Cafe",
@@ -33,7 +34,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <QueryProvider>{children}</QueryProvider>
+        <Introduce />
+        <QueryProvider>
+          <section>{children}</section>
+        </QueryProvider>
       </body>
       <KakaoScript />
     </html>
