@@ -7,6 +7,7 @@ export const defaultCoords = {
 export const currentPinImage = "/assets/Icon/current_place.svg";
 export const cafePinImage = "/assets/Icon/pin.svg";
 export const reboundButtonImage = "/assets/Images/location_rebound.png";
+export const logoImage = "/assets/Images/logo.png";
 export const filterDatas = [
   {
     category: "purpose",

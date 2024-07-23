@@ -44,18 +44,15 @@
 }
 
 body {
-  width: 390px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 180px;
   height: 100vh;
-  margin: 0 auto;
   overflow: hidden;
   color: #000;
   font-family: Pretendard, "system-ui", sans-serif;
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #fff;
 }
 
 @layer utilities {
