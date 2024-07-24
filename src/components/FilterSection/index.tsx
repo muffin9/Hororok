@@ -30,6 +30,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
 
   const {
     selectedItems,
+    handlePopularItemClick,
     handleItemClick,
     checkSelected,
     onClickRefresh,
@@ -70,6 +71,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
         </button>
         <Condition
           categoryId={categoryId}
+          handlePopularItemClick={handlePopularItemClick}
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}
           filterDatas={filterDatas}

@@ -8,6 +8,37 @@ export const currentPinImage = "/assets/Icon/current_place.svg";
 export const cafePinImage = "/assets/Icon/pin.svg";
 export const reboundButtonImage = "/assets/Images/location_rebound.png";
 export const logoImage = "/assets/Images/logo.png";
+
+export const popularKeywords = [
+  {
+    id: "combination_notebook",
+    type: "notebook",
+    text: "카공하기좋은곳",
+    keywords: [
+      { category: "purpose", name: "노트북작업" },
+      { category: "facility", name: "콘센트" },
+    ],
+  },
+  {
+    id: "combination_seat",
+    type: "seat",
+    text: "아늑한휴식공간",
+    keywords: [
+      { category: "purpose", name: "독서/휴식" },
+      { category: "theme", name: "따뜻한 인테리어" },
+    ],
+  },
+  {
+    id: "combination_bakery",
+    type: "bakery",
+    text: "베이커리데이트",
+    keywords: [
+      { category: "purpose", name: "데이트/모임" },
+      { category: "menu", name: "베이커리" },
+    ],
+  },
+];
+
 export const filterDatas = [
   {
     category: "purpose",
@@ -42,77 +73,28 @@ export const reviewFilterDatas = [
     category: "purpose",
     title: "방문 목적을 알려주세요",
     subTitle: "필수 선택",
-    data: [
-      "친목/모임",
-      "데이트",
-      "개인작업/노트북",
-      "독서/휴식",
-      "비즈니스미팅",
-      "가족모임",
-      "애견동반",
-    ],
+    data: ["데이트/모임", "노트북작업", "독서/휴식"],
   },
   {
     category: "facility",
     title: "어떤 시설이 좋았나요?",
-    data: [
-      "콘센트",
-      "실내화장실",
-      "주차",
-      "1인석",
-      "유아의자",
-      "휠체어시설",
-      "테라스",
-      "도서 구비",
-    ],
+    data: ["콘센트", "실내화장실", "주차", "편한좌석", "테라스"],
   },
   {
     category: "atmosphere",
     title: "카페의 분위기는 어땠나요?",
-    data: [
-      "분위기 좋은",
-      "조용한",
-      "편한좌석",
-      "집중이 잘되는",
-      "대화하기 좋은",
-      "음악이 좋은",
-      "넓은",
-    ],
+    data: ["대화하기 좋은", "집중이 잘되는", "조용한", "넓은"],
   },
   {
     category: "menu",
     title: "추천하고 싶은 메뉴를 알려주세요.",
     subTitle: "최대 3개 선택",
-    data: [
-      "아메리카노",
-      "라떼",
-      "오트라떼",
-      "아인슈페너",
-      "디카페인",
-      "드립커피",
-      "시그니처메뉴",
-      "베이커리",
-      "밀크티",
-      "프라푸치노",
-      "차(Tea)",
-      "아이스크림/빙수",
-      "전통디저트",
-      "비건메뉴",
-    ],
+    data: ["아메리카노", "라떼", "베이커리", "밀크티", "아인슈페너", "차"],
   },
   {
     category: "theme",
     title: "카페의 테마를 알려주세요.",
-    data: [
-      "신상카페",
-      "따뜻한 인테리어",
-      "사진맛집",
-      "뷰맛집",
-      "개인카페",
-      "주택개조",
-      "웰컴키즈존",
-      "케어키즈존",
-    ],
+    data: ["따뜻한 인테리어", "사진맛집", "뷰맛집", "개인카페"],
   },
 ];
 

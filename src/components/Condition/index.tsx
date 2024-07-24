@@ -2,10 +2,17 @@ import Text from "../common/Text";
 import Tag from "../common/Tag";
 import { CategoryIdType } from "../Home/HomeSection";
 import { FilterDataType } from "@/interfaces/Cafe";
-import Icon from "../common/Icon";
+import Icon, { IconType } from "../common/Icon";
+import { popularKeywords } from "@/app/constants";
 
 interface ConditionProps {
   categoryId?: CategoryIdType;
+  handlePopularItemClick: (
+    keywords: {
+      category: string;
+      name: string;
+    }[]
+  ) => void;
   handleItemClick: (category: string, name: string) => void;
   checkSelected: (category: string, name: string) => boolean;
   filterDatas: FilterDataType[];
@@ -14,6 +21,7 @@ interface ConditionProps {
 
 const Condition = ({
   categoryId,
+  handlePopularItemClick,
   handleItemClick,
   checkSelected,
   filterDatas,
@@ -34,6 +42,31 @@ const Condition = ({
 
   return (
     <div className="py-6 border-silver">
+      <div className="flex flex-col mb-8">
+        <div className="flex gap-1 mb-4">
+          <Icon size="small" type="heart" alt="heart" />
+          <Text size="medium" weight="bold">
+            인기 키워드
+          </Text>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {popularKeywords.map((popular) => {
+            return (
+              <button
+                className="px-3 py-1 flex items-center gap-2 text-gray-800 border-solid border-[1px] border-gray-400 rounded-lg cursor-pointer"
+                onClick={() => handlePopularItemClick(popular.keywords)}
+              >
+                <Icon
+                  size="medium"
+                  type={popular.type as IconType}
+                  alt={popular.id}
+                />
+                <Text size="small">{popular.text}</Text>
+              </button>
+            );
+          })}
+        </div>
+      </div>
       <div className="flex gap-1 text-primary-300 pb-4">
         <Icon size="xSmall" type="info" alt="info" />
         <Text size="small">최대 {maxSelectCount}개 선택할 수 있어요</Text>
