@@ -55,6 +55,7 @@ const Condition = ({
               <button
                 className="px-3 py-1 flex items-center gap-2 text-gray-800 border-solid border-[1px] border-gray-400 rounded-lg cursor-pointer"
                 onClick={() => handlePopularItemClick(popular.keywords)}
+                key={popular.id}
               >
                 <Icon
                   size="medium"
