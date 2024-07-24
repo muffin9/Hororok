@@ -36,7 +36,9 @@ export default function RootLayout({
       <body>
         <Introduce />
         <QueryProvider>
-          <section>{children}</section>
+          <section style={{ width: "380px", height: "100vh" }}>
+            {children}
+          </section>
         </QueryProvider>
       </body>
       <KakaoScript />

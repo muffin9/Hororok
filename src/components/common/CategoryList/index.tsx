@@ -20,7 +20,7 @@ const CategoryList = ({ onClickCategory }: CategoryListProps) => {
   ] as CategoryType[];
 
   return (
-    <div className="flex gap-[4px]">
+    <div className="flex justify-around">
       {categoryNames.map((tag: CategoryType) => {
         return (
           <Category
