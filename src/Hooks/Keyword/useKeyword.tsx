@@ -17,26 +17,52 @@ const useKeyword = () => {
   const { setCategoryKeywords } = useCategoryKeywordStore();
 
   const updatedKeywords = (category: string, name: string) => {
-    const updatedItems = { ...selectedItems };
+    setSelectedItems((prevSelectedItems) => {
+      const updatedItems = { ...prevSelectedItems };
 
-    if (updatedItems[category]) {
-      // 이미 해당 카테고리가 선택된 상태이면
-      if (updatedItems[category].includes(name)) {
-        // 선택된 키워드가 이미 존재하면 해당 키워드를 제거
-        updatedItems[category] = updatedItems[category].filter(
-          (item) => item !== name
-        );
+      if (updatedItems[category]) {
+        if (updatedItems[category].includes(name)) {
+          updatedItems[category] = updatedItems[category].filter(
+            (item) => item !== name
+          );
+        } else {
+          updatedItems[category] = [...updatedItems[category], name];
+        }
       } else {
-        // 선택된 키워드가 존재하지 않으면 추가
-        updatedItems[category] = [...updatedItems[category], name];
+        updatedItems[category] = [name];
       }
-    } else {
-      // 해당 카테고리가 처음 선택되는 경우
-      updatedItems[category] = [name];
-    }
 
-    setSelectedItems(updatedItems);
-    setCategoryKeywords(updatedItems);
+      setCategoryKeywords(updatedItems);
+      return updatedItems;
+    });
+  };
+
+  const handlePopularItemClick = (
+    popularKeywords: { category: string; name: string }[]
+  ) => {
+    popularKeywords.forEach((keyword) => {
+      setSelectedItems((prevSelectedItems) => {
+        const updatedItems = { ...prevSelectedItems };
+
+        if (updatedItems[keyword.category]) {
+          if (updatedItems[keyword.category].includes(keyword.name)) {
+            updatedItems[keyword.category] = updatedItems[
+              keyword.category
+            ].filter((item) => item !== keyword.name);
+          } else {
+            updatedItems[keyword.category] = [
+              ...updatedItems[keyword.category],
+              keyword.name,
+            ];
+          }
+        } else {
+          updatedItems[keyword.category] = [keyword.name];
+        }
+
+        setCategoryKeywords(updatedItems);
+        return updatedItems;
+      });
+    });
   };
 
   const handleItemClick = (category: string, name: string) => {
@@ -94,6 +120,7 @@ const useKeyword = () => {
     selectedItems,
     setSelectedItems,
     handleReviewItemClick,
+    handlePopularItemClick,
     handleItemClick,
     checkSelected,
     onClickRefresh,

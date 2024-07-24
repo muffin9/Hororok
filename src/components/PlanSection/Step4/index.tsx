@@ -24,6 +24,7 @@ const Step4 = () => {
   // const setCurrentStep = usePlanStore((state) => state.setCurrentStep);
 
   const {
+    handlePopularItemClick,
     handleItemClick,
     checkSelected,
     checkKeywordDisabledSubmit,
@@ -61,6 +62,7 @@ const Step4 = () => {
           </Text>
         </header>
         <Condition
+          handlePopularItemClick={handlePopularItemClick}
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}
           filterDatas={filterDatas}

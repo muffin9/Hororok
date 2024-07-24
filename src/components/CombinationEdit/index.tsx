@@ -29,6 +29,7 @@ const CombinationEdit = ({ combination }: CombinationEditProps) => {
   const {
     selectedItems,
     setSelectedItems,
+    handlePopularItemClick,
     handleItemClick,
     checkSelected,
     checkKeywordDisabledSubmit,
@@ -84,6 +85,7 @@ const CombinationEdit = ({ combination }: CombinationEditProps) => {
           자주 찾는 조합을 선택해주세요.
         </Text>
         <Condition
+          handlePopularItemClick={handlePopularItemClick}
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}
           filterDatas={filterDatas}

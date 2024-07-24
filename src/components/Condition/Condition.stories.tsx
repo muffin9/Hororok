@@ -10,6 +10,8 @@ const meta: Meta<typeof Condition> = {
 export default meta;
 
 const PrimitiveCondition = () => {
+  const handlePopularItemClick = () => {};
+
   const handleItemClick = (clickedCategory: string) => {
     console.log(`${clickedCategory}~~`);
   };
@@ -20,6 +22,7 @@ const PrimitiveCondition = () => {
 
   return (
     <Condition
+      handlePopularItemClick={handlePopularItemClick}
       handleItemClick={handleItemClick}
       checkSelected={checkSelected}
       filterDatas={filterDatas}

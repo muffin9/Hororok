@@ -41,6 +41,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
   const {
     selectedItems,
     setSelectedItems,
+    handlePopularItemClick,
     handleReviewItemClick,
     checkSelected,
     checkKeywordDisabledSubmit,
@@ -189,6 +190,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
         </div>
         <div className="px-4">
           <Condition
+            handlePopularItemClick={handlePopularItemClick}
             handleItemClick={handleReviewItemClick}
             checkSelected={checkSelected}
             filterDatas={reviewFilterDatas}

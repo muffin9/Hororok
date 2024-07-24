@@ -32,6 +32,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
 
   const {
     selectedItems,
+    handlePopularItemClick,
     handleReviewItemClick,
     checkSelected,
     checkKeywordDisabledSubmit,
@@ -148,6 +149,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
         </div>
         <div className="px-4">
           <Condition
+            handlePopularItemClick={handlePopularItemClick}
             handleItemClick={handleReviewItemClick}
             checkSelected={checkSelected}
             filterDatas={reviewFilterDatas}
