@@ -2,5 +2,8 @@
 User-agent: *
 Allow: /
 
+# Host
+Host: https://cafecok.site/
+
 # Sitemaps
 Sitemap: https://cafecok.site/sitemap.xml
