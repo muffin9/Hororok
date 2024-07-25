@@ -20,11 +20,16 @@ const PrimitiveCondition = () => {
     return true;
   };
 
+  const calculatedPopularKeywordIds = () => {
+    return [];
+  };
+
   return (
     <Condition
       handlePopularItemClick={handlePopularItemClick}
       handleItemClick={handleItemClick}
       checkSelected={checkSelected}
+      calculatedPopularKeywordIds={calculatedPopularKeywordIds}
       filterDatas={filterDatas}
       maxSelectCount={5}
     />

@@ -36,6 +36,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
     handleReviewItemClick,
     checkSelected,
     checkKeywordDisabledSubmit,
+    calculatedPopularKeywordIds,
   } = useKeyword();
 
   const { postReview } = useReviewMutation();
@@ -152,6 +153,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
             handlePopularItemClick={handlePopularItemClick}
             handleItemClick={handleReviewItemClick}
             checkSelected={checkSelected}
+            calculatedPopularKeywordIds={calculatedPopularKeywordIds}
             filterDatas={reviewFilterDatas}
             maxSelectCount={10}
           />

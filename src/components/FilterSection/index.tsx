@@ -35,6 +35,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
     checkSelected,
     onClickRefresh,
     checkKeywordDisabledSubmit,
+    calculatedPopularKeywordIds,
   } = useFilterKeyword();
 
   const onSubmit = async () => {
@@ -74,6 +75,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
           handlePopularItemClick={handlePopularItemClick}
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}
+          calculatedPopularKeywordIds={calculatedPopularKeywordIds}
           filterDatas={filterDatas}
           maxSelectCount={5}
         />

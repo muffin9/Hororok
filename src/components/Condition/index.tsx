@@ -15,6 +15,7 @@ interface ConditionProps {
   ) => void;
   handleItemClick: (category: string, name: string) => void;
   checkSelected: (category: string, name: string) => boolean;
+  calculatedPopularKeywordIds: () => string[];
   filterDatas: FilterDataType[];
   maxSelectCount: number;
 }
@@ -24,6 +25,7 @@ const Condition = ({
   handlePopularItemClick,
   handleItemClick,
   checkSelected,
+  calculatedPopularKeywordIds,
   filterDatas,
   maxSelectCount,
 }: ConditionProps) => {
@@ -51,9 +53,12 @@ const Condition = ({
         </div>
         <div className="flex flex-wrap gap-2">
           {popularKeywords.map((popular) => {
+            const isPopularKeyword = calculatedPopularKeywordIds().includes(
+              popular.id
+            );
             return (
               <button
-                className="px-3 py-1 flex items-center gap-2 text-gray-800 border-solid border-[1px] border-gray-400 rounded-lg cursor-pointer"
+                className={`px-3 py-1 flex items-center gap-2 text-gray-800 border-solid border-[1px] ${isPopularKeyword ? "border-primary-300" : "border-gray-400"} ${isPopularKeyword ? "bg-subcolor" : "bg-white"} rounded-lg cursor-pointer`}
                 onClick={() => handlePopularItemClick(popular.keywords)}
                 key={popular.id}
               >
@@ -62,7 +67,12 @@ const Condition = ({
                   type={popular.type as IconType}
                   alt={popular.id}
                 />
-                <Text size="small">{popular.text}</Text>
+                <Text
+                  size="small"
+                  className={`${isPopularKeyword ? "text-primary-300" : "text-black"}`}
+                >
+                  {popular.text}
+                </Text>
               </button>
             );
           })}

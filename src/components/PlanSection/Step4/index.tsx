@@ -29,6 +29,7 @@ const Step4 = () => {
     checkSelected,
     checkKeywordDisabledSubmit,
     onClickRefresh,
+    calculatedPopularKeywordIds,
   } = useKeyword();
   const { setMatchPlan } = usePlanMatchStore();
 
@@ -65,6 +66,7 @@ const Step4 = () => {
           handlePopularItemClick={handlePopularItemClick}
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}
+          calculatedPopularKeywordIds={calculatedPopularKeywordIds}
           filterDatas={filterDatas}
           maxSelectCount={5}
         />
