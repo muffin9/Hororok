@@ -1,6 +1,7 @@
 import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
 import { CategoryKeywordsType } from "@/interfaces/Cafe";
 import { useState } from "react";
+import { popularKeywords } from "@/app/constants";
 
 const initKeywords = {
   purpose: [],
@@ -116,6 +117,18 @@ const useKeyword = () => {
     return !selectedItems.purpose.some((item) => targetValues.includes(item));
   };
 
+  const calculatedPopularKeywordIds = () => {
+    const matchedIds = popularKeywords
+      .filter(({ keywords }) =>
+        keywords.every(({ category, name }) =>
+          selectedItems[category]?.includes(name)
+        )
+      )
+      .map(({ id }) => id);
+
+    return matchedIds;
+  };
+
   return {
     selectedItems,
     setSelectedItems,
@@ -125,6 +138,7 @@ const useKeyword = () => {
     checkSelected,
     onClickRefresh,
     checkKeywordDisabledSubmit,
+    calculatedPopularKeywordIds,
   };
 };
 

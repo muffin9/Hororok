@@ -45,6 +45,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
     handleReviewItemClick,
     checkSelected,
     checkKeywordDisabledSubmit,
+    calculatedPopularKeywordIds,
   } = useKeyword();
 
   const { patchReview } = useReviewMutation();
@@ -193,6 +194,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
             handlePopularItemClick={handlePopularItemClick}
             handleItemClick={handleReviewItemClick}
             checkSelected={checkSelected}
+            calculatedPopularKeywordIds={calculatedPopularKeywordIds}
             filterDatas={reviewFilterDatas}
             maxSelectCount={10}
           />

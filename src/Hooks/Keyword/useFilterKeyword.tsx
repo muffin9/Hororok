@@ -2,6 +2,7 @@ import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
 import { CategoryKeywordsType } from "@/interfaces/Cafe";
 import useCategoryFilterKeywordStore from "@/store/useCategoryFilterKeywordStore";
 import { useState } from "react";
+import { popularKeywords } from "@/app/constants";
 
 const initKeywords = {
   purpose: [],
@@ -121,6 +122,18 @@ const useFilterKeyword = () => {
     return !selectedItems.purpose.some((item) => targetValues.includes(item));
   };
 
+  const calculatedPopularKeywordIds = () => {
+    const matchedIds = popularKeywords
+      .filter(({ keywords }) =>
+        keywords.every(({ category, name }) =>
+          selectedItems[category]?.includes(name)
+        )
+      )
+      .map(({ id }) => id);
+
+    return matchedIds;
+  };
+
   return {
     selectedItems,
     setSelectedItems,
@@ -130,6 +143,7 @@ const useFilterKeyword = () => {
     checkSelected,
     onClickRefresh,
     checkKeywordDisabledSubmit,
+    calculatedPopularKeywordIds,
   };
 };
 

@@ -34,6 +34,7 @@ const CombinationEdit = ({ combination }: CombinationEditProps) => {
     checkSelected,
     checkKeywordDisabledSubmit,
     onClickRefresh,
+    calculatedPopularKeywordIds,
   } = useKeyword();
 
   const onCombinationSubmit = () => {
@@ -88,6 +89,7 @@ const CombinationEdit = ({ combination }: CombinationEditProps) => {
           handlePopularItemClick={handlePopularItemClick}
           handleItemClick={handleItemClick}
           checkSelected={checkSelected}
+          calculatedPopularKeywordIds={calculatedPopularKeywordIds}
           filterDatas={filterDatas}
           maxSelectCount={5}
         />
