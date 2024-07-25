@@ -15,6 +15,13 @@ const nextConfig = {
     ...(process.env.NODE_ENV === "production" ? env.production : {}),
   },
 
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
+    other: {
+      me: ["jinha6707@gmail.com", "https://cafecok.site/"],
+    },
+  },
+
   images: {
     domains: [
       "//hororok-bucket.kr.object.ncloudstorage.com",
