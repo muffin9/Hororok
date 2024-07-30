@@ -140,7 +140,8 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
                   alt={`Uploaded image ${index}`}
                   width={100}
                   height={100}
-                  style={{ objectFit: "cover" }}
+                  layout="fill"
+                  objectFit="cover"
                 />
               </div>
             ))}

@@ -24,8 +24,8 @@ const HomeSection = () => {
     <section className="w-full absolute top-8 z-[999]">
       <div className="px-4">
         <Input
+          placeholder="어디 근처 카페 찾으세요? (ex. 망원역)"
           type="text"
-          placeholder="어디 근처 카페 찾으세요?"
           onClick={() => router.push("/search")}
           className="w-[358px] h-[50px] p-4 rounded-lg focus:outline-none shadow-default"
         />

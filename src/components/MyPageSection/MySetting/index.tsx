@@ -25,6 +25,24 @@ const MySetting = () => {
               href="https://www.notion.so/poten-tim-hororok/9e46487a97fa44be83cac811f05414e3?pvs=4"
               target="_blank"
             >
+              <Text size="medium">이용약관</Text>
+            </Link>
+          </div>
+          <div className="h-[1px] bg-silver" />
+          <div className="p-4">
+            <Link
+              href="https://www.notion.so/poten-tim-hororok/9e46487a97fa44be83cac811f05414e3?pvs=4"
+              target="_blank"
+            >
+              <Text size="medium">위치기반서비스 이용약관</Text>
+            </Link>
+          </div>
+          <div className="h-[1px] bg-silver" />
+          <div className="p-4">
+            <Link
+              href="https://www.notion.so/poten-tim-hororok/9e46487a97fa44be83cac811f05414e3?pvs=4"
+              target="_blank"
+            >
               <Text size="medium">개인정보 처리방침</Text>
             </Link>
           </div>

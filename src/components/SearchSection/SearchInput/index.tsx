@@ -29,8 +29,8 @@ const SearchInput = ({ handleKeyUpSearchInput }: SearchInputProps) => {
         type="text"
         value={searchInputValue}
         placeholderTexts={[
-          "어디 근처 카페 찾으세요?",
-          "어떤 카페 정보가 궁금하세요?",
+          "어디 근처 카페 찾으세요? (ex. 망원역)",
+          "방문할 지역을 알려주세요.",
         ]}
         onChange={handleChange}
         onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) =>
