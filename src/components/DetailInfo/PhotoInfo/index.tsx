@@ -51,7 +51,7 @@ const PhotoInfo = ({
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-2 px-4 gap-1 mt-4">
+          <div className="grid grid-cols-2 px-4 gap-4 mt-4">
             {visiblePhotoData?.map(
               (imageUrl: { originUrl: string; thumbnailUrl: string }) => {
                 return (
