@@ -39,7 +39,7 @@ const ResultList = () => {
           {isFilter ? (
             <FilterSection setIsFilter={setIsFilter} />
           ) : (
-            <div className="w-full flex gap-[4px] px-4 overflow-x-scroll">
+            <div className="w-full flex gap-[4px] px-4 overflow-x-scroll bg-white">
               {/* <button className="flex justify-center items-center gap-[2px] w-[50px] border-solid border-[1px] border-gray-400 rounded-lg">
                 <Icon type="filter" alt="filter" />
                 <Text size="extraSmall">{categoryKeywordLen}</Text>

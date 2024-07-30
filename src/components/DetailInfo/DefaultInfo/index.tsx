@@ -46,7 +46,7 @@ const DefaultInfo = ({ cafeId }: { cafeId: string }) => {
         </div>
         <div className="flex items-center gap-1">
           <Icon type="call" size="small" alt="call" />
-          <Text size="small">{basicInfo.phoneNumber}</Text>
+          <Text size="small">{basicInfo.phoneNumber || "—"}</Text>
         </div>
       </div>
     )

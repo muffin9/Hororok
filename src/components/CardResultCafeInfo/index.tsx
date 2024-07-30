@@ -31,7 +31,7 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
     return (
       <div className="flex justify-center items-center">
         <Text size="medium" className="text-gray-800">
-          아쉽지만 찾는 카페가 없어요.
+          아쉽지만 찾는 카페가 없어요. 필터를 다시 조절해주세요.
         </Text>
       </div>
     );
@@ -71,7 +71,7 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
                     </Text>
                     <div className="flex gap-4">
                       <ShareButton cafeId={cafeData.id} />
-                      <button
+                      {/* <button
                         onClick={(
                           e: React.SyntheticEvent<HTMLButtonElement>
                         ) => {
@@ -93,7 +93,7 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
                           size="small"
                           alt="북마크"
                         />
-                      </button>
+                      </button> */}
                     </div>
                   </header>
                   <div className="flex flex-col gap-1">

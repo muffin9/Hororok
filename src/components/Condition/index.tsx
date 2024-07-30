@@ -48,7 +48,7 @@ const Condition = ({
         <div className="flex gap-1 mb-4">
           <Icon size="small" type="heart" alt="heart" />
           <Text size="medium" weight="bold">
-            인기 키워드
+            카페콕 추천
           </Text>
         </div>
         <div className="flex flex-wrap gap-2">

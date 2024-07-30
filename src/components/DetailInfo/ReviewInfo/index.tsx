@@ -6,6 +6,7 @@ import Star from "@/components/common/Star";
 import Text from "@/components/common/Text";
 import { CafeReviewType, ReviewType } from "@/interfaces/Cafe";
 import Image from "next/image";
+import { profileImage } from "@/app/constants";
 
 interface ReviewInfoProps {
   cafeId: string;
@@ -65,7 +66,7 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
               return (
                 <article
                   key={review.id}
-                  className="px-4 border-gray-200 border-b-[1px] pb-6"
+                  className="px-4 border-gray-200 border-b-[1px] pb-6 bg-white"
                 >
                   <header className="flex justify-between">
                     <div className="flex gap-3">
@@ -73,7 +74,7 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
                         src={
                           review.picture
                             ? `http:${review.picture}`
-                            : "/assets/Images/profile.png"
+                            : profileImage
                         }
                         width={44}
                         height={44}
@@ -91,7 +92,7 @@ const ReviewInfo = ({ cafeId, page = "" }: ReviewInfoProps) => {
                       </div>
                     </div>
                     <Text size="extraSmall" className="text-gray-700">
-                      {review.createdDate}
+                      {review.createDate}
                     </Text>
                   </header>
                   <div className="flex flex-col gap-3.5">
