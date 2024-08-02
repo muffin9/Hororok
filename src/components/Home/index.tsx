@@ -38,7 +38,7 @@ const Home = () => {
     }
 
     checkVersion();
-  }, [isLoggedIn, router]);
+  }, []);
 
   return (
     <>
