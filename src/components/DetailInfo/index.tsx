@@ -142,10 +142,10 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
               okButtonText="로그인하고 리뷰남기기"
               cancelButtonText="둘러만 보기"
               okCallbackFunc={() => {
-                closeModal();
+                router.push("/login");
               }}
               cancelCallbackFunc={() => {
-                router.push("/login");
+                closeModal();
               }}
             />
           )}
