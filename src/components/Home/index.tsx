@@ -23,7 +23,7 @@ const Home = () => {
     }
 
     if (isLoggedIn) {
-      router.push("/");
+      router.push("/map");
       return;
     }
 
