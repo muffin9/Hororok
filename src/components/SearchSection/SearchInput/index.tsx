@@ -24,7 +24,7 @@ const SearchInput = ({ handleKeyUpSearchInput }: SearchInputProps) => {
   };
 
   return (
-    <div className="w-full h-[50px] px-4 flex relative">
+    <div className="w-full h-[50px] flex relative">
       <RollingInput
         type="text"
         value={searchInputValue}

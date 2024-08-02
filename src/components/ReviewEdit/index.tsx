@@ -157,12 +157,10 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
             </label>
             <div className="flex gap-2">
               {files.map((file, index) => (
-                <div key={index} className="min-w-[100px]">
+                <div key={index} className="min-w-[100px] min-h-[100px]">
                   <Image
                     src={URL.createObjectURL(file)}
                     alt={`Uploaded image ${index}`}
-                    width={100}
-                    height={100}
                     layout="fill"
                     objectFit="cover"
                   />
