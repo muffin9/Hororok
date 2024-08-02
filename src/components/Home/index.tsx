@@ -15,7 +15,19 @@ const Home = () => {
   useEffect(() => {
     const isFirstVisit = localStorage.getItem("isFirstVisit");
     const loginHistory = localStorage.getItem("loginHistory");
-    const checkVersion = async () => {
+
+    if (!isFirstVisit || !loginHistory) {
+      localStorage.setItem("isFirstVisit", "false");
+      router.push("/onboarding");
+      return;
+    }
+
+    if (isLoggedIn) {
+      router.push("/");
+      return;
+    }
+
+    const checkVisitAndVersion = async () => {
       try {
         const { data } = await axios.get("/api/version");
         const currentVersion = localStorage.getItem("appVersion");
@@ -30,15 +42,8 @@ const Home = () => {
       }
     };
 
-    if (!isFirstVisit || !loginHistory) {
-      localStorage.setItem("isFirstVisit", "false");
-      router.push("/onboarding");
-    } else if (isLoggedIn) {
-      router.push("/");
-    }
-
-    checkVersion();
-  }, []);
+    checkVisitAndVersion();
+  }, [isLoggedIn, router]);
 
   return (
     <>
