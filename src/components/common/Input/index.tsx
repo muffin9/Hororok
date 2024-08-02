@@ -31,7 +31,7 @@ export interface InputProps {
 const Input = (props: InputProps) => {
   return (
     <input
-      className={`w-full h-[50px] pl-10 bg-white focus:outline-none disabled:border-gray text-black ${props.className}`}
+      className={`w-full h-[50px] pl-4 bg-white focus:outline-none disabled:border-gray text-black ${props.className}`}
       autoFocus={props.autofocus}
       {...props}
     />
