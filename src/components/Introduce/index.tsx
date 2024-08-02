@@ -4,7 +4,7 @@ import Text from "../common/Text";
 
 const Introduce = () => {
   return (
-    <section className="flex flex-col justify-center items-center gap-2">
+    <section className="hidden md:flex flex-col justify-center items-center gap-2">
       <Image
         src={logoImage}
         width={142}

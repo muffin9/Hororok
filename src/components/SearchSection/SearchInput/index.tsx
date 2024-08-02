@@ -24,13 +24,13 @@ const SearchInput = ({ handleKeyUpSearchInput }: SearchInputProps) => {
   };
 
   return (
-    <div className="w-full h-[50px] px-4 flex relative">
+    <div className="w-full h-[50px] flex relative">
       <RollingInput
         type="text"
         value={searchInputValue}
         placeholderTexts={[
-          "어디 근처 카페 찾으세요?",
-          "어떤 카페 정보가 궁금하세요?",
+          "어디 근처 카페 찾으세요? (ex. 망원역)",
+          "방문할 지역을 알려주세요.",
         ]}
         onChange={handleChange}
         onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) =>

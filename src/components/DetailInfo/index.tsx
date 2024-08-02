@@ -49,7 +49,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
         )}
         <section className="h-screen overflow-y-scroll" key={topInfo.cafeId}>
           <div
-            className={`bg-cover bg-center w-[390px] h-[228px]`}
+            className={`relative bg-cover bg-center w-[390px] h-[230px] shadow-xl overflow-hidden z-10`}
             style={{
               backgroundImage: `url(http:${topInfo.originUrl})`,
             }}
@@ -139,8 +139,8 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
           {showModal && (
             <Modal
               title={`로그인을 하면 리뷰를 남길 수 있어요.\n소중한 의견을 공유해주세요.`}
-              okButtonText="둘러만보기"
-              cancelButtonText="로그인하고 리뷰남기기"
+              okButtonText="로그인하고 리뷰남기기"
+              cancelButtonText="둘러만 보기"
               okCallbackFunc={() => {
                 closeModal();
               }}
