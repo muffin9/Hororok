@@ -9,6 +9,7 @@ export const cafePinImage = "/assets/Icon/pin.svg";
 export const reboundButtonImage = "/assets/Images/location_rebound.png";
 export const logoImage = "/assets/Images/logo.png";
 export const profileImage = "/assets/Images/profile.png";
+export const instagramImage = "/assets/Images/instagram.png";
 
 export const popularKeywords = [
   {
@@ -306,8 +307,8 @@ export const onBoardingTexts = [
     step: 0,
     title: "키워드로 검색",
     description: [
-      "어떤 카페를 찾고 있나요?",
-      "내 취향에 맞는 카페를 키워드로 찾아보세요.",
+      "서울에서 어떤 카페를 찾고 있나요?",
+      "취향에 맞는 현지 카페를 키워드로 찾아보세요.",
     ],
     imageUrl: "/assets/Images/onboarding1.png",
   },

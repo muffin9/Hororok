@@ -19,7 +19,7 @@ const LoginComponent = () => {
   }, []);
 
   return (
-    <div className="w-[358px] flex fixed bottom-16 flex-col gap-2">
+    <div className="w-[358px] flex flex-col gap-2">
       <Button
         size="full"
         bgColor="bg-kakao"
@@ -79,9 +79,10 @@ const LoginComponent = () => {
       <Button
         size="full"
         className="enabled:active:bg-white"
+        bgColor="bg-bluegray"
         onClick={() => router.push("/map")}
       >
-        <Text size="small" className="text-white underline">
+        <Text size="small" className="text-black">
           로그인하지 않고 둘러보기
         </Text>
       </Button>
