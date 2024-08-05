@@ -1,5 +1,5 @@
 import axiosInstance from "@/apis/apiClient";
-import { getProfile } from "@/apis/user";
+import { getMyPage, getProfile } from "@/apis/user";
 import useToastStore from "@/store/useToastStore";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -8,6 +8,11 @@ import { apiSearchUrl } from "@/app/constants";
 const useProfileMutation = () => {
   const { showMessage } = useToastStore();
   const router = useRouter();
+
+  const { data: myPage, isLoading: myPageLoading } = useQuery({
+    queryKey: ["getMyPage"],
+    queryFn: () => getMyPage(),
+  });
 
   const { data: myProfile, isLoading: myProfileLoading } = useQuery({
     queryKey: ["getProfile"],
@@ -40,7 +45,7 @@ const useProfileMutation = () => {
     },
   });
 
-  return { myProfile, postProfile, myProfileLoading };
+  return { myPage, myProfile, postProfile, myPageLoading, myProfileLoading };
 };
 
 export default useProfileMutation;
