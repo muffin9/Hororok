@@ -34,7 +34,7 @@ const Introduce = () => {
           </Text>
           <div className="flex gap-2">
             <Link
-              href="https://www.notion.so/poten-tim-hororok/9e46487a97fa44be83cac811f05414e3?pvs=4"
+              href="https://www.notion.so/poten-tim-hororok/2193394461cc42e19672307cc208f6f6?pvs=4"
               target="_blank"
             >
               <Text size="small" className="text-gray-700 underline">

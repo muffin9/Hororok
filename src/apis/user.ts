@@ -2,6 +2,15 @@ import { apiSearchUrl } from "@/app/constants";
 import axiosInstance from "./apiClient";
 import { SortType, PlanStatusType } from "@/interfaces/user";
 
+export const getMyPage = async () => {
+  try {
+    const response = await axiosInstance.get(`${apiSearchUrl}/myPage`);
+    return response.data;
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+  }
+};
+
 export const getProfile = async () => {
   try {
     const response = await axiosInstance.get(`${apiSearchUrl}/myPage/profile`);
