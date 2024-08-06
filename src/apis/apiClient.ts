@@ -22,6 +22,7 @@ const isLoginRequiredForURL = (url: string) => {
     `${apiSearchUrl}/myPage/reviews`,
     `${apiSearchUrl}/myPage/combination`,
     `${apiSearchUrl}/myPage/setting`,
+    `${apiSearchUrl}/myPage/feedback`,
     `${apiSearchUrl}/review/create`,
     new RegExp(`${apiSearchUrl}/review/(\\d+)`),
     new RegExp(`${apiSearchUrl}/review/(\\d+)/delete`),
@@ -34,6 +35,7 @@ const isLoginRequiredForURL = (url: string) => {
     new RegExp(`${apiSearchUrl}/combination/(\\d+)`),
     new RegExp(`${apiSearchUrl}/combination/(\\d+)/edit`),
     `${apiSearchUrl}/auth/logout`,
+    `${apiSearchUrl}/auth/withdrawal`,
   ];
 
   return targetURLs.some((targetURL) => {

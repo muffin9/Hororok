@@ -4,9 +4,11 @@ import { useState } from "react";
 import Button from "@/components/common/Button";
 import Text from "@/components/common/Text";
 import TextArea from "@/components/common/TextArea";
+import useUserMutation from "@/Hooks/Api/myPage/useUserMutation";
 
 const Improvement = () => {
   const [content, setContent] = useState("");
+  const { postFeedback } = useUserMutation();
 
   return (
     <div className="flex flex-col gap-4 overflow-y-scroll">
@@ -27,7 +29,11 @@ const Improvement = () => {
           {content.length}/200
         </Text>
       </div>
-      <Button size="full" className="absolute bottom-16">
+      <Button
+        size="full"
+        className="absolute bottom-16"
+        onClick={() => postFeedback(content)}
+      >
         의견 보내기
       </Button>
     </div>
