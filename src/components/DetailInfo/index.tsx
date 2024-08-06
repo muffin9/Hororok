@@ -57,7 +57,15 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
             <header className="flex justify-between px-4 pt-4">
               <div />
               <div className="flex gap-4">
-                <ShareButton cafeId={+cafeId} />
+                <ShareButton
+                  cafeId={+cafeId}
+                  cafeInfo={{
+                    title: topInfo.cafeName,
+                    description: topInfo.roadAddress,
+                    imageUrl: topInfo.originUrl,
+                    linkUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${cafeId}`,
+                  }}
+                />
                 {/* <button
                   className="cursor"
                   onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {

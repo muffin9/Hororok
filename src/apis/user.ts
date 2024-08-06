@@ -70,7 +70,7 @@ export const logoutUser = async () => {
 export const postUserFeedback = async (content: string) => {
   try {
     const response = await axiosInstance.post(
-      `${apiSearchUrl}/mypage/feedback`,
+      `${apiSearchUrl}/myPage/feedback`,
       { content }
     );
 

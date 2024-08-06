@@ -39,6 +39,12 @@ const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
               <ShareButton
                 cafeId={resultPlanInfos.similarCafes[0]?.id}
                 planId={resultPlanInfos.planId}
+                cafeInfo={{
+                  title: resultPlanInfos.visitDateTime,
+                  description: resultPlanInfos.locationName,
+                  imageUrl: resultPlanInfos?.matchCafes[0].imageUrl,
+                  linkUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${resultPlanInfos?.matchCafes[0].id}`,
+                }}
               />
               {/* <Icon type="bookmark" size="small" alt="북마크" /> */}
             </div>
