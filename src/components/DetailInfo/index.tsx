@@ -58,6 +58,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
               <div />
               <div className="flex gap-4">
                 <ShareButton
+                  type="detailInfo"
                   cafeId={+cafeId}
                   cafeInfo={{
                     title: topInfo.cafeName,
