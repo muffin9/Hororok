@@ -15,22 +15,23 @@ const OnBoarding = () => {
   const [onStep, setOnStep] = useState(0);
 
   const handlePreviousStep = () => {
-    if (onStep === 1 || onStep === 2) {
+    if (onStep > 0) {
       setOnStep(onStep - 1);
     }
   };
 
   const handleNextStep = () => {
-    if (onStep === 2) {
-      router.push("/map");
-    } else {
+    if (onStep < onBoardingTexts.length - 1) {
       setOnStep(onStep + 1);
+    } else {
+      router.push("/map");
     }
   };
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: handleNextStep,
     onSwipedRight: handlePreviousStep,
+    preventScrollOnSwipe: true,
     trackMouse: true,
   });
 
