@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSwipeable } from "react-swipeable";
 import Indicator from "../common/Indicator";
 import Text from "../common/Text";
 import { onBoardingTexts } from "@/app/constants";
@@ -27,8 +28,17 @@ const OnBoarding = () => {
     }
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleNextStep,
+    onSwipedRight: handlePreviousStep,
+    trackMouse: true,
+  });
+
   return (
-    <section className="h-full px-4 flex flex-col justify-around items-center gap-6 bg-white">
+    <section
+      {...swipeHandlers}
+      className="h-full px-4 flex flex-col justify-around items-center gap-6 bg-white"
+    >
       <div className="flex flex-col items-center gap-4">
         <Indicator count={onBoardingTexts.length} currentIdx={onStep} />
         <Text size="x2Large">{onBoardingTexts[onStep].title}</Text>
