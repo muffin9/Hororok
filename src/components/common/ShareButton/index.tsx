@@ -40,9 +40,9 @@ const ShareButton = ({ cafeId, planId, cafeInfo }: ShareButtonProps) => {
       },
     });
 
-    Kakao.Share.sendScrap({
-      requestUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${cafeId}`,
-    });
+    // Kakao.Share.sendScrap({
+    //   requestUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${cafeId}`,
+    // });
     if (planId) patchSharePlan(planId);
   }, []);
 
