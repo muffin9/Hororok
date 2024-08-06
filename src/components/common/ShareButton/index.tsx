@@ -36,7 +36,7 @@ const ShareButton = ({ cafeId, planId, cafeInfo }: ShareButtonProps) => {
       templateArgs: {
         title: cafeInfo.title,
         description: cafeInfo.description,
-        imageUrl: cafeInfo.imageUrl,
+        imageUrl: `http:${cafeInfo.imageUrl}`,
       },
     });
 
