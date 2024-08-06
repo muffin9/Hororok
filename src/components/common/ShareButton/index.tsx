@@ -15,15 +15,39 @@ declare global {
 interface ShareButtonProps {
   cafeId: number;
   planId?: number;
+  cafeInfo: {
+    title: string;
+    description: string;
+    imageUrl: string;
+    linkUrl: string;
+  };
 }
 
-const ShareButton = ({ cafeId, planId }: ShareButtonProps) => {
+const ShareButton = ({ cafeId, planId, cafeInfo }: ShareButtonProps) => {
   const isLoggedIn = useIsLoggedIn();
   const router = useRouter();
   const [isClicked, setIsClicked] = useState(false);
 
   const handleShareToKakao = useCallback(() => {
     const { Kakao } = window;
+
+    Kakao.Share.sendCustom({
+      templateId: 110854,
+      content: {
+        title: cafeInfo.title,
+        description: cafeInfo.description,
+        imageUrl: cafeInfo.imageUrl,
+      },
+      buttons: [
+        {
+          title: "웹으로 이동",
+          link: {
+            mobileWebUrl: cafeInfo.linkUrl,
+            webUrl: cafeInfo.linkUrl,
+          },
+        },
+      ],
+    });
 
     Kakao.Share.sendScrap({
       requestUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${cafeId}`,

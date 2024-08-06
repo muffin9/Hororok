@@ -70,7 +70,15 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
                       {cafeData.name}
                     </Text>
                     <div className="flex gap-4">
-                      <ShareButton cafeId={cafeData.id} />
+                      <ShareButton
+                        cafeId={cafeData.id}
+                        cafeInfo={{
+                          title: cafeData.name,
+                          description: cafeData.roadAddress,
+                          imageUrl: cafeData.imageUrl,
+                          linkUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${cafeData.id}`,
+                        }}
+                      />
                       {/* <button
                         onClick={(
                           e: React.SyntheticEvent<HTMLButtonElement>
