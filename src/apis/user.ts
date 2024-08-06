@@ -66,3 +66,16 @@ export const logoutUser = async () => {
     console.error("There was a problem with the fetch operation:", error);
   }
 };
+
+export const postUserFeedback = async (content: string) => {
+  try {
+    const response = await axiosInstance.post(
+      `${apiSearchUrl}/mypage/feedback`,
+      { content }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+  }
+};

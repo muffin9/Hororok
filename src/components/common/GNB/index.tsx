@@ -49,7 +49,7 @@ const GNB = () => {
         {!isBottomSheet && (
           <div className="absolute top-[-43px] left-[70px] z-[1002]">
             <Image
-              src={"/assets/Icon/tooltip.svg"}
+              src={"/assets/Images/tooltip.png"}
               alt="tooltip"
               width={222}
               height={41}
