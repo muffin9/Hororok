@@ -33,20 +33,11 @@ const ShareButton = ({ cafeId, planId, cafeInfo }: ShareButtonProps) => {
 
     Kakao.Share.sendCustom({
       templateId: 110854,
-      content: {
+      templateArgs: {
         title: cafeInfo.title,
         description: cafeInfo.description,
         imageUrl: cafeInfo.imageUrl,
       },
-      buttons: [
-        {
-          title: "웹으로 이동",
-          link: {
-            mobileWebUrl: cafeInfo.linkUrl,
-            webUrl: cafeInfo.linkUrl,
-          },
-        },
-      ],
     });
 
     Kakao.Share.sendScrap({
