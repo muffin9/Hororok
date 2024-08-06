@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import Indicator from "../common/Indicator";
 import Text from "../common/Text";
@@ -14,15 +14,32 @@ const OnBoarding = () => {
   const router = useRouter();
   const [onStep, setOnStep] = useState(0);
 
+  const [animation, setAnimation] = useState("");
+
+  useEffect(() => {
+    if (animation) {
+      const timer = setTimeout(() => {
+        setAnimation("");
+      }, 500); // 애니메이션 지속 시간과 동일하게 설정
+      return () => clearTimeout(timer);
+    }
+  }, [animation]);
+
   const handlePreviousStep = () => {
     if (onStep > 0) {
-      setOnStep(onStep - 1);
+      setAnimation("slideLeft");
+      setTimeout(() => {
+        setOnStep(onStep - 1);
+      }, 500); // 애니메이션 지속 시간과 동일하게 설정
     }
   };
 
   const handleNextStep = () => {
     if (onStep < onBoardingTexts.length - 1) {
-      setOnStep(onStep + 1);
+      setAnimation("slideRight");
+      setTimeout(() => {
+        setOnStep(onStep + 1);
+      }, 500); // 애니메이션 지속 시간과 동일하게 설정
     } else {
       router.push("/map");
     }
@@ -40,7 +57,9 @@ const OnBoarding = () => {
       {...swipeHandlers}
       className="h-full px-4 flex flex-col justify-around items-center gap-6 bg-white"
     >
-      <div className="flex flex-col items-center gap-4">
+      <div
+        className={`flex flex-col items-center gap-4 ${animation === "slideLeft" ? "animate-slide-left" : animation === "slideRight" ? "animate-slide-right" : ""}`}
+      >
         <Indicator count={onBoardingTexts.length} currentIdx={onStep} />
         <Text size="x2Large">{onBoardingTexts[onStep].title}</Text>
         <div className="flex flex-col">
@@ -63,6 +82,7 @@ const OnBoarding = () => {
             <Icon size="xSmall" type="arrow_left" alt="arrow_left" />
           </button>
           <Image
+            key={onStep}
             width={200}
             height={397}
             src={onBoardingTexts[onStep].imageUrl}

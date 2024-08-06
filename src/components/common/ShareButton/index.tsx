@@ -13,6 +13,7 @@ declare global {
 }
 
 interface ShareButtonProps {
+  type?: string;
   cafeId: number;
   planId?: number;
   cafeInfo: {
@@ -23,10 +24,9 @@ interface ShareButtonProps {
   };
 }
 
-const ShareButton = ({ cafeId, planId, cafeInfo }: ShareButtonProps) => {
+const ShareButton = ({ type, cafeId, planId, cafeInfo }: ShareButtonProps) => {
   const isLoggedIn = useIsLoggedIn();
   const router = useRouter();
-  const [isClicked, setIsClicked] = useState(false);
 
   const handleShareToKakao = useCallback(() => {
     const { Kakao } = window;
@@ -49,11 +49,7 @@ const ShareButton = ({ cafeId, planId, cafeInfo }: ShareButtonProps) => {
   const onClickShareButton = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     if (isLoggedIn) {
-      setIsClicked(true);
       handleShareToKakao();
-      setTimeout(() => {
-        setIsClicked(false);
-      }, 500);
     } else {
       alert("로그인이 필요합니다.");
       router.push("/");
@@ -63,7 +59,7 @@ const ShareButton = ({ cafeId, planId, cafeInfo }: ShareButtonProps) => {
   return (
     <button onClick={onClickShareButton}>
       <Icon
-        type={isClicked ? "share_hover" : "share"}
+        type={type === "detailInfo" ? "share_white" : "share"}
         size="small"
         alt="공유하기"
       />
