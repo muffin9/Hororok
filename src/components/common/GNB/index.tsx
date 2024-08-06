@@ -114,7 +114,7 @@ const GNB = () => {
           okButtonText="로그인"
           cancelButtonText="취소"
           okCallbackFunc={() => {
-            router.push("/login");
+            router.push("/onboarding");
           }}
           cancelCallbackFunc={() => {
             closeModal();
