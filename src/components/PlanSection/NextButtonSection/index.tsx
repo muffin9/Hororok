@@ -17,7 +17,7 @@ const NextButtonSection = ({
 
   return (
     <div className="w-[358px] fixed bottom-4 flex flex-col gap-4 bg-white">
-      {nextStep === "2" && (
+      {/* {nextStep === "2" && (
         <div
           className="flex flex-col items-center cursor-pointer"
           onClick={() => {
@@ -30,7 +30,7 @@ const NextButtonSection = ({
             저장한 여정 보러가기
           </Text>
         </div>
-      )}
+      )} */}
       {nextStep !== "2" && (
         <Button
           size="full"

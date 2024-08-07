@@ -1,4 +1,5 @@
 import DetailInfo from "@/components/DetailInfo";
+import TopButtonAndLogo from "@/components/common/TopButtonAndLogo";
 
 type CafeProps = {
   params: {
@@ -9,6 +10,7 @@ type CafeProps = {
 export default async function CafePage({ params }: CafeProps) {
   return (
     <main>
+      <TopButtonAndLogo />
       <DetailInfo cafeId={params.id} />
     </main>
   );

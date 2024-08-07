@@ -1,5 +1,11 @@
 import SearchSection from "@/components/SearchSection";
+import TopButtonAndLogo from "@/components/common/TopButtonAndLogo";
 
 export default function Search() {
-  return <SearchSection />;
+  return (
+    <main className="h-full">
+      <TopButtonAndLogo />
+      <SearchSection />
+    </main>
+  );
 }
