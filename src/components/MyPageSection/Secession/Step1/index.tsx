@@ -3,8 +3,13 @@
 import Button from "@/components/common/Button";
 import Text from "@/components/common/Text";
 import { useRouter } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 
-const SecessionStep1 = () => {
+interface SecessionStep1Props {
+  setIsStep2: Dispatch<SetStateAction<boolean>>;
+}
+
+const SecessionStep1 = ({ setIsStep2 }: SecessionStep1Props) => {
   const router = useRouter();
 
   return (
@@ -33,11 +38,15 @@ const SecessionStep1 = () => {
           </ul>
         </div>
       </div>
-      <div className="w-[375px] flex fixed bottom-16 gap-4">
+      <div className="w-[350px] flex fixed bottom-16 gap-4">
         <Button size="half" onClick={() => router.back()}>
           <Text size="large">계속 사용하기</Text>
         </Button>
-        <Button size="half" bgColor="bg-gray-300">
+        <Button
+          size="half"
+          bgColor="bg-gray-300"
+          onClick={() => setIsStep2(true)}
+        >
           <Text size="large" className="text-gray-700">
             탈퇴하기
           </Text>

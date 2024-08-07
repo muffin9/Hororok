@@ -17,14 +17,16 @@ const SecessionStep2 = () => {
           ex. 카페 정보가 적어요. ㅁㅁ카페가 추가되었으면 좋겠어요. / 리뷰가 너무 없어요. / 오류가 자주 생겨요."
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="h-[290px]"
+          className="h-[290px] mt-4"
           maxlength={200}
         />
         <Text size="small" className="ml-auto text-gray-400">
           {content.length}/200
         </Text>
       </div>
-      <Button size="full">탈퇴하기</Button>
+      <Button size="full" onClick={() => alert("서비스 준비중입니다.")}>
+        탈퇴하기
+      </Button>
     </div>
   );
 };
