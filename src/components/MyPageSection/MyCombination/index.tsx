@@ -1,7 +1,6 @@
 "use client";
 
 import useGetMyCombination from "@/Hooks/Api/myPage/useGetMyCombination";
-import Loading from "@/app/loading";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import { CombinationType } from "@/interfaces/Combination";
@@ -10,8 +9,6 @@ import { useRouter } from "next/navigation";
 const MyCombinationCafe = () => {
   const router = useRouter();
   const { myCombination, myCombinationLoading } = useGetMyCombination();
-
-  if (myCombinationLoading) return <Loading />;
 
   return (
     <div className="py-6 px-4">
