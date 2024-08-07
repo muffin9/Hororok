@@ -15,6 +15,7 @@ import { reviewFilterDatas } from "@/app/constants";
 import useReviewMutation from "@/Hooks/Api/myPage/useReviewMutation";
 import { ReviewInfoType } from "@/interfaces/Review";
 import { convertRequestKeywords } from "@/utils";
+import ToastMessage from "../common/ToastMessage";
 
 interface ReviewEditProps {
   reviewId: string;
@@ -251,6 +252,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
           cancelCallbackFunc={() => router.back()}
         />
       )}
+      <ToastMessage />
     </>
   );
 };
