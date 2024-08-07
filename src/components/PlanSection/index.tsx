@@ -43,12 +43,12 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
     <>
       <section className="h-full bg-white overflow-y-scroll">
         <header className="flex flex-col px-4 gap-4 pt-12">
-          <div className="flex justify-between">
+          {/* <div className="flex justify-between">
             <div />
             <button onClick={openModal}>
               <Icon type="close" size="small" alt="close" />
             </button>
-          </div>
+          </div> */}
 
           <ProgressBar
             width={`${(+planId / 4) * 100}%`}
@@ -57,7 +57,7 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
         </header>
         <div className="h-full mt-10">{renderPlanStep()}</div>
       </section>
-      {showModal && (
+      {/* {showModal && (
         <Modal
           title={`홈 화면으로 돌아갑니다.\n나가시면 다시 처음부터 해야해요.`}
           okButtonText="계속하기"
@@ -72,7 +72,7 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
             router.push("/map");
           }}
         />
-      )}
+      )} */}
     </>
   );
 };

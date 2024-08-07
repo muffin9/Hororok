@@ -1,4 +1,5 @@
 import PlanSection from "@/components/PlanSection";
+import TopButtonAndLogo from "@/components/common/TopButtonAndLogo";
 
 type PlanIdProps = {
   params: {
@@ -7,5 +8,10 @@ type PlanIdProps = {
 };
 
 export default async function Plan({ params }: PlanIdProps) {
-  return <PlanSection planId={params.id} />;
+  return (
+    <main className="h-full overflow-y-scroll">
+      <TopButtonAndLogo />
+      <PlanSection planId={params.id} />
+    </main>
+  );
 }

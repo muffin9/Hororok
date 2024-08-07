@@ -1,10 +1,10 @@
 import Secession from "@/components/MyPageSection/Secession";
-import TopNavigation from "@/components/common/TopNavigation";
+import TopButtonAndLogo from "@/components/common/TopButtonAndLogo";
 
 export default function SecessionPage() {
   return (
-    <section>
-      <TopNavigation title="회원탈퇴" />
+    <section className="h-full bg-white">
+      <TopButtonAndLogo />
       <Secession />
     </section>
   );
