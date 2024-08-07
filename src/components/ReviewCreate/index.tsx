@@ -23,6 +23,7 @@ interface ReviewCreateProps {
 }
 
 const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const [starRating, setStarRating] = useState(5);
   const [content, setContent] = useState("");
@@ -54,6 +55,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
 
   const onReviewSubmit = useDebounce(async () => {
     if (cafeId) {
+      setIsSubmitting(true);
       const formData = new FormData();
 
       files.forEach((file) => {
@@ -75,12 +77,17 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
         })
       );
 
-      await postReview(formData);
+      try {
+        await postReview(formData);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   }, 500);
 
   const checkDisabledSubmit = () => {
-    if (!starRating || checkKeywordDisabledSubmit()) return true;
+    if (!starRating || checkKeywordDisabledSubmit() || isSubmitting)
+      return true;
     return false;
   };
 

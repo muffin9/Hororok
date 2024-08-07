@@ -3,7 +3,7 @@ import TopButtonAndLogo from "@/components/common/TopButtonAndLogo";
 
 export default function SearchResult() {
   return (
-    <main>
+    <main className="h-full">
       <TopButtonAndLogo />
       <SearchResultSection />
     </main>
