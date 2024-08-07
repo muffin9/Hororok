@@ -9,7 +9,7 @@ const meta: Meta<typeof Step1> = {
 export default meta;
 
 const PrimitiveStep1 = () => {
-  return <Step1 />;
+  return <Step1 setIsStep2={() => false} />;
 };
 
 export const Default = {
