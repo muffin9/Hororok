@@ -1,8 +1,7 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import Splash from "../common/Splash";
-import Loading from "@/app/loading";
 import useIsLoggedIn from "@/Hooks/useLoggedIn";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -47,11 +46,9 @@ const Home = () => {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <main className="w-full h-full px-4 flex flex-col items-center justify-center bg-primary-300">
-          <Splash />
-        </main>
-      </Suspense>
+      <main className="w-full h-full px-4 flex flex-col items-center justify-center bg-primary-300">
+        <Splash />
+      </main>
     </>
   );
 };

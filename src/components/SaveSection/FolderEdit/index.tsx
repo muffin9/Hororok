@@ -7,18 +7,14 @@ import Text from "@/components/common/Text";
 import { BookmarkType } from "@/interfaces/Save";
 import { useRouter } from "next/navigation";
 import useGetFolderList from "@/Hooks/Api/useGetFolderList";
-import Loading from "@/app/loading";
 import ToastMessage from "@/components/common/ToastMessage";
+import LoadingSpinner from "@/components/common/LoadingSpinner";
 
 const FolderEdit = ({ folderId }: { folderId: number }) => {
   const router = useRouter();
   const { folderList, folderListLoading } = useGetFolderList(folderId);
   const { deleteBookmark } = useBookMarkMutation();
   const { deleteBookmarkFolder } = useBookMarkFolderMutation();
-
-  if (folderListLoading) {
-    return <Loading />;
-  }
 
   return (
     <div>

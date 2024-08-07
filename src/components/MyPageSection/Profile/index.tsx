@@ -1,5 +1,4 @@
 import useProfileMutation from "@/Hooks/Api/myPage/useProfileMutation";
-import Loading from "@/app/loading";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
 import { ProfileType } from "@/interfaces/user";
@@ -13,8 +12,6 @@ const Profile = () => {
     myProfileLoading,
   }: { myProfile: ProfileType; myProfileLoading: boolean } =
     useProfileMutation();
-
-  if (myProfileLoading) return <Loading />;
 
   return (
     myProfile && (
