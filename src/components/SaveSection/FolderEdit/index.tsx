@@ -8,7 +8,6 @@ import { BookmarkType } from "@/interfaces/Save";
 import { useRouter } from "next/navigation";
 import useGetFolderList from "@/Hooks/Api/useGetFolderList";
 import ToastMessage from "@/components/common/ToastMessage";
-import LoadingSpinner from "@/components/common/LoadingSpinner";
 
 const FolderEdit = ({ folderId }: { folderId: number }) => {
   const router = useRouter();
