@@ -1,26 +1,20 @@
 "use client";
 
-import Icon from "@/components/common/Icon";
 import ProgressBar from "@/components/common/ProgressBar";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
-import Modal from "../common/Modal";
 import { useRouter } from "next/navigation";
 import usePlanStore from "@/store/usePlanStore";
 import { useEffect } from "react";
-import useModal from "@/Hooks/useModal";
 
 interface PlanSectionProps {
   planId: "1" | "2" | "3" | "4";
 }
 
 const PlanSection = ({ planId }: PlanSectionProps) => {
-  const { setIsWrting, resetPlanStore } = usePlanStore();
-  const { showModal, openModal, closeModal } = useModal();
-
-  const router = useRouter();
+  const { setIsWrting } = usePlanStore();
 
   const renderPlanStep = () => {
     switch (planId) {
@@ -41,38 +35,15 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
 
   return (
     <>
-      <section className="h-full bg-white overflow-y-scroll">
-        <header className="flex flex-col px-4 gap-4 pt-12">
-          {/* <div className="flex justify-between">
-            <div />
-            <button onClick={openModal}>
-              <Icon type="close" size="small" alt="close" />
-            </button>
-          </div> */}
-
+      <section className="h-full flex flex-col gap-8 bg-white overflow-y-scroll">
+        <header className="flex flex-col px-4">
           <ProgressBar
             width={`${(+planId / 4) * 100}%`}
             bgColor={"bg-primary-300"}
           />
         </header>
-        <div className="h-full mt-10">{renderPlanStep()}</div>
+        {renderPlanStep()}
       </section>
-      {/* {showModal && (
-        <Modal
-          title={`홈 화면으로 돌아갑니다.\n나가시면 다시 처음부터 해야해요.`}
-          okButtonText="계속하기"
-          cancelButtonText="나가기"
-          okCallbackFunc={() => {
-            setIsWrting(false);
-            closeModal();
-          }}
-          cancelCallbackFunc={() => {
-            setIsWrting(false);
-            resetPlanStore();
-            router.push("/map");
-          }}
-        />
-      )} */}
     </>
   );
 };
