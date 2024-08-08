@@ -28,7 +28,7 @@ const ContentInfo = ({ cafeId }: { cafeId: string }) => {
     switch (clickedMenu?.id) {
       case "default":
         return (
-          <div className="flex flex-col">
+          <div className="h-full flex flex-col pb-8">
             <DefaultInfo cafeId={cafeId} />
             <div className="mt-[10px]" />
             <MenuInfo cafeId={cafeId} handleOnMenuClick={handleOnMenuClick} />
@@ -50,7 +50,7 @@ const ContentInfo = ({ cafeId }: { cafeId: string }) => {
   };
 
   return (
-    <section>
+    <section className="h-full">
       <div className="mt-[10px]" />
       <TabMenu menuInfo={menuInfo} handleOnMenuClick={handleOnMenuClick} />
       <div>{renderMenuContent()}</div>

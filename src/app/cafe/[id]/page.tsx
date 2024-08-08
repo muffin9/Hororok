@@ -9,7 +9,7 @@ type CafeProps = {
 
 export default async function CafePage({ params }: CafeProps) {
   return (
-    <main>
+    <main className="">
       <TopButtonAndLogo />
       <DetailInfo cafeId={params.id} />
     </main>
