@@ -35,7 +35,7 @@ const PlanResultHeader = () => {
                     linkUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${resultPlanInfos?.matchCafes[0].id}`,
                   }}
                 />
-                <button
+                {/* <button
                   onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
                     if (!isLoggedIn) {
                       alert("로그인이 필요합니다.");
@@ -53,7 +53,7 @@ const PlanResultHeader = () => {
                   }}
                 >
                   <Icon type="bookmark" size="small" alt="북마크" />
-                </button>
+                </button> */}
               </div>
             </div>
             <div>
