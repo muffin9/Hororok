@@ -20,7 +20,7 @@ const MySetting = () => {
       <div className="bg-white">
         <div>
           {myPage && (
-            <div className="h-[146px] flex items-center justify-center flex-col gap-4 border-[1px] border-solid border-gray-300 rounded-lg">
+            <div className="h-[146px] m-4 flex items-center justify-center flex-col gap-4 border-[1px] border-solid border-gray-300 rounded-lg">
               <Image
                 width={44}
                 height={44}

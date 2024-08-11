@@ -12,6 +12,8 @@ import SaveSection from "../SaveSection";
 import useOutsideClick from "@/Hooks/useOutsideClick";
 import { useRef } from "react";
 import useIsLoggedIn from "@/Hooks/useLoggedIn";
+import { noResultImage } from "@/app/constants";
+import Image from "next/image";
 
 interface CardResultCafeInfoProps {
   cafeDatas: CafeType[] | CafeInfoType[];
@@ -29,10 +31,21 @@ const CardResultCafeInfo = ({ cafeDatas, planId }: CardResultCafeInfoProps) => {
 
   if (cafeDatas && cafeDatas.length === 0) {
     return (
-      <div className="flex justify-center items-center">
-        <Text size="medium" className="text-gray-800">
-          아쉽지만 찾는 카페가 없어요. 필터를 다시 조절해주세요.
-        </Text>
+      <div className="flex flex-col mt-16 items-center">
+        <Image
+          src={noResultImage}
+          width={100}
+          height={100}
+          alt="no result image"
+        />
+        <div className="flex flex-col items-center">
+          <Text size="medium" className="text-gray-600">
+            아쉽지만 조건에 맞는 카페가 없어요.
+          </Text>
+          <Text size="medium" className="text-gray-600">
+            조건을 조금만 수정해볼까요?
+          </Text>
+        </div>
       </div>
     );
   }

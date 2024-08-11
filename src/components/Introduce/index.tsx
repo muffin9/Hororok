@@ -1,24 +1,61 @@
 import Image from "next/image";
-import { logoImage, instagramImage } from "@/app/constants";
+import {
+  mainLogoImage,
+  cafecokTextImage,
+  instagramImage,
+} from "@/app/constants";
 import Text from "../common/Text";
 import Link from "next/link";
 
 const Introduce = () => {
   return (
-    <section className="hidden md:flex flex-col h-full justify-between py-8 gap-2">
-      <div className="flex flex-col items-center gap-2">
-        <Image
-          src={logoImage}
-          width={142}
-          height={142}
-          alt="cafekok logo"
-          className="rounded-lg"
-        />
-        <div>
-          <Text size="small">일정과 취향에 딱 맞춘 </Text>
-          <Text size="small" className="text-primary-300">
-            카페콕
-          </Text>
+    <section className="hidden md:flex flex-col h-full py-8 gap-2">
+      <div className="h-full justify-center flex flex-col items-center gap-2">
+        <div className="flex gap-4 items-center">
+          <Image
+            src={mainLogoImage}
+            width={131}
+            height={131}
+            alt="cafecok logo"
+            className="rounded-lg"
+          />
+          <Image
+            src={cafecokTextImage}
+            width={156}
+            height={72}
+            alt="cafecok text"
+            className="rounded-lg"
+          />
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="w-full ml-3 flex gap-[26px]">
+            <div className="flex gap-2">
+              <Text size="extraSmall" className="text-primary-300">
+                &#183;
+              </Text>
+              <Text size="extraSmall" className="text-primary-300">
+                &#183;
+              </Text>
+            </div>
+            <div className="flex gap-2">
+              <Text size="extraSmall" className="text-primary-300">
+                &#183;
+              </Text>
+              <Text size="extraSmall" className="text-primary-300">
+                &#183;
+              </Text>
+            </div>
+          </div>
+          <div>
+            <Text size="small" className="text-primary-300">
+              일정
+            </Text>
+            <Text size="small">과 </Text>
+            <Text size="small" className="text-primary-300">
+              취향
+            </Text>
+            <Text size="small">에 딱 맞춘 카페 찾기</Text>
+          </div>
         </div>
       </div>
       <div className="flex flex-col items-center gap-8">

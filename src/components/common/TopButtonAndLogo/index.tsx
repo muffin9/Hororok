@@ -15,7 +15,7 @@ export default function TopButtonAndLogo() {
           src={logoImage}
           width={36}
           height={36}
-          alt="cafekok logo"
+          alt="cafecok logo"
           className="rounded-lg"
         />
       </button>

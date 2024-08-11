@@ -8,8 +8,11 @@ export const currentPinImage = "/assets/Icon/current_place.svg";
 export const cafePinImage = "/assets/Icon/pin.svg";
 export const reboundButtonImage = "/assets/Images/location_rebound.png";
 export const logoImage = "/assets/Images/logo.png";
+export const mainLogoImage = "/assets/Images/mainLogo.png";
+export const cafecokTextImage = "/assets/Images/cafecokText.png";
 export const profileImage = "/assets/Images/profile.png";
 export const instagramImage = "/assets/Images/instagram.png";
+export const noResultImage = "/assets/Images/no-result.png";
 
 export const popularKeywords = [
   {
