@@ -55,7 +55,7 @@ const Calendar = ({ checkSelectDay, onClickday }: CalendarProps) => {
   };
 
   return (
-    <div className="h-full flex flex-col gap-4 bg-white h-[250px] pt-6">
+    <div className="flex flex-col gap-4 bg-white pt-6">
       <header className="flex items-center justify-between relative">
         <SelectBox
           selectedOption={selectedMonth}

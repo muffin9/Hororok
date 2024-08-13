@@ -79,7 +79,6 @@ const Condition = ({
         </div>
       </div>
       <div className="flex gap-1 text-primary-300 pb-4">
-        <Icon size="xSmall" type="info" alt="info" />
         <Text size="small">최대 {maxSelectCount}개 선택할 수 있어요</Text>
       </div>
       {sortedFilterData().map((condition) => {

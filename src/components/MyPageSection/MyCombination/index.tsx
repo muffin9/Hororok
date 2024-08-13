@@ -18,7 +18,6 @@ const MyCombinationCafe = () => {
         </Text>
       </header>
       <div className="flex gap-1">
-        <Icon size="xSmall" type="info" alt="mycombination-info" />
         <Text size="extraSmall" className="text-gray-700">
           나만의 조합에 맞춘 카페를 홈화면에서 빠르게 찾을 수 있어요. 최대 2개
           등록할 수 있으며 선택한 아이콘으로 홈에서 표시돼요.

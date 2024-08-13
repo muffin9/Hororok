@@ -28,13 +28,12 @@ const SecessionStep1 = ({ setIsStep2 }: SecessionStep1Props) => {
         <Text size="medium">회원 탈퇴 시 유의사항</Text>
         <div className="mt-3 text-gray-800">
           <ul className="p-4 flex flex-col gap-2 border-[2px] border-solid border-gray-300 rounded-lg">
-            <li>저장하고 공유했던 소중한 기록이 모두 사라져요.</li>
-            <li>나만의 취향이 깃든 카페 리뷰들이 모두 사라져요.</li>
+            <li>➀ 나만의 취향이 깃든 카페 리뷰들이 모두 사라져요.</li>
             <li>
-              회원 탈퇴 시, 서비스 이용기록은 통신비밀보호법에따라 3개월간
+              ➁ 회원 탈퇴 시, 서비스 이용기록은 통신비밀보호법에따라 3개월간
               분리보관된 후 영구 삭제돼요.
             </li>
-            <li>7일이 지나고 나서 같은 계정으로 재가입할 수 있어요.</li>
+            <li>➂ 7일이 지나고 나서 같은 계정으로 재가입할 수 있어요.</li>
           </ul>
         </div>
       </div>
