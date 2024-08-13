@@ -87,7 +87,11 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
           </div>
           <div className="px-4 flex flex-col py-6 bg-white">
             <header className="flex justify-between items-center">
-              <Text size="large" weight="bold">
+              <Text
+                size="large"
+                weight="bold"
+                className="truncate overflow-hidden whitespace-nowrap"
+              >
                 {topInfo.cafeName}
               </Text>
               <Button

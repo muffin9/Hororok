@@ -27,7 +27,7 @@ const OnBoarding = () => {
 
   const handlePreviousStep = () => {
     if (onStep > 0) {
-      setAnimation("slideLeft");
+      setAnimation("slideRight");
       setTimeout(() => {
         setOnStep(onStep - 1);
       }, 500); // 애니메이션 지속 시간과 동일하게 설정
@@ -36,7 +36,7 @@ const OnBoarding = () => {
 
   const handleNextStep = () => {
     if (onStep < onBoardingTexts.length - 1) {
-      setAnimation("slideRight");
+      setAnimation("slideLeft");
       setTimeout(() => {
         setOnStep(onStep + 1);
       }, 500); // 애니메이션 지속 시간과 동일하게 설정

@@ -14,6 +14,7 @@ import SubmitButton from "@/components/FilterSection/SubmitButton";
 import RefreshButton from "@/components/common/RefreshButton";
 import useGeolocation from "@/Hooks/useGeolocation";
 import { convertRequestKeywords } from "@/utils";
+import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
 
 const Step4 = () => {
   const router = useRouter();
@@ -32,6 +33,7 @@ const Step4 = () => {
     calculatedPopularKeywordIds,
   } = useKeyword();
   const { setMatchPlan } = usePlanMatchStore();
+  const { setSearchResultList } = useSearcResultListStorehPlace();
 
   const onSubmit = async () => {
     const convertPlanData = {
@@ -48,6 +50,8 @@ const Step4 = () => {
     const planResultInfo = await postSearchListToPlan(convertPlanData);
 
     setMatchPlan(planResultInfo);
+    if (planResultInfo.matchCafes)
+      setSearchResultList(planResultInfo.matchCafes);
     resetKeywords();
     router.push(
       `/plan/result?latitude=${convertPlanData.latitude}&longitude=${convertPlanData.longitude}`

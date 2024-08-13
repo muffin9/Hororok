@@ -146,7 +146,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
                 <Image
                   src={URL.createObjectURL(file)}
                   alt={`Uploaded image ${index}`}
-                  className="w-[100px] h-[100px]"
+                  className="w-[100px] h-[100px] rounded-lg"
                   objectFit="cover"
                 />
               </div>

@@ -69,7 +69,7 @@ export const filterDatas = [
   {
     category: "theme",
     title: "원하는 테마가 있나요?",
-    data: ["따뜻한 인테리어", "사진맛집", "뷰맛집", "개인카페"],
+    data: ["따뜻한 인테리어", "사진맛집", "뷰맛집"],
   },
 ];
 
@@ -99,7 +99,7 @@ export const reviewFilterDatas = [
   {
     category: "theme",
     title: "카페의 테마를 알려주세요.",
-    data: ["따뜻한 인테리어", "사진맛집", "뷰맛집", "개인카페"],
+    data: ["따뜻한 인테리어", "사진맛집", "뷰맛집"],
   },
 ];
 

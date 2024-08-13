@@ -40,7 +40,6 @@ const FolderEdit = ({ folderId }: { folderId: number }) => {
         <Icon type="edit" alt="edit" />
       </div>
       <div className="flex p-4 gap-1">
-        <Icon size="xSmall" type="info" alt="info" />
         <Text size="extraSmall" className="text-gray-800">
           하나의 폴더에 99개까지 저장할 수 있어요.
         </Text>
