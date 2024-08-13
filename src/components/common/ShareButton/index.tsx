@@ -2,9 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { patchSharePlan } from "@/apis/plans";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import useIsLoggedIn from "@/Hooks/useLoggedIn";
-import Icon from "../Icon";
+import Icon from "@/components/common/Icon";
 
 declare global {
   interface Window {
@@ -36,13 +36,11 @@ const ShareButton = ({ type, cafeId, planId, cafeInfo }: ShareButtonProps) => {
       templateArgs: {
         title: cafeInfo.title,
         description: cafeInfo.description,
+        cafeId: cafeId,
         imageUrl: `http:${cafeInfo.imageUrl}`,
       },
     });
 
-    // Kakao.Share.sendScrap({
-    //   requestUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${cafeId}`,
-    // });
     if (planId) patchSharePlan(planId);
   }, []);
 
