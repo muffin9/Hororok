@@ -40,6 +40,7 @@ const iconUrls = {
   plan: "/assets/Icon/plan.svg",
   re_plan: "/assets/Icon/re-plan.svg",
   info: "/assets/Icon/ic_info.svg",
+  question: "/assets/Icon/ic_question.svg",
   coffee: "/assets/Icon/ic_coffee.svg",
   map: "/assets/Icon/ic_map.svg",
   trash: "/assets/Icon/ic_trash.svg",
@@ -95,6 +96,7 @@ export type IconType =
   | "plan"
   | "re_plan"
   | "info"
+  | "question"
   | "coffee"
   | "map"
   | "trash"

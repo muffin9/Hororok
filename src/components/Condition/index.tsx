@@ -4,6 +4,8 @@ import { CategoryIdType } from "../Home/HomeSection";
 import { FilterDataType } from "@/interfaces/Cafe";
 import Icon, { IconType } from "../common/Icon";
 import { popularKeywords } from "@/app/constants";
+import useModal from "@/Hooks/useModal";
+import Modal from "../common/Modal";
 
 interface ConditionProps {
   categoryId?: CategoryIdType;
@@ -29,6 +31,7 @@ const Condition = ({
   filterDatas,
   maxSelectCount,
 }: ConditionProps) => {
+  const { showModal, openModal, closeModal } = useModal();
   const sortedFilterData = () => {
     if (categoryId) {
       const clickedCategoryIdx = filterDatas.findIndex(
@@ -45,11 +48,23 @@ const Condition = ({
   return (
     <div className="py-6 border-silver">
       <div className="flex flex-col mb-8">
-        <div className="flex gap-1 mb-4">
+        <div className="relative flex gap-1 mb-4">
           <Icon size="small" type="heart" alt="heart" />
           <Text size="medium" weight="bold">
             카페콕 추천
           </Text>
+          <button onClick={() => openModal()}>
+            <Icon size="small" type="question" alt="question" />
+          </button>
+          {showModal && (
+            <Modal
+              title=""
+              subTitle={`카페콕에서 자주 찾는 카페 테마를 선정했어요.\n추천 테마는 다음과 같은 키워드 조합을 뜻해요.\n\n카공하기좋은곳 = 노트북작업 + 콘센트 베이커리데이트 =\n아늑한휴식공간 = 독서/휴식 + 따뜻한 인테리어\n데이트/모임 + 베이커리\n\n\n추천 테마를 선택하고 더 쉽게 카페를 찾아보세요!`}
+              okButtonText="확인"
+              okCallbackFunc={() => closeModal()}
+              cancelCallbackFunc={() => closeModal()}
+            />
+          )}
         </div>
         <div className="flex flex-wrap gap-2">
           {popularKeywords.map((popular) => {
