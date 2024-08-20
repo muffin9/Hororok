@@ -98,7 +98,7 @@ const PlanResultHeader = () => {
           <div className="flex flex-col gap-2 whitespace-pre-wrap mb-2">
             <Text size="large">{planCafeHeader.recommendCafes.title}</Text>
             <Text size="small" className="text-gray-700 underline">
-              '{resultPlanInfos.locationName}'
+              &nbsp;{resultPlanInfos.locationName}&nbsp;
               {planCafeHeader.recommendCafes.subTitle}
             </Text>
           </div>
