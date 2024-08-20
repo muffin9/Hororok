@@ -14,9 +14,9 @@ export default function SearchMapPage() {
               <MoveInput />
               <ReSearchButton />
             </div>
-            <ResultList />
           </div>
         </KakaoMap>
+        <ResultList />
       </section>
     </main>
   );
