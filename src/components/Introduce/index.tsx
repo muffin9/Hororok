@@ -3,6 +3,7 @@ import {
   mainLogoImage,
   cafecokTextImage,
   instagramImage,
+  introduceTooltipImage,
 } from "@/app/constants";
 import Text from "../common/Text";
 import Link from "next/link";
@@ -10,7 +11,13 @@ import Link from "next/link";
 const Introduce = () => {
   return (
     <section className="hidden md:flex flex-col h-full py-8 gap-2">
-      <div className="h-full justify-center flex flex-col items-center gap-2">
+      <div className="h-full relative justify-center flex flex-col items-center gap-2">
+        <Image
+          src={introduceTooltipImage}
+          width={238}
+          height={75}
+          alt="tooltip image"
+        />
         <div className="flex gap-4 items-center">
           <Image
             src={mainLogoImage}

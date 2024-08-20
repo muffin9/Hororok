@@ -208,6 +208,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
       </div>
       {showModal && (
         <Modal
+          size="medium"
           title={`작성하던 리뷰는 저장되지 않아요.\n의견을 남기지 않고 나가시겠어요?`}
           okButtonText="이어서 리뷰남기기"
           cancelButtonText="나가기"

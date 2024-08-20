@@ -5,6 +5,7 @@ import Text from "../Text";
 import Button from "../Button";
 
 interface ModalProps {
+  size: "small" | "medium" | "large";
   title: string;
   subTitle?: string;
   okButtonText: string;
@@ -14,6 +15,7 @@ interface ModalProps {
 }
 
 const Modal = ({
+  size,
   title,
   subTitle,
   okButtonText,
@@ -21,6 +23,9 @@ const Modal = ({
   okCallbackFunc,
   cancelCallbackFunc,
 }: ModalProps) => {
+  const subTitleFontSize =
+    size === "small" ? "text-sm" : size === "medium" ? "text-base" : "text-lg";
+
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-[1000]">
       <div className="w-[358px] p-4 rounded-md bg-white relative">
@@ -36,8 +41,10 @@ const Modal = ({
           <Text size="xLarge" className="text-black whitespace-pre-wrap">
             {title}
           </Text>
-          <div className="mt-2 px-7 py-3">
-            <p className="text-lg text-gray-500 whitespace-pre-wrap">
+          <div className="mt-2 px-7 py-4">
+            <p
+              className={`text-lg text-gray-500 whitespace-pre-wrap ${subTitleFontSize}`}
+            >
               {subTitle}
             </p>
           </div>

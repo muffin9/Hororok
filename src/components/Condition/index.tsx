@@ -58,8 +58,9 @@ const Condition = ({
           </button>
           {showModal && (
             <Modal
+              size="small"
               title="카페콕 추천이란?"
-              subTitle={`카페콕에서 자주 찾는 카페 테마를 선정했어요.\n추천 테마는 다음과 같은 키워드 조합을 뜻해요.\n\n카공하기좋은곳 = 노트북작업 + 콘센트 베이커리데이트 =\n아늑한휴식공간 = 독서/휴식 + 따뜻한 인테리어\n데이트/모임 + 베이커리\n\n\n추천 테마를 선택하고 더 쉽게 카페를 찾아보세요!`}
+              subTitle={`카페콕에서 자주 찾는 카페 테마를 선정했어요.\n추천 테마는 다음과 같은 키워드 조합을 뜻해요.\n\n카공하기좋은곳 = 노트북작업 + 콘센트 \n베이커리데이트 = 데이트/모임 + 베이커리\n아늑한휴식공간 = 독서/휴식 + 따뜻한 인테리어\n\n추천 테마를 선택하고 더 쉽게 카페를 찾아보세요 !`}
               okButtonText="확인했어요"
               okCallbackFunc={() => closeModal()}
               cancelCallbackFunc={() => closeModal()}
