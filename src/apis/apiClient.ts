@@ -1,5 +1,5 @@
 import { apiSearchUrl } from "@/app/constants";
-import axios, { AxiosInstance, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 
 const axiosInstance: AxiosInstance = axios.create();
 
@@ -84,5 +84,23 @@ axiosInstance.interceptors.request.use(async (config: any) => {
   }
   return config;
 });
+
+// 서버 응답에 대한 인터셉터 추가
+axiosInstance.interceptors.response.use(
+  (response: AxiosResponse) => {
+    // 성공적인 응답을 그대로 반환
+    return response;
+  },
+  (error: AxiosError) => {
+    if (
+      error.response &&
+      (error.response.status === 500 || error.response.status === 404)
+    ) {
+      // 사용자에게 에러 메시지 표시
+      alert("알 수 없는 에러가 발생했습니다. 잠시 후 다시 이용해주세요.");
+    }
+    return Promise.reject(error);
+  }
+);
 
 export default axiosInstance;
