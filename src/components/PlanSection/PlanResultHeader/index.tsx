@@ -14,6 +14,15 @@ const PlanResultHeader = () => {
   const { resultPlanInfos } = usePlanMatchStore();
   const { handleClickBookmark } = useHandleBookmark();
   const { showMessage } = useToastStore();
+  const keywords = [] as string[];
+
+  if (resultPlanInfos) {
+    Object.keys(resultPlanInfos.categoryKeywords).forEach((key) => {
+      resultPlanInfos.categoryKeywords[key].forEach((keyword) => {
+        keywords.push(keyword);
+      });
+    });
+  }
 
   return (
     <>
@@ -26,13 +35,13 @@ const PlanResultHeader = () => {
               </Text>
               <div className="flex gap-4 cursor-pointer">
                 <ShareButton
-                  cafeId={resultPlanInfos.matchCafes[0].id}
+                  cafeId={resultPlanInfos.matchCafes[0]?.id}
                   planId={resultPlanInfos.planId}
                   cafeInfo={{
                     title: resultPlanInfos.visitDateTime,
                     description: resultPlanInfos.locationName,
-                    imageUrl: resultPlanInfos?.matchCafes[0].imageUrl,
-                    linkUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${resultPlanInfos?.matchCafes[0].id}`,
+                    imageUrl: resultPlanInfos?.matchCafes[0]?.imageUrl,
+                    linkUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${resultPlanInfos?.matchCafes[0]?.id}`,
                   }}
                 />
                 {/* <button
@@ -62,29 +71,23 @@ const PlanResultHeader = () => {
               </Text>
               으로부터{" "}
               <Text size="medium" weight="bold">
-                {resultPlanInfos.minutes}분이내
+                {resultPlanInfos.minutes}분이내 카페를 찾았어요!
               </Text>{" "}
               <br />
-              <Text size="medium" weight="bold">
-                {resultPlanInfos?.categoryKeywords?.purpose[0]}
-              </Text>
-              하기 좋은 카페를 찾았어요!
             </div>
-            <div className="flex gap-1.5">
-              {resultPlanInfos?.categoryKeywords?.menu?.map(
-                (menuKeyword: string) => {
-                  return (
-                    <button
-                      key={menuKeyword}
-                      className="h-[31px] px-3 rounded-2xl border-[1px] border-solid border-primary-300"
-                    >
-                      <Text size="small" className="text-primary-300">
-                        {menuKeyword}
-                      </Text>
-                    </button>
-                  );
-                }
-              )}
+            <div className="flex gap-1.5 mb-4">
+              {keywords.map((keyword: string) => {
+                return (
+                  <button
+                    key={keyword}
+                    className="h-[31px] px-3 rounded-xl border-[1px] border-solid border-primary-300 bg-subcolor"
+                  >
+                    <Text size="small" className="text-primary-300">
+                      {keyword}
+                    </Text>
+                  </button>
+                );
+              })}
             </div>
           </>
         )}
@@ -94,8 +97,8 @@ const PlanResultHeader = () => {
         {resultPlanInfos.matchType === "MISMATCH" && (
           <div className="flex flex-col gap-2 whitespace-pre-wrap mb-2">
             <Text size="large">{planCafeHeader.recommendCafes.title}</Text>
-            <Text size="small" className="text-gray-700">
-              {resultPlanInfos.locationName}
+            <Text size="small" className="text-gray-700 underline">
+              &nbsp;{resultPlanInfos.locationName}&nbsp;
               {planCafeHeader.recommendCafes.subTitle}
             </Text>
           </div>
