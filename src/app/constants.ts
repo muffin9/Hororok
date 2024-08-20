@@ -13,6 +13,7 @@ export const cafecokTextImage = "/assets/Images/cafecokText.png";
 export const profileImage = "/assets/Images/profile.png";
 export const instagramImage = "/assets/Images/instagram.png";
 export const noResultImage = "/assets/Images/no-result.png";
+export const introduceTooltipImage = "/assets/Images/introduce_tooltip.png";
 
 export const popularKeywords = [
   {

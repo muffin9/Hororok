@@ -110,6 +110,7 @@ const GNB = () => {
       )}
       {showModal && (
         <Modal
+          size="medium"
           title={`로그인을 해주세요.`}
           okButtonText="로그인"
           cancelButtonText="취소"
