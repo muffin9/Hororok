@@ -3,14 +3,17 @@ import { apiSearchUrl } from "@/app/constants";
 import useToastStore from "@/store/useToastStore";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const useReviewMutation = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { showMessage } = useToastStore();
   const queryClient = useQueryClient();
   const router = useRouter();
 
   const { mutateAsync: postReview } = useMutation({
     mutationFn: async (formData: FormData) => {
+      setIsSubmitting(true);
       return axiosInstance.post(`${apiSearchUrl}/review/create`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -27,10 +30,18 @@ const useReviewMutation = () => {
         router.push(`/cafe/${cafeId}`);
       }
     },
+    onError: (error) => {
+      console.error("Error create review:", error);
+      showMessage("리뷰가 등록되지 않았습니다. 다시 시도해 주세요.");
+    },
+    onSettled: () => {
+      setIsSubmitting(false);
+    },
   });
 
   const { mutateAsync: deleteReview } = useMutation({
     mutationFn: async (reviewId: number) => {
+      setIsSubmitting(true);
       return axiosInstance.delete(`${apiSearchUrl}/review/${reviewId}/delete`);
     },
     onSuccess: (data) => {
@@ -38,6 +49,13 @@ const useReviewMutation = () => {
         showMessage(`리뷰가 삭제되었습니다.`);
         queryClient.invalidateQueries({ queryKey: ["getUserReviews"] });
       }
+    },
+    onError: (error) => {
+      console.error("Error delete review:", error);
+      showMessage("리뷰가 삭제되지 않았습니다. 다시 시도해 주세요.");
+    },
+    onSettled: () => {
+      setIsSubmitting(false);
     },
   });
 
@@ -49,6 +67,7 @@ const useReviewMutation = () => {
       reviewId: number;
       formData: FormData;
     }) => {
+      setIsSubmitting(true);
       return axiosInstance.patch(
         `${apiSearchUrl}/review/${reviewId}/edit`,
         formData,
@@ -66,9 +85,16 @@ const useReviewMutation = () => {
         router.push(`/myPage`);
       }
     },
+    onError: (error) => {
+      console.error("Error edit review:", error);
+      showMessage("리뷰가 수정되지 않았습니다. 다시 시도해 주세요.");
+    },
+    onSettled: () => {
+      setIsSubmitting(false);
+    },
   });
 
-  return { postReview, patchReview, deleteReview };
+  return { isSubmitting, postReview, patchReview, deleteReview };
 };
 
 export default useReviewMutation;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import "./globals.css";
 import QueryProvider from "@/Hooks/useReactQuery";
@@ -55,7 +56,9 @@ export default function RootLayout({
           </section>
         </QueryProvider>
       </body>
+
       <KakaoScript />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_KEY || ""} />
     </html>
   );
 }

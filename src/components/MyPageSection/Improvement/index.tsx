@@ -8,7 +8,8 @@ import useUserMutation from "@/Hooks/Api/myPage/useUserMutation";
 
 const Improvement = () => {
   const [content, setContent] = useState("");
-  const { postFeedback } = useUserMutation();
+
+  const { postFeedback, isFeedbackLoading } = useUserMutation();
 
   return (
     <div className="flex flex-col gap-4 overflow-y-scroll">
@@ -33,6 +34,7 @@ const Improvement = () => {
         size="full"
         className="absolute bottom-16"
         onClick={() => postFeedback(content)}
+        disabled={isFeedbackLoading}
       >
         의견 보내기
       </Button>
