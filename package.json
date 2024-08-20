@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@next/third-parties": "14.0.5-canary.59",
     "@tanstack/react-query": "^5.28.9",
     "axios": "^1.6.8",
     "dotenv": "^16.4.5",
