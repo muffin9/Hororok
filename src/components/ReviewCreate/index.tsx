@@ -23,7 +23,6 @@ interface ReviewCreateProps {
 }
 
 const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const [starRating, setStarRating] = useState(5);
   const [content, setContent] = useState("");
@@ -41,7 +40,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
     calculatedPopularKeywordIds,
   } = useKeyword();
 
-  const { postReview } = useReviewMutation();
+  const { isSubmitting, postReview } = useReviewMutation();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (files.length >= 5) {
@@ -55,7 +54,6 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
 
   const onReviewSubmit = useDebounce(async () => {
     if (cafeId) {
-      setIsSubmitting(true);
       const formData = new FormData();
 
       files.forEach((file) => {
@@ -77,11 +75,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
         })
       );
 
-      try {
-        await postReview(formData);
-      } finally {
-        setIsSubmitting(false);
-      }
+      await postReview(formData);
     }
   }, 500);
 
