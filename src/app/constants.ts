@@ -284,7 +284,7 @@ export const planCafeHeader = {
   similarCafes: {
     title: "딱 맞는 카페는 없지만, 비슷한 카페를 찾았어요!",
     subTitle:
-      "방문 지역, 날짜, 시간은 동일해요.\n조금 더 걷거나 조건이 다를 수 있어요.",
+      "방문지역, 날짜, 시간은 동일해요. 조금 더 걷거나 조건이 다를 수 있어요.",
   },
   recommendCafes: {
     title: "아쉽지만, 찾는 카페가 없어요. 이런 카페는 어때요?",
@@ -293,7 +293,7 @@ export const planCafeHeader = {
   matchSimilarCafes: {
     title: "비슷한 카페",
     subTitle:
-      "방문 지역, 날짜, 시간은 동일해요.\n조금 더 걷거나 조건이 다를 수 있어요.",
+      "방문지역, 날짜, 시간은 동일해요. 조금 더 걷거나 조건이 다를 수 있어요.",
   },
 };
 
