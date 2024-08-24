@@ -15,7 +15,7 @@ const useUserMutation = () => {
       return postUserFeedback(content);
     },
     onSuccess: (data) => {
-      if (data.status === 200) {
+      if (data.status === 204) {
         showMessage(`개선의견이 전달되었습니다.`);
         router.push("/map");
       }
