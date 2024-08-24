@@ -10,6 +10,7 @@ export default function KakaoCallback() {
   const router = useRouter();
 
   const [code, setCode] = useState<string | null>(null);
+  const [isRequestSent, setIsRequestSent] = useState<boolean>(false);
   const { setUserInfo } = useUserInfoStore();
 
   const searchParams = useSearchParams();
@@ -21,7 +22,9 @@ export default function KakaoCallback() {
   }, [searchParams]);
 
   useEffect(() => {
-    if (code) {
+    if (code && !isRequestSent) {
+      setIsRequestSent(true); //
+
       axios
         .get(`${process.env.NEXT_PUBLIC_SERVER_API}/auth/login?code=${code}`)
         .then(({ data }: { data: LoginType }) => {
@@ -42,7 +45,7 @@ export default function KakaoCallback() {
           console.error(error);
         });
     }
-  }, [code, router, setUserInfo]);
+  }, [code, isRequestSent, router, setUserInfo]);
 
   return <></>;
 }
