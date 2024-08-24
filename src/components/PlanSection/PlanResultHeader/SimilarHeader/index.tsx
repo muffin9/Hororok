@@ -11,6 +11,16 @@ interface SimilarHeaderProps {
 
 const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
   const [isMore, setIsMore] = useState(false);
+  const keywords = [] as string[];
+
+  if (resultPlanInfos) {
+    Object.keys(resultPlanInfos.categoryKeywords).forEach((key) => {
+      resultPlanInfos.categoryKeywords[key].forEach((keyword) => {
+        keywords.push(keyword);
+      });
+    });
+  }
+
   return (
     <div>
       <div className="flex flex-col gap-2 whitespace-pre-wrap">
@@ -63,21 +73,19 @@ const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
             </Text>
             하기 좋은 카페를 찾았어요!
           </div>
-          <div className="flex gap-1.5">
-            {resultPlanInfos?.categoryKeywords?.menu?.map(
-              (menuKeyword: string) => {
-                return (
-                  <button
-                    key={menuKeyword}
-                    className="h-[31px] px-3 rounded-2xl border-[1px] border-solid border-primary-300"
-                  >
-                    <Text size="small" className="text-primary-300">
-                      {menuKeyword}
-                    </Text>
-                  </button>
-                );
-              }
-            )}
+          <div className="flex gap-1.5 mb-4">
+            {keywords.slice(0, 5).map((keyword: string) => {
+              return (
+                <button
+                  key={keyword}
+                  className="h-[31px] px-3 rounded-xl border-[1px] border-solid border-primary-300 bg-subcolor"
+                >
+                  <Text size="small" className="text-primary-300">
+                    {keyword}
+                  </Text>
+                </button>
+              );
+            })}
           </div>
         </>
       )}
