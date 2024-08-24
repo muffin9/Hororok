@@ -76,7 +76,7 @@ const PlanResultHeader = () => {
               <br />
             </div>
             <div className="flex gap-1.5 mb-4">
-              {keywords.map((keyword: string) => {
+              {keywords.slice(0, 5).map((keyword: string) => {
                 return (
                   <button
                     key={keyword}
