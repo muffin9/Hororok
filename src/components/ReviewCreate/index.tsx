@@ -40,7 +40,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
     calculatedPopularKeywordIds,
   } = useKeyword();
 
-  const { isSubmitting, postReview } = useReviewMutation();
+  const { postReview } = useReviewMutation();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (files.length >= 5) {
@@ -80,8 +80,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
   }, 500);
 
   const checkDisabledSubmit = () => {
-    if (!starRating || checkKeywordDisabledSubmit() || isSubmitting)
-      return true;
+    if (!starRating || checkKeywordDisabledSubmit()) return true;
     return false;
   };
 
