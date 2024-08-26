@@ -75,11 +75,11 @@ axiosInstance.interceptors.request.use(async (config: any) => {
           "accessTokenExpiration",
           expirationTime.toString()
         );
-        config.headers.Authorization = `Bearer ${accessToken}`;
       } catch (error) {
         console.error("Failed to refresh accessToken:", error);
       }
     }
+    config.headers.Authorization = `Bearer ${accessToken}`;
   }
   return config;
 });
