@@ -40,7 +40,7 @@ const SaveSection = ({
   return (
     <section
       ref={saveRef}
-      className="w-[390px] bg-white rounded-tr-2xl rounded-tl-2xl border-b-[1px] border-solid border-gray-200"
+      className="w-[380px] bg-white rounded-tr-2xl rounded-tl-2xl border-b-[1px] border-solid border-gray-200"
     >
       <div className="p-4">
         <header className="flex justify-between">

@@ -49,7 +49,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
         )}
         <section className="h-screen overflow-y-scroll" key={topInfo.cafeId}>
           <div
-            className={`relative bg-cover bg-center w-[390px] h-[230px] shadow-xl overflow-hidden z-10`}
+            className={`relative bg-cover bg-center w-[380px] h-[230px] shadow-xl overflow-hidden z-10`}
             style={{
               backgroundImage: `url(http:${topInfo.originUrl})`,
             }}
