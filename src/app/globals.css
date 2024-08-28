@@ -47,7 +47,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 180px;
   height: 100vh;
   overflow: hidden;
   color: #000;
