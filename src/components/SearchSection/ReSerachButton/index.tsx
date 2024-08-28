@@ -22,7 +22,7 @@ const ReSearchButton = () => {
 
   return (
     <button
-      className="h-[38px] px-2 flex items-center gap-[4px] m-auto bg-white rounded-lg"
+      className="h-[38px] px-2 flex items-center gap-[4px] m-auto bg-white rounded-lg shadow-xl"
       onClick={onClickReSearch}
     >
       <Icon size="small" type="refresh" alt="refresh" />

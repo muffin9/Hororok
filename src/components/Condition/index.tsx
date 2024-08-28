@@ -53,7 +53,7 @@ const Condition = ({
           <Text size="medium" weight="bold">
             카페콕 추천
           </Text>
-          <button onClick={() => openModal()}>
+          <button onClick={() => openModal()} className="hidden md:flex">
             <Icon size="small" type="question" alt="question" />
           </button>
           {showModal && (

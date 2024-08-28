@@ -31,6 +31,13 @@ const NextButtonSection = ({
           </Text>
         </div>
       )} */}
+      {nextStep === "2" && (
+        <div className="flex justify-center">
+          <Text size="extraSmall" className="text-gray-700">
+            지역을 선택하지 않으면 서울 전체의 카페가 검색돼요.
+          </Text>
+        </div>
+      )}
       {nextStep !== "2" && (
         <Button
           size="full"
