@@ -32,14 +32,14 @@ const ResultList = () => {
   return (
     <section
       ref={filterRef}
-      className="w-[390px] h-1/2 z-[1000] pb-12 py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-x-hidden overflow-y-scroll"
+      className="w-[380px] h-1/2 z-[1000] pb-12 py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-x-hidden overflow-y-scroll"
     >
       <div className="flex flex-col gap-6">
         <header className="w-screen flex items-center gap-[2px]">
           {isFilter ? (
             <FilterSection setIsFilter={setIsFilter} />
           ) : (
-            <div className="w-full flex gap-[4px] px-4 overflow-x-scroll bg-white">
+            <div className="w-full flex gap-[4px] px-2 overflow-x-scroll bg-white">
               {/* <button className="flex justify-center items-center gap-[2px] w-[50px] border-solid border-[1px] border-gray-400 rounded-lg">
                 <Icon type="filter" alt="filter" />
                 <Text size="extraSmall">{categoryKeywordLen}</Text>

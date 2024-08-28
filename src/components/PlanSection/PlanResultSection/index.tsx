@@ -29,7 +29,7 @@ const PlanResultSection = () => {
   };
 
   return (
-    <section className="w-[390px] h-1/2 flex flex-col justify-between z-[1000] py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-x-hidden overflow-y-scroll">
+    <section className="w-[380px] h-1/2 flex flex-col justify-between z-[1000] py-4 bg-white fixed bottom-0 rounded-tr-2xl rounded-tl-2xl shadow-xl overflow-x-hidden overflow-y-scroll">
       {resultPlanInfos && (
         <>
           <PlanResultHeader />

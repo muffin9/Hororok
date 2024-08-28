@@ -45,7 +45,7 @@ const GNB = () => {
 
   return (
     <>
-      <footer className="w-[390px] h-16 fixed bottom-0 flex justify-between items-center px-20 bg-white z-[999]">
+      <footer className="w-[380px] h-16 fixed bottom-0 flex justify-between items-center px-20 bg-white z-[999]">
         {!isBottomSheet && (
           <div className="absolute top-[-43px] left-[70px] z-[1002]">
             <Image

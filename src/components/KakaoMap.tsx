@@ -131,7 +131,7 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
   };
 
   return (
-    <div id="map" className="fixed top-0 w-[390px] h-2/4">
+    <div id="map" className="fixed top-0 w-[380px] h-2/4">
       {children}
       <ReBoundButton
         onClickReBound={onClickReBound}
