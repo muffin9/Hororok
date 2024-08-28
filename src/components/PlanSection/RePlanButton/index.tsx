@@ -16,7 +16,7 @@ const RePlanButton = () => {
 
   return (
     <button
-      className="absolute bottom-[14px] left-1/2 transform -translate-x-1/2 h-[38px] px-2 flex items-center gap-[4px] m-auto bg-white rounded-lg z-[1000]"
+      className="absolute bottom-[14px] left-1/2 transform -translate-x-1/2 h-[38px] px-2 flex items-center gap-[4px] m-auto bg-white rounded-lg z-[1000] shadow-xl"
       onClick={onClickRePlan}
     >
       <Icon size="small" type="re_plan" alt="re_plan" />
