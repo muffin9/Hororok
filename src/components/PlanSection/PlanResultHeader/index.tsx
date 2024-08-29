@@ -66,10 +66,14 @@ const PlanResultHeader = () => {
               </div>
             </div>
             <div>
-              <Text size="medium" weight="bold">
-                {resultPlanInfos.locationName}
-              </Text>
-              으로부터{" "}
+              {resultPlanInfos.locationName && (
+                <>
+                  <Text size="medium" weight="bold">
+                    {resultPlanInfos.locationName}
+                  </Text>
+                  <Text size="medium">으로부터 </Text>
+                </>
+              )}
               <Text size="medium" weight="bold">
                 {resultPlanInfos.minutes}분이내 카페를 찾았어요!
               </Text>{" "}
