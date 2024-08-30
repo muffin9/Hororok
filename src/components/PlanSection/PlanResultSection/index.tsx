@@ -56,7 +56,7 @@ const PlanResultSection = () => {
             <Button
               size="small"
               onClick={() => router.push("/map")}
-              className="w-[358px] h-[50px] sticky bottom-0"
+              className="w-[350px] h-[50px] sticky bottom-0"
             >
               홈으로 돌아가기
             </Button>

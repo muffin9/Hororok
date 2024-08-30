@@ -59,13 +59,13 @@ const TimeSelector = ({ selectId, setSelectId }: TimeSelectorProps) => {
         </Text>
         <Text
           size="small"
-          className={`${selectId >= 3 ? "text-primary-300" : "text-bluegray"} absolute left-1/2 transform -translate-x-1/2`}
+          className={`${selectId >= 3 ? "text-primary-300" : "text-gray-600"} absolute left-1/2 transform -translate-x-1/2`}
         >
           15분
         </Text>
         <Text
           size="small"
-          className={`${selectId === 6 ? "text-primary-300" : "text-bluegray"} absolute right-0`}
+          className={`${selectId === 6 ? "text-primary-300" : "text-gray-600"} absolute right-0`}
         >
           30분
         </Text>

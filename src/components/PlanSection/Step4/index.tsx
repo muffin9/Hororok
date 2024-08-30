@@ -79,7 +79,6 @@ const Step4 = () => {
         <RefreshButton onClickRefresh={onClickRefresh} />
         <SubmitButton
           onSubmit={onSubmit}
-          className="mr-4"
           isDisabled={checkKeywordDisabledSubmit}
         />
       </div>

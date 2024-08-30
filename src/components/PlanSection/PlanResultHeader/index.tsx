@@ -71,7 +71,7 @@ const PlanResultHeader = () => {
                   <Text size="medium" weight="bold">
                     {resultPlanInfos.locationName}
                   </Text>
-                  <Text size="medium">으로부터 </Text>
+                  <Text size="medium">&#39;&#40;으&#41;&#39;로부터 </Text>
                 </>
               )}
               <Text size="medium" weight="bold">
