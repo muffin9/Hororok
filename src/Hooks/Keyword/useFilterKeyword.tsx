@@ -79,7 +79,7 @@ const useFilterKeyword = () => {
       0
     );
 
-    if (totalSelectedItems === 5 && !selectedItems[category].includes(name)) {
+    if (totalSelectedItems >= 5 && !selectedItems[category].includes(name)) {
       return;
     }
 
