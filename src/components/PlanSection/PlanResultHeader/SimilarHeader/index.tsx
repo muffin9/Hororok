@@ -52,8 +52,8 @@ const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
                 cafeInfo={{
                   title: resultPlanInfos.visitDateTime,
                   description: resultPlanInfos.locationName,
-                  imageUrl: resultPlanInfos?.matchCafes[0].imageUrl,
-                  linkUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${resultPlanInfos?.matchCafes[0].id}`,
+                  imageUrl: resultPlanInfos?.matchCafes[0]?.imageUrl,
+                  linkUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${resultPlanInfos?.matchCafes[0]?.id}`,
                 }}
               />
               {/* <Icon type="bookmark" size="small" alt="북마크" /> */}
@@ -63,7 +63,7 @@ const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
             <Text size="medium" weight="bold">
               {resultPlanInfos.locationName}
             </Text>
-            으로부터{" "}
+            '(으)'로부터{" "}
             <Text size="medium" weight="bold">
               {resultPlanInfos.minutes}분이내
             </Text>{" "}
@@ -73,7 +73,7 @@ const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
             </Text>
             하기 좋은 카페를 찾았어요!
           </div>
-          <div className="flex gap-1.5 mb-4">
+          <div className="flex gap-1.5 my-4">
             {keywords.slice(0, 5).map((keyword: string) => {
               return (
                 <button

@@ -35,7 +35,7 @@ const PlanSection = ({ planId }: PlanSectionProps) => {
 
   return (
     <>
-      <section className="h-full flex flex-col gap-8 bg-white overflow-y-scroll">
+      <section className="h-[calc(100dvh)] flex flex-col gap-8 bg-white overflow-y-scroll">
         <header className="flex flex-col px-4">
           <ProgressBar
             width={`${(+planId / 4) * 100}%`}

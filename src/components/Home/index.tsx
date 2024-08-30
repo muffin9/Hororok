@@ -17,12 +17,16 @@ const Home = () => {
 
     if (!isFirstVisit || !loginHistory) {
       localStorage.setItem("isFirstVisit", "false");
-      router.push("/onboarding");
+      setTimeout(() => {
+        router.push("/onboarding");
+      }, 1000); 
       return;
     }
 
     if (isLoggedIn) {
-      router.push("/map");
+      setTimeout(() => {
+        router.push("/map");
+      }, 1000); 
       return;
     }
 

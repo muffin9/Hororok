@@ -14,7 +14,7 @@ const TimeSelection = ({
   isIncludeTimeId,
 }: TimeSelectionProps) => {
   return (
-    <div className="pt-8 pb-32 bg-white">
+    <div className="pt-4 pb-32 bg-white">
       <Text size="medium" weight="bold">
         시간선택
       </Text>

@@ -84,7 +84,6 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
         <RefreshButton onClickRefresh={onClickRefresh} />
         <SubmitButton
           onSubmit={onSubmit}
-          className="mr-4"
           isDisabled={checkKeywordDisabledSubmit}
         />
       </div>
