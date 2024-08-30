@@ -63,7 +63,7 @@ const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
             <Text size="medium" weight="bold">
               {resultPlanInfos.locationName}
             </Text>
-            '(으)'로부터{" "}
+            &#39;&#40;으&#41;&#39;로부터{" "}
             <Text size="medium" weight="bold">
               {resultPlanInfos.minutes}분이내
             </Text>{" "}
