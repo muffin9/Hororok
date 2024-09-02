@@ -15,6 +15,7 @@ import RefreshButton from "@/components/common/RefreshButton";
 import useGeolocation from "@/Hooks/useGeolocation";
 import { convertRequestKeywords } from "@/utils";
 import useSearcResultListStorehPlace from "@/store/useSearchResultListStore";
+import ToastMessage from "@/components/common/ToastMessage";
 
 const Step4 = () => {
   const router = useRouter();
@@ -82,6 +83,7 @@ const Step4 = () => {
           isDisabled={checkKeywordDisabledSubmit}
         />
       </div>
+      <ToastMessage />
     </div>
   );
 };

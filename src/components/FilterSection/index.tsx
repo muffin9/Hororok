@@ -12,6 +12,7 @@ import { filterDatas } from "@/app/constants";
 import RefreshButton from "../common/RefreshButton";
 import Icon from "../common/Icon";
 import useFilterKeyword from "@/Hooks/Keyword/useFilterKeyword";
+import ToastMessage from "../common/ToastMessage";
 
 interface FilterSectionProps {
   setIsFilter: React.Dispatch<React.SetStateAction<boolean>>;
@@ -87,6 +88,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
           isDisabled={checkKeywordDisabledSubmit}
         />
       </div>
+      <ToastMessage />
     </section>
   );
 };
