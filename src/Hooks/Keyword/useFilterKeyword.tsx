@@ -1,8 +1,8 @@
-import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
 import { CategoryKeywordsType } from "@/interfaces/Cafe";
 import useCategoryFilterKeywordStore from "@/store/useCategoryFilterKeywordStore";
 import { useState } from "react";
 import { popularKeywords } from "@/app/constants";
+import useToastStore from "@/store/useToastStore";
 
 const initKeywords = {
   purpose: [],
@@ -14,12 +14,13 @@ const initKeywords = {
 
 const useFilterKeyword = () => {
   const { categoryFilterKeywords } = useCategoryFilterKeywordStore();
+  const { showMessage } = useToastStore();
 
   const [selectedItems, setSelectedItems] = useState<CategoryKeywordsType>(
     categoryFilterKeywords
   );
 
-  const { setCategoryKeywords } = useCategoryKeywordStore();
+  const { setCategoryFilterKeywords } = useCategoryFilterKeywordStore();
 
   // 최신 상태를 기반으로 업데이트하므로, 여러 번의 상태 업데이트가 누락되지 않고 모두 반영
   const updatedKeywords = (category: string, name: string) => {
@@ -38,7 +39,7 @@ const useFilterKeyword = () => {
         updatedItems[category] = [name];
       }
 
-      setCategoryKeywords(updatedItems);
+      setCategoryFilterKeywords(updatedItems);
       return updatedItems;
     });
   };
@@ -65,8 +66,20 @@ const useFilterKeyword = () => {
           updatedItems[keyword.category] = [keyword.name];
         }
 
-        setCategoryKeywords(updatedItems);
-        return updatedItems;
+        const totalElementsLen = Object.keys(updatedItems).reduce(
+          (sum, key) => {
+            return sum + updatedItems[key].length;
+          },
+          0
+        );
+
+        if (totalElementsLen >= 5) {
+          showMessage("키워드는 5개이상 선택할 수 없어요.");
+          return prevSelectedItems;
+        } else {
+          setCategoryFilterKeywords(updatedItems);
+          return updatedItems;
+        }
       });
     });
   };
@@ -80,6 +93,7 @@ const useFilterKeyword = () => {
     );
 
     if (totalSelectedItems >= 5 && !selectedItems[category].includes(name)) {
+      showMessage("키워드는 5개이상 선택할 수 없어요.");
       return;
     }
 
@@ -95,6 +109,7 @@ const useFilterKeyword = () => {
     );
 
     if (totalSelectedItems === 10 && !selectedItems[category].includes(name)) {
+      showMessage("키워드는 10개이상 선택할 수 없어요.");
       return;
     }
 
@@ -114,6 +129,7 @@ const useFilterKeyword = () => {
 
   const onClickRefresh = () => {
     setSelectedItems(initKeywords);
+    setCategoryFilterKeywords(initKeywords);
   };
 
   const checkKeywordDisabledSubmit = () => {

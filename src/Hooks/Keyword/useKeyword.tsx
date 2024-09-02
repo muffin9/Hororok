@@ -2,6 +2,7 @@ import useCategoryKeywordStore from "@/store/useCategoryKeywordStore";
 import { CategoryKeywordsType } from "@/interfaces/Cafe";
 import { useState } from "react";
 import { popularKeywords } from "@/app/constants";
+import useToastStore from "@/store/useToastStore";
 
 const initKeywords = {
   purpose: [],
@@ -14,6 +15,7 @@ const initKeywords = {
 const useKeyword = () => {
   const [selectedItems, setSelectedItems] =
     useState<CategoryKeywordsType>(initKeywords);
+  const { showMessage } = useToastStore();
 
   const { setCategoryKeywords } = useCategoryKeywordStore();
 
@@ -60,8 +62,20 @@ const useKeyword = () => {
           updatedItems[keyword.category] = [keyword.name];
         }
 
-        setCategoryKeywords(updatedItems);
-        return updatedItems;
+        const totalElementsLen = Object.keys(updatedItems).reduce(
+          (sum, key) => {
+            return sum + updatedItems[key].length;
+          },
+          0
+        );
+
+        if (totalElementsLen >= 5) {
+          showMessage("키워드는 5개이상 선택할 수 없어요.");
+          return prevSelectedItems;
+        } else {
+          setCategoryKeywords(updatedItems);
+          return updatedItems;
+        }
       });
     });
   };
@@ -75,6 +89,7 @@ const useKeyword = () => {
     );
 
     if (totalSelectedItems >= 5 && !selectedItems[category].includes(name)) {
+      showMessage("키워드는 5개이상 선택할 수 없어요.");
       return;
     }
 
@@ -90,6 +105,7 @@ const useKeyword = () => {
     );
 
     if (totalSelectedItems === 10 && !selectedItems[category].includes(name)) {
+      showMessage("키워드는 10개이상 선택할 수 없어요.");
       return;
     }
 
@@ -109,6 +125,7 @@ const useKeyword = () => {
 
   const onClickRefresh = () => {
     setSelectedItems(initKeywords);
+    setCategoryKeywords(initKeywords);
   };
 
   const checkKeywordDisabledSubmit = () => {
