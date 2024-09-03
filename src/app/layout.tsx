@@ -5,7 +5,6 @@ import "./globals.css";
 import QueryProvider from "@/Hooks/useReactQuery";
 import KakaoScript from "@/Hooks/KakaoScript";
 import Introduce from "@/components/Introduce";
-import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "카페콕 | 당신의 완벽한 카페 찾기",
@@ -49,9 +48,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <Head>
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_KEY || ""} />
-      </Head>
       <body>
         <Introduce />
         <QueryProvider>
@@ -62,6 +58,7 @@ export default function RootLayout({
       </body>
 
       <KakaoScript />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_KEY || ""} />
     </html>
   );
 }
