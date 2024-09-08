@@ -1,12 +1,15 @@
 import { planCafeHeader } from "@/app/constants";
 import Icon from "@/components/common/Icon";
-import ShareButton from "@/components/common/ShareButton";
 import Text from "@/components/common/Text";
 import usePlanMatchStore from "@/store/usePlanMatchStore";
 import SimilarHeader from "./SimilarHeader";
 import useHandleBookmark from "@/Hooks/useHandleBookmark";
 import useIsLoggedIn from "@/Hooks/useLoggedIn";
 import useToastStore from "@/store/useToastStore";
+import ShareListButton, {
+  CafeShareListType,
+} from "@/components/common/ShareListButton";
+import { useMemo } from "react";
 
 const PlanResultHeader = () => {
   const isLoggedIn = useIsLoggedIn();
@@ -24,6 +27,14 @@ const PlanResultHeader = () => {
     });
   }
 
+  const processedCafes = useMemo(() => {
+    return resultPlanInfos.matchCafes.reduce((acc, cafe) => {
+      const { id, name, imageUrl } = cafe;
+      acc.push({ id, name, imageUrl });
+      return acc;
+    }, [] as CafeShareListType[]);
+  }, [resultPlanInfos.matchCafes]);
+
   return (
     <>
       <header className="flex flex-col gap-3 px-4 border-solid border-b-[1px] border-gray-200">
@@ -34,15 +45,10 @@ const PlanResultHeader = () => {
                 {resultPlanInfos.visitDateTime}
               </Text>
               <div className="flex gap-4 cursor-pointer">
-                <ShareButton
-                  cafeId={resultPlanInfos.matchCafes[0]?.id}
+                <ShareListButton
+                  title={resultPlanInfos.locationName}
                   planId={resultPlanInfos.planId}
-                  cafeInfo={{
-                    title: resultPlanInfos.visitDateTime,
-                    description: resultPlanInfos.locationName,
-                    imageUrl: resultPlanInfos?.matchCafes[0]?.imageUrl,
-                    linkUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${resultPlanInfos?.matchCafes[0]?.id}`,
-                  }}
+                  cafeList={processedCafes}
                 />
                 {/* <button
                   onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => {
