@@ -1,9 +1,9 @@
 import { planCafeHeader } from "@/app/constants";
 import Icon from "@/components/common/Icon";
 import Text from "@/components/common/Text";
-import ShareButton from "@/components/common/ShareButton";
-import { useState } from "react";
-import { PlanMatchType } from "@/interfaces/Cafe";
+import { useMemo, useState } from "react";
+import { CafeShareListType, PlanMatchType } from "@/interfaces/Cafe";
+import ShareListButton from "@/components/common/ShareListButton";
 
 interface SimilarHeaderProps {
   resultPlanInfos: PlanMatchType;
@@ -20,6 +20,14 @@ const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
       });
     });
   }
+
+  const processedCafes = useMemo(() => {
+    return resultPlanInfos.similarCafes.reduce((acc, cafe) => {
+      const { id, name, imageUrl } = cafe;
+      acc.push({ id, name, imageUrl: `http:${imageUrl}` });
+      return acc;
+    }, [] as CafeShareListType[]);
+  }, [resultPlanInfos.matchCafes]);
 
   return (
     <div>
@@ -46,15 +54,10 @@ const SimilarHeader = ({ resultPlanInfos }: SimilarHeaderProps) => {
               {resultPlanInfos.visitDateTime}
             </Text>
             <div className="flex gap-4 cursor-pointer">
-              <ShareButton
-                cafeId={resultPlanInfos.similarCafes[0]?.id}
+              <ShareListButton
+                title={resultPlanInfos.locationName}
                 planId={resultPlanInfos.planId}
-                cafeInfo={{
-                  title: resultPlanInfos.visitDateTime,
-                  description: resultPlanInfos.locationName,
-                  imageUrl: resultPlanInfos?.matchCafes[0]?.imageUrl,
-                  linkUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/cafe/${resultPlanInfos?.matchCafes[0]?.id}`,
-                }}
+                cafeList={processedCafes}
               />
               {/* <Icon type="bookmark" size="small" alt="북마크" /> */}
             </div>
