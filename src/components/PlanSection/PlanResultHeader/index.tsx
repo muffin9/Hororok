@@ -29,7 +29,7 @@ const PlanResultHeader = () => {
   const processedCafes = useMemo(() => {
     return resultPlanInfos.matchCafes.reduce((acc, cafe) => {
       const { id, name, imageUrl } = cafe;
-      acc.push({ id, name, imageUrl });
+      acc.push({ id, name, imageUrl: `http:${imageUrl}` });
       return acc;
     }, [] as CafeShareListType[]);
   }, [resultPlanInfos.matchCafes]);
