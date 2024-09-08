@@ -6,10 +6,9 @@ import SimilarHeader from "./SimilarHeader";
 import useHandleBookmark from "@/Hooks/useHandleBookmark";
 import useIsLoggedIn from "@/Hooks/useLoggedIn";
 import useToastStore from "@/store/useToastStore";
-import ShareListButton, {
-  CafeShareListType,
-} from "@/components/common/ShareListButton";
+import ShareListButton from "@/components/common/ShareListButton";
 import { useMemo } from "react";
+import { CafeShareListType } from "@/interfaces/Cafe";
 
 const PlanResultHeader = () => {
   const isLoggedIn = useIsLoggedIn();

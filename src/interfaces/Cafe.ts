@@ -143,6 +143,12 @@ export interface CafeType {
   imageUrl: string;
 }
 
+export interface CafeShareListType {
+  name: string | null;
+  imageUrl: string | null;
+  id: number | null;
+}
+
 export interface PlanMatchType {
   planId: number;
   matchType: string;
