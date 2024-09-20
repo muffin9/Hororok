@@ -66,12 +66,17 @@ const Introduce = () => {
         </div>
       </div>
       <div className="flex flex-col items-center gap-8">
-        <Image
-          src={instagramImage}
-          width={48}
-          height={48}
-          alt="instagram image"
-        />
+        <Link
+          href="https://www.instagram.com/cafecok_seoul/?igsh=eDZhcWpuejFxYzc2&utm_source=qr"
+          target="_blank"
+        >
+          <Image
+            src={instagramImage}
+            width={48}
+            height={48}
+            alt="instagram image"
+          />
+        </Link>
         <div className="flex flex-col items-center gap-2">
           <Text size="small" className="text-gray-700">
             이메일: cafecok.seoul@gmail.com
