@@ -35,7 +35,7 @@ const CombinationEdit = ({ combination }: CombinationEditProps) => {
     checkKeywordDisabledSubmit,
     onClickRefresh,
     calculatedPopularKeywordIds,
-  } = useKeyword();
+  } = useKeyword({ maxKeywordLen: 5 });
 
   const onCombinationSubmit = () => {
     const combinationData = {

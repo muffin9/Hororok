@@ -47,7 +47,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
     checkSelected,
     checkKeywordDisabledSubmit,
     calculatedPopularKeywordIds,
-  } = useKeyword();
+  } = useKeyword({ maxKeywordLen: 10 });
 
   const { patchReview } = useReviewMutation();
 
@@ -245,7 +245,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
       </div>
       {showModal && (
         <Modal
-        size="medium"
+          size="medium"
           title={`작성하던 리뷰는 수정되지 않아요.\n의견을 수정하지 않고 나가시겠어요?`}
           okButtonText="이어서 리뷰 수정하기"
           cancelButtonText="나가기"
