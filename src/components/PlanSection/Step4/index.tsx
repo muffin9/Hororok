@@ -51,7 +51,7 @@ const Step4 = () => {
     const planResultInfo = await postSearchListToPlan(convertPlanData);
 
     setMatchPlan(planResultInfo);
-    if (planResultInfo.matchCafes)
+    if (planResultInfo && planResultInfo.matchCafes)
       setSearchResultList(planResultInfo.matchCafes);
     resetKeywords();
     router.push(
