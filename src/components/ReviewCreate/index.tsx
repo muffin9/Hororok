@@ -38,7 +38,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
     checkSelected,
     checkKeywordDisabledSubmit,
     calculatedPopularKeywordIds,
-  } = useKeyword();
+  } = useKeyword({ maxKeywordLen: 10 });
 
   const { postReview } = useReviewMutation();
 

@@ -45,17 +45,29 @@ const useFilterKeyword = () => {
   };
 
   const handlePopularItemClick = (
-    popularKeywords: { category: string; name: string }[]
+    paramPopularKeywords: { category: string; name: string }[]
   ) => {
-    popularKeywords.forEach((keyword) => {
+    const extractedNames = paramPopularKeywords.map(
+      (keywords) => keywords.name
+    );
+
+    const popularCount = Object.values(selectedItems).reduce((acc, array) => {
+      if (array.includes(extractedNames[0])) acc += 1;
+      if (array.includes(extractedNames[1])) acc += 1;
+      return acc;
+    }, 0);
+
+    paramPopularKeywords.forEach((keyword) => {
       setSelectedItems((prevSelectedItems) => {
         const updatedItems = { ...prevSelectedItems };
 
         if (updatedItems[keyword.category]) {
           if (updatedItems[keyword.category].includes(keyword.name)) {
-            updatedItems[keyword.category] = updatedItems[
-              keyword.category
-            ].filter((item) => item !== keyword.name);
+            if (popularCount === 2) {
+              updatedItems[keyword.category] = updatedItems[
+                keyword.category
+              ].filter((item) => item !== keyword.name);
+            }
           } else {
             updatedItems[keyword.category] = [
               ...updatedItems[keyword.category],
@@ -73,7 +85,7 @@ const useFilterKeyword = () => {
           0
         );
 
-        if (totalElementsLen >= 5) {
+        if (totalElementsLen > 5) {
           showMessage("키워드는 5개이상 선택할 수 없어요.");
           return prevSelectedItems;
         } else {

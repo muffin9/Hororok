@@ -32,7 +32,7 @@ const Step4 = () => {
     checkKeywordDisabledSubmit,
     onClickRefresh,
     calculatedPopularKeywordIds,
-  } = useKeyword();
+  } = useKeyword({ maxKeywordLen: 5 });
   const { setMatchPlan } = usePlanMatchStore();
   const { setSearchResultList } = useSearcResultListStorehPlace();
 
