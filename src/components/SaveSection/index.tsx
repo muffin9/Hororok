@@ -31,7 +31,7 @@ const SaveSection = ({
       await toggleBookmark(currentSelectCafeId, folderId);
       const cafeSearchList = await getSearchList(
         coordinates.latitude,
-        coordinates.longitude
+        coordinates.longitude,
       );
       setSearchResultList(cafeSearchList);
     } else router.push(`/save/folderEdit/${folderId}`);

@@ -22,7 +22,7 @@ const persistedState = persist<CoordinatesState>(
   }),
   {
     name: "coordinates",
-  }
+  },
 );
 
 const useCoordinatesStore = create(persistedState);

@@ -66,7 +66,7 @@ const persistedPlanStore = persist<planStoreState>(
   }),
   {
     name: "plan-store", // 영구 저장소에 사용될 키 이름
-  }
+  },
 );
 
 const usePlanStore = create(persistedPlanStore);

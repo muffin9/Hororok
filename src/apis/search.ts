@@ -6,7 +6,7 @@ import { convertRequestKeywords } from "@/utils";
 export const getSearchList = async (latitude: number, longitude: number) => {
   try {
     const response = await axiosInstance(
-      `${apiSearchUrl}/cafe/find/bar?latitude=${latitude}&longitude=${longitude}`
+      `${apiSearchUrl}/cafe/find/bar?latitude=${latitude}&longitude=${longitude}`,
     );
 
     return response.data.cafes;
@@ -18,7 +18,7 @@ export const getSearchList = async (latitude: number, longitude: number) => {
 export const getSearchListByKeywords = async (
   latitude: number,
   longitude: number,
-  categoryKeywords: CategoryKeywordsType
+  categoryKeywords: CategoryKeywordsType,
 ) => {
   try {
     const response = await axiosInstance.post(
@@ -27,7 +27,7 @@ export const getSearchListByKeywords = async (
         latitude,
         longitude,
         keywords: convertRequestKeywords(categoryKeywords),
-      }
+      },
     );
 
     return response.data.cafes;
@@ -39,7 +39,7 @@ export const getSearchListByKeywords = async (
 export const getReSearch = async (latitude: number, longitude: number) => {
   try {
     const response = await axiosInstance(
-      `${apiSearchUrl}/cafe/find/again?latitude=${latitude}&longitude=${longitude}`
+      `${apiSearchUrl}/cafe/find/again?latitude=${latitude}&longitude=${longitude}`,
     );
 
     return response.data.cafes;

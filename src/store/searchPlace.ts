@@ -14,7 +14,7 @@ const persistedSearchPlaceState = persist<SearchPlaceState>(
   }),
   {
     name: "search-place",
-  }
+  },
 );
 
 const useSearchPlace = create(persistedSearchPlaceState);

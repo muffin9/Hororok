@@ -13,7 +13,7 @@ export const getCafeTopInfo = async (cafeId: string) => {
 export const getCafeBasicInfo = async (cafeId: string) => {
   try {
     const response = await axiosInstance(
-      `${apiSearchUrl}/cafe/${cafeId}/basicInfo`
+      `${apiSearchUrl}/cafe/${cafeId}/basicInfo`,
     );
     return response.data;
   } catch (error) {
@@ -24,7 +24,7 @@ export const getCafeBasicInfo = async (cafeId: string) => {
 export const getCafeMenuInfo = async (cafeId: string) => {
   try {
     const response = await axiosInstance(
-      `${apiSearchUrl}/cafe/${cafeId}/menus`
+      `${apiSearchUrl}/cafe/${cafeId}/menus`,
     );
     return response.data;
   } catch (error) {
@@ -35,7 +35,7 @@ export const getCafeMenuInfo = async (cafeId: string) => {
 export const getCafePhotoInfo = async (
   cafeId: string,
   cursor: number,
-  page: string
+  page: string,
 ) => {
   const cafeImageUrl =
     page === "all"

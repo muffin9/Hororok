@@ -13,7 +13,7 @@ interface ConditionProps {
     keywords: {
       category: string;
       name: string;
-    }[]
+    }[],
   ) => void;
   handleItemClick: (category: string, name: string) => void;
   checkSelected: (category: string, name: string) => boolean;
@@ -35,7 +35,7 @@ const Condition = ({
   const sortedFilterData = () => {
     if (categoryId) {
       const clickedCategoryIdx = filterDatas.findIndex(
-        (data) => data.category === categoryId
+        (data) => data.category === categoryId,
       );
       if (clickedCategoryIdx !== -1) {
         const clickedCategory = filterDatas.splice(clickedCategoryIdx, 1)[0];
@@ -70,7 +70,7 @@ const Condition = ({
         <div className="flex flex-wrap gap-2">
           {popularKeywords.map((popular) => {
             const isPopularKeyword = calculatedPopularKeywordIds().includes(
-              popular.id
+              popular.id,
             );
             return (
               <button

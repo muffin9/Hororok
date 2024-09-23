@@ -5,7 +5,7 @@ import { persist } from "zustand/middleware";
 interface categoryFilterKeywordState {
   categoryFilterKeywords: CategoryKeywordsType;
   setCategoryFilterKeywords: (
-    newCategoryFilterKeywords: CategoryKeywordsType
+    newCategoryFilterKeywords: CategoryKeywordsType,
   ) => void;
   resetFilterKeywords: () => void;
 }
@@ -22,12 +22,12 @@ const persistedCategoryKeywordStore = persist<categoryFilterKeywordState>(
   (set) => ({
     categoryFilterKeywords: initCategoryFilterKeywords,
     setCategoryFilterKeywords: (
-      newCategoryFilterKeywords: CategoryKeywordsType
+      newCategoryFilterKeywords: CategoryKeywordsType,
     ) => set({ categoryFilterKeywords: newCategoryFilterKeywords }),
     resetFilterKeywords: () =>
       set({ categoryFilterKeywords: initCategoryFilterKeywords }),
   }),
-  { name: "categoryFilterKeyword-store" }
+  { name: "categoryFilterKeyword-store" },
 );
 
 const useCategoryFilterKeywordStore = create(persistedCategoryKeywordStore);

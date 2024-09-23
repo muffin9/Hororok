@@ -46,7 +46,7 @@ const FilterSection = ({ setIsFilter }: FilterSectionProps) => {
     const cafeSearchList = await getSearchListByKeywords(
       +latitude,
       +longitude,
-      selectedItems
+      selectedItems,
     );
 
     setSearchResultList(cafeSearchList);

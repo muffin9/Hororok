@@ -7,7 +7,7 @@ const useHandleBookmark = () => {
   const handleClickBookmark = (
     e: React.SyntheticEvent<HTMLButtonElement>,
     cafeId: number,
-    planId?: number
+    planId?: number,
   ) => {
     e.stopPropagation();
     setCurrentSelectCafeId(cafeId);

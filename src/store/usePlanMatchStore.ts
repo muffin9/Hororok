@@ -31,7 +31,7 @@ const persistedPlanMatchStore = persist<PlanMatchState>(
     setMatchPlan: (newMatchPlan: PlanMatchType) =>
       set({ resultPlanInfos: newMatchPlan }),
   }),
-  { name: "planMatch-store" }
+  { name: "planMatch-store" },
 );
 
 const usePlanMatchStore = create(persistedPlanMatchStore);

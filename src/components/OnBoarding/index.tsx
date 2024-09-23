@@ -74,7 +74,7 @@ const OnBoarding = () => {
                   {descriptionText}
                 </Text>
               );
-            }
+            },
           )}
         </div>
         <div className="flex gap-2">

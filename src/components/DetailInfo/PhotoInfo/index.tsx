@@ -20,14 +20,14 @@ const PhotoInfo = ({
   const { photoInfo }: { photoInfo: CafePhotoInfoType } = useGetPhotoInfo(
     cafeId,
     1,
-    page
+    page,
   );
 
   const { showMore, handleClickMoreButton } = useMoreData();
 
   const photoInfoImageUrlsLen = useMemo(
     () => photoInfo?.imageUrls.length,
-    [photoInfo]
+    [photoInfo],
   );
 
   const visiblePhotoData =
@@ -65,7 +65,7 @@ const PhotoInfo = ({
                     }
                   />
                 );
-              }
+              },
             )}
           </div>
           {photoInfoImageUrlsLen >= 5 && !showMore && page !== "all" && (

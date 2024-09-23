@@ -14,7 +14,7 @@ const RollingInput = ({
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPlaceholderIndex((prevIndex) =>
-        prevIndex === placeholderTexts.length - 1 ? 0 : prevIndex + 1
+        prevIndex === placeholderTexts.length - 1 ? 0 : prevIndex + 1,
       );
     }, 3000);
 

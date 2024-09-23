@@ -65,7 +65,7 @@ axiosInstance.interceptors.request.use(async (config: any) => {
           `${apiSearchUrl}/auth/refresh`,
           {
             refreshToken,
-          }
+          },
         );
 
         const newAccessToken = response.data.accessToken;
@@ -73,7 +73,7 @@ axiosInstance.interceptors.request.use(async (config: any) => {
         localStorage.setItem("accessToken", newAccessToken);
         localStorage.setItem(
           "accessTokenExpiration",
-          expirationTime.toString()
+          expirationTime.toString(),
         );
       } catch (error) {
         console.error("Failed to refresh accessToken:", error);
@@ -99,7 +99,7 @@ axiosInstance.interceptors.response.use(
       alert("알 수 없는 에러가 발생했습니다. 잠시 후 다시 이용해주세요.");
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosInstance;

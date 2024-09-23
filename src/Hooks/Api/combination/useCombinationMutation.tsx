@@ -14,7 +14,7 @@ const useCombinationMutation = () => {
     mutationFn: async (combinationData: PatchCombinationType) => {
       return axiosInstance.post(
         `${apiSearchUrl}/combination/create`,
-        combinationData
+        combinationData,
       );
     },
     onSuccess: (data) => {
@@ -38,7 +38,7 @@ const useCombinationMutation = () => {
     }) => {
       return axiosInstance.patch(
         `${apiSearchUrl}/combination/${combinationId}/edit`,
-        combinationData
+        combinationData,
       );
     },
     onSuccess: (data) => {

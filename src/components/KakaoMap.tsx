@@ -36,7 +36,7 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
     const imageSize = new window.kakao.maps.Size(24, 35);
     const markerImage = new window.kakao.maps.MarkerImage(
       currentPinImage,
-      imageSize
+      imageSize,
     );
 
     const myMarkerPosition = new window.kakao.maps.LatLng(latitude, longitude);
@@ -57,7 +57,7 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
     const cafeMarkerSize = new window.kakao.maps.Size(34, 34);
     const cafeMarkerImage = new window.kakao.maps.MarkerImage(
       cafePinImage,
-      cafeMarkerSize
+      cafeMarkerSize,
     );
 
     if (searchResultList) {
@@ -88,7 +88,7 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
         const options = {
           center: new window.kakao.maps.LatLng(
             currentCoordinates.latitude,
-            currentCoordinates.longitude
+            currentCoordinates.longitude,
           ),
           level: 5,
         };
@@ -105,7 +105,7 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
               if (center) {
                 setCoordinates(center.getLat(), center.getLng());
               }
-            }
+            },
           );
         }
 
@@ -125,7 +125,7 @@ const KakaoMap = ({ children }: KakaoMapProps) => {
   const onClickReBound = () => {
     const moveLatLon = new window.kakao.maps.LatLng(
       location.latitude,
-      location.longitude
+      location.longitude,
     );
     mapRef.current.panTo(moveLatLon);
   };

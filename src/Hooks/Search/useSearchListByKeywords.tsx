@@ -11,7 +11,7 @@ const useCafeDetailInfo = (categoryKeywords: CategoryKeywordsType) => {
       getSearchListByKeywords(
         location.latitude,
         location.longitude,
-        categoryKeywords
+        categoryKeywords,
       ),
   });
 

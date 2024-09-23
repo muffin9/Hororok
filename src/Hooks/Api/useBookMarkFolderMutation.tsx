@@ -56,7 +56,7 @@ const useBookMarkFolderMutation = () => {
     mutationFn: async (folderInfo: patchFolderType) => {
       return axiosInstance.put(
         `${apiSearchUrl}/bookmark/folder/update`,
-        folderInfo
+        folderInfo,
       );
     },
     onSuccess: (data) => {
@@ -77,7 +77,7 @@ const useBookMarkFolderMutation = () => {
   const { mutateAsync: deleteBookmarkFolder } = useMutation({
     mutationFn: async (folderId: number) => {
       return axiosInstance.delete(
-        `${apiSearchUrl}/bookmark/folder/${folderId}/delete`
+        `${apiSearchUrl}/bookmark/folder/${folderId}/delete`,
       );
     },
     onSuccess: (data) => {

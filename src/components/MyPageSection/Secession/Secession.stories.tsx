@@ -6,7 +6,7 @@ const meta: Meta<typeof Secession> = {
   component: Secession,
 };
 
-export default meta; 
+export default meta;
 
 const PrimitiveSecession = () => {
   return <Secession />;

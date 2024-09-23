@@ -60,7 +60,7 @@ const ShareListButton = ({
   }, []);
 
   const onClickShareListButton = (
-    e: React.SyntheticEvent<HTMLButtonElement>
+    e: React.SyntheticEvent<HTMLButtonElement>,
   ) => {
     e.stopPropagation();
     if (isLoggedIn) {

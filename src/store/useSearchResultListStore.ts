@@ -14,7 +14,7 @@ const persistedSearchPlaceState = persist<searchResultListState>(
   }),
   {
     name: "search-result-list-place",
-  }
+  },
 );
 
 const useSearcResultListStorehPlace = create(persistedSearchPlaceState);

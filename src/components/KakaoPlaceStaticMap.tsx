@@ -33,7 +33,7 @@ const KakaoPlaceStaticMap = ({
         const imageSize = new window.kakao.maps.Size(24, 24);
         const markerImage = new window.kakao.maps.MarkerImage(
           "/assets/Images/my_position.png",
-          imageSize
+          imageSize,
         );
 
         const container = document.getElementById("static_map");
@@ -41,7 +41,7 @@ const KakaoPlaceStaticMap = ({
         const options = {
           center: new window.kakao.maps.LatLng(
             formData.latitude || location.latitude,
-            formData.longitude || location.longitude
+            formData.longitude || location.longitude,
           ),
           level: 5,
         };
@@ -49,7 +49,7 @@ const KakaoPlaceStaticMap = ({
 
         const myMarkerPosition = new window.kakao.maps.LatLng(
           formData.latitude || location.latitude,
-          formData.longitude || location.longitude
+          formData.longitude || location.longitude,
         );
 
         const marker = new window.kakao.maps.Marker({

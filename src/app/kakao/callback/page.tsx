@@ -34,7 +34,7 @@ export default function KakaoCallback() {
           localStorage.setItem("accessToken", accessToken);
           localStorage.setItem(
             "accessTokenExpiration",
-            expirationTime.toString()
+            expirationTime.toString(),
           );
           localStorage.setItem("refreshToken", refreshToken);
           localStorage.setItem("loginHistory", "loginHistory");

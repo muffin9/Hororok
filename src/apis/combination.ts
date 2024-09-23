@@ -4,7 +4,7 @@ import axiosInstance from "./apiClient";
 export const getCombination = async (combinationId: string) => {
   try {
     const response = await axiosInstance(
-      `${apiSearchUrl}/combination/${combinationId}`
+      `${apiSearchUrl}/combination/${combinationId}`,
     );
     return response.data;
   } catch (error) {
