@@ -102,7 +102,7 @@ const DetailInfo = ({ cafeId }: DetailInfoProps) => {
                     openModal();
                   } else {
                     router.push(
-                      `/review/create/${cafeId}?cafeName=${topInfo.cafeName}`
+                      `/review/create/${cafeId}?cafeName=${topInfo.cafeName}`,
                     );
                   }
                 }}

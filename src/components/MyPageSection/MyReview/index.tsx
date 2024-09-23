@@ -97,7 +97,7 @@ const MyReview = () => {
                             className="bg-cover bg-center w-[100px] h-[100px] rounded-lg"
                           />
                         );
-                      }
+                      },
                     )}
                   </div>
                   {myReview.keywords.length > 0 && (

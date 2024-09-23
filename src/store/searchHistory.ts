@@ -27,13 +27,13 @@ const persistedState = persist<SearchHistoryState>(
       set((state) => ({
         ...state,
         recentSearches: state.recentSearches.filter(
-          (query) => query !== searchQuery
+          (query) => query !== searchQuery,
         ),
       })),
   }),
   {
     name: "search-history",
-  }
+  },
 );
 
 const useSearchHistory = create(persistedState);

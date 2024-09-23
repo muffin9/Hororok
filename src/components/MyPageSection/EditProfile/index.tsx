@@ -31,7 +31,11 @@ const EditProfile = () => {
     if (myProfile) {
       setNickname(myProfile.nickname);
       setImageUrl(
-        `${myProfile.picture === null ? "/assets/Images/default_profile.png" : `http:${myProfile.picture}`}`
+        `${
+          myProfile.picture === null
+            ? "/assets/Images/default_profile.png"
+            : `http:${myProfile.picture}`
+        }`,
       );
     }
   }, []);

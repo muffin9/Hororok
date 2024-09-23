@@ -23,7 +23,7 @@ const persistedCategoryKeywordStore = persist<categoryKeywordState>(
       set({ categoryKeywords: newCategoryKeywords }),
     resetKeywords: () => set({ categoryKeywords: initCategoryKeywords }),
   }),
-  { name: "categoryKeyword-store" }
+  { name: "categoryKeyword-store" },
 );
 
 const useCategoryKeywordStore = create(persistedCategoryKeywordStore);

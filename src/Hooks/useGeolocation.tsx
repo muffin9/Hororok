@@ -18,7 +18,7 @@ function useGeolocation() {
         },
         (error) => {
           console.error("Error getting geolocation:", error);
-        }
+        },
       );
     } else {
       console.log("Geolocation is not supported by this browser.");

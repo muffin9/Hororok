@@ -38,7 +38,7 @@ const useBookMarkMutation = () => {
   const { mutateAsync: deleteBookmark } = useMutation({
     mutationFn: async (bookmarkId: number) => {
       return axiosInstance.delete(
-        `${apiSearchUrl}/bookmark/${bookmarkId}/delete`
+        `${apiSearchUrl}/bookmark/${bookmarkId}/delete`,
       );
     },
     onSuccess: (data) => {
@@ -60,7 +60,7 @@ const useBookMarkMutation = () => {
   const { mutateAsync: toggleVisible } = useMutation({
     mutationFn: async (folderId: number) => {
       return axiosInstance.patch(
-        `${apiSearchUrl}/bookmark/folder/${folderId}/update/visible`
+        `${apiSearchUrl}/bookmark/folder/${folderId}/update/visible`,
       );
     },
     onSuccess: (data) => {

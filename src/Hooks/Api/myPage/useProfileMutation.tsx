@@ -34,7 +34,7 @@ const useProfileMutation = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        }
+        },
       );
     },
     onSuccess: (data) => {

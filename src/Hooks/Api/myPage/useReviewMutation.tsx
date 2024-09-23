@@ -64,7 +64,7 @@ const useReviewMutation = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        }
+        },
       );
     },
     onSuccess: (data) => {

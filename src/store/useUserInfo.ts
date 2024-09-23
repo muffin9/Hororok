@@ -19,7 +19,7 @@ const persistedUserInfoStore = persist<userInfoState>(
     },
     setUserInfo: (info) => set({ userInfo: info }),
   }),
-  { name: "user-info" }
+  { name: "user-info" },
 );
 
 const useUserInfoStore = create(persistedUserInfoStore);

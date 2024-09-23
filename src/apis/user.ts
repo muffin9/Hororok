@@ -24,11 +24,11 @@ export const getUserPlanData = async (
   sort: SortType,
   status: PlanStatusType,
   page: number,
-  size: number
+  size: number,
 ) => {
   try {
     const response = await axiosInstance.get(
-      `${apiSearchUrl}/myPage/${status}/plans?sortBy=${sort}&page=${page}&size=${size}`
+      `${apiSearchUrl}/myPage/${status}/plans?sortBy=${sort}&page=${page}&size=${size}`,
     );
     return response.data.plans;
   } catch (error) {
@@ -48,7 +48,7 @@ export const getUserReview = async () => {
 export const getUserCombination = async () => {
   try {
     const response = await axiosInstance.get(
-      `${apiSearchUrl}/myPage/combination`
+      `${apiSearchUrl}/myPage/combination`,
     );
     return response.data;
   } catch (error) {
@@ -71,7 +71,7 @@ export const postUserFeedback = async (content: string) => {
   try {
     const response = await axiosInstance.post(
       `${apiSearchUrl}/myPage/feedback`,
-      { content }
+      { content },
     );
 
     return response.data;

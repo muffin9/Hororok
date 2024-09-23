@@ -15,7 +15,7 @@ const persistedSearchInputState = persist<SearchInputState>(
   }),
   {
     name: "search-input",
-  }
+  },
 );
 
 const useSearchInput = create(persistedSearchInputState);

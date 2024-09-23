@@ -49,7 +49,7 @@ const Calendar = ({ checkSelectDay, onClickday }: CalendarProps) => {
     const selectedDate = new Date(
       currentYear,
       selectedMonth.value - 1,
-      day + 1
+      day + 1,
     );
     return selectedDate < today;
   };
@@ -100,7 +100,7 @@ const Calendar = ({ checkSelectDay, onClickday }: CalendarProps) => {
                     );
                   })}
                 </tr>
-              )
+              ),
             )}
           </tbody>
         </table>

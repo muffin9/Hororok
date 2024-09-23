@@ -16,7 +16,7 @@ const ReSearchButton = () => {
     const data = await getReSearch(coordinates.latitude, coordinates.longitude);
     setSearchResultList(data);
     router.push(
-      `/search_map?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}`
+      `/search_map?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}`,
     );
   };
 

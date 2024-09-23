@@ -19,14 +19,14 @@ const Home = () => {
       localStorage.setItem("isFirstVisit", "false");
       setTimeout(() => {
         router.push("/onboarding");
-      }, 1000); 
+      }, 1000);
       return;
     }
 
     if (isLoggedIn) {
       setTimeout(() => {
         router.push("/map");
-      }, 1000); 
+      }, 1000);
       return;
     }
 

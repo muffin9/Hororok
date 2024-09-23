@@ -72,7 +72,7 @@ const ReviewCreate = ({ cafeId, cafeName }: ReviewCreateProps) => {
         "request",
         new Blob([JSON.stringify(requestData)], {
           type: "application/json",
-        })
+        }),
       );
 
       await postReview(formData);

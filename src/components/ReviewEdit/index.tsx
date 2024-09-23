@@ -79,7 +79,7 @@ const ReviewEdit = ({ reviewId, reviewData }: ReviewEditProps) => {
         "request",
         new Blob([JSON.stringify(requestData)], {
           type: "application/json",
-        })
+        }),
       );
 
       await patchReview({

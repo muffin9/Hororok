@@ -55,7 +55,7 @@ const Step4 = () => {
       setSearchResultList(planResultInfo.matchCafes);
     resetKeywords();
     router.push(
-      `/plan/result?latitude=${convertPlanData.latitude}&longitude=${convertPlanData.longitude}`
+      `/plan/result?latitude=${convertPlanData.latitude}&longitude=${convertPlanData.longitude}`,
     );
   };
 

@@ -30,7 +30,7 @@ const useKeyword = ({ maxKeywordLen }: useKeywordProps) => {
       if (updatedItems[category]) {
         if (updatedItems[category].includes(name)) {
           updatedItems[category] = updatedItems[category].filter(
-            (item) => item !== name
+            (item) => item !== name,
           );
         } else {
           updatedItems[category] = [...updatedItems[category], name];
@@ -45,10 +45,10 @@ const useKeyword = ({ maxKeywordLen }: useKeywordProps) => {
   };
 
   const handlePopularItemClick = (
-    paramPopularKeywords: { category: string; name: string }[]
+    paramPopularKeywords: { category: string; name: string }[],
   ) => {
     const extractedNames = paramPopularKeywords.map(
-      (keywords) => keywords.name
+      (keywords) => keywords.name,
     );
 
     const popularCount = Object.values(selectedItems).reduce((acc, array) => {
@@ -82,7 +82,7 @@ const useKeyword = ({ maxKeywordLen }: useKeywordProps) => {
           (sum, key) => {
             return sum + updatedItems[key].length;
           },
-          0
+          0,
         );
 
         if (totalElementsLen > maxKeywordLen) {
@@ -101,7 +101,7 @@ const useKeyword = ({ maxKeywordLen }: useKeywordProps) => {
       (total, categoryArray) => {
         return total + categoryArray.length;
       },
-      0
+      0,
     );
 
     if (totalSelectedItems >= 5 && !selectedItems[category].includes(name)) {
@@ -117,7 +117,7 @@ const useKeyword = ({ maxKeywordLen }: useKeywordProps) => {
       (total, categoryArray) => {
         return total + categoryArray.length;
       },
-      0
+      0,
     );
 
     if (totalSelectedItems === 10 && !selectedItems[category].includes(name)) {
@@ -154,8 +154,8 @@ const useKeyword = ({ maxKeywordLen }: useKeywordProps) => {
     const matchedIds = popularKeywords
       .filter(({ keywords }) =>
         keywords.every(({ category, name }) =>
-          selectedItems[category]?.includes(name)
-        )
+          selectedItems[category]?.includes(name),
+        ),
       )
       .map(({ id }) => id);
 

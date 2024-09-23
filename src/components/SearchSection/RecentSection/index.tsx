@@ -18,7 +18,7 @@ const RecentSection = ({ onClickRecentSearch }: RecentSectionProps) => {
 
   const onClickRemoveButton = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    search: string
+    search: string,
   ) => {
     e.stopPropagation();
     deleteSearch(search);

@@ -24,12 +24,12 @@ const FolderList = () => {
     useCallback(
       (folderInfo: paramFolderType) => {
         router.push(
-          `/save/createEdit/${folderInfo.folderId}?folderName=${folderInfo.name}&color=${folderInfo.color.slice(1)}&isVisible=${folderInfo.isVisible}`
+          `/save/createEdit/${folderInfo.folderId}?folderName=${folderInfo.name}&color=${folderInfo.color.slice(1)}&isVisible=${folderInfo.isVisible}`,
         );
       },
-      [router]
+      [router],
     ),
-    500
+    500,
   );
 
   const handleClickDelete = useDebounce(
@@ -37,9 +37,9 @@ const FolderList = () => {
       (folderId: number) => {
         deleteBookmarkFolder(folderId);
       },
-      [deleteBookmarkFolder]
+      [deleteBookmarkFolder],
     ),
-    500
+    500,
   );
 
   return (
