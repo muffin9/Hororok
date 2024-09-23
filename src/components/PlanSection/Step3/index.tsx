@@ -6,7 +6,7 @@ import Calendar from "./Calendar";
 import TimeSelection from "./TimeSelection";
 import usePlanStore from "@/store/usePlanStore";
 import useDate from "@/Hooks/useDate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { timeDatas } from "@/app/constants";
 
 const Step3 = () => {
@@ -74,13 +74,13 @@ const Step3 = () => {
       ...formData,
       date: `${currentYear}-${currentMonth < 10 ? `0${currentMonth}` : currentMonth}-${currentDay < 10 ? `0${currentDay}` : currentDay}`,
       startTime: getStartEndTime().startTime || {
-        hour: "00",
+        hour: "09",
         minute: "00",
         second: "00",
         nano: "00",
       },
       endTime: getStartEndTime().endTime || {
-        hour: "00",
+        hour: "09",
         minute: "00",
         second: "00",
         nano: "00",
@@ -88,9 +88,9 @@ const Step3 = () => {
     });
   };
 
-  // useEffect(() => {
-  //   setCurrentStep("3");
-  // }, []);
+  useEffect(() => {
+    saveDayAndTimeData();
+  }, []);
 
   return (
     <div className="px-4">
